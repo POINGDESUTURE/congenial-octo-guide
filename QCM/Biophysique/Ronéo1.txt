@@ -55,7 +55,7 @@ $D. Il concerne les électrons de très fortes énergies (plusieurs MeV).
 $E. Il se produit lorsque les électrons traversent un milieu constitué d'atomes lourds et dense.
 
 Concernant le TLE :
-$A. Le TLE est défini par la formule $dE / dx$.
+$A. Le TLE est défini par la formule dE / dx.
 $B. Le TLE traduit l'énergie moyenne transférée au milieu par la particule par unité de longueur de trajectoire.
 $C. Plus le TLE est grand, plus une grande quantité d'énergie est cédée sur une petite distance.
 D. Le TLE ne reflète pas directement la nuisance biologique d'un rayonnement donné.
@@ -99,7 +99,7 @@ $E. Ce type d'interaction devient important à partir de 2 MeV.
 Concernant l'atténuation d'un faisceau γ monochromatique :
 $A. L'atténuation suit une décroissance exponentielle en traversant une épaisseur de matériau absorbeur.
 $B. ITEM ANNULE, COCHER JUSTE.
-$C. µ est le coefficient linéique global d'atténuation, dont l'unité est $cm^{-1}$.
+$C. µ est le coefficient linéique global d'atténuation, dont l'unité est cm^{-1}.
 $D. Une relation analogue relie l'énergie incidente EI et l'énergie après avoir traversé une épaisseur X EX.
 E. µ dépend uniquement de l'énergie des photons incidents.
 
@@ -176,7 +176,7 @@ $E. Les α sont caractérisées par une ionisation et excitation très localisé
 Concernant les conséquences d'un TLE élevé :
 $A. Un TLE élevé signifie que l'énergie cédée localement par la particule incidente est grande.
 $B. Un TLE élevé entraîne des dommages biologiques locaux plus importants.
-$C. Les particules α (TLE moyen 130 keV.µm$^{-1}$) sont beaucoup plus dommageables localement que les particules β (TLE moyen 0,4 keV.µm$^{-1}$).
+$C. Les particules α (TLE moyen 130 keV.µm^{-1}) sont beaucoup plus dommageables localement que les particules β (TLE moyen 0,4 keV.µm^{-1}).
 D. Le TLE reflète la longueur du trajet parcouru par la particule.
 $E. Les particules α entraînent typiquement la destruction cellulaire.
 
@@ -221,3 +221,213 @@ B. Ils produisent des effets rapides.
 $C. Le développement d'un cancer après des scanners est un exemple d'effet stochastique.
 $D. Ils dépendent de la radiosensibilité du tissu et de l'âge du patient.
 $E. Ils renvoient à une probabilité accrue de subir des aggravations.
+
+À propos de la radiobiologie.
+A. Elle regroupe l’ensemble des phénomènes impliqués dans la réponse uniquement tissulaire aux radiations ionisantes (RI).
+$B. Elle est fortement en lien avec la physique et la chimie des radiations.
+C. Elle s'applique seulement au domaine du diagnostic (faibles doses).
+$D. Elle étudie les effets des radiations ionisantes sur les cellules et les tissus.
+$E. Des modèles basés sur des approches mathématiques cherchent à quantifier les effets des RI.
+
+Concernant les sources d'exposition aux rayonnements ionisants.
+A. Seules les sources naturelles sont étudiées.
+$B. Les sources d’exposition sont à la fois naturelles et artificielles.
+C. Les risques génétiques sont des exemples de sources d'exposition.
+D. La radioprotection est une source d'exposition.
+E. La prévention des risques de contamination radioactive fait partie des sources d'exposition.
+
+Concernant la radioprotection.
+$A. Elle regroupe toutes les mesures mises en place pour protéger les professionnels exposés aux RI.
+$B. Elle inclut des aspects techniques et réglementaires.
+C. Ses principes s'appliquent seulement aux faibles doses utilisées en diagnostic.
+D. Elle ne concerne pas la prévention des risques d'une contamination radioactive.
+E. Elle ne s'applique qu'aux risques biologiques liés à la cancérogenèse.
+
+À propos de la composition et des définitions des noyaux atomiques.
+$A. Le nombre A représente le nombre de nucléons.
+B. Le nombre Z représente le nombre de neutrons.
+$C. Les protons possèdent une charge élémentaire positive (+|e|).
+D. Les neutrons sont chargés négativement.
+$E. A est égal à la somme de Z et N.
+
+Concernant les différentes catégories de noyaux.
+A. Les noyaux qui ont le même nombre de nucléons (A) sont appelés isotopes.
+$B. Les isotopes possèdent le même nombre de protons (Z).
+$C. Les isobares possèdent le même nombre de nucléons (A).
+D. Les isotones sont des noyaux ayant le même nombre de protons (Z).
+$E. La stabilité des noyaux dépend du rapport entre le nombre de neutrons et le nombre de protons (N/Z).
+
+Concernant les noyaux radioactifs.
+$A. Ils sont instables.
+B. Ils se divisent uniquement en noyaux radioactifs naturels.
+$C. Ils présentent un déséquilibre du rapport neutrons/protons (N/Z).
+D. Il existe environ 250 isotopes stables recensés.
+$E. Ils tendent à se transformer par désintégration radioactive.
+
+À propos de l'émission alpha (α).
+$A. Elle se produit typiquement pour les noyaux lourds.
+$B. La particule α est un noyau d’Hélium.
+$C. La particule α contient 2 protons et 2 neutrons.
+D. La particule α est peu énergétique.
+E. Une simple feuille de papier n'est pas suffisante pour arrêter les particules α.
+
+Concernant l'émission bêta (β).
+$A. L'émission β- est l'émission d'un électron.
+B. L'émission β+ est l'émission d'un électron.
+$C. L'émission β+ est l'émission d'un positon (antiparticule de l'électron).
+$D. La désintégration β- implique la transformation d'un neutron en un proton (n → p).
+E. Les particules accompagnant l'émission β (neutrino/antineutrino) ont une masse élevée au repos.
+
+À propos de l'émission gamma (γ).
+$A. C'est l'émission d'un photon.
+$B. Elle résulte de la libération d’énergie par un noyau excité.
+C. Elle constitue un rayonnement de nature particulaire.
+D. Sa nature est différente de celle des rayons X.
+$E. Les rayons γ peuvent être arrêtés par des matériaux très épais comme le plomb ou le ciment.
+
+Concernant les spectres d'émission.
+A. La loi de la décroissance radioactive est une fonction polynomiale du temps.
+$B. Pour chaque désintégration β-, l’énergie des particules est répartie entre 0 et Emax.
+C. Le spectre d'émission β- est discontinu.
+D. La loi d'atténuation d'un faisceau γ n'est pas analogue à la loi de décroissance radioactive des noyaux.
+E. Les particules β emportent toujours l'énergie maximale disponible Q.
+
+À propos des rayonnements ionisants (RI).
+$A. Ils provoquent des effets physiques comme l'ionisation et l'excitation de la matière.
+$B. Les particules β-, β+, α, X et γ ionisent la matière.
+C. Les particules incidentes interagissent seulement par collision avec la matière.
+D. Les RI n'agissent qu'indirectement sur les molécules cellulaires.
+$E. L'ionisation se produit si l'énergie transférée dépasse l'énergie de liaison d'un électron.
+
+Concernant le rayonnement de freinage (Bremsstrahlung).
+A. Ce phénomène concerne principalement les électrons de faibles énergies.
+$B. Il se produit lorsque l'électron incident est dévié dans le champ coulombien de l'atome cible.
+$C. Il s'agit de l'émission d'un rayonnement X.
+D. Il devient important lorsque les électrons traversent un milieu constitué d'atomes légers.
+E. C'est le mécanisme principal d'interaction des électrons avec la matière.
+
+À propos du Transfert Linéique d'Énergie (T.L.E.).
+$A. Le T.L.E. est défini comme dE/dx.
+$B. Il traduit l'énergie moyenne transférée au milieu par la particule par unité de longueur.
+C. Un T.L.E. faible indique qu'une grande quantité d'énergie est cédée sur une petite distance.
+$D. Le T.L.E. reflète directement la nuisance biologique d'un rayonnement donné.
+E. Le ralentissement de l'électron incident est caractérisé par un transfert d'énergie non continu.
+
+Concernant les T.L.E. des particules chargées.
+A. Les particules α ont un T.L.E. beaucoup plus faible que celui des particules β.
+$B. Les particules α sont caractérisées par un T.L.E. élevé (entre 200 et 500 fois plus élevé que β).
+C. Le TLE moyen pour les particules β (E=1.7 MeV) est de 130 keV.µm^-1.
+$D. Le TLE moyen pour les particules α (E=5.3 MeV) est de 130 keV.µm^-1.
+E. Un T.L.E. élevé entraîne des dommages biologiques locaux moins importants.
+
+Concernant le parcours et la pénétration des particules dans les tissus biologiques.
+A. Le parcours des particules α dans l'air est de 603 cm.
+$B. Le parcours des particules α dans l'eau est très court (40 µm).
+C. Le parcours des particules β dans l'eau est de 40 µm.
+$D. L'épaisseur de la couche cornée de la peau est de 70 µm.
+E. Les particules α pénètrent facilement les tissus mous.
+
+À propos des particules β et la contamination externe.
+$A. Leur pouvoir de pénétration dans les tissus est relativement faible.
+$B. La profondeur à laquelle la dose maximale est délivrée est inférieure au parcours dans l'eau, en raison de leur trajectoire curviligne.
+C. Une particule β de 1 MeV délivre la dose maximale à une profondeur de 4000 µm.
+$D. Une contamination externe par les particules β est dangereuse, car la profondeur de délivrance de la dose (1700 µm) est largement supérieure à l'épaisseur du derme (70 µm).
+E. Les particules β ont une trajectoire rectiligne.
+
+Concernant les interactions des photons γ avec la matière à basse énergie.
+$A. Les trois mécanismes principaux sont l'effet Compton, l'effet photo-électrique, et la création de paires.
+B. L'effet photo-électrique est une diffusion élastique du γ sur un électron atomique.
+$C. L'effet Compton est une diffusion élastique du γ sur un électron atomique.
+$D. L'effet photo-électrique est l'absorption du γ par un électron atomique qui est éjecté.
+E. La production de paires est dominante dès 0.511 MeV.
+
+À propos de l'effet de matérialisation (création de paires e+ e-).
+$A. Il se produit au voisinage d’un noyau atomique.
+$B. Il nécessite que l'énergie du photon γ soit supérieure à 1,022 MeV.
+C. Il est important lorsque l'énergie du photon γ est de 0.511 MeV.
+$D. Ce processus devient dominant au-delà de 10 MeV.
+E. Il concerne le transfert total de l'énergie du photon γ.
+
+Concernant la loi d'atténuation et la Couche de Demi-Atténuation (CDA).
+A. Le coefficient linéique global d'atténuation (µ) dépend uniquement de l'énergie des photons incidents.
+$B. La relation pour la CDA est X_1/2 = Ln2\µ.
+$C. La CDA est l'épaisseur de matériau nécessaire pour atténuer d'un facteur 2 le nombre initial de photons.
+D. La loi d'atténuation s'applique seulement aux faisceaux non monochromatiques.
+$E. L'atténuation d'un faisceau de photons suit une loi de décroissance exponentielle.
+
+Concernant les interactions des rayonnements ionisants (RI) avec la matière.
+$A. L'effet photoélectrique implique l'électron de la couche K.
+B. L'effet COMPTON implique l'électron de la couche K.
+$C. Le rayonnement de freinage interagit avec le noyau.
+$D. L'arrêt des particules chargées est lié au transfert linéique d'énergie (TLE).
+E. L'atténuation en nombre est le mécanisme d'arrêt pour les particules α et β.
+
+À propos de la chronologie des événements suivant l'interaction RI-matière biologique.
+$A. Les RI interagissent en provoquant des effets physiques tels que l’ionisation et l’excitation.
+B. Ces effets agissent uniquement directement sur les cellules.
+$C. La radiolyse de l’eau produit des radicaux libres.
+D. Les effets biologiques deviennent visibles immédiatement après l'irradiation.
+$E. Plusieurs heures ou jours peuvent s'écouler avant que les effets biologiques ne soient visibles.
+
+Concernant les dommages cellulaires et leurs conséquences.
+$A. Les lésions peuvent toucher l’ADN, la membrane ou les protéines.
+$B. Le dommage cellulaire peut être réparé ou non.
+C. Les mutations touchant l’ADN ne persistent pas dans la cellule.
+$D. L'échec de la réparation peut engendrer des mutations ou des anomalies génétiques.
+$E. Les effets peuvent se manifester sur des mois, des années, voire des générations.
+
+À propos des effets biologiques ciblés et non ciblés.
+$A. Les irradiations peuvent avoir un impact directement dans la cellule (réponses ciblées).
+B. Les rayons ionisants n'interagissent pas avec les protéines ou les mitochondries.
+$C. En cas de réparation défectueuse, la mort de la cellule peut survenir.
+D. La mort cellulaire est le seul effet possible suite à une irradiation ciblée.
+E. Les anomalies génétiques n'augmentent pas le risque de cancer.
+
+Concernant la radiotoxicité et le parcours des particules.
+$A. Les particules α ont un parcours court (40-100 µm).
+B. Les particules α ont une faible radiotoxicité cutanée.
+$C. Les particules β ont une radiotoxicité cutanée faible.
+D. Le parcours des particules β est toujours plus court que celui des particules α.
+$E. Les particules β ont un parcours plus long (50 µm à 12 mm).
+
+Concernant le Transfert Linéique d'Énergie (TLE) et les dégâts biologiques.
+$A. Plus le TLE est grand, plus la quantité d'énergie est cédée sur une petite distance.
+B. Les dégâts sont d'autant moins importants que l'énergie est cédée localement.
+$C. Le TLE élevé des particules α entraîne des dommages biologiques locaux importants.
+D. Les particules β ont un TLE élevé, entraînant une destruction cellulaire importante.
+E. Le TLE est un indicateur peu fiable de la nuisance biologique d'un rayonnement.
+
+Concernant les rayonnements Indirectement ionisants (X et γ).
+$A. Leurs mécanismes principaux d'interaction sont l'effet photoélectrique, la diffusion Compton, et la production de paires.
+B. Les dommages biologiques qu'ils provoquent sont très localisés.
+$C. Ils entraînent des dommages biologiques plus diffus.
+$D. Ils mettent en mouvement des électrons, ce qui donne une trajectoire en arborescence.
+E. L'énergie déposée est toujours totale lors de la diffusion Compton.
+
+À propos des effets déterministes.
+$A. Ils produisent des effets rapides.
+$B. Ils surviennent avec de fortes probabilités d’endommagement des tissus.
+C. Ils correspondent à des effets probabilistes, dépendants de la radiosensibilité du tissu.
+$D. Un exemple est la radiothérapie externe où l'envoi des faisceaux est déterminé sur une masse tumorale.
+E. Ces effets seront détaillés dans un prochain cours.
+
+Concernant les effets stochastiques.
+A. Ils sont caractérisés par un seuil de dose (implicite: car déterministes sont les effets rapides avec forte probabilité).
+$B. Ce sont des effets probabilistes.
+$C. Le développement d'un cancer après des scanners fait partie des effets stochastiques.
+D. Ils ne dépendent pas de l’âge du patient ou de la radiosensibilité du tissu.
+$E. Ils renvoient à une probabilité accrue de subir des aggravations.
+
+À propos de la cancérogenèse liée aux effets stochastiques.
+$A. Les mutations touchant l'ADN persistent, augmentant le risque de cancer.
+B. L'agressivité d'un cancer provenant de la radiothérapie est plus grande que celle d'un cancer se développant naturellement.
+$C. Les effets stochastiques n'impactent pas l'intensité de l'aggravation, mais la probabilité.
+D. Ces effets sont immédiats.
+E. Le risque génétique est un exemple de risque biologique lié à l'irradiation.
+
+Concernant les rayonnements α (noyau d'hélium).
+$A. Ils provoquent une ionisation très localisée.
+B. L'énergie déposée est modérée et répartie sur une longue distance.
+$C. Ils sont arrêtés par la peau ou une feuille de papier.
+$D. Ils sont responsables de dommages biologiques locaux importants.
+E. Ils ont un parcours rectiligne.
