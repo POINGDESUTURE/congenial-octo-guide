@@ -1,0 +1,445 @@
+Concernant le système nerveux parasympathique (SNP) :
+A. Il est également appelé adrénergique.
+$B. Il est le système du "rest and digest".
+$C. Il entraîne des réactions locales et monoviscérales.
+D. Il est associé principalement à l'état d'alerte (Σ ALERTE!).
+$E. L'acétylcholine est son neuromédiateur principal.
+
+À propos du système nerveux orthosympathique (SNO) :
+$A. Il entraîne des réactions étendues et généralisées.
+$B. Il est appelé système adrénergique.
+$C. Il est le système du "fight or flight".
+D. Ce qui est parasympathique est proche du SNC (Système Nerveux Central).
+$E. Il est associé à l'état d'alerte (ORTHO Σ ALERTE!).
+
+Concernant les voies du système nerveux autonome :
+$A. Dans les voies parasympathiques, le premier neurone (pré-ganglionnaire) est long.
+$B. Dans les voies orthosympathiques, le second neurone (post-ganglionnaire) libère de la noradrénaline.
+$C. L'acétylcholine agit sur des récepteurs nicotiniques au niveau ganglionnaire.
+D. L'acétylcholine est uniquement présente dans le système nerveux parasympathique.
+$E. Dans les voies parasympathiques, le neuromédiateur final (post-ganglionnaire) est l'acétylcholine.
+
+Concernant la stimulation des récepteurs muscariniques :
+$A. Elle entraîne une diminution de la fréquence cardiaque.
+$B. Elle provoque une bronchoconstriction.
+$C. Elle stimule la miction.
+$D. Elle augmente les sécrétions lacrymales.
+$E. Elle induit un myosis (contraction pupillaire).
+
+Concernant la stimulation des récepteurs nicotiniques par l’acétylcholine :
+A. Elle se traduit uniquement par une diminution du tonus orthosympathique.
+$B. Elle nécessite le blocage des récepteurs muscariniques par l'atropine pour être observée seule.
+$C. Elle a un effet d'hyperactivité sympathique.
+$D. Elle induit une augmentation de la libération d'adrénaline et de noradrénaline.
+E. L'atropine agit comme un agoniste des récepteurs muscariniques.
+
+Concernant les sympathomimétiques indirects qui inhibent la recapture du neurotransmetteur :
+$A. La Cocaïne fait partie de cette catégorie.
+$B. Les Antidépresseurs peuvent agir par ce mécanisme (NET inhibitors).
+C. Ils agissent en augmentant la dégradation du neuromédiateur.
+D. Ils sont aussi appelés inhibiteurs de la destruction du neuromédiateur.
+E. Leur mécanisme implique la dégradation par les IMAO et les ICOMT.
+
+À propos des anticholinestérasiques :
+$A. Ils sont considérés comme des parasympathomimétiques indirects.
+$B. Ils inhibent l'enzyme responsable de la dégradation de l'Acétylcholine dans la fente synaptique.
+$C. Ils permettent à l'Acétylcholine d'exercer une action renforcée et prolongée sur les récepteurs.
+D. La néostigmine bloque l'acétylcholinestérase de façon irréversible.
+$E. Le Donépézil est un anticholinestérasique utilisé pour contrer les troubles cognitifs dans la maladie d’Alzheimer.
+
+Concernant les applications médicamenteuses :
+$A. La pilocarpine (collyre) est utilisée pour réduire la pression intraoculaire dans le traitement du glaucome.
+$B. La nicotine est un agoniste plein utilisé sous forme de patchs dans le sevrage tabagique.
+C. La varénicline (Champix®) est un agoniste plein des récepteurs nicotiniques.
+$D. La néostigmine est utilisée pour traiter la myasthénie.
+$E. L'association avec d'autres médicaments bradycardisants augmente le risque de bradycardie.
+
+Concernant l'intoxication par les organophosphorés (anticholinestérasiques irréversibles) :
+$A. Elle se manifeste par des signes muscariniques en premier lieu.
+$B. Elle peut provoquer des paralysies dues à des troubles neuro-musculaires.
+$C. L'atropine est administrée pour bloquer les récepteurs muscariniques.
+D. Les effets ne disparaissent pas d'eux-mêmes tant que la synthèse de cholinestérase n'est pas renouvelée.
+$E. Le Pralidoxime est un antidote des intoxications par des organophosphorés.
+
+Concernant les effets atropiniques périphériques (antagonisme muscarinique) :
+$A. Ils incluent une augmentation de la fréquence cardiaque.
+$B. Ils provoquent une mydriase.
+C. Ils entraînent une diminution de la pression intra-oculaire.
+$D. Ils peuvent causer une dysurie (difficulté à uriner).
+$E. Ils entraînent une diminution des sécrétions digestives.
+
+À propos des médicaments à propriétés atropiniques latérales :
+$A. Certains antihistaminiques (anti-H1) peuvent présenter cette action.
+$B. Les neuroleptiques (antipsychotiques) peuvent avoir ces effets indésirables.
+$C. Les antidépresseurs imipraminiques (ex: clomipramine) peuvent avoir ces effets.
+D. Ces propriétés sont rares et sans impact clinique notable.
+E. Elles ne concernent pas les antalgiques comme le néfopam.
+
+Le syndrome atropinique (intoxication atropinique) se manifeste par :
+$A. Des signes neuropsychiatriques comme des hallucinations.
+$B. Une mydriase.
+$C. Une peau rouge et chaude.
+$D. Une tachycardie.
+$E. Un risque d'occlusion intestinale (iléus).
+
+Concernant les antagonistes muscariniques :
+$A. L'Ipratropium et le Tiotropium sont utilisés pour leurs effets bronchodilatateurs.
+$B. La Scopolamine peut être utilisée pour lutter contre le mal des transports.
+C. L'Oxybutynine est utilisée pour ses effets bronchodilatateurs.
+$D. L'Atropine est l'antagoniste de référence (chef de fil) des récepteurs muscariniques.
+E. Le bipéridène est un antagoniste nicotinique.
+
+Concernant les parasympatholytiques indirects :
+$A. Ils visent à diminuer la libération des vésicules d’acétylcholine.
+$B. La toxine botulinique (Botox) est utilisée pour les spasmes neuromusculaires.
+C. La toxine botulique est utilisée en injection locale pour augmenter les contractions musculaires.
+D. Les ganglioplégiques sont des antagonistes nicotiniques utilisés pour la paralysie musculaire en anesthésie.
+$E. La toxine botulique peut entraîner des paralysies mettant en jeu le pronostic vital en cas d’intoxication sévère.
+
+Concernant la stimulation des récepteurs alpha 1 ($\alpha_1$) adrénergiques :
+$A. Elle provoque une vasoconstriction.
+$B. Elle entraîne la contraction du sphincter de la vessie.
+$C. Elle provoque une mydriase.
+$D. Elle provoque une contraction utérine.
+E. Elle induit un relâchement utérin.
+
+Concernant la stimulation des récepteurs bêta 1 (β1) adrénergiques :
+$A. Elle augmente la fréquence cardiaque (Chronotrope +).
+$B. Elle augmente la force de contraction cardiaque (Inotrope +).
+$C. Elle augmente la libération de rénine par le rein.
+D. Le relâchement de la paroi de la vessie est un effet β1.
+$E. Elle accélère la conduction cardiaque (Dromotrope +).
+
+Concernant la stimulation des récepteurs bêta 2 (β2) adrénergiques :
+$A. Elle provoque une vasodilatation.
+$B. Elle entraîne une bronchodilatation.
+$C. Elle induit un relâchement utérin.
+$D. Elle est impliquée dans l'hyperglycémie via la glycogénolyse hépatique.
+$E. Elle peut provoquer un tremblement au niveau du muscle strié.
+
+À propos de l'Adrénaline :
+$A. À faible dose, elle stimule préférentiellement les récepteurs bêta.
+$B. À forte dose, elle stimule préférentiellement les récepteurs alpha.
+$C. Elle est utilisée dans le traitement d'urgence du choc anaphylactique.
+$D. Elle est utilisée en cas d'arrêt cardiaque.
+$E. Elle a des effets métaboliques d'hyperglycémie.
+
+Concernant la Dopamine :
+$A. Elle est une catécholamine endogène.
+$B. À très faible dose, elle stimule les récepteurs dopaminergiques rénaux.
+$C. À faible dose, elle stimule le récepteur bêta.
+$D. À forte dose, elle stimule le récepteur alpha.
+$E. Elle est utilisée dans le traitement du choc pour améliorer la perfusion rénale.
+
+Concernant les agonistes $\alpha_1$ adrénergiques :
+$A. La Phényléphrine (Neosynephrine®) est un exemple.
+$B. Ils provoquent une vasoconstriction (VC).
+$C. Ils peuvent provoquer une contraction utérine.
+$D. La Pseudoéphédrine est un agoniste $\alpha_1$ par voie orale utilisé comme décongestionnant.
+E. La Methylergometrine fait partie des antagonistes $\alpha_1$ adrénergiques.
+
+Concernant les agonistes α2 adrénergiques :
+$A. La Clonidine (CATAPRESSAN°) en est un exemple.
+B. L'Atipemazole est un agoniste α2.
+C. Les agonistes α2 ne sont associés qu'à des effets périphériques.
+D. Ils sont utilisés par voie nasale comme décongestionnants.
+$E. La Medetomidine est un exemple d'agoniste α2.
+
+Concernant les agonistes bêta adrénergiques :
+$A. L'Isoprénaline (ISUPREL®) est non sélectif.
+$B. La Dobutamine est un agoniste sélectif β1.
+$C. La stimulation β2 entraîne une vasodilatation.
+$D. La stimulation β2 peut causer un tremblement des extrémités.
+E. Les agonistes bêta ne provoquent pas d'hyperglycémie.
+
+Concernant les sympatholytiques :
+$A. Les antagonistes alpha adrénergiques font partie des sympatholytiques directs.
+$B. La Réserpine est un sympatholytique indirect.
+$C. Les antagonistes bêta adrénergiques sont souvent identifiés par le suffixe « olol ».
+D. Les sympatholytiques directs agissent en augmentant la recapture.
+$E. La Yohimbine est un antagoniste α2.
+
+Concernant les bêta-bloquants :
+$A. Ils ont un effet d'être "CARDIOTRANQUILLISANT".
+$B. Ils diminuent la force de contraction cardiaque.
+$C. Ils diminuent la production de rénine par le rein (blocage β1).
+D. Ils sont contre-indiqués en cas d'angor.
+$E. Ils sont utilisés dans la prévention secondaire de l'infarctus.
+
+Parmi les indications des bêta-bloquants, on retrouve :
+$A. L'insuffisance coronaire.
+$B. Les troubles du rythme.
+$C. L'hypertension artérielle (HTA).
+$D. Le tremblement essentiel.
+$E. Le glaucome (Timolol).
+
+Concernant les effets des bêta-bloquants :
+$A. Le blocage β2 provoque une bronchoconstriction.
+$B. Le blocage β2 au niveau des vaisseaux entraîne une vasoconstriction.
+$C. L'asthme est une contre-indication due au risque de bronchoconstriction.
+$D. Ils peuvent aggraver la maladie de Raynaud.
+E. Le blocage β2 au niveau de l'utérus n'a pas d'effet notable sur les contractions en pratique.
+
+Concernant les effets indésirables des bêta-bloquants :
+$A. Ils peuvent masquer les signes de l'hypoglycémie.
+$B. Ils peuvent provoquer une hypoglycémie.
+$C. Ils entraînent une réduction de la mobilisation des graisses (lipolyse).
+$D. Ils peuvent induire des cauchemars.
+E. Le blocage β2 entraîne une augmentation des tremblements.
+
+Les contre-indications des bêta-bloquants incluent :
+$A. La bradycardie sinusale < 45 bpm.
+$B. Le BAV (Bloc Auriculo-Ventriculaire).
+$C. L'insuffisance cardiaque.
+$D. La prédisposition à l’hypoglycémie.
+$E. La BPCO (Broncho-Pneumopathie Chronique Obstructive).
+
+Concernant la diversité des bêta-bloquants :
+$A. Ils se différencient par leur "Sélectivité" pour le récepteur β1 (cardioselectivité).
+$B. Certains peuvent posséder une Activité Sympathomimétique Intrinsèque (ASI).
+$C. L'Acebutolol (Sectral®) est un exemple de bêta-bloquant présentant une cardioselectivité.
+D. Le Propranolol est un bêta-bloquant hydrosoluble.
+$E. Les médicaments administrés par voie locale peuvent avoir un effet systémique.
+
+Concernant la pharmacocinétique des bêta-bloquants :
+A. Les hydrosolubles (ex: Atenolol) ont généralement une courte demi-vie.
+$B. Les liposolubles (ex: Propranolol) ont une demi-vie courte.
+$C. Les hydrosolubles ont une biodisponibilité élevée.
+D. Les liposolubles ont peu de passage membranaire.
+$E. Les liposolubles subissent une métabolisation hépatique importante.
+
+Concernant les risques associés aux bêta-bloquants :
+$A. L'arrêt brutal chez l’angoreux augmente le risque de Mort subite.
+$B. L'association avec des médicaments bradycardisants est un risque (addition d'effets).
+C. Les AINS antagonisent les effets bradycardisants des bêta-bloquants.
+$D. Ils peuvent révéler ou aggraver une Insuffisance Cardiaque (IC).
+$E. Ils peuvent masquer les signes du choc.
+
+Concernant les effets des bêta-bloquants autres que le blocage des récepteurs bêta :
+$A. Le Propranolol possède une propriété anti-arythmique (classe II de Vaughan-Williams).
+$B. Le Sotalol est anti-arythmique de classe III.
+$C. Le Labetalol présente un blocage des récepteurs alpha adrénergiques.
+D. Le Labetalol est un antagoniste α2 sélectif.
+E. Ces effets sont les mêmes pour tous les bêta-bloquants.
+
+Concernant le système nerveux autonome (SNA) :
+A. Il régule les mouvements que nous contrôlons, comme lever un bras.
+$B. Il régule la fréquence cardiaque.
+$C. Il régule l'activité des glandes endocrines.
+$D. Il régule la respiration.
+E. Il fonctionne uniquement avec intervention volontaire.
+
+À propos du Système Nerveux Parasympathique (SNP) :
+$A. C'est le système du "rest and digest".
+B. Son activation a tendance à accélérer le rythme cardiaque.
+C. Il est appelé système adrénergique.
+D. Il n'a pas de tonus de base au repos.
+$E. Il entraîne des réactions locales et mono viscérales.
+
+À propos du Système Nerveux Orthosympathique (SNO) :
+$A. C'est le système du "fight or flight".
+B. Il entraîne des réactions locales et mono viscérales.
+$C. Les nerfs partent de la moelle épinière au niveau thoracique et lombaire.
+$D. Les neuromédiateurs principaux sont l'adrénaline et la noradrénaline.
+$E. On l'appelle aussi le système adrénergique.
+
+Concernant l'anatomie et la localisation du Système Nerveux Autonome (SNA) :
+$A. Ce qui est orthosympathique est proche du SNC.
+$B. Ce qui est parasympathique fonctionne à distance en autonomie.
+C. Dans le SNP, le second neurone est plus long que le premier.
+$D. Dans le SNO, on retrouve un premier neurone court.
+$E. Le premier neurone du SNP se situe au niveau du bulbe rachidien.
+
+Concernant les voies orthosympathiques :
+$A. Le premier neurone libère de l'acétylcholine.
+$B. Le récepteur post-ganglionnaire est nicotinique.
+$C. Le second neurone libère de la noradrénaline (NA).
+D. La noradrénaline agit sur des récepteurs muscariniques.
+$E. La médullosurrénale reçoit directement de l'acétylcholine.
+
+Concernant les voies parasympathiques :
+$A. Le premier neurone est long.
+$B. Le second neurone est court.
+$C. L'acétylcholine est libérée par le premier neurone.
+D. Le récepteur post-ganglionnaire est muscarinique.
+$E. L'acétylcholine se fixe sur des récepteurs muscariniques au niveau des organes effecteurs.
+
+À propos des neurotransmetteurs du Système Nerveux Autonome (SNA) :
+A. L'acétylcholine est présente uniquement dans le système nerveux parasympathique.
+$B. Le système parasympathique est appelé cholinergique car l'acétylcholine est le médiateur final.
+$C. Le système orthosympathique est appelé adrénergique car son médiateur final est l'adrénaline.
+$D. Les deux systèmes (SNP et SNO) font intervenir l'acétylcholine.
+E. Le système orthosympathique n'utilise pas d'acétylcholine.
+
+Concernant le rôle de l'Acétylcholine (ACh) hors du Système Nerveux Autonome :
+$A. Elle agit sur des récepteurs nicotiniques au niveau neuro-musculaire.
+B. Elle est impliquée uniquement dans le SNA et le SNC.
+$C. Elle permet la contraction des muscles striés squelettiques.
+$D. Elle agit sur les récepteurs nicotiniques et muscariniques au niveau du SNC.
+E. Toute substance mimant l’ACh agit uniquement sur la périphérie.
+
+Concernant l'activité parasympathique sur l'appareil cardiovasculaire et respiratoire :
+$A. Elle induit une diminution de la fréquence cardiaque (bradycardie).
+B. Elle induit une augmentation de la force cardiaque.
+$C. Elle provoque une bronchoconstriction.
+D. Elle accélère la vitesse de conduction cardiaque.
+E. Elle augmente la pression intraoculaire.
+
+Concernant les effets de la stimulation parasympathique sur les yeux :
+$A. Elle entraîne une contraction pupillaire (myosis).
+$B. Elle diminue la pression oculaire.
+C. Une forte pression oculaire n'est jamais favorable à la formation de glaucome.
+D. Elle se traduit par une mydriase.
+
+Concernant les effets de la stimulation parasympathique sur la digestion et l'excrétion :
+$A. Elle augmente la motilité du tractus digestif.
+$B. Elle favorise la relaxation des sphincters.
+$C. Elle stimule les sécrétions digestives.
+$D. Elle entraîne la contraction vésicale.
+$E. Elle stimule la miction.
+
+Les effets liés à la stimulation des récepteurs muscariniques comprennent :
+$A. Une diminution de la fréquence cardiaque.
+B. Une augmentation de la pression intraoculaire.
+$C. Une bronchoconstriction.
+$D. Une augmentation des sécrétions salivaires.
+$E. Une stimulation de la digestion.
+
+Les médicaments parasympathomimétiques :
+$A. Vise à augmenter le tonus parasympathique.
+$B. Peuvent être des agonistes des récepteurs endogènes.
+C. Agissent exclusivement sur les récepteurs muscariniques.
+$D. Peuvent être des inhibiteurs de la dégradation de l’acétylcholine.
+E. ITEM ANNULE NE PAS COCHER
+
+Concernant le mécanisme d'action de l'Acétylcholine (ACh) :
+$A. Elle est synthétisée puis stockée dans des vésicules du neurone pré-synaptique.
+$B. Elle est libérée dans la fente synaptique après l'arrivée d'un potentiel d'action.
+$C. Elle est dégradée par l'acétylcholinestérase.
+D. Elle a une longue demi-vie, car elle agit lentement sur les récepteurs.
+E. ITEM ANNULE NE PAS COCHER
+
+Concernant la Pilocarpine :
+$A. Elle est utilisée sous forme de collyre pour réduire la pression intraoculaire.
+$B. Elle est utilisée dans le traitement du glaucome.
+C. Elle provoque une mydriase.
+$D. Elle stimule la sécrétion salivaire chez les patients présentant une sécheresse buccale sévère.
+E. C'est un antagoniste des récepteurs nicotiniques.
+
+Le syndrome cholinergique :
+$A. Est induit par une libération massive d'acétylcholine.
+$B. Peut être causé par l'ingestion de champignons (Inocybes, Clitocybes).
+$C. Se manifeste par des symptômes muscariniques.
+$D. Peut se manifester par une hypersalivation et une bradycardie.
+E. Les signes apparaissent rarement moins de deux heures après ingestion.
+
+Concernant le sevrage tabagique par agonistes nicotiniques :
+$A. La nicotine est un agoniste plein des récepteurs nicotiniques.
+$B. La nicotine est utilisée sous forme de patchs nicotiniques.
+$C. La varénicline (Champix®) est un agoniste partiel des récepteurs nicotiniques.
+D. La varénicline a un effet supérieur à celui de la nicotine.
+E. La nicotine n'agit pas sur les circuits de la dépendance.
+
+Les anticholinestérasiques (parasympathomimétiques indirects) :
+$A. Ils n'agissent pas directement sur les récepteurs.
+$B. Ils inhibent l'enzyme acétylcholinestérase.
+C. Leur action diminue la quantité d'acétylcholine disponible dans la fente synaptique.
+$D. Ils renforcent et prolongent l'action de l'acétylcholine sur les récepteurs.
+$E. Ils renforcent le tonus parasympathique au niveau de la jonction neuromusculaire.
+
+La Néostigmine (Prostigmine®) :
+$A. Est un anticholinestérasique réversible.
+$B. Est utilisée chez les personnes qui ont une myasthénie.
+$C. Son action bloque l'acétylcholinestérase de façon temporaire.
+D. Son administration renforce l'action de l'acétylcholine sur les récepteurs muscariniques seulement.
+E. Elle est utilisée pour traiter les troubles cognitifs dans la maladie d’Alzheimer.
+
+Concernant la myasthénie :
+$A. C'est une maladie musculaire qui se manifeste par une fatigabilité des muscles.
+$B. Elle résulte d’une diminution transitoire de la quantité d’Acétylcholine au niveau de la jonction neuro-musculaire.
+C. L'administration de néostigmine bloque l'épuisement de la cholinestérase de façon définitive.
+D. C'est un manque d'acétylcholine avéré.
+
+Le Donépézil :
+$A. Agit au niveau des récepteurs muscariniques et nicotiniques au niveau du SNC.
+$B. Est un médicament anticholinestérasique utilisé dans la maladie d’Alzheimer.
+C. Est remboursé pour son efficacité majeure contre les troubles cognitifs.
+$D. Fait partie des médicaments bradycardisants.
+$E. Nécessite une attention particulière en cas d'association avec des bêta-bloquants.
+
+Les organophosphorés (anticholinestérasiques irréversibles) :
+$A. Peuvent être des insecticides ou des gaz de combat (comme le gaz sarin).
+$B. Bloquent la cholinestérase tant qu'elle n'est pas renouvelée.
+C. Une intoxication se manifeste uniquement par des signes nicotiniques.
+$D. Les signes nicotiniques sont les plus délétères pour l'organisme.
+$E. Leur traitement inclut l'administration d'atropine.
+
+Les médicaments parasympatholytiques :
+$A. Leur objectif est de diminuer le tonus parasympathique.
+$B. Ils s'opposent à l’effet des récepteurs.
+C. Ils sont principalement des agonistes cholinergiques.
+$D. Ils peuvent être des antagonistes muscariniques.
+$E. Ils peuvent être des inhibiteurs de la libération d’acétylcholine.
+
+L'Atropine :
+$A. Est l'antagoniste de référence des récepteurs muscariniques.
+$B. Est un dérivé de la plante atropa belladonna.
+C. Elle agit en même temps sur les récepteurs muscariniques et nicotiniques.
+D. Elle diminue la fréquence cardiaque.
+$E. Elle est utilisée pour bloquer les récepteurs muscariniques afin d'observer les effets nicotiniques de l'acétylcholine.
+
+Les effets atropiniques périphériques comprennent :
+$A. Une augmentation de la fréquence cardiaque.
+$B. Une mydriase (pupilles dilatées).
+$C. Une constipation et une diminution du péristaltisme.
+$D. Une xérostomie (bouche sèche).
+E. Une diminution de la pression intra-oculaire.
+
+Parmi les effets atropiniques périphériques :
+$A. La mydriase est le seul effet qui n’est pas négatif.
+B. Ils entraînent une diminution de la pression intra-oculaire.
+$C. Ils peuvent causer une dysurie (difficulté à uriner).
+$D. Ils entraînent une diminution des sécrétions.
+E. Ils sont toujours considérés comme le traitement de référence.
+
+Les effets atropiniques centraux sont :
+$A. Souvent indésirables.
+$B. Des confusions et désorientations.
+$C. Des délires et hallucinations.
+$D. Des troubles de la mémoire.
+E. Toujours recherchés pour leur effet thérapeutique.
+
+Concernant les parasympatholytiques agissant sur des effets spécifiques :
+$A. L'Ipratropium est utilisé pour son effet bronchodilatateur.
+$B. La Scopolamine a un effet antinaupathique (contre le mal des transports).
+C. L'Oxybutynine est utilisée pour ses effets cardiotropes.
+$D. Des collyres atropiniques sont utilisés pour induire un effet mydriatique.
+$E. Des antiparkinsoniens peuvent être utilisés pour leurs effets sur les tremblements.
+
+Les propriétés latérales atropiniques :
+$A. Correspondent à des effets indésirables de certains médicaments.
+$B. Peuvent être observées avec les antihistaminiques anti-H1.
+$C. Peuvent être observées avec les antidépresseurs imipraminiques (ex: ANAFRANIL®).
+$D. L'association de plus de 3 médicaments avec cette propriété augmente le risque de confusion chez les sujets âgés.
+E. Les neuroleptiques (antipsychotiques) n'ont pas cette action latérale.
+
+Le syndrome atropinique :
+$A. Est une intoxication due à l'activité antagoniste sur les récepteurs muscariniques.
+$B. Peut être causé par l'ingestion de l'Amanite Panthère.
+$C. Les symptômes comprennent une sécheresse buccale et une hyperthermie.
+$D. Les signes cardiovasculaires incluent la tachycardie et l'arythmie.
+$E. Il peut entraîner des signes neuropsychiatriques comme des hallucinations.
+
+Concernant les antagonistes nicotiniques :
+$A. Les récepteurs nicotiniques sont retrouvés au niveau des ganglions paravertébraux.
+$B. Les ganglioplégiques agissent comme des antagonistes des récepteurs nicotiniques.
+C. Les ganglioplégiques ont de nombreuses applications médicamenteuses.
+$D. Les curares bloquent les récepteurs nicotiniques à la jonction neuromusculaire.
+$E. Les curares sont utilisés en anesthésie pour provoquer une paralysie musculaire.
+
+La toxine botulinique (Botox) :
+$A. Diminue le tonus parasympathique de façon indirecte.
+$B. Elle diminue la libération d’acétylcholine dans la fente synaptique.
+$C. Elle est utilisée à visée esthétique pour atténuer l’apparence des rides.
+D. Elle augmente les contractions musculaires.
+$E. En cas d'intoxication sévère, elle peut entraîner le décès du patient.
