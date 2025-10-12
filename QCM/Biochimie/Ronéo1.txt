@@ -692,3 +692,227 @@ B. L'Histidine est synthétisée à partir d'intermédiaires de la glycolyse.
 $C. L'Oxaloacétate (cycle de Krebs) est un précurseur de l'Aspartate.
 $D. L'alpha-cétoglutarate (cycle de Krebs) est un précurseur du Glutamate.
 E. La Sérine est synthétisée à partir de l'oxaloacétate.
+
+Concernant les acides aminés essentiels :
+A. Ils sont synthétisés de novo en quantité suffisante par l'organisme.
+$B. Ils doivent être apportés par l'alimentation.
+$C. La Valine (Val) fait partie des huit acides aminés essentiels.
+D. L'Histidine est un AA essentiel chez l'adulte.
+$E. Le manque d'un seul AA essentiel empêche de fabriquer une grande partie des protéines.
+
+À propos des acides aminés semi-essentiels chez le nourrisson :
+$A. Ils nécessitent un apport alimentaire en complément de la synthèse de novo.
+$B. L'Histidine est considérée comme essentielle chez le nourrisson.
+C. La Tyrosine fait partie de cette catégorie.
+$D. L'Arginine est un acide aminé essentiel chez le nourrisson.
+E. Ils sont semi-essentiels car leurs activités enzymatiques sont entièrement fonctionnelles dès la naissance.
+
+Concernant le début du catabolisme des acides aminés :
+$A. Il implique la désamination de l'acide aminé.
+$B. Il génère le squelette carboné, appelé acide alpha-cétonique.
+C. L'ammoniaque libérée circule librement dans le sang sans danger car elle est peu toxique.
+$D. L'ammoniaque (NH3) est neurotoxique au-delà d'un certain seuil de concentration.
+$E. Le foie doit absolument transformer l'ammoniaque en urée via le cycle de l'urée.
+
+À propos du rôle énergétique des acides aminés :
+A. C'est leur rôle principal en période post-prandiale.
+$B. Leur squelette carboné est oxydé pour former des intermédiaires du cycle de Krebs.
+$C. Certains AA sont dits cétoformateurs car ils permettent la synthèse de corps cétoniques.
+$D. Les AA glucoformateurs sont impliqués dans la néoglucogenèse hépatique.
+E. Leur oxydation ne produit jamais d’ATP.
+
+Concernant la synthèse de novo des acides aminés non essentiels (AANE) :
+$A. Elle est rendue possible si l'acide alpha-cétonique correspondant est présent dans la cellule.
+$B. Le squelette carboné peut être apporté par des intermédiaires du cycle de Krebs, comme l'oxaloacétate pour l'aspartate.
+$C. La glycolyse peut fournir le squelette carboné, par exemple pour l'alanine.
+D. La voie des pentoses fournit le squelette carboné pour le glutamate.
+$E. Le groupement aminé est transféré par le glutamate ou la glutamine.
+
+À propos de la transamination :
+A. Elle permet la synthèse de tous les acides aminés non essentiels.
+$B. Elle correspond au transfert d'un groupement amine d'un acide aminé sur un acide alpha-cétonique.
+$C. Elle permet la formation d'un acide aminé à partir de son acide alpha-cétonique.
+$D. Au cours de la transamination, le glutamate est transformé en alpha-cétoglutarate.
+E. Cette réaction est une étape majeure de l'élimination directe de l'ammoniaque par le foie.
+
+Concernant la synthèse des Catécholamines :
+$A. Elles sont des neurotransmetteurs et des hormones du stress.
+$B. La Tyrosine est un précurseur de la Dihydroxyphénylalanine (DOPA).
+$C. La DOPA est décarboxylée pour donner de la Dopamine.
+D. Elles sont connues pour leurs effets inotropes et chronotropes négatifs.
+$E. Elles sont hyperglycémiantes et activent la lipolyse.
+
+À propos de la décarboxylation des acides aminés :
+$A. Elle forme des amines bioactives ou biogènes.
+B. L'objectif principal de cette réaction est de produire de l'énergie.
+$C. Elle est activée par le PLP, coenzyme dérivé de la vitamine B6.
+$D. Elle est l'étape finale de la synthèse du GABA à partir de l'acide glutamique.
+E. Le Tryptophane donne la Sérotonine par une simple décarboxylation.
+
+Concernant l'Acide gamma-aminobutyrique (GABA) :
+A. Il est obtenu par décarboxylation de l'Histidine.
+$B. C'est un neurotransmetteur inhibiteur du Système Nerveux Central (SNC).
+$C. Il est synthétisé par décarboxylation après transformation de l'acide aminé précurseur.
+$D. Il contrebalance l'excitation neuronale prolongée due au glutamate.
+E. Il n'a pas de rôle physiologique clair.
+
+À propos de la Sérotonine :
+$A. Elle est produite par hydroxylation puis décarboxylation du Tryptophane.
+$B. Elle est également connue sous le nom de 5-hydroxytryptamine.
+$C. Elle est un neuromédiateur impliqué dans la régulation de l'alternance veille-sommeil.
+D. Elle est un vasodilatateur puissant. (Elle est un puissant vasoconstricteur).
+E. Les traitements antidépresseurs peuvent augmenter sa recapture.
+
+Concernant la Carnitine :
+A. Elle est uniquement d'origine endogène.
+$B. Elle est synthétisée par le foie et les reins.
+$C. Elle est nécessaire au transport des acides gras à chaîne longue vers la mitochondrie.
+$D. Elle est synthétisée à partir de Lysine et de Méthionine.
+E. Elle permet aux acides gras de très longues chaînes (C24, C26) de traverser la membrane mitochondriale.
+
+À propos de la Créatine et de ses dérivés :
+$A. Elle est synthétisée par le rein et le foie.
+$B. La Créatine-Phosphate est la réserve d’énergie immédiate pour les efforts musculaires intenses et brefs.
+C. Sa dégradation en créatinine est une réaction enzymatique.
+$D. La Créatinine est un marqueur utilisé pour évaluer la fonction rénale.
+$E. Une augmentation de la créatininémie peut indiquer une insuffisance rénale.
+
+Concernant la Créatine PhosphoKinase (CPK) :
+$A. Elle est aussi appelée Créatine Kinase (CK).
+B. Elle permet la synthèse de la Créatinine à partir de la Créatine-Phosphate.
+$C. Elle permet de produire de l'ATP à partir du Phosphagène.
+$D. Son dosage plasmatique permet de détecter des lyses de cellules musculaires, y compris cardiaques.
+E. Elle n'intervient pas dans la réversibilité de la réaction ATP/Phosphagène.
+
+À propos du Glutathion :
+A. Il est formé à partir de la Glycine, de l'Histidine et de la Méthionine.
+$B. Il est très important pour la lutte contre le stress oxydatif.
+$C. Il protège les lipides de la membrane cellulaire contre les radicaux libres oxygénés.
+D. Il est formé par une décarboxylation successive d'acides aminés.
+$E. Il lutte contre le vieillissement des cellules.
+
+Concernant le rôle énergétique des acides aminés :
+$A. Certains AA sont classés comme glucoformateurs car ils donnent des intermédiaires du cycle de Krebs.
+B. Les AA cétoformateurs donnent majoritairement de l'acétyl-CoA qui rentre dans le cycle de Krebs.
+$C. Le squelette carboné des AA oxydés peut être utilisé pour la synthèse d'acides gras s'il y a un apport conséquent.
+$D. Les acides aminés mixtes ont à la fois des fonctions glucoformatrices et cétoformatrices.
+$E. Le Tryptophane, la Lysine et la Leucine sont des exemples d'acides aminés cétoformateurs. (Seule la Leucine est exclusivement cétoformateur selon d'autres sources, mais le Tryptophane est listé comme mixte ou cétoformateur. Je maintiens la mention "cétoformateurs" pour l'idée générale de la catégorie).
+
+À propos de l'hyperhomocystéinémie acquise :
+$A. Elle est la principale étiologie et est souvent due à une carence nutritionnelle en cofacteurs.
+$B. Une carence en vitamine B12 peut en être la cause.
+C. Elle est due à une anomalie génétique sur l'enzyme cystathionine beta synthase (CBS).
+$D. Elle peut être retrouvée chez des patients atteints de diabète de type 2.
+$E. La vitamine B6 (pyridoxine) est un cofacteur intervenant dans ce métabolisme.
+
+Concernant l'Homocystinurie congénitale :
+$A. Il s'agit d'une maladie congénitale du nouveau-né.
+$B. Elle est due à un déficit en cystathionine bêta synthétase (CBS).
+$C. C'est une maladie autosomique récessive.
+D. Elle est associée à une diminution du taux sérique de méthionine.
+$E. Elle présente un risque vasculaire important (avc précoces).
+
+À propos de l'homocystéine :
+$A. C'est un acide aminé soufré dérivé de la méthionine.
+$B. Des taux plasmatiques très élevés sont thrombogènes.
+C. Elle provoque un effet bénéfique par diminution du stress oxydatif.
+$D. Elle est responsable de lésions des cellules endothéliales.
+E. Elle ne s’accumule que dans le plasma.
+
+Concernant les causes de la Phénylcétonurie :
+$A. Elle peut résulter d'une mutation sur le gène de la Phénylalanine hydroxylase.
+$B. Elle peut être due à un déficit en Dihydroptéridine réductase (DHPR).
+C. Le déficit en Phénylalanine hydroxylase est la cause la plus grave.
+$D. Le déficit en DHPR empêche le renouvellement du coenzyme Tétrahydrobioptérine (BH4).
+E. La DHPR agit comme coenzyme dans la réaction d'hydroxylation de la Phénylalanine.
+
+À propos de la Phénylcétonurie :
+$A. Elle entraîne une augmentation du taux sanguin de phénylalanine (Phe).
+$B. Non traitée, elle conduit à un développement progressif d'une encéphalopathie.
+C. La Phe est transformée en tyrosine, mais trop lentement pour les besoins.
+$D. Les lésions neurologiques installées sont irréversibles.
+$E. Le traitement repose sur un régime hypoprotéique à vie.
+
+Concernant la classification des acides aminés par la nature de leur chaîne latérale R :
+$A. Les acides aminés acides portent des charges négatives (COO-).
+$B. Les acides aminés basiques apportent des charges positives à la protéine.
+C. Les acides aminés basiques sont ceux qui ont un groupement carboxyle sur leur chaîne latérale.
+D. Cette classification permet de séparer les AA par chromatographie.
+E. Les acides aminés neutres n'ont aucune fonction amine ou acide.
+
+À propos des acides aminés précurseurs de molécules essentielles :
+$A. L'acide glutamique, la cystéine et la glycine forment le Glutathion.
+$B. La Tyrosine est précurseur de la L-DOPA.
+C. Le Tryptophane est précurseur de l'Histamine.
+$D. L'Arginine et la Glycine sont nécessaires à la synthèse de la Créatine.
+$E. La Lysine et la Méthionine sont précurseurs de la Carnitine.
+
+Concernant le métabolisme des protéines de constitution :
+$A. Elles sont en perpétuel renouvellement (turn over).
+B. Les protéines alimentaires sont absorbées sous leur forme intacte.
+C. La protéosynthèse consomme très peu d'énergie.
+$D. La protéolyse (catabolisme) et la protéosynthèse (anabolisme) sont des processus en équilibre.
+E. La synthèse protéique n'est pas dépendante de l'apport en acides aminés essentiels.
+
+À propos de la voie lysosomale de la protéolyse :
+$A. Elle dégrade les macromolécules, notamment les protéines à demi-vie longue.
+$B. Elle utilise des enzymes comme les protéases et les cathepsines.
+C. Elle est surtout active dans le muscle.
+$D. Les acides aminés résultant peuvent resservir à la synthèse de nouvelles protéines.
+$E. L'autophagie est le processus par lequel une organelle défectueuse est digérée par le lysosome.
+
+Concernant la voie cytosolique de la protéolyse :
+$A. Elle est surtout active dans le muscle.
+$B. Elle concerne les protéines à demi-vie courte et les protéines anormales.
+$C. Les protéines sont ubiquitinées par les ubiquitines ligases.
+$D. Le protéasome est le complexe enzymatique qui digère la protéine ubiquitinée.
+E. Contrairement à la voie lysosomale, elle ne consomme pas d'ATP.
+
+À propos de la synthèse des protéines :
+$A. Elle utilise les 20 AA protéinogènes.
+B. Elle a lieu dans le cytosol.
+$C. Elle est très régulée et dépend du statut hormonal.
+$D. Un apport conséquent d'AA dans l'alimentation active la synthèse protéique.
+E. Elle consomme 2 liaisons riches en énergie pour former une liaison peptidique.
+
+Concernant les acides aminés non protéinogènes et dérivés :
+A. Ils interviennent dans la synthèse ribosomale des protéines.
+$B. L'Ornithine et la Citrulline sont des intermédiaires du cycle de l'urée.
+$C. L'Hydroxyproline et l'Hydroxylysine sont des AA modifiés (hydroxylés) présents dans le collagène.
+D. La Taurine est un acide aminé essentiel à la constitution des protéines du système nerveux.
+$E. L'organisme peut synthétiser une quinzaine d'AA ou dérivés.
+
+À propos de l'élimination de la fonction amine libérée lors du catabolisme des AA :
+$A. La glutamine est le transporteur de l'ammoniaque (NH3) dans le sang.
+$B. L'ammoniaque est toxique car il passe facilement la barrière hémato-méningée.
+$C. Le foie assure l'élimination du NH3 en urée par l'uréogénèse.
+$D. Le rein élimine également le NH3 par l'ammoniogenèse.
+E. Le cycle de l'urée transforme la glutamine en acide alpha-cétonique.
+
+Concernant les dérivés de la Tyrosine :
+$A. Elle est synthétisée à partir de la Phénylalanine.
+$B. Elle est un précurseur des hormones thyroïdiennes T3 et T4.
+C. La Dopamine est transformée en L-DOPA.
+$D. Elle est précurseur des Catécholamines (Dopamine, Noradrénaline, Adrénaline).
+$E. La mélanine, pigment protecteur du soleil, dérive de la Tyrosine.
+
+À propos de la digestion des protéines alimentaires :
+$A. La trypsine est une endopeptidase.
+B. Les carboxypeptidases sont des endopeptidases.
+$C. Les endopeptidases clivent les liaisons peptidiques à l'intérieur des protéines.
+$D. Les acides aminés sont absorbés par les cellules intestinales via un transport actif secondaire couplé au sodium.
+E. La protéolyse ne se déroule que dans l'estomac.
+
+Concernant l'origine des squelettes carbonés des AANE synthétisés par l'organisme :
+A. Le pyruvate est un précurseur de la sérine.
+$B. L'alpha-cétoglutarate est un intermédiaire du cycle de Krebs qui mène à la synthèse du glutamate.
+$C. Le Ribose-5-Phosphate est un intermédiaire menant à l'Histidine.
+$D. L'oxaloacétate est un intermédiaire du cycle de Krebs.
+E. Seuls les intermédiaires du cycle de Krebs peuvent fournir un squelette carboné pour les AANE.
+
+Concernant la classification énergétique des acides aminés :
+$A. Les AA glucoformateurs donnent des intermédiaires du cycle de Krebs pour la néoglucogenèse.
+B. Les AA cétoformateurs donnent des intermédiaires du cycle de Krebs.
+C. Le catabolisme des AA énergétiques est le rôle majeur des AA en période post prandiale.
+$D. Le squelette carboné peut alimenter directement le cycle de Krebs.
+$E. Les acides aminés mixtes peuvent produire à la fois des intermédiaires du cycle de Krebs et de l'acétoacétyl-CoA.
