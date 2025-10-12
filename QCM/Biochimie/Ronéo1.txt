@@ -1,0 +1,468 @@
+Concernant le métabolisme :
+A. Il est l'ensemble des réactions de synthèse qui sont génératrices d'énergie.
+$B. Il est l'ensemble des réactions chimiques qui se déroulent à l’intérieur d’un être vivant.
+$C. Les enzymes agissent comme des catalyseurs spécifiques dans ces réactions.
+$D. Il inclut des processus complexes et incessants de transformation de matière et d'énergie.
+E. Il correspond uniquement à la dégradation des molécules pour produire de l'énergie.
+
+À propos du catabolisme et de l'anabolisme :
+A. L'anabolisme est l'ensemble des réactions de dégradation moléculaire.
+$B. Le catabolisme est généralement associé à des oxydations (exemples : glycolyse, bêta oxydation).
+$C. L'anabolisme est l'ensemble des réactions de synthèse moléculaire.
+$D. L'homéostasie est le résultat de l’équilibre entre le catabolisme et l'anabolisme.
+$E. Le catabolisme libère de l'énergie pour la plupart des réactions.
+
+Concernant les acteurs des voies métaboliques :
+$A. Une succession de réactions chimiques forme une voie métabolique.
+$B. Les enzymes sont des catalyseurs des réactions chimiques.
+$C. Les activateurs appelés cofacteurs sont des métaux.
+D. L'absence d'enzyme seule permet à la réaction chimique d'avoir lieu si le cofacteur est présent.
+$E. Les transporteurs permettent le passage d’un métabolite entre différents compartiments cellulaires.
+
+À propos du catabolisme énergétique général :
+A. Le processus consiste à dégrader les monomères en macromolécules.
+$B. L'énergie issue du catabolisme est stockée principalement sous forme d'ATP et de coenzymes réduits.
+$C. Le processus aboutit à la production de $\text{CO}_2$ qui est rejeté par la respiration.
+$D. Les petites molécules comme l’ATP, le NADH et le FADH2 peuvent être réutilisées dans l’anabolisme.
+$E. Les globules rouges utilisent principalement le glucose car ils sont dépourvus de mitochondries.
+
+Concernant l’oxydation des substrats énergétiques :
+$A. L'oxydation du glucose a lieu dans le cytosol par la glycolyse.
+$B. Les acides gras (AG) sont oxydés dans la mitochondrie par la $\beta$-oxydation.
+C. L'oxydation des chaînes carbonées des acides aminés a lieu dans le cytosol.
+$D. La $\beta$-oxydation génère des coenzymes réduits, notamment du NADH et du FADH2.
+E. Le produit final de l'oxydation des substrats (Acétyl-CoA) alimente la chaîne respiratoire mitochondriale.
+
+À propos des spécificités métaboliques tissulaires :
+$A. Le foie est l’organe central du métabolisme et peut réaliser la plupart des voies métaboliques.
+$B. Le cerveau ne peut pas utiliser les acides gras pour son énergie.
+$C. Le cerveau et les globules rouges sont insulino-indépendants.
+D. Le foie est le principal site où se déroule la cétolyse.
+$E. En cas de disponibilité réduite en glucose, le foie produit des corps cétoniques pour le cerveau.
+
+Concernant les réserves énergétiques de l'organisme :
+$A. Les glucides sont stockés sous forme de glycogène dans le foie pour maintenir la glycémie.
+$B. Le tissu adipeux stocke les lipides sous forme de triglycérides (TG).
+$C. La lipolyse est le processus de dégradation des TG en acides gras et glycérol.
+$D. Les protéines sont en réserve principalement dans le muscle et sont mobilisées en dernier recours.
+E. La néoglucogenèse est spécifique au muscle pour re-synthétiser du glucose.
+
+À propos de la coopération inter-organes à l'état nourri et à jeun :
+$A. À l'état post-prandial, le foie peut transformer du glucose en triglycérides, cheminant dans le sang via les VLDL.
+$B. À l'état post-absorptif ou de jeûne, le foie dégrade le glycogène pour libérer du glucose dans le sang.
+$C. Le glycérol provenant des triglycérides stockés est utilisé dans la néoglucogenèse hépatique lors du jeûne.
+D. Le foie n'est pas capable de resynthétiser des substrats énergétiques pour approvisionner les autres tissus.
+$E. Le foie utilise les acides aminés pour fabriquer des protéines plasmatiques, dont l'albumine.
+
+Concernant l’affinité enzymatique :
+A. La Vmax est la concentration en substrat nécessaire pour atteindre la moitié de la vitesse maximale.
+$B. La vitesse maximale (Vmax) est atteinte lorsque la concentration de substrat est saturée.
+$C. Un $\text{K}_m$ faible indique une affinité élevée de l’enzyme pour son substrat.
+$D. Les enzymes tétramériques peuvent présenter une régulation progressive entraînant une courbe sigmoïde.
+E. Les enzymes ont une activité optimale à $\text{pH}$ acide ($\text{pH} \sim 4$) dans le cytoplasme.
+
+À propos des mécanismes de régulation enzymatique :
+$A. Le rétrocontrôle négatif est l'inhibition de la première réaction par le produit final.
+B. Un inhibiteur orthostérique interagit avec un site spécifique de l’enzyme, différent du site actif.
+$C. L'activateur allostérique modifie la conformation de l’enzyme pour faciliter l'accueil du substrat.
+$D. Les phosphorylations sont des modifications post-traductionnelles courantes pour activer ou désactiver les enzymes.
+$E. L'enzyme PFK2 est un exemple de régulation qui entraîne des effets opposés (activation/inhibition de la glycolyse) selon le tissu (muscle/foie).
+
+Concernant les acides aminés (AA) :
+$A. Huit AA sont essentiels car l'organisme ne sait pas les synthétiser.
+$B. L'Histidine et l'Arginine sont considérés comme semi-essentiels.
+C. Les protéines de l'organisme ne sont pas en perpétuel renouvellement.
+$D. Le rôle énergétique des AA est mineur en période post-prandiale.
+$E. Les AA peuvent provenir des réserves de protéines endogènes, notamment dans les muscles.
+
+À propos du catabolisme des acides aminés et de l'azote :
+$A. La désamination d'un AA laisse un squelette carboné appelé acide $\alpha$-cétonique.
+$B. L'ammoniaque ($\text{NH}_3$) libéré est neurotoxique.
+$C. Le foie élimine le $\text{NH}_3$ par le cycle de l’urée (uréogenèse).
+$D. La décarboxylation des AA est une voie non énergétique qui forme des amines biogènes.
+$E. La glutamine est le principal transporteur de $\text{NH}_3$ dans le sang.
+
+Concernant les molécules dérivées d'acides aminés :
+$A. L'Histamine, médiateur des allergies, est synthétisée par décarboxylation de l'Histidine.
+B. Le GABA (acide $\gamma$-aminobutyrique), dérivé de l'acide glutamique, est un neurotransmetteur excitateur du SNC.
+$C. La Sérotonine est produite après une hydroxylation du Tryptophane suivie d'une décarboxylation.
+$D. La Tyrosine est le précurseur des Catécholamines (Dopamine, Noradrénaline, Adrénaline).
+$E. La Tyrosine est également le précurseur des hormones thyroïdiennes $\text{T}_3$ et $\text{T}_4$.
+
+À propos de la Créatine et de la Carnitine :
+A. La Carnitine est synthétisée à partir de la Glycine et de l'Arginine.
+$B. La Carnitine est nécessaire au transport des acides gras à chaîne longue vers la mitochondrie pour la $\beta$-oxydation.
+$C. La Créatine-Phosphate est la réserve d’énergie immédiate pour le muscle.
+$D. La Créatine PhosphoKinase (CPK) est un marqueur dosé dans le sang en cas de traumatisme musculaire ou d'infarctus du myocarde.
+$E. La Créatinine est un marqueur de référence pour l’évaluation de la fonction rénale.
+
+Concernant les anomalies du métabolisme des acides aminés :
+$A. L'hyperhomocystéinémie est associée à un risque vasculaire important (athérothrombose).
+$B. L'homocystinurie congénitale est due à un déficit en cystathionine bêta synthétase (CBS).
+$C. Une carence en vitamine $\text{B}_6$ (pyridoxine) peut entraîner une hyperhomocystéinémie acquise.
+D. La Phénylcétonurie est une maladie à transmission autosomique dominante.
+$E. La Phénylcétonurie est causée par une mutation sur le gène de la Phénylalanine hydroxylase ou sur celui de la Dihydroptéridine réductase.
+
+Concernant le métabolisme :
+A. Il est uniquement l'ensemble des réactions de dégradation (catabolisme) s'effectuant dans un être vivant.
+$B. Il inclut les phénomènes d'édification (anabolisme) et de dégradation (catabolisme) organiques.
+$C. Il correspond à l'ensemble des réactions chimiques qui se déroulent à l'intérieur d'un être vivant.
+$D. Il nécessite l'action de catalyseurs spécifiques appelés enzymes.
+E. Il est un ensemble de processus statiques.
+
+À propos du catabolisme :
+$A. Il est l'ensemble des réactions de dégradations moléculaires.
+$B. Il est souvent associé à des réactions d'oxydation.
+C. Il consomme de l'énergie pour la plupart des réactions.
+$D. Il dégrade les macromolécules en monomères (nucléotides, acides aminés, etc.).
+$E. Il génère du CO2 qui est rejeté par la respiration.
+
+Concernant les acteurs des voies métaboliques :
+A. Une voie métabolique est formée par une seule réaction chimique.
+$B. Les enzymes sont des catalyseurs qui sont majoritairement des protéines.
+$C. Les coenzymes sont des activateurs majoritairement issus des vitamines, en particulier la vitamine B.
+D. S'il y a présence de l'enzyme mais absence du cofacteur, la réaction chimique a toujours lieu.
+$E. Les cofacteurs sont des activateurs qui sont des métaux.
+
+À propos du stockage de l'énergie :
+$A. L'énergie issue du catabolisme est stockée sous forme d'ATP et de coenzymes réduits.
+B. L'ATP est un réservoir d'énergie sous forme de liaisons riches en énergie entre les groupements hydroxyles.
+$C. Les petites molécules comme l'ATP, le NADH et le FADH2 peuvent être réutilisées dans l'anabolisme.
+$D. L'ATP synthase utilise l'énergie du gradient de protons pour créer de l'ATP à partir d'ADP.
+E. L'accepteur final d'électrons dans la respiration cellulaire est l'azote, formant de l'eau.
+
+Concernant l'oxydation des substrats énergétiques :
+$A. Le glucose est oxydé dans le cytosol.
+B. Les acides gras (AG) sont oxydés dans le cytosol par la glycolyse.
+$C. Les acides aminés (AA) et les corps cétoniques sont oxydés dans les mitochondries.
+$D. La β-oxydation (AG) et l'oxydation des AA produisent des coenzymes réduits riches en protons.
+E. Le produit final de l'oxydation des substrats (Acétyl-CoA) alimente la chaîne respiratoire directement.
+
+À propos des spécificités métaboliques :
+$A. Le foie est l'organe central du métabolisme.
+$B. Les globules rouges n'ayant pas de mitochondries utilisent principalement le glucose.
+C. Le cerveau peut utiliser les acides gras pour son énergie car ils traversent facilement la barrière hémato-encéphalique.
+$D. Le foie est capable de re-synthétiser du glucose par néoglucogenèse à partir d'AA glucoformateurs.
+$E. Les corps cétoniques sont fabriqués par le foie et oxydés principalement dans le muscle et le cerveau,.
+
+Concernant les réserves énergétiques :
+$A. Le glycogène est en réserve dans le muscle pour son propre fonctionnement.
+$B. Le tissu adipeux stocke les lipides sous forme de triglycérides (TG).
+$C. La dégradation des TG en AG et glycérol est appelée lipolyse.
+D. La néoglucogenèse est un processus spécifique au muscle.
+$E. La cétogenèse hépatique permet de synthétiser des corps cétoniques essentiels au cerveau.
+
+À propos de l'état nourri (post-prandial) :
+$A. Il correspond à la période allant de T0 à 4 heures après un repas.
+$B. Le foie peut transformer le glucose en TG qui cheminent dans le sang via les VLDL.
+$C. Le foie utilise les acides aminés pour fabriquer des protéines plasmatiques, dont l'albumine.
+D. Le cerveau et les muscles stockent le glucose dès qu'il y en a.
+$E. Les acides gras se réassemblent en TG, formant des chylomicrons stockés dans le tissu adipeux.
+
+Concernant l'état de jeûne :
+$A. L'état de jeûne est généralement défini au-delà de 12 heures après le repas.
+$B. En réponse à la baisse d'insuline, le foie dégrade le glycogène pour produire du glucose.
+$C. Le foie réalise la néoglucogenèse à partir du glycérol provenant des TG stockés.
+$D. Le foie utilise le lactate produit par les globules rouges pour la synthèse de glucose.
+E. Les organes qui savent utiliser les AG arrêtent de faire la β-oxydation.
+
+À propos de la cinétique enzymatique :
+$A. L'activité d'une enzyme augmente avec la concentration en substrat jusqu'à un pallier de saturation.
+$B. La Vmax (vitesse maximale) est atteinte lorsque l'enzyme est saturée en substrat.
+$C. Le Km correspond à la concentration en substrat nécessaire pour atteindre la moitié de la Vmax.
+$D. Un Km faible indique une affinité élevée de l'enzyme pour son substrat.
+E. Les enzymes ont une activité optimale à 0°C.
+
+Concernant les mécanismes de régulation enzymatique :
+$A. Le rétrocontrôle négatif est l'inhibition de la première réaction d'une voie par son produit final.
+B. Un inhibiteur orthostérique interagit avec l'enzyme en dehors du site actif,.
+$C. Un inhibiteur allostérique modifie la conformation de l'enzyme, rendant le site actif incompatible avec le substrat.
+$D. L'activation allostérique entraîne un changement de conformation qui augmente l'affinité de l'enzyme pour son substrat.
+E. Les enzymes cytoplasmiques ont une activité optimale à pH acide (pH ~ 4).
+
+À propos des régulations par phosphorylation :
+$A. Les phosphorylations sont des modifications post-traductionnelles qui peuvent activer ou désactiver les enzymes.
+B. Le glucagon active des phosphatases.
+$C. La phosphorylation de la glycogène synthétase l'inactive.
+D. L'insuline active la voie de signalisation induite par le glucagon.
+$E. La PFK2 présente des séquences différentes dans le foie et le muscle entraînant des effets opposés de la phosphorylation,.
+
+Concernant la compartimentation et la β-oxydation :
+A. Le péroxysome est le site principal de la β-oxydation des AG à très courtes chaînes.
+$B. Le péroxysome réalise la β-oxydation des acides gras à très longues chaînes (plus de 22 atomes de carbone).
+C. Tous les organes sont capables de réaliser toutes les voies métaboliques.
+$D. Les globules rouges n'ont pas de noyau, ni de mitochondries, mais seulement du cytosol.
+$E. Le foie peut re-synthétiser des substrats énergétiques pour approvisionner les autres tissus lorsque les réserves sont épuisées.
+
+À propos des acides aminés essentiels :
+$A. Huit AA sont essentiels car l'organisme ne sait pas les synthétiser à partir d'autres molécules.
+$B. Le manque d'un seul AA essentiel empêcherait de fabriquer une grande partie des protéines.
+$C. L'Histidine et l'Arginine sont considérés comme essentiels chez le nourrisson.
+D. Les AA non essentiels ne sont pas synthétisés *de novo* dans l'organisme.
+E. La Tyrosine est un AA essentiel.
+
+Concernant les sources d'acides aminés :
+$A. Les AA proviennent de l'alimentation via les protéines alimentaires.
+$B. Les AA peuvent provenir des réserves de protéines endogènes, notamment dans les muscles.
+C. Toutes les protéines de constitution dans l'organisme sont stockées et n'ont pas de *turn over*.
+$D. La protéolyse et la protéosynthèse sont des processus toujours en équilibre.
+$E. Les AA sont la source d'azote pour la synthèse de dérivés azotés actifs.
+
+À propos de la protéolyse :
+$A. La protéolyse permet de détruire les protéines les plus anciennes.
+$B. La protéolyse lysosomale concerne les protéines à demi-vie longue.
+$C. La protéolyse cytosolique (protéasome) est surtout active dans le muscle.
+$D. Les protéines anormales dans le cytosol sont ubiquinées avant d'être digérées par le protéasome.
+E. La protéolyse extracellulaire intervient uniquement dans la mort cellulaire.
+
+Concernant la biosynthèse des acides aminés non essentiels (AANE) :
+$A. L'organisme peut synthétiser les 10 AA non essentiels.
+$B. La synthèse *de novo* des AANE est possible si l'acide α-cétonique correspondant est présent dans la cellule.
+C. Le squelette carboné des AANE ne provient pas du cycle de Krebs.
+$D. Le groupement aminé provient souvent du glutamate ou de la glutamine par transamination.
+E. Les AA non protéinogènes (comme l'Ornithine) ne participent pas du tout au métabolisme.
+
+À propos des rôles métaboliques des acides aminés :
+$A. Le rôle principal des AA est la synthèse des protéines.
+$B. Les AA sont les précurseurs de petites molécules essentielles (bases nucléotides, neurotransmetteurs, etc.).
+C. La décarboxylation des AA forme des acides organiques.
+$D. Le rôle énergétique des AA est secondaire en période post-prandiale.
+$E. L'ammoniaque libéré lors de la désamination doit être éliminé par le foie.
+
+Concernant la décarboxylation des acides aminés :
+$A. La décarboxylation des AA est une voie non énergétique.
+B. Le GABA (dérivé de l'acide glutamique) est un puissant neurotransmetteur excitateur du SNC.
+$C. L'Histamine est responsable des chocs anaphylactiques par effet vasodilatateur et bronchoconstricteur.
+$D. La Sérotonine, dérivée du Tryptophane, est impliquée dans la régulation de l'humeur et l'alternance veille-sommeil.
+E. La décarboxylation est activée par la coenzyme PLP, issue de la vitamine B9.
+
+À propos des dérivés de la Tyrosine :
+$A. La Tyrosine est le précurseur des Catécholamines.
+B. L'Adrénaline, la Noradrénaline et la Dopamine n'ont pas d'effets hyperglycémiants.
+$C. La Dopamine active le circuit de la récompense.
+D. La mélanine (pigment de la peau) est un précurseur de la DOPA.
+$E. La DOPA est décarboxylée pour donner la Dopamine.
+
+Concernant la Carnitine :
+A. La Carnitine est synthétisée par le foie et le muscle.
+$B. La Carnitine est synthétisée à partir de Lysine et de Méthionine.
+$C. Elle est nécessaire au transport des acides gras à chaîne longue.
+D. Elle permet aux acides gras de sortir de la mitochondrie pour être oxydés dans le cytosol.
+E. La Carnitine est un AA essentiel.
+
+À propos de la Créatine :
+$A. La Créatine est synthétisée par le rein et le foie.
+$B. La Créatine-Phosphate est la réserve d'énergie immédiate pour le muscle.
+$C. La Créatine PhosphoKinase (CPK) libère l'énergie de la Créatine-Phosphate pour donner de l'ATP.
+$D. Le dosage de la CPK plasmatique est un signe de lyse des cellules musculaires ou de nécrose cardiaque.
+E. L'augmentation de la créatininémie plasmatique indique une fonction rénale normale.
+
+Concernant l'hyperhomocystéinémie :
+$A. L'hyperhomocystéinémie est une concentration plasmatique anormalement élevée d'homocystéine.
+$B. L'homocystéine est une molécule dérivée de la Méthionine.
+$C. L'hyperhomocystéinémie est un facteur de risque vasculaire important.
+D. L'homocystinurie congénitale est due à un excès de B6.
+$E. L'homocystinurie congénitale est une maladie à transmission autosomique récessive.
+
+À propos de la Phénylcétonurie (PCU) :
+A. La PCU est une maladie à transmission autosomique dominante.
+$B. La PCU est causée par une mutation sur le gène de la Phénylalanine hydroxylase.
+$C. La PCU peut être causée par un déficit en Dihydroptéridine réductase.
+D. Elle a pour conséquence une diminution du taux sanguin de Phénylalanine.
+$E. Le dépistage néonatal de la PCU permet d'éviter un retard mental sévère et des lésions neurologiques irréversibles.
+
+Concernant la régulation par modifications post-traductionnelles :
+$A. Elles impliquent des modifications des enzymes telles que la glycosylation ou les phosphorylations.
+$B. La phosphorylation peut activer ou désactiver des enzymes.
+$C. L'hormone glucagon déclenche une cascade de signalisation qui active une kinase PKA.
+$D. La PKA inactive la glycogène synthétase lorsqu'elle la phosphoryle.
+$E. L'insuline active des phosphatases qui déphosphorylent les enzymes.
+
+À propos de la régulation de l'enzyme PFK2 :
+$A. L’enzyme PFK2 est activée et favorise ainsi la glycolyse.
+$B. La phosphorylation de la PFK2 dans le muscle la rend active.
+C. La phosphorylation de la PFK2 dans le muscle a un effet inhibiteur sur la glycolyse dans ce tissu.
+$D. La phosphorylation de l'enzyme PFK2 dans le foie réduit l'activité de la glycolyse hépatique.
+E. Cette différence de régulation permet au cœur d'utiliser le glucose et au foie de l'envoyer dans l'organisme.
+
+À propos de la régulation transcriptionnelle du métabolisme :
+$A. Elle agit sur la transcription des gènes qui codent pour les enzymes.
+$B. La PKA active le facteur CREB qui participe à cette régulation.
+$C. Le facteur CREB est une protéine qui se fixe sur le promoteur des gènes cibles.
+$D. Lorsque la concentration de cholestérol diminue dans la cellule, des mécanismes de régulation entrainent l’augmentation de la synthèse de cholestérol.
+E. La phosphorylation se fait directement sur les enzymes, comme pour la régulation post-traductionnelle.
+
+Concernant le rôle central du foie dans le métabolisme et la coopération inter-organes :
+$A. Le foie est l’organe central du métabolisme, capable de réaliser la plupart des voies métaboliques.
+$B. Le foie peut réaliser des réactions uniques qu’aucun autre organe ne peut réaliser.
+$C. Le foie est le seul organe capable de réaliser la cétogenèse pour synthétiser des corps cétoniques.
+D. La néoglucogenèse est un processus métabolique exclusivement réalisé par le foie.
+$E. En période de jeûne, le foie resynthétise des substrats énergétiques pour approvisionner les autres tissus.
+
+À propos des spécificités tissulaires dans l'utilisation des substrats énergétiques :
+$A. Les globules rouges n’ont pas de mitochondries et utilisent principalement le glucose comme source d'énergie.
+$B. Les globules rouges sont de gros producteurs de lactate.
+C. Le cerveau peut utiliser les acides gras car ils traversent facilement la barrière hémato-encéphalique.
+$D. Le cerveau est glucodépendant.
+$E. Le foie produit des corps cétoniques pour répondre aux besoins énergétiques du cerveau lorsque la disponibilité en glucose est réduite.
+
+Concernant le catabolisme des protéines et des acides aminés :
+A. L’amine libérée lors du catabolisme des acides aminés (ammoniaque) est un déchet non toxique.
+$B. L’ammoniaque libéré doit être éliminé par le foie via le cycle de l’urée.
+$C. Le rein est un autre organe capable d’éliminer l’ammoniaque par l’ammoniogenèse.
+D. Le transport de l'ammoniaque dans le sang se fait sous forme libre.
+$E. La glutamine est le transporteur du NH3 dans le sang.
+
+À propos de l'état post-absorptif et de jeûne :
+A. L'état post-absorptif correspond à la période allant de T0 à 4 heures après un repas.
+$B. L'état post-absorptif est un état intermédiaire dans lequel la concentration de glucose commence à diminuer.
+$C. Dans l'état de jeûne, le foie dégrade le glycogène pour produire du glucose.
+$D. En état de jeûne, la néoglucogenèse produit du glucose à partir d'acides aminés glucoformateurs, de glycérol et de lactate.
+E. Le foie commence à produire des corps cétoniques dès l'état nourri.
+
+Concernant la compartimentation cellulaire du métabolisme :
+$A. Le glucose est oxydé dans le cytosol.
+$B. Les acides gras, les acides aminés et les corps cétoniques sont oxydés dans les mitochondries.
+C. La bêta-oxydation des acides gras n'a lieu que dans la mitochondrie.
+$D. Le péroxysome fait la β-oxydation des acides gras à très longues chaînes (C24, C26).
+E. L’Acétyl-CoA, produit final des voies d’oxydation, est toujours réutilisé par le cycle de Krebs dans le cytosol.
+
+À propos de l'utilisation des réserves corporelles en situation de jeûne :
+$A. Les glucides sont stockés sous forme de glycogène dans le foie pour maintenir la glycémie.
+$B. Les lipides sont en réserve sous forme de triglycérides (TG) dans le tissu adipeux.
+C. La protéolyse dans le muscle est la principale source d'énergie dès le début du jeûne.
+$D. La lipolyse dégrade les TG en acides gras (AG) et en glycérol.
+$E. L'oxydation des acides alpha-cétoniques provenant des acides aminés permet le processus de néoglucogenèse dans le foie.
+
+Concernant le catabolisme et le devenir de l'azote des acides aminés (AA) :
+A. La désamination des AA aboutit à la formation du squelette carboné (acide alpha-cétonique) et d'ammoniac (NH3).
+$B. L’ammoniac libéré est neurotoxique, ce qui impose son élimination rapide par l'organisme.
+$C. Le foie est l'organe qui transforme l'ammoniac en urée par le cycle de l'uréogénèse.
+D. Le rôle énergétique des AA est un rôle mineur et survient principalement en période post-prandiale.
+$E. La glutamine est le transporteur principal de l'ammoniac dans le sang.
+
+À propos des voies de dégradation des protéines (protéolyse) :
+A. Toutes les protéines de constitution de l’organisme sont en perpétuel renouvellement (turn over).
+$B. La protéolyse lysosomale dégrade notamment les protéines à demi-vie longue et les organelles défectueuses (autophagie).
+$C. La voie cytosolique est surtout active dans le muscle et concerne les protéines à demi-vie courte.
+$D. Le protéasome est le complexe enzymatique qui digère les protéines ubiquitines dans la voie cytosolique.
+E. La protéolyse et la protéosynthèse sont des processus qui se déroulent sans consommation d'ATP.
+
+Concernant les acides aminés essentiels (AAE) :
+$A. Il existe huit acides aminés considérés comme essentiels chez l'adulte.
+B. Les AAE sont ceux que l'organisme peut synthétiser de novo à partir d'autres molécules.
+$C. L'Histidine (His) et l'Arginine (Arg) sont essentiels chez le nourrisson.
+$D. Le Tryptophane, la Lysine et la Méthionine sont des AAE.
+$E. La Phénylalanine est un acide aminé essentiel à partir duquel la Tyrosine est synthétisée.
+
+À propos de la biosynthèse et de la transamination des acides aminés :
+$A. Dix acides aminés sont classés comme non essentiels car l'organisme est capable de les synthétiser.
+$B. Le squelette carboné pour la synthèse de novo des acides aminés peut provenir d'intermédiaires du cycle de Krebs.
+C. La synthèse d'un acide aminé requiert la présence de son alpha-cétoglutarate correspondant dans la cellule.
+$D. La transamination est un transfert d'un groupement amine qui permet au glutamate de se transformer en alpha-cétoglutarate.
+E. La voie des pentoses fournit le ribose-5-P, précurseur de l'Alanine.
+
+Concernant la Créatine, la Carnitine et la fonction rénale :
+$A. La Carnitine est nécessaire au transport des acides gras à chaîne longue vers la mitochondrie pour la beta-oxydation.
+$B. La Carnitine est synthétisée par le foie et les reins à partir de Lysine et de Méthionine.
+$C. La Créatine est stockée dans le muscle sous forme de Créatine-Phosphate (phosphagène), une réserve d'énergie immédiate.
+D. L'augmentation de la concentration plasmatique de la Créatine PhosphoKinase (CPK) est un indicateur fiable du bon fonctionnement rénal.
+$E. La Créatinine est un déchet non réabsorbé utilisé pour évaluer la fonction rénale (clairance).
+
+À propos des dérivés d'acides aminés impliqués dans la signalisation ou la protection :
+$A. La décarboxylation de l'acide glutamique produit le GABA, un neurotransmetteur inhibiteur du SNC.
+$B. La Sérotonine est dérivée du Tryptophane et agit comme un neuromédiateur et un puissant vasoconstricteur.
+$C. Les Catécholamines (Dopamine, Noradrénaline, Adrénaline) sont synthétisées à partir de la Tyrosine.
+$D. Le Glutathion, formé à partir de trois AA, est essentiel pour lutter contre le stress oxydatif et les radicaux libres.
+E. L'Histamine est synthétisée par les mastocytes et est un médiateur à effet uniquement vasoconstricteur.
+
+Concernant les maladies métaboliques étudiées :
+$A. L'hyperhomocystéinémie peut être acquise, souvent due à une carence nutritionnelle en vitamines B6, B9 ou B12.
+$B. Le déficit congénital en cystathionine bêta-synthétase provoque une homocystinurie congénitale, augmentant le risque vasculaire.
+$C. La phénylcétonurie est une maladie génétique à transmission autosomique récessive.
+$D. La phénylcétonurie est due à une anomalie de l'enzyme Phénylalanine hydroxylase ou de l'enzyme Dihydroptéridine réductase (DHPR).
+E. La phénylcétonurie non traitée se traduit par une augmentation du taux sanguin de Tyrosine et une élimination accrue de Phénylalanine.
+
+Concernant la structure des acides α-aminés :
+$A. Ils possèdent une fonction acide carboxylique (COOH) sur le Carbone α.
+$B. Ils possèdent une fonction amine (NH2) sur le Carbone α.
+C. Leur chaîne latérale R est identique pour tous les acides aminés.
+$D. La chaîne latérale R confère des propriétés physico-chimiques spécifiques.
+E. Ils sont classés selon leur polarité de la chaîne latérale R à pH neutre.
+
+À propos des acides aminés essentiels :
+$A. Les acides aminés essentiels sont ceux que l’on ne sait pas synthétiser à partir d’autres molécules.
+$B. L’Arginine est un acide aminé essentiel chez le nourrisson.
+C. La Tyrosine est un acide aminé essentiel.
+$D. Le Tryptophane (Trp) fait partie des 8 acides aminés essentiels.
+$E. Le manque d’un seul AA essentiel empêcherait de fabriquer une grande partie des protéines.
+
+Concernant le catabolisme des acides aminés :
+$A. La désamination des AA aboutit à la formation d’un acide α-cétonique.
+$B. L’ammoniac (NH3) libéré est un déchet neurotoxique.
+$C. L’acide α-cétonique est plus vulgairement appelé acide organique.
+$D. Le foie doit éliminer l’ammoniac en le transformant en urée via le cycle de l’urée (uréogénèse).
+E. Le rein élimine le NH3 uniquement par uréogénèse.
+
+À propos du rôle énergétique des acides aminés :
+A. Le rôle énergétique des acides aminés est leur rôle majeur en période post-prandiale.
+$B. Certains acides α-aminés sont cétoformateurs et permettent de faire des corps cétoniques.
+$C. Les AA glucoformateurs donnent des intermédiaires du cycle de Krebs en s’oxydant.
+$D. Les AA cétoformateurs donnent de l’acétoacétyl-Coa qui formera majoritairement des corps cétoniques.
+$E. L’oxydation du squelette carboné permet la synthèse d’ATP.
+
+Concernant le renouvellement des protéines :
+$A. Toutes nos protéines de constitution sont en perpétuel renouvellement (« turn over »).
+B. La protéosynthèse est une voie métabolique peu coûteuse en énergie.
+$C. Les processus de protéolyse et de protéosynthèse sont toujours en équilibre.
+D. La protéosynthèse utilise les 20 AA protéinogènes provenant uniquement de l’alimentation.
+$E. Contrairement aux glucides et aux lipides, les protéines de constitution ne peuvent pas être stockées sous forme de réserves.
+
+À propos des voies de protéolyse cellulaire :
+A. La voie lysosomale dégrade principalement les protéines à demi-vie courte.
+$B. Le lysosome peut réaliser l’autophagie d’organelles comme la mitochondrie si elle est défectueuse.
+$C. La voie cytosolique concerne notamment les protéines anormales car mal conformées après leur synthèse.
+$D. Les ubiquitines ligases ubiquitinent les protéines pour les diriger vers le protéasome.
+$E. Toutes les voies de protéolyse mentionnées sont consommatrices en ATP.
+
+Concernant la biosynthèse des acides aminés non essentiels (AANE) :
+$A. La synthèse de novo est possible si l’acide α-cétonique correspondant à l’acide aminé est présent.
+$B. L’Alanine est synthétisée à partir du pyruvate, un intermédiaire de la glycolyse.
+C. Le squelette carboné est apporté uniquement par les intermédiaires du cycle de Krebs.
+$D. Le groupement aminé provient du glutamate ou de la glutamine par réaction de transamination.
+$E. Au cours de la transamination, le glutamate devient l’α-cétoglutarate.
+
+À propos des petites molécules dérivées des acides aminés :
+A. La décarboxylation d'un acide aminé forme une amine biogène, dont l'objectif est principalement énergétique.
+$B. L’acide \gamma-aminobutyrique (GABA) est un neurotransmetteur inhibiteur du SNC issu de l’acide glutamique.
+$C. L’Histamine est synthétisée à partir de l’Histidine et est un médiateur des effets secondaires des allergies.
+D. La Sérotonine est un dérivé direct du Tryptophane par simple décarboxylation.
+$E. La Tyrosine est le précurseur des Catécholamines (Dopamine, Noradrénaline, Adrénaline).
+
+Concernant la Créatine et la Créatinine :
+A. La Créatine est synthétisée par le foie et les reins à partir de Lysine et de Méthionine.
+$B. La Créatine est stockée dans le muscle sous forme phosphagène (Créatine-Phosphate).
+C. La Créatine-Phosphate est la réserve d'énergie immédiate du muscle pour les efforts longs.
+$D. L’augmentation de la concentration plasmatique de la Créatine PhosphoKinase (CPK) est un signe de lyse des cellules musculaires.
+$E. La créatinine, issue de la dégradation de la créatine-phosphate, est un marqueur de référence pour l’évaluation de la fonction rénale.
+
+Concernant l’Homocystéinémie :
+A. L’Homocystéine est une molécule dérivée de la Lysine.
+$B. Le déficit en Cystathionine bêta synthase (CBS) est la cause d’une Homocystéinémie primitive.
+C. L'Homocystinurie congénitale est une maladie autosomique dominante.
+$D. Des taux élevés d’Homocystéine sont responsables d’un risque vasculaire important par athérothrombose.
+$E. Des carences en vitamines B6, B9 ou B12 peuvent être une cause d'hyperhomocystéinémie acquise.
+
+À propos de la Phénylcétonurie (PCU) :
+A. La PCU est due à un déficit de la Phénylalanine hydroxylase, qui permet normalement la conversion de la Tyrosine en Phénylalanine.
+$B. Un déficit sur la Dihydroptéridine réductase (DHPR) conduit au même résultat clinique qu’un déficit en Phénylalanine hydroxylase.
+C. La maladie est transmise selon un mode autosomique dominant.
+$D. En l’absence de traitement précoce, la PCU conduit à un retard mental sévère et des troubles du comportement.
+E. Le traitement nécessite un régime hyperprotéique toute la vie du patient.
+
+Concernant la digestion des protéines alimentaires :
+A. Les endopeptidases clivent les liaisons peptidiques exclusivement aux extrémités des protéines.
+$B. La trypsine et la chymotrypsine sont des exemples d’endopeptidases.
+$C. À la fin de la protéolyse, on obtient un mélange des 20 acides aminés.
+$D. L’absorption des acides aminés se fait au niveau des cellules intestinales étalées tout au long de l’intestin grêle.
+E. L'absorption intestinale des AA utilise un mécanisme de transport passif.
