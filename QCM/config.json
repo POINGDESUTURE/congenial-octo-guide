@@ -3,9 +3,10 @@
     "Pharmacologie": ["chapitre1.txt", "chapitre2.txt"],
     "Physiologie": ["chapitre1.txt"],
     "Biochimie": ["Ronéo1.txt"],
-    "Biophysique": ["Ronéo.txt"],
+    "Biophysique": ["Ronéo1.txt"],
     "Histologie": ["chapitre1.txt"],
     "Semiologie": ["roneo1.txt"],
     "Saloperie": ["saloperie.txt"]
 
 }
+
