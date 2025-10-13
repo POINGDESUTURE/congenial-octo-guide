@@ -417,3 +417,143 @@ B. L'axe du cœur passe par le sillon coronaire.
 $C. Une coupe axiale (scanographique) en T8 permet de visualiser les quatre cavités cardiaques simultanément.
 $D. Sur une coupe radiologique vue par en-dessous, les organes sont inversés (droite sur l'image = gauche dans la réalité).
 E. L’axe du cœur est quasiment horizontal.
+
+Concernant l’innervation générale du cœur :
+A. L'innervation intrinsèque permet au cœur de battre en autonomie.
+$B. L'innervation extrinsèque régule la fréquence cardiaque.
+C. Le système de conduction intra-cardiaque fait partie de l’innervation extrinsèque.
+$D. Le cœur ne bat pas toujours à la même fréquence grâce à l'innervation extrinsèque.
+$E. L'innervation extrinsèque provient du système végétatif (nerfs cardiaques).
+
+À propos du système cardionecteur et de l'automatisme cardiaque :
+A. Les cardiomyocytes ordinaires sont appelées cellules cardionectrices.
+$B. Les cellules cardionectrices possèdent une capacité d’auto-dépolarisation spontanée.
+$C. Les cardiomyocytes ont la capacité de conduire l’influx électrique.
+$D. Le tissu nodal est constitué de cellules cardionectrices regroupées en nœuds et en faisceaux.
+$E. L'influx nerveux permet la fonction de pompe du cœur.
+
+Concernant le Nœud sinu-atrial (NSA) :
+$A. Il est situé en sous épicardique, à la surface du cœur.
+B. Il est localisé à l'extrémité inférieure de la crista terminalis.
+$C. Il impulse le rythme dit "sinusal" qui bat spontanément à 100 bpm.
+$D. Il est freiné par le nerf vague pour maintenir une fréquence moyenne de 60 à 80 bpm.
+$E. Il est situé à la jonction entre la base de la veine cave supérieure et l’atrium droit.
+
+À propos du Nœud Atrio-Ventriculaire (NAV) :
+$A. Il est situé dans la partie inférieure du septum interatrial.
+B. Il est localisé en sous épicardique.
+$C. Il est vascularisé par l'artère coronaire droite.
+$D. Il fait partie du nœud jonctionnel.
+$E. Il peut se dépolariser en autonomie entre 40 et 60 fois par minute.
+
+Concernant le Faisceau atrio-ventriculaire (Faisceau de His) :
+$A. Il part du nœud atrio-ventriculaire.
+B. Il traverse uniquement le septum atrio-ventriculaire.
+$C. Il traverse la partie fibreuse du septum interventriculaire.
+$D. Il se divise en deux branches, droite et gauche.
+E. Il est également appelé le nœud d’Aschoff-Tawara.
+
+À propos des branches de division du faisceau atrio-ventriculaire :
+$A. La branche gauche est plus épaisse que la branche droite.
+$B. La branche droite distribue l’innervation au ventricule droit.
+C. La branche gauche longe le septum inter-ventriculaire et se ramifie au niveau de la trabécule septomarginale. 
+$D. La branche gauche pénètre dans le ventricule gauche sous les valvules semi-lunaires de l’aorte.
+$E. Ces ramifications vont former le faisceau de Purkinje.
+
+Concernant le faisceau de Purkinje :
+$A. Il est un réseau de tissus nodal sous endocardique.
+$B. Ses cellules ont une dépolarisation autonome très lente.
+C. Si le rythme cardiaque n'était impulsé que par ces cellules, la fréquence serait entre 60 et 80 bpm. 
+$D. Il est formé par les ramifications sous-endocardiques des branches du faisceau atrio-ventriculaire.
+E. Il est localisé exclusivement au niveau des atriums.
+
+À propos de l’innervation extrinsèque :
+$A. Elle agit sur le tissu nodal pour réguler la fréquence cardiaque.
+B. Elle est composée uniquement de fibres nerveuses sympathiques.
+$C. Elle est issue des plexus cardiaques.
+$D. Les plexus cardiaques sont formés par des neurofibres issues des nerfs vagues et des troncs sympathiques.
+E. Elle est responsable de l'automatisme cardiaque.
+
+Concernant l’action du système parasympathique sur le cœur :
+$A. Il est qualifié de cardio-modérateur.
+$B. Il diminue la fréquence cardiaque.
+$C. Il provoque la constriction des artères coronaires.
+D. Il augmente la force de contraction musculaire.
+$E. Il participe au “système de repos”.
+
+À propos de l’action du système sympathique sur le cœur :
+$A. Il est qualifié de cardio-accélérateur.
+$B. Il augmente la force de contraction musculaire.
+C. Il provoque la constriction des artères coronaires. 
+$D. Il est associé au “système du stress”.
+$E. Ses afférences viscérales peuvent causer des douleurs projetées, notamment lors d’un infarctus.
+
+Concernant le plexus cardiaque profond :
+A. Il se situe en avant et en dessous de l’arc aortique. 
+$B. Il est situé entre l’aorte et la bifurcation trachéenne.
+$C. Il innerve les atriums (nerfs atriaux).
+D. Il innerve les ventricules. 
+E. Il est la seule source d'innervation parasympathique du cœur.
+
+À propos du plexus cardiaque superficiel :
+$A. Il est composé de neurofibres sympathiques et parasympathiques.
+B. Il se situe entre l’arc aortique et la bifurcation trachéale. 
+$C. Il est situé en avant et en dessous de l’arc aortique.
+$D. Il innerve les ventricules.
+E. Il est la structure qui assure le rôle de métronome.
+
+Concernant les éléments visibles sur l’électrocardiogramme (ECG) normal :
+$A. L'onde P correspond à la dépolarisation des cellules du myocarde atrial.
+$B. L'onde P reflète la contraction de l’atrium.
+C. L'onde T correspond à la contraction du ventricule.
+$D. L'espace PQ représente le passage de l’influx nerveux du nœud atrio-ventriculaire au faisceau de His.
+$E. Le rythme dit "sinusal" implique une dépolarisation partant du nœud sino-atrial.
+
+À propos du complexe QRS sur l’ECG :
+$A. Il correspond à la contraction des ventricules.
+B. Il représente la repolarisation des ventricules.
+$C. Il est issu de la somme de la contraction des différentes parties du cœur.
+$D. Une zone qui ne se dépolarise plus, visible par anomalie du QRS, peut être nécrosée (infarctus).
+E. Il est toujours régulier en cas de fibrillation atriale.
+
+Concernant les caractéristiques de la fibrillation atriale (FA) sur l’ECG :
+$A. Le nœud sino-atrial bat entre 200 et 300 bpm.
+$B. La contraction rapide n’est pas efficace et ne conduit pas à chaque fois l’influx électrique jusqu’au nœud atrio-ventriculaire.
+C. Les QRS apparaissent de façon régulière.
+$D. Il est difficile d’individualiser une onde P à chaque fois.
+$E. La ligne de base présente une trémulation.
+
+À propos de l'Extrasystole Ventriculaire (ESV) :
+$A. Les ventricules se contractent sans avoir reçu l’ordre des atriums.
+B. Elle est caractérisée par un QRS plus petit et étroit.
+$C. Il s’agit d’une contraction spontanée qui peut provenir des branches atrio-ventriculaires.
+$D. Elle est souvent associée à une absence d’onde P.
+$E. Elle donne des palpitations en raison d’un temps de récupération plus allongé après le QRS.
+
+Concernant le bloc atrio-ventriculaire (BAV) :
+$A. Il s'agit d'un problème de conduction.
+B. Il est toujours caractérisé par l'absence totale de l'onde P. 
+$C. Il y a une absence de passage de l’influx de la commande électrique entre les atriums et les ventricules.
+$D. La dépolarisation des cellules atriales ne parvient pas à se transmettre aux ventricules.
+$E. Il est possible qu'une onde P déclenche un QRS, mais que la seconde onde P ne déclenche rien.
+
+À propos de la vascularisation du tissu nodal :
+$A. Le nœud sino-atrial est vascularisé par l’artère coronaire droite (ACD).
+B. Le nœud atrio-ventriculaire est vascularisé par l’artère coronaire gauche. 
+$C. La coronaire droite vascularise le nœud atrio-ventriculaire.
+$D. L'artère coronaire gauche vascularise les branches du faisceau de His.
+$E. L'artère coronaire droite vascularise le 1/3 postérieur du septum inter-ventriculaire.
+
+Concernant les noms alternatifs des structures nodales :
+$A. Le Nœud sinu-atrial est également appelé nœud de Keith et Flack.
+$B. Le Nœud Atrio-ventriculaire est aussi appelé nœud d’Aschoff-Tawara.
+$C. Le Faisceau atrio-ventriculaire est aussi appelé faisceau de His.
+$D. Le Nœud Atrio-ventriculaire et le Faisceau atrio-ventriculaire forment le nœud jonctionnel.
+E. Le Nœud Atrio-necteur est situé en sous endocardique. 
+
+À propos des vitesses de dépolarisation dans l'innervation intrinsèque :
+$A. Le Nœud sinu-atrial bat spontanément à 100 bpm.
+B. La fréquence autonome augmente à mesure que l'on se rapproche du faisceau de Purkinje. 
+$C. Les cellules du Nœud Atrio-ventriculaire peuvent se dépolariser entre 40 et 60 bpm.
+D. La fréquence cardiaque la plus rapide est celle des cellules du faisceau de Purkinje.
+$E. Le rythme sinusal effectif est plus lent que le rythme spontané du NSA, à cause du freinage par le nerf vague.
