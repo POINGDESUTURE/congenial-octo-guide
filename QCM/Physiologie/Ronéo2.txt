@@ -1,0 +1,501 @@
+Concernant les volumes cardiaques et le débit :
+$A. Le débit cardiaque est d'environ 5 L/min chez l'humain au repos.
+B. Le temps nécessaire pour qu'un tour complet du circuit sanguin s'effectue au repos est d'environ 1 minute.
+$C. Le volume télédiastolique (VTD) correspond au volume contenu dans le ventricule à la fin de la diastole, soit 120 à 150 mL.
+D. Le volume d'éjection systolique (VES) est d'environ 40 à 60 mL de sang.
+E. Le ventricule gauche et le ventricule droit éjectent des volumes de sang différents durant la révolution cardiaque.
+
+À propos du Volume Télésystolique (VTS) :
+$A. Le VTS représente le volume de sang restant dans le ventricule après l'éjection systolique.
+B. La valeur du VTS est généralement supérieure à celle du VTD.
+$C. Le VTS est estimé entre 40 et 60 mL.
+D. L'éjection systolique se fait jusqu'à ce que le VTS atteigne zéro.
+E. La Fraction d'Éjection (FE) correspond au rapport entre le VTS et le VTD.
+
+Concernant la Fraction d'Éjection (FE) :
+A. Elle est calculée en divisant le VTS par le VTD.
+$B. Elle correspond au rapport entre le volume d'éjection systolique (VES) et le volume télédiastolique (VTD).
+$C. Sa valeur est habituellement comprise entre 60% et 70%.
+D. Une FE de 100% est la norme chez l'adulte sain au repos.
+E. La FE indique le volume de sang restant dans le ventricule en fin de systole.
+
+À propos des phases de la révolution cardiaque :
+$A. La contraction ventriculaire isovolumétrique est la première phase de la systole.
+$B. La phase d’éjection ventriculaire débute lorsque la pression intraventriculaire dépasse celle de l’artère correspondante.
+C. La relaxation ventriculaire isovolumétrique est un processus uniquement passif.
+$D. Le cycle cardiaque comprend quatre temps : contraction isovolumétrique, éjection, relaxation isovolumétrique et remplissage.
+E. Le remplissage ventriculaire est toujours majoritairement assuré par la contraction auriculaire.
+
+Concernant la phase de contraction ventriculaire isovolumétrique :
+A. Elle correspond à l'ouverture simultanée de la valve auriculo-ventriculaire et de la valve pulmonaire.
+$B. Pendant cette phase, le volume sanguin dans le ventricule reste constant.
+$C. Pendant cette phase, seule la pression intraventriculaire augmente.
+D. Cette phase se produit juste après l'éjection ventriculaire.
+E. Elle est déclenchée par l'onde P sur l'ECG.
+
+À propos de la relaxation ventriculaire isovolumétrique :
+$A. Cette phase survient après la fermeture de la valve pulmonaire ou aortique.
+$B. Elle est caractérisée par une diminution très rapide de la pression intraventriculaire.
+$C. Elle est considérée comme un processus actif qui consomme de l'énergie.
+D. Elle représente environ 10% de la consommation énergétique cardiaque.
+E. Elle est nécessaire pour initier la phase d'éjection ventriculaire.
+
+Concernant le remplissage ventriculaire :
+$A. Il commence lorsque la pression ventriculaire devient inférieure à celle de l’oreillette.
+$B. Il est d'abord majoritairement passif (80 à 85%).
+$C. Il est achevé par un remplissage actif dû à la contraction auriculaire (15 à 20%).
+D. La participation de l'oreillette au remplissage diminue significativement lors de l'exercice.
+E. La perte de la contraction auriculaire (ex: fibrillation) n'a qu'un impact mineur sur le remplissage.
+
+À propos des pressions dans le circuit systémique :
+A. Le sang circule à basse pression (30 mmHg) entre le ventricule gauche et les tissus systémiques.
+$B. La pression systémique haute pression est d'environ 120 mmHg.
+$C. La pression dans l’aorte diminue progressivement en diastole mais reste comprise entre 70 et 120 mmHg.
+D. Le cœur gauche assure le débit et la basse pression de la circulation générale.
+E. La pression auriculaire gauche est généralement supérieure à 10 mmHg.
+
+Concernant le Potentiel d'Action (PA) du cardiomyocyte et la contractilité :
+$A. Le PA d'un cardiomyocyte a une durée beaucoup plus longue (environ 250 ms) que celui d'un neurone (environ 1 ms).
+$B. Le PA cardiaque doit se prolonger pour permettre l'éjection du sang (systole).
+$C. La contraction du cardiomyocyte est appelée systole.
+D. La relaxation (diastole) est un phénomène passif qui ne consomme pas d'énergie.
+E. Le PA du cardiomyocyte est déclenché par une entrée de potassium dans la cellule.
+
+À propos du couplage Excitation-Contraction (Contractilité) :
+A. L'entrée de Ca²⁺ extracellulaire est le seul mécanisme responsable de l'augmentation du calcium cytosolique.
+$B. L'entrée de Ca²⁺ extracellulaire provoque la libération de Ca²⁺ intracellulaire stocké dans le réticulum endoplasmique.
+C. L'augmentation du Ca²⁺ libre cytosolique est de l'ordre d'un facteur 1000 entre la diastole et la systole.
+$D. L’augmentation du Ca²⁺ cytosolique permet l’interaction actine–myosine et génère la contraction.
+$E. La concentration cytosolique en Ca²⁺ passe d’environ $10^{-7}$ M en diastole à $10^{-6}$ / $10^{-5}$ M en systole.
+
+Concernant les mécanismes de relaxation du cardiomyocyte (Diastole) :
+$A. La relaxation est associée à la repolarisation et à l’abaissement du Ca²⁺ libre intracellulaire.
+$B. La relaxation dépend du repompage de Ca²⁺ par SERCA dans le réticulum endoplasmique.
+$C. La sortie de Ca²⁺ hors de la cellule est assurée par l’échangeur Na⁺/Ca²⁺.
+D. La relaxation est un mécanisme indépendant de la consommation d'énergie.
+E. Des pathologies de la relaxation active peuvent se manifester surtout lors de l’exercice physique.
+
+À propos des conséquences du fonctionnement automatique du cœur :
+A. Le nœud auriculo-ventriculaire est le chef d'orchestre, battant à 100 BPM s'il est isolé.
+$B. Le fonctionnement automatique est dû à l'instabilité du potentiel de membrane des fibres nodales du nœud sinusal.
+C. Les cardiomyocytes représentent moins de 1% des cellules cardiaques.
+$D. Le nœud sinusal a la fréquence de dépolarisation la plus élevée (100/min).
+E. Le plancher auriculo-ventriculaire est un conducteur permettant la transmission facile de l'excitation de l'oreillette au ventricule.
+
+Concernant l'Électrocardiogramme (ECG) – Généralités :
+$A. L'ECG est l’enregistrement des potentiels électriques extracellulaires.
+$B. L'ECG ne mesure pas directement l'activité intracellulaire des cellules cardiaques.
+$C. L’ECG permet de suivre le sens et l’amplitude de propagation du champ d’activation cardiaque.
+D. L’enregistrement est perturbé si le patient est parfaitement au repos musculaire.
+E. C'est un examen coûteux et long (plus de 15 minutes).
+
+À propos de l'onde P sur l'ECG :
+$A. Elle représente la dépolarisation des oreillettes.
+$B. Elle précède légèrement la systole auriculaire.
+C. Elle correspond à l'événement électrique le plus ample du cœur.
+D. Elle est suivie immédiatement par l'onde T.
+E. Elle est générée après l'activation ventriculaire.
+
+Concernant le complexe QRS sur l'ECG :
+$A. Il représente la dépolarisation des ventricules.
+$B. Il correspond à l'événement électrique le plus ample car il mobilise une grande masse musculaire.
+$C. L'onde Q est la première déflexion négative.
+D. L'onde S est la première déflexion positive.
+$E. Le complexe QRS précède légèrement la montée en pression ventriculaire (contraction isovolumétrique).
+
+À propos de l'onde T sur l'ECG :
+$A. Elle correspond à la repolarisation des ventricules.
+$B. Elle précède la relaxation ventriculaire.
+C. Sa durée est très courte, de l'ordre de la milliseconde.
+D. Elle est le signal de l'activation auriculaire.
+E. Elle est l'événement électrique qui suit la dépolarisation auriculaire.
+
+Concernant l'enregistrement de l'ECG dans le plan vertical :
+$A. Les électrodes sont placées sur les poignets (gauche et droit) et au niveau de l’aine ou de la cheville.
+$B. Ces trois points forment le triangle d’Einthoven.
+$C. Les dérivations obtenues sont D1, D2 et D3.
+D. Ces dérivations sont appelées dérivations précordiales.
+E. Elles permettent d'obtenir un effet « grossissant » pour explorer le cœur localement.
+
+À propos de l'enregistrement de l'ECG dans le plan horizontal (dérivations précordiales) :
+$A. Six électrodes sont placées de façon précise sur la surface du thorax.
+$B. V1 est positionnée au niveau du 4ème espace intercostal droit au bord du sternum.
+$C. V5 et V6 regardent principalement le ventricule gauche.
+$D. V1 et V2 regardent la paroi libre du ventricule droit.
+E. V3 et V4 apportent toujours des informations sur le septum plutôt que sur les ventricules.
+
+Concernant la dépolarisation ventriculaire et ses vecteurs :
+$A. L’activation ventriculaire est décomposée en trois grands vecteurs.
+$B. Le premier vecteur correspond au début de l’activation au niveau du septum.
+$C. Le deuxième vecteur est dominé par la dépolarisation du ventricule gauche.
+D. Le deuxième vecteur est le moins ample car il active la masse ventriculaire la plus faible.
+E. Le troisième vecteur est lié à l'activation de la base de l'oreillette gauche.
+
+À propos des bruits du cœur :
+$A. L’ouverture des valves est silencieuse (muette sur le plan acoustique).
+$B. Le premier bruit ("toum") est provoqué par la fermeture de la valve mitrale.
+$C. Le deuxième bruit ("tac") correspond à la fermeture des valves sigmoïdes (aortique et pulmonaire).
+D. La fermeture des valves est un phénomène silencieux.
+E. Le premier bruit se produit après la fermeture des valves sigmoïdes.
+
+Concernant l'utilisation clinique de l'ECG :
+$A. L’ECG permet de renseigner sur le fonctionnement du tissu nodal.
+$B. Des altérations de l'ECG peuvent être causées par des troubles ioniques, comme l'hyperkaliémie ou l'hypokaliémie.
+$C. L’ECG peut renseigner sur une souffrance myocardique.
+D. Pour évaluer rapidement un trouble du potassium, l'ECG prend plus d'une heure.
+E. L'ECG mesure la variation des volumes sanguins dans les cavités.
+
+À propos du rôle de la pression artérielle dans la physiologie cardiaque (Post-charge) :
+$A. Le ventricule gauche doit atteindre une pression supérieure à la pression aortique pour que la valve s'ouvre.
+B. La pression auriculaire est l'élément principal qui s'oppose à l'éjection ventriculaire.
+$C. La pression aortique est similaire à la pression ventriculaire lorsque la valve aortique est ouverte.
+D. La circulation systémique est caractérisée par une basse pression (30 mmHg).
+E. La loi de Laplace explique pourquoi il est plus difficile de développer la pression à partir d'un ventricule droit que d'un ventricule gauche.
+
+Concernant le Volume Télédiastolique (VTD) (Précharge) :
+$A. Le VTD dépend du remplissage ventriculaire, qui est en partie assuré par le gradient de pression entre l'oreillette et le ventricule.
+B. La participation de l’oreillette au remplissage est maximale au repos.
+$C. Le VTD est le volume maximum atteint par le ventricule pendant la diastole.
+D. Une diminution de la compliance ventriculaire augmente le VTD.
+E. La contraction auriculaire (systole auriculaire) contribue à 80-85% du VTD.
+
+À propos de la structure et de la fonction des ventricules :
+$A. Le ventricule gauche (VG) a une paroi plus épaisse que le ventricule droit (VD).
+$B. Le VG a la forme d’un ballon de rugby.
+C. Le VD a une paroi très épaisse pour développer la haute pression.
+$D. Le VD utilise la dynamique du VG pour se contracter.
+E. Les deux ventricules éjectent des volumes différents.
+
+Concernant la circulation pulmonaire :
+$A. Elle est aussi appelée petite circulation.
+$B. Le sang y circule à basse pression (30 mmHg).
+$C. Elle est assurée par le cœur droit.
+D. Elle sert à distribuer le sang oxygéné aux tissus.
+$E. L’hématose (échange O2/CO2) se produit au niveau des capillaires pulmonaires.
+
+À propos du ventricule gauche (VG) :
+$A. Il fait circuler le sang dans la circulation systémique à haute pression (120 mmHg).
+$B. Il éjecte un certain volume de sang dans l'aorte à chaque contraction.
+C. Sa pression interne doit dépasser 30 mmHg pour ouvrir la valve aortique.
+D. Il a la forme d'un ballon de foot.
+E. La valve mitrale sépare le VG de l'oreillette droite.
+
+Concernant les valves cardiaques :
+$A. Les valves permettent une circulation unidirectionnelle du sang.
+$B. Les mouvements valvulaires sont passifs et dépendent des différences de pression.
+$C. La valve mitrale se situe entre l'oreillette gauche et le ventricule gauche.
+D. La valve tricuspide se situe entre l'oreillette gauche et le ventricule gauche.
+E. Les valves sont maintenues uniquement par la pression du sang.
+
+À propos de la circulation coronaire :
+$A. Elle assure la vascularisation du muscle cardiaque.
+B. L'échange sanguin au niveau des capillaires coronaires se fait principalement pendant la systole.
+$C. La circulation coronaire est terminale, ce qui signifie qu'il n'y a pas d'anastomose entre les artères coronaires.
+D. L'inconvénient d'une circulation terminale est minime en cas d'occlusion (infarctus).
+$E. L'échange ne se fait que pendant le relâchement du cœur (diastole), à cause de la compression du muscle en systole.
+
+Concernant le tissu nodal :
+$A. Les cellules du nœud sinusal gouvernent le fonctionnement automatique du cœur.
+$B. Le tissu nodal représente moins de 1% des cellules cardiaques.
+$C. Le nœud sinusal a une fréquence de dépolarisation de 100/minute lorsqu'il est livré à lui-même.
+D. Le nœud auriculo-ventriculaire a une fréquence de dépolarisation supérieure à celle du nœud sinusal.
+E. Le nœud auriculo-ventriculaire est le seul élément capable de transmettre l'excitation de l'oreillette vers le ventricule.
+
+À propos de la dépolarisation du tissu nodal :
+$A. Le potentiel de membrane des cellules nodales est instable.
+$B. La dépolarisation progressive se fait de -60 mV à -40 mV.
+$C. Le potentiel d’action est déclenché lorsque le seuil de -40 mV est atteint.
+D. La pente de dépolarisation du nœud sinusal est inférieure à celle du faisceau de His.
+E. Les autres tissus (AV, His) ne peuvent pas servir de roue de secours en cas de défaillance sinusale.
+
+Concernant le mécanisme ionique du Potentiel de Membrane (PM) :
+$A. La NA+/K+ ATPase enrichit le milieu extracellulaire en sodium et le milieu intracellulaire en potassium.
+$B. Au repos, de nombreux canaux potassiques (canaux de fuite) sont ouverts.
+C. L'existence du gradient électrique pousse le sodium hors de la cellule.
+$D. Le potassium est attiré à l’intérieur de la cellule par le gradient électrique.
+E. Le gradient de concentration du potassium attire le K+ vers le milieu intracellulaire.
+
+À propos des ions et de l'excitabilité cardiaque :
+$A. Le sodium (Na+) est l’acteur principal du potentiel d’action.
+$B. Le sodium Na+ est attiré vers l'intérieur de la cellule par un double gradient (concentration et électrique).
+$C. Le calcium (Ca²⁺) est beaucoup plus concentré en extracellulaire (1 mmol/L) qu'en intracellulaire (10^-7 à 10^-6 mmol/L).
+$D. Le calcium conditionne la contraction cellulaire.
+E. Au repos, le potentiel de membrane est très proche de celui du sodium.
+
+Concernant les fonctions générales de l'appareil cardio-vasculaire :
+$A. Il assure le transport d'oxygène, de nutriments et d'eau.
+$B. Il est impliqué dans l'élimination des déchets métaboliques comme le CO2.
+$C. Il est essentiel pour la communication via le transport des hormones.
+$D. Il participe à la défense de l'organisme grâce aux globules blancs et aux anticorps.
+$E. Il contribue à la thermorégulation chez les homéothermes.
+
+À propos de l'évolution du système cardiovasculaire :
+$A. Chez le poisson, il existe une unique pompe cardiaque (un ventricule).
+$B. La circulation du sang chez le poisson se fait à basse pression systolique (environ 30 mmHg).
+$C. Chez les mammifères, on retrouve une double pompe en série.
+D. Chez les mammifères, la circulation systémique se fait à basse pression (30 mmHg).
+E. L'évolution a conduit à une régulation extrêmement imprécise chez les mammifères.
+
+Concernant les notions anatomiques de base du cœur :
+$A. Le cœur est un muscle creux pesant environ 300 g.
+$B. Il est constitué de 4 cavités : deux oreillettes et deux ventricules.
+C. La diastole correspond à la contraction du muscle cardiaque.
+D. Une artère est un vaisseau qui ramène le sang au cœur.
+E. Un défaut d'étanchéité de la valve est appelé rétrécissement.
+
+À propos du sang :
+$A. Le sang est un tissu liquide composé de plasma et d'éléments figurés.
+$B. Les globules rouges sont les éléments majoritaires (4 à 6 millions par mm3).
+$C. Le volume des globules rouges est estimé par l'hématocrite.
+$D. Le sang a pour fonctions le transport de O2/CO2, d'hormones et d'anticorps.
+E. Le plasma représente 40 à 50% du volume total du sang.
+
+Concernant la circulation en circuit fermé des mammifères :
+$A. Le cœur droit éjecte le sang dans l'artère pulmonaire (petite circulation).
+$B. L'aorte reçoit le sang éjecté par le ventricule gauche.
+C. Les artères résistent fortement à l'écoulement du sang.
+$D. Les artérioles sont les vaisseaux qui résistent à l'écoulement du sang.
+E. La circulation systémique est aussi appelée grande circulation.
+
+À propos de la conduction intracardiaque :
+$A. Le nœud auriculo-ventriculaire ralentit l'activité électrique.
+$B. Le faisceau de His transmet l'excitation de l'oreillette vers le ventricule.
+$C. Le ralentissement de l’activité permet de décaler l’activation des oreillettes et des ventricules dans le temps.
+D. La vitesse de propagation de l'activation est similaire à celle des grosses fibres nerveuses (100 m/s).
+E. L'activation des ventricules précède l'activation des oreillettes.
+
+Concernant la relation entre ECG et phénomènes mécaniques :
+$A. Le complexe QRS est un repère électrique pour le début des événements mécaniques (systole).
+$B. L'onde T précède la phase de relaxation ventriculaire.
+$C. Le phénomène électrique (PA) précède légèrement la réponse mécanique (contraction).
+D. Le pic de la contraction se produit en même temps que la dépolarisation maximale (QRS).
+E. La systole ventriculaire est déclenchée par l'onde P.
+
+À propos des pressions et volumes du ventricule gauche :
+$A. La pression du VG doit dépasser la pression aortique pour que la valve s'ouvre et que l'éjection ait lieu.
+$B. La pression aortique est comprise entre 70 et 120 mmHg.
+C. La pression auriculaire (en pointillé bleu) est souvent supérieure à 10 mmHg.
+$D. L'éjection des deux tiers du volume contenu dans le ventricule se produit dans la première moitié de la systole.
+E. Le volume ventriculaire ne varie pas pendant la phase de remplissage passif.
+
+Concernant la pré-charge et la post-charge cardiaques chez l'humain :
+A. Pour le cœur, on se trouve principalement dans une seule dimension (longueur).
+$B. La pré-charge correspond au remplissage du ventricule avant sa contraction, et représente le retour veineux.
+C. La post-charge correspond à la force que va développer l'atrium gauche pour éjecter le sang.
+$D. La post-charge correspond à ce qu’il se passe en aval de la valve aortique.
+E. La notion de contractilité n’existe pas pour le cœur, seulement pour le muscle strié squelettique.
+
+À propos des volumes cardiaques moyens du ventricule gauche chez l'adulte jeune :
+A. Le Volume d’Éjection Systolique (VES) est d'environ 60 mL.
+$B. Le Volume Télédiastolique (VTD) au repos est autour de 140 mL.
+C. Le volume résiduel après une systole (Volume Télésystolique, VTS) est d'environ 90 mL.
+$D. Le VES est le volume éjecté, soit environ les deux tiers du volume retrouvé dans le ventricule gauche en fin de diastole.
+E. En fin de systole, il reste typiquement 90 mL de sang.
+
+Concernant le Débit Cardiaque (DC) et la Pression Sanguine Artérielle (PSA) :
+$A. Le DC est le produit du Volume d’Éjection Systolique (VES) par la Fréquence Cardiaque (FC).
+$B. La valeur moyenne du DC chez l'adulte est d’environ 5 L/min.
+C. La PSA maximale pour le ventricule gauche se situe autour de 200 mmHg.
+$D. La PSA maximale pour le ventricule gauche sera de 120-130 mmHg.
+E. En diastole, la PSA minimale pour le ventricule gauche chute à environ 0 mmHg.
+
+À propos de la pression dans l'atrium gauche (AG) :
+$A. Chez un sujet normal, la Pression Sanguine Artérielle (PSA) dans l'atrium gauche (ou OG) doit être au maximum de 8 mmHg.
+$B. Si la pression capillaire pulmonaire devient trop élevée, il y a un risque d'œdème pulmonaire.
+$C. Les pressions en amont de l'atrium gauche (veines et capillaires pulmonaires) s'égalisent avec la PSA de l'atrium gauche.
+D. La pression dans le cœur droit est approximativement cinq fois plus élevée qu'à gauche.
+$E. Si la PTDVG (Pression télédiastolique du ventricule gauche) est à 15 mmHg, la pression capillaire pulmonaire est également de 15 mmHg, menaçant l'alvéole.
+
+Concernant la méthode du cathéter de Swan-Ganz (méthode de référence) :
+A. Le cathéter est inséré dans l’artère fémorale afin de passer dans le ventricule gauche.
+$B. Cette méthode est de moins en moins utilisée car elle est très invasive.
+$C. Le cathéter doit passer par la valve tricuspide et la valve pulmonaire.
+$D. Le temps que met le sérum physiologique froid à atteindre l'artère pulmonaire renseigne sur le débit.
+E. Le canal distal du cathéter est positionné au niveau de l'aorte.
+
+À propos de la PiCCO-Technology pour la mesure du Débit Cardiaque (DC) :
+$A. Cette méthode est moins invasive que le cathéter de Swan-Ganz.
+$B. La mesure de la variation thermique est réalisée au niveau artériel à l’aide d’un second cathéter.
+C. Elle nécessite d'amener le cathéter jusqu'au ventricule droit (VD).
+$D. Elle est particulièrement utilisée en réanimation et peut être laissée plusieurs jours.
+$E. Elle mesure le DC par "contour de l’onde du pouls".
+
+Concernant l'échographie Doppler pour la mesure du Débit Cardiaque (DC) :
+$A. C'est une méthode non-invasive aujourd'hui majoritairement utilisée.
+B. Cette méthode est plus précise que l’IRM pour mesurer les volumes ventriculaires.
+$C. Elle permet de mesurer les volumes ventriculaires sur un plan bi voire tridimensionnel.
+$D. Le débit est retrouvé en multipliant la vitesse d’éjection (observée depuis l’axe de l’aorte) par la surface.
+E. L’insuffisance aortique pose un problème de mesure, car le sang reflue vers l’AG.
+
+À propos de la Fraction d’Éjection (FE) :
+$A. La FE est le rapport entre le Volume d’Éjection Systolique (VES) et le Volume Télédiastolique (VTD).
+$B. Dans un cœur normal, la FE est d'environ 60 % (+- 8%).
+$C. La FE moyenne peut être approximée à ⅔ ou ⅗ du volume.
+D. Le Volume Télésystolique (VTS) est le volume maximal au repos du ventricule.
+E. Une pompe qui fonctionne mal (insuffisance cardiaque) éjecte plus, augmentant la FE.
+
+Concernant l'influence de l'activité physique sur le Débit Cardiaque (DC) :
+$A. L'activité physique intense peut amener jusqu’à +600% du DC.
+B. Un sportif de haut niveau ne peut pas dépasser 20 L/min de DC.
+$C. Le DC peut monter jusqu’à 20 L/min chez une personne non sportive.
+D. En cas d'exercice léger, le DC est multiplié par 4.
+$E. L'exercice léger correspond par exemple à une marche rapide.
+
+À propos des facteurs de variation du Débit Cardiaque (DC) au repos :
+A. En position debout, le retour veineux se fait mieux, donc le DC augmente de 20%.
+$B. En position debout, le DC est plus bas qu’en position allongée.
+$C. L’hyperthermie fait monter le DC.
+D. La digestion n'a pas d'impact notable sur le DC.
+$E. En période postprandiale, le sang est mobilisé dans le tube digestif et le foie, ce qui induit une augmentation du DC de 20% environ.
+
+Concernant la Fréquence Cardiaque (FC) :
+$A. La FC diminue avec l’âge.
+$B. La FC nominale chez un adulte jeune au repos est de 60 à 80 battements par minute.
+$C. La FC maximale théorique d’un individu est obtenue par la formule : 220 - âge.
+D. La FC augmente au repos grâce à la dépolarisation naturelle du nœud sinusal qui est freinée par le système sympathique.
+$E. Les sportifs présentent une FC plus basse (moins de 60) due notamment à une hypertonie parasympathique.
+
+À propos de la VO2 max et de ses déterminants :
+$A. La capacité à consommer l’O2 est directement proportionnelle à la capacité à amener l’O2 dans les tissus.
+$B. Plus le système cardiovasculaire est efficace, plus la VO2 max est élevée.
+C. Le Débit Cardiaque (DC) diminue lorsque la Fréquence Cardiaque (FC) augmente.
+$D. La FC est un des grands déterminants de la VO2 max.
+
+Concernant l'effet d'un exercice intense sur le système cardiovasculaire :
+A. La Fréquence Cardiaque (FC) est multipliée par un facteur 5 lors d'un exercice intense. (Incorrect: facteur 3)
+$B. Le Débit Cardiaque (DC) est multiplié par 4 lors d’un exercice intense chez une personne non sportive.
+$C. Le débit sanguin dans les muscles squelettiques peut passer de 1 200 ml/min au repos à 15 000 ml/min.
+$D. Le cœur voit son débit via les coronaires être multiplié par 3.
+E. L'essentiel du sang est envoyé dans le tube digestif lors d'un effort.
+
+À propos de la Pression Sanguine Artérielle (PSA) :
+$A. La PSA est l’application de la loi d’Ohm à la mécanique des fluides.
+$B. La formule de la PSA est PSA = Débit Cardiaque (DC) x Résistances Périphériques Totales (R).
+C. Les résistances périphériques totales sont assurées par les artères dont le calibre est inférieur à 0,3 mm.
+$D. Le système orthosympathique pilote le niveau de contraction des artérioles, influençant le niveau de résistance.
+$E. Lors d’un exercice physique, on observe la vasodilatation des artérioles des muscles.
+
+Concernant les manières d’augmenter le Volume d’Éjection Systolique (VES) :
+$A. On peut augmenter le VES en augmentant le Volume Télédiastolique (VTD).
+$B. L'augmentation du VTD augmente la précharge via la loi de Starling.
+$C. On peut augmenter le VES en diminuant le Volume Télésystolique (VTS).
+D. La diminution du VTS (vidange) est toujours dépendante des conditions de charge.
+$E. L'augmentation de la contractilité est liée aux catécholamines et au degré d’activation du système orthosympathique.
+
+À propos des phases du cycle cardiaque sur la courbe volume/pression :
+$A. La précharge correspond à la fin du remplissage ventriculaire gauche.
+B. La contraction isovolumétrique correspond à une montée en pression avec une diminution rapide du volume.
+$C. La contraction isovolumétrique est la mise en tension du myocarde juste avant la systole.
+D. La phase de postcharge est suivie par une phase de remplissage passif.
+$E. La phase de remplissage passive précède la phase de remplissage active (contraction de l'atrium).
+
+Concernant les définitions de précharge et postcharge issues du modèle du muscle isolé :
+$A. La précharge est l'ensemble des facteurs contribuant au stress de la paroi myocardique en fin de diastole.
+$B. La précharge représente le degré d'étirement du muscle avant contraction.
+C. La postcharge est la charge que doit soulever le muscle afin de se contracter de manière isométrique.
+$D. La postcharge représente les forces qui s’opposent au raccourcissement du muscle.
+E. Pour le cœur, la précharge et la postcharge se traduisent en une seule dimension.
+
+À propos de la relation longueur-tension du muscle strié (loi de Starling) :
+A. La longueur optimale du muscle strié squelettique est atteinte lorsque le muscle est étiré au maximum.
+B. Si l’on augmente de 30 % la longueur du muscle strié squelettique par rapport à l'optimum, la tension augmente.
+$C. Le muscle cardiaque travaille sur sa pente ascendante.
+$D. Augmenter légèrement la précharge du cœur permet de gagner en force de contraction.
+E. La loi de Starling est mise à profit uniquement dans le cas du muscle strié squelettique.
+
+Application et conséquence de la Loi de Starling :
+$A. En position allongée, le retour veineux augmente (+ 20%), ce qui met en jeu la loi de Starling.
+$B. La régulation induite par la loi de Starling est instantanée.
+C. L'augmentation du Volume Télédiastolique (VTD) n'a pas d'impact sur le VES à la diastole suivante.
+$D. Si l'on augmente le remplissage ventriculaire (précharge), on augmente la force de contraction.
+E. La loi de Starling permet au cœur de se dilater sans coût énergétique supplémentaire.
+
+À propos de la contractilité comme déterminant du VES :
+$A. Jouer sur la contractilité est une manière d'augmenter le VES.
+B. L'augmentation de la contractilité passe par une augmentation du Volume Télésystolique (VTS). (Incorrect: diminution)
+$C. L’augmentation de la contractilité est due à l’augmentation de l’activité du système nerveux orthosympathique.
+$D. À même niveau de précharge, les catécholamines entraînent un surcroît de contraction.
+E. L'augmentation du VES par la loi de Starling et par la contractilité sont des notions totalement dépendantes.
+
+Concernant le Système Nerveux Parasympathique (SNP) :
+$A. Le SNP naît en cranio-sacré, impliquant notamment le nerf vague (10ème paire de nerfs crâniens).
+B. Le deuxième neurone du SNP libère de la noradrénaline sur des récepteurs adrénergiques.
+$C. Le SNP innerve surtout le tissu nodal (nœud sinusal et nœud atrio-ventriculaire).
+$D. Le SNP freine en permanence le rythme de dépolarisation naturel du nœud sinusal.
+E. Couper le nerf vague (SNP) entraîne instantanément un arrêt cardiaque.
+
+À propos du Système Nerveux Orthosympathique (SNO) :
+$A. Le SNO innerve nos viscères à partir des centres thoraco-lombaires.
+B. Son premier neurone libère de la noradrénaline sur des récepteurs adrénergiques.
+$C. Le SNO innerve richement le cœur, y compris les cardiomyocytes du myocarde.
+$D. Le SNO est responsable de l'augmentation de la contractilité et de l'accélération de la FC.
+$E. Le SNO est responsable d’un certain degré de contraction des cellules musculaires lisses des artérioles.
+
+Concernant les actions du Système Nerveux Végétatif (SNV) :
+$A. Le système parasympathique est un cardio-modérateur ou « freinateur » de la FC.
+$B. La stimulation du nerf vague (SNP) à forte intensité peut entraîner un arrêt cardiaque transitoire.
+C. L'activation du SNO (par stimulation des ganglions stellaires) induit une bradycardie.
+$D. Lors d’un effort physique, l’orthosympathique est stimulé, induisant tachycardie et augmentation du Volume d’Éjection Systolique (VES).
+E. Le parasympathique et l'orthosympathique sont deux systèmes fonctionnant en synergie.
+
+À propos de l'innervation des vaisseaux par le Système Nerveux Orthosympathique (SNO) :
+$A. La plupart de nos artérioles et des veinules sont richement innervées par le SNO.
+B. Les veines sont richement innervées par le SNO. (Incorrect: très légèrement)
+C. L'innervation orthosympathique est responsable du relâchement permanent des artérioles.
+$D. L'action du SNO sur les artérioles est à l'origine des résistances artériolaires périphériques.
+
+Concernant les critères de Compétence Cardiaque :
+$A. La compétence cardiaque est associée à une fonction diastolique normale.
+$B. La Fraction d’Éjection (FE) est un critère très largement utilisé.
+$C. La Pression Télédiastolique du Ventricule Gauche (PTD VG) est un critère important.
+D. La PTD VG doit dépasser 10 mmHg chez un sujet normal pour garantir un bon remplissage. (Incorrect: ne doit pas dépasser 8 mmHg)
+E. Le dP/dT max est le critère à retenir en priorité.
+
+À propos des déterminants de la Pression Télédiastolique du Ventricule Gauche (PTD VG) :
+$A. La précharge est déterminée par la PTD VG, qui est elle-même liée au retour veineux.
+B. La PTD VG est principalement déterminée par la masse corporelle et la fréquence cardiaque.
+$C. La PTD VG est déterminée en physiologie par la volémie et le tonus veineux.
+D. Le tonus veineux est le phénomène par lequel les cellules musculaires lisses se relâchent.
+$E. Le tonus veineux est surtout important pour le ventricule droit (VD).
+
+Concernant la volémie et la circulation sanguine :
+$A. La volémie moyenne est d’environ 5 L de sang.
+$B. Au repos, deux tiers de la volémie se situent dans les veines.
+$C. Les veines sont appelées des vaisseaux de capacitance.
+D. Lors de l'exercice physique, il y a une vasodilatation des veines pour stocker le sang. (Incorrect: veinoconstriction)
+$E. La pression dans les veines est très faible, entre 2 et 10 mmHg.
+
+À propos du gradient de pression dans le système cardiovasculaire :
+$A. La pression de l’aorte est aux alentours de 95-100 mmHg.
+$B. Le débit se fait d’une zone de haute pression à une zone de basse pression.
+C. La pression est plus élevée dans les capillaires (30-12 mmHg) que dans les artères (40-100 mmHg).
+$D. La résistance à l’écoulement du sang se fait principalement au niveau des artérioles.
+$E. La vitesse d’écoulement est maximale dans l’aorte.
+
+Concernant la régulation du débit sanguin et la Loi de Poiseuille :
+$A. Le système CV est avant tout un réservoir de pression.
+$B. Le maintien d'un certain niveau de pression est crucial, car le cerveau doit toujours être suffisamment irrigué.
+$C. La Loi de Poiseuille stipule que le débit est proportionnel au rayon à la puissance 4 ($r^4$).
+D. Si le rayon de l'artériole double, le débit est multiplié par 8.
+E. La viscosité (qui est proportionnelle à l'hématocrite) n'influence pas le débit selon la loi de Poiseuille.
+
+À propos de la structure des vaisseaux :
+$A. L’intima est composée d’une monocouche de cellules endothéliales.
+B. La média est composée de fibroblastes et de cellules immunitaires. (Incorrect: Adventice)
+$C. Les artères élastiques (aorte et carotide) contiennent une quantité importante d'élastine et peu de muscle lisse.
+$D. Les artérioles sont dites de résistance car elles contiennent beaucoup de cellules musculaires lisses.
+E. La résistance à l’écoulement du sang devient significative au-dessus de 1 mm de diamètre.
+
+Concernant l'organisation et l'action des muscles vasculaires :
+$A. L'organisation en série des filaments du muscle lisse permet le maintien d'une tension presque constante malgré d'importantes variations de longueur.
+B. Le muscle strié squelettique présente une organisation des filaments en série. (Incorrect: parallèle)
+$C. Le degré de contraction du muscle lisse des artérioles (vasomotricité) est régulé par une influence neuroendocrine.
+$D. La vasomotricité est limitée dans les grosses artères car elles ne résistent pas à l’écoulement du sang.
+$E. Lors de la vasoconstriction, les cellules musculaires lisses des artérioles se contractent.
+
+À propos de la régulation du débit sanguin lors d'un exercice physique intense :
+A. Le débit de la peau diminue pour conserver l'énergie. (Incorrect: augmente pour la transpiration)
+$B. Le débit cardiaque peut atteindre 20 L/min.
+$C. Le débit sanguin dans le muscle squelettique augmente de 1 200 à 15 000 ml/min.
+$D. Le débit cérébral reste identique grâce à l’autorégulation.
+E. Le cerveau est exposé à une grosse pression sanguine car il n'est pas autorégulé.
