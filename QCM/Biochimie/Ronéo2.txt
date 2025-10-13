@@ -1,0 +1,363 @@
+À propos des protéines dans l'organisme :
+A. Elles ne peuvent pas être réutilisées telles quelles et doivent d'abord être dégradées pour fournir de l'énergie.
+$B. Elles constituent 50% du poids sec d'une cellule.
+C. Leur dégradation dans l'alimentation se fait dans l'estomac.
+D. Elles sont re-synthétisées uniquement à partir des acides aminés essentiels disponibles.
+E. Leur dégradation conduit à une diminution du pool extracellulaire d'acides aminés.
+
+Concernant le pool d'acides aminés extracellulaire :
+$A. Il est visible dans les liquides biologiques.
+B. Les acides aminés y sont libérés par le foie après la dégradation des protéines alimentaires.
+C. Son augmentation est observée dans le sang lors de la protéosynthèse.
+D. Il contient principalement les acides aminés ramifiés (AAR).
+E. Il est constitué uniquement des 20 acides aminés qui entrent dans la constitution des protéines.
+
+À propos du rôle du foie dans le métabolisme azoté des acides aminés :
+$A. Il est le tissu principal du catabolisme azoté des acides aminés.
+B. Il est le principal producteur d'acides aminés ramifiés.
+C. Il est le tissu exportateur d'acides aminés le plus important.
+$D. Il capte les acides aminés présents dans le sang.
+$E. Il produit des protéines majoritaires comme l'albumine et les facteurs de la coagulation.
+
+Concernant les exceptions au catabolisme azoté des acides aminés par le foie :
+$A. Les acides aminés ramifiés sont captés et métabolisés par les muscles.
+B. La valine, la leucine et l'histidine sont des acides aminés ramifiés.
+$C. Les muscles constituent une réserve d'azote.
+$D. La glutamine est captée principalement à destination des reins.
+E. Le foie capte une grande partie de la glutamine.
+
+À propos des acides aminés essentiels et non essentiels :
+$A. Les acides aminés essentiels doivent être apportés par l'alimentation car l'organisme ne peut pas les synthétiser.
+$B. Les acides aminés non essentiels peuvent être synthétisés à partir des acides aminés essentiels.
+C. Les acides aminés non essentiels ne sont jamais apportés par l'alimentation.
+D. La glutamine est un acide aminé essentiel.
+E. Les acides aminés non essentiels sont produits en concentrations suffisantes par l'organisme seul.
+
+Concernant le devenir du pool d'acides aminés :
+$A. Il peut donner des dérivés azotés actifs comme les hormones thyroïdiennes.
+$B. La décarboxylation d'un acide aminé donne des amines biogènes comme le GABA.
+$C. La désamination donne des acides α-cétoniques.
+D. L'amine seule (NH3) est sans danger pour l'organisme.
+$E. L'ammoniac (NH3) doit être pris en charge car son taux ne doit pas être trop élevé dans le sang.
+
+À propos des voies d'élimination de l'azote toxique :
+$A. L'uréogenèse est la voie principale d'élimination de l'azote.
+$B. L'uréogenèse a lieu dans le foie.
+C. L'ammoniogénèse élimine 80% de l'azote.
+$D. L'ammoniogénèse a lieu dans le rein.
+E. L'acide α-cétonique est directement éliminé par l'uréogenèse.
+
+Concernant la transamination dans le catabolisme des acides aminés :
+$A. Elle permet la synthèse de glutamate.
+$B. La réaction est catalysée par des enzymes aminotransférases (ASAT et ALAT).
+C. Elle implique l'échange d'azote entre un acide aminé et de l'acide pyruvique.
+$D. L'acide aminé transaminé devient un acide α-cétonique.
+$E. Elle nécessite le coenzyme PLP, issu de la vitamine B6.
+
+À propos des aminotransférases :
+$A. L'ALAT est aussi appelée TGP et se trouve surtout dans le foie.
+$B. L'ASAT est aussi appelée TGO et se trouve surtout dans les muscles, le foie et le cœur.
+C. Le dosage de ces enzymes n'est utile que pour le bilan musculaire.
+$D. Elles servent de biomarqueurs pour le fonctionnement hépatique.
+$E. Leur dosage permet de voir les phénomènes de cytolyse (infarctus, hépatique, rhabdomyolyse).
+
+Concernant la désamination oxydative :
+$A. Elle est moins fréquente que la transamination.
+$B. Elle donne directement du NH3 sans formation intermédiaire de glutamate.
+C. Elle se déroule en une seule étape.
+$D. La première étape implique l'oxydation de l'acide aminé en acide α-iminé.
+$E. La deuxième étape implique l'hydrolyse spontanée de l'iminoacide.
+
+À propos du transport de l'ammoniac (NH3) dans le sang :
+$A. Il est transporté grâce à la glutaminogénèse.
+$B. La glutamine synthétase combine le NH3 au glutamate.
+C. La glutaminogénèse consomme du ADP pour former de l'ATP.
+$D. Les purines dans l'ADN peuvent aussi libérer de l'ammoniac.
+$E. Un taux élevé de NH3 dans le sang induit une augmentation du taux de glutamine.
+
+Concernant le transport de l'azote par l'alanine et la glutamine :
+$A. L'alanine et la glutamine représentent 45% des AA circulants.
+$B. L'alanine est un transporteur secondaire de l'ammoniac.
+C. Le transport secondaire par l'alanine se met en place même si la concentration en NH3 est faible.
+$D. Le transport par l'alanine implique une double transamination.
+$E. La double transamination pour l'alanine nécessite les aminotransférases cytosoliques et le PLP.
+
+À propos de la glutaminolyse :
+$A. Elle libère le NH3 une fois arrivé au foie ou aux reins.
+$B. Elle utilise l'enzyme glutaminase pour séparer NH3 de la glutamine.
+C. La glutamine redevient un acide α-cétonique après l'action de la glutaminase.
+$D. Le glutamate subit une désamination grâce à la glutamate déshydrogénase.
+$E. Les coenzymes impliqués sont NAD et NADP, H.
+
+Concernant le cycle de l'urée :
+$A. Il est aussi appelé cycle de l'ornithine.
+B. Il est très actif en période de jeûne.
+$C. Il est exclusivement localisé dans le foie (hépatocytes périportaux).
+$D. Il permet d'éliminer 80% de l'ammoniac.
+$E. L'objectif est d'éliminer l'ammoniac toxique.
+
+À propos des molécules impliquées dans le cycle de l'urée :
+$A. Le NH3 arrive dans les hépatocytes périportaux.
+B. La glutamine pénètre dans le cytosol de l'hépatocyte.
+$C. La glutaminase agit dans la mitochondrie pour libérer NH3.
+$D. Le carbamyl phosphate se combine avec l'ornithine pour donner la citrulline.
+$E. L'Ornithine transcarbamylase (OTC) catalyse la formation de la citrulline.
+
+Concernant l'élimination de l'azote via l'urée :
+$A. L'urée est composée de deux atomes d'azote.
+$B. Lors de la catabolisation de l'arginine en ornithine, il y a production d'urée.
+C. L'urée est principalement éliminée par la sueur et la salive.
+$D. Une mole d'urée permet d'excréter deux moles d'azote.
+$E. Le cycle de l'urée consomme trois molécules d'ATP.
+
+À propos des déficits du cycle de l'urée :
+$A. Un déficit en OTC entraîne une accumulation de carbamyl phosphate.
+$B. L'accumulation de carbamyl phosphate peut conduire à l'élimination d'acide orotique par une voie alternative.
+C. L'acide orotique est un composé C synthétisé en temps normal.
+$D. Un déficit en CSP1 entraîne un taux effondré de citrulline.
+E. Le déficit en OTC est toujours une maladie à révélation tardive.
+
+Concernant l'intérêt médical du dosage de l'urée :
+$A. L'urée est un témoin majeur du catabolisme azoté.
+$B. L'augmentation de la concentration d'urée est possible suite à un régime hyperprotidique (catabolisme exogène).
+C. L'augmentation de la concentration d'urée est possible suite à une hyperhydratation.
+$D. Une diminution de la concentration d'urée peut être le signe d'une insuffisance hépato-cellulaire.
+$E. L'urée est un bon marqueur d'évaluation de la fonction rénale.
+
+À propos de l'hyperammoniémie :
+$A. L'ammoniac est toxique pour le cerveau s'il s'accumule.
+$B. Une concentration d'ammoniac supérieure à 40~µmol/L est toxique.
+$C. L'hyperammoniémie primitive est souvent due à un déficit en OTC.
+$D. L'hyperammoniémie peut altérer les astrocytes.
+E. L'hyperammoniémie secondaire est toujours due à un déficit du transporteur mitochondrial ORNT1.
+
+Concernant l'ammoniogénèse :
+$A. C'est une voie métabolique exclusivement rénale.
+$B. Elle élimine 20% de l'azote de l'organisme.
+$C. Elle a un rôle dans l'équilibre acido-basique.
+D. Elle est très sollicitée en période post-prandiale.
+$E. Elle est stimulée sur des patients atteints d'acidose.
+
+À propos des mécanismes de l'ammoniogénèse :
+$A. La glutamine est convertie en glutamate par la glutaminase, libérant du NH3.
+B. Le proton H+ s'associe à l'ion ammonium NH4+ pour être éliminé.
+$C. Le glutamate déshydrogénase enlève le deuxième groupement NH3 au glutamate.
+$D. L'anhydrase carbonique produit l'acide carbonique H2CO3.
+$E. Le NH3 s'associe à un proton H}+ pour former l'ion ammonium NH4+.
+
+Concernant le squelette carboné des acides aminés :
+$A. Il est canalisé vers sept molécules seulement.
+B. Il peut servir de substrat uniquement à la formation de glucose.
+$C. Les acides α-cétoniques servent à reformer du glucose via la néoglucogenèse.
+$D. Le pyruvate, l'acétyl-CoA et l'oxaloacétate font partie de ces sept molécules.
+E. Son catabolisme est très utilisé dans des conditions nutritionnelles normales.
+
+À propos de la classification des acides aminés :
+$A. Les acides aminés cétoformateurs purs donnent des corps cétoniques.
+$B. La lysine et la leucine sont des acides aminés cétoformateurs purs.
+C. Il existe deux acides aminés glucoformateurs purs.
+$D. L'alanine et l'aspartate sont des acides aminés glucoformateurs.
+$E. Les acides aminés mixtes peuvent donner du glucose et des corps cétoniques.
+
+Concernant le métabolisme en période post-prandiale :
+$A. Il y a protéolyse et protéosynthèse au niveau des muscles.
+$B. Les entérocytes désaminent la glutamine et le glutamate, ce qui augmente le NH3.
+$C. L'alcalose stimule l'uréogenèse dans le foie.
+D. L'ammoniogénèse est très active au niveau des reins.
+$E. L'alanine est transformée en aspartate dans le foie après double transamination.
+
+À propos du métabolisme en période de jeûne :
+$A. Il y a protéolyse au niveau des muscles, mais pas de protéosynthèse.
+$B. Les acides aminés ramifiés subissent une double transamination pour créer de l'alanine.
+C. Les entérocytes libèrent le NH3 dans la circulation systémique.
+$D. Le foie capte l'alanine pour la néoglucogenèse.
+$E. La glutamine est générée par le foie et exportée vers les reins.
+
+Concernant la régulation de l'élimination de l'azote en période de jeûne :
+$A. L'acidose limite l'uréogenèse.
+$B. L'ammoniogénèse est favorisée car elle consomme des protons.
+C. Le foie capte le NH3 uniquement pour l'uréogenèse.
+$D. La production de NH3 par le rein stimule l'ammoniogénèse.
+E. La glutamine synthétase est inactivée en acidose.
+
+Concernant la détoxification de l'azote :
+A. La glutaminolyse est la première étape du processus.
+$B. Le transport du NH3 se fait grâce à la glutaminogénèse.
+C. La désamination oxydative est la voie principale de libération du NH3.
+$D. La glutamine transporte l'azote dans le sang et le libère dans le foie ou les reins.
+$E. L'élimination du NH3 se fait par l'uréogenèse ou l'ammoniogénèse.
+
+À propos du rôle du rein dans l'équilibre acido-basique :
+$A. Il métabolise activement la glutamine pour le maintien de l'équilibre acido-basique.
+$B. Il utilise la glutamine pour revenir à un pH physiologique.
+$C. L'ammoniogénèse permet d'éliminer les protons.
+D. L'uréogenèse rénale élimine les bicarbonates (HCO3-).
+$E. Il élimine le NH4+ dans les urines en l'associant à du Cl-.
+
+Concernant les enzymes aminotransférases :
+$A. Les aminotransférases assurent des échanges d'azote entre les AA et les acides α-cétoniques.
+$B. L'ASAT est la Transaminase Glutamo Oxaloacétique (TGO).
+$C. L'ALAT est la Transférase Glutamo Pyruvique (TGP).
+$D. La synthèse de l'alanine se fait à partir d'acides α-cétoniques dans le foie et le muscle.
+$E. Elles sont très actives et ubiquitaires.
+
+À propos de l'acide α-cétonique :
+$A. Il est formé après la désamination d'un acide aminé.
+$B. Il sert à recréer des molécules pour avoir une source d'énergie pendant le jeûne.
+C. Il peut donner du glucose uniquement par la cétogénèse.
+$D. Il peut donner des corps cétoniques via la cétogénèse.
+$E. Il peut être utilisé dans le cycle de Krebs pour donner de l'ATP.
+
+Concernant l'état métabolique du foie en période post-prandiale :
+$A. Il est le site principal du catabolisme azoté des acides aminés, à l'exception des acides aminés ramifiés (AAR).
+$B. L'alcalose associée à cette période stimule l'uréogenèse.
+C. L'ammoniogénèse est la voie privilégiée d'élimination de l'azote.
+$D. L'alanine est transformée en aspartate après une double transamination.
+$E. Le foie capte les deux tiers 2/3 des acides aminés issus de la circulation portale.
+
+À propos du rôle du rein en période post-prandiale :
+A. Il y a une augmentation importante de l'activité de l'ammoniogénèse.
+$B. Le rein métabolise la glutamine pour libérer du NH3.
+$C. L'ammoniogénèse est peu active en raison de l'état d'alcalose.
+D. Il élimine activement l'azote via le cycle de l'urée.
+E. Il ne participe pas au métabolisme des acides aminés.
+
+Concernant le métabolisme des muscles en période post-prandiale :
+$A. Ils captent les acides aminés ramifiés (AAR).
+$B. La protéosynthèse est observée.
+C. Les AAR captés représentent 25% des acides aminés musculaires.
+$D. Les muscles produisent du NH3 via l'alanine et la glutamine.
+E. Ils exportent activement les acides α-cétoniques vers le foie.
+
+À propos des entérocytes en période post-prandiale :
+$A. Il se produit une désamination oxydative de la glutamine et du glutamate.
+$B. Le catabolisme des nutriments entraîne une augmentation de la concentration en HCO3-.
+$C. Ils induisent une augmentation de l'alanine par double transamination.
+D. Le NH3 produit est directement envoyé dans la circulation systémique.
+E. Ils effectuent l'uréogenèse.
+
+Concernant la période post-prandiale de manière générale :
+$A. Elle est associée à un état d'alcalose.
+$B. Le cycle de l'urée (uréogenèse) est très actif.
+C. L'ammoniogénèse est la voie prédominante d'élimination de l'azote.
+$D. L'apport conséquent en acides aminés et NH3 stimule l'uréogenèse hépatique.
+E. La glutamine synthétase est activée.
+
+À propos du métabolisme musculaire en période de jeûne :
+$A. La protéolyse est active.
+B. La protéosynthèse est favorisée par l'absence d'apport en acides aminés.
+$C. La double transamination des AAR produit de l'alanine.
+$D. La production de glutamine est observée.
+$E. Les acides α-cétoniques produits sont exportés vers le foie pour la cétogenèse ou la néoglucogenèse.
+
+Concernant le foie en période de jeûne :
+$A. Il capte l'alanine pour la néoglucogenèse.
+$B. L'uréogenèse est limitée.
+$C. En acidose, l'activité de la glutamine synthétase est augmentée.
+D. La glutamine générée est exportée vers le cœur pour le transport de l'ammoniac.
+$E. Il capte le NH3.
+
+À propos du métabolisme rénal en période de jeûne :
+$A. Il capte la glutamine.
+$B. Il produit du NH3 qui est un substrat de l'ammoniogenèse.
+$C. L'ammoniogénèse est favorisée.
+D. La production de NH3 est limitée.
+$E. Cette voie est très sollicitée chez les patients atteints d'acidose.
+
+Concernant les entérocytes en période de jeûne :
+$A. Ils captent la glutamine provenant des muscles ou du rein.
+$B. La glutamine est convertie en glutamate.
+$C. Ils libèrent du NH3 dans le sang portal.
+D. La transamination du glutamate avec l'oxaloacétate forme de l'alanine.
+$E. Ils participent à la formation d'alanine.
+
+À propos de l'élimination de l'azote en période de jeûne :
+$A. L'ammoniogénèse est plus sollicitée.
+B. L'uréogenèse assure l'élimination de la majorité de l'azote.
+$C. La néoglucogenèse hépatique est un processus clé utilisant l'alanine captée.
+$D. L'ammoniogénèse permet de consommer les protons, étant ainsi favorisée en acidose.
+E. Le foie exporte l'alanine vers les reins.
+
+Concernant le transport de l'ammoniac (NH3) :
+$A. L'alanine et la glutamine sont les principaux acides aminés transporteurs de groupement aminé.
+$B. La glutamine est synthétisée dans les muscles, le cerveau et les poumons.
+C. Le transport secondaire par l'alanine est toujours mis en place indépendamment de la concentration en NH3 dans le sang.
+$D. L'alanine et la glutamine représentent 45% des acides aminés circulants.
+$E. La glutaminogénèse ajoute un NH3 à l'acide glutamique.
+
+À propos de la désamination oxydative :
+$A. Elle donne directement du NH3 sans passer par le glutamate.
+B. Elle est plus fréquente que la transamination.
+$C. La réaction est catalysée par une déshydrogénase et utilise NAD+/NADP+.
+$D. L'iminoacide formé subit une hydrolyse spontanée pour donner un acide α-cétonique et du NH3.
+E. Elle se déroule uniquement dans le foie.
+
+Concernant le cycle de l'urée :
+$A. Il est très actif lorsque les protéines sont dégradées après un repas (post-prandial).
+$B. L'urée produite est composée de deux atomes d'azote.
+$C. Il élimine 80% de l'azote de l'organisme.
+D. Il est actif à la fois dans le foie et dans les reins.
+$E. Il consomme 3 molécules d'ATP.
+
+À propos de l'uréogenèse et des molécules impliquées dans le cycle :
+$A. Le carbamyl phosphate se condense avec l'ornithine pour donner la citrulline.
+$B. La citrulline est transportée dans le cytosol via le transporteur ORNT1.
+$C. Lors de la catabolisation de l'arginine en ornithine, il y a production d'urée.
+D. La glutamine pénètre dans le cytosol de l'hépatocyte.
+$E. L'ornithine transcarbamylase (OTC) est une enzyme clé.
+
+Concernant les acides aminés cétoformateurs et glucoformateurs :
+$A. Le squelette carboné des 20 acides aminés protéinogènes est canalisé vers 7 molécules seulement.
+$B. La Lysine et la Leucine sont des acides aminés cétoformateurs purs.
+C. Le catabolisme carboné est fortement sollicité dans des conditions physiologiques et nutritionnelles normales.
+$D. L'Alanine est un acide aminé glucoformateur.
+E. L'Isoleucine est classée comme un acide aminé cétoformateur pur.
+
+Concernant les acides aminés ramifiés (AAR) :
+$A. Ils sont captés et métabolisés par les muscles.
+$B. La Valine, la Leucine et l'Isoleucine en font partie.
+C. Ils sont le principal site du catabolisme azoté dans le foie.
+$D. Ils représentent 45% des acides aminés musculaires en post-prandial.
+E. Pendant le jeûne, ils sont la source principale de protéosynthèse musculaire.
+
+À propos de la détoxification de l'azote et de l'ammoniac (NH3) :
+$A. Le NH3 est toxique pour le cerveau s'il s'accumule.
+$B. L'ammoniac doit être pris en charge car il est nocif pour l'organisme si son taux est trop élevé dans le sang.
+$C. Le NH3 est un catabolite obligatoire du métabolisme des acides aminés.
+D. Le foie élimine 20% de l'azote via l'uréogenèse.
+$E. La glutamine est reconvertie en NH3 dans l'intestin, le foie et le rein.
+
+Concernant les acides aminés transporteurs de NH3 :
+$A. La glutamine est un acide aminé neutre comportant deux azotes.
+B. La première étape du transport de NH3 est l'ammoniogénèse.
+$C. La glutamine synthétase est impliquée dans la glutaminogénèse.
+$D. La glutaminolyse permet la libération de NH3 dans le foie.
+$E. Si le taux de NH3 augmente, le taux de glutamine augmente aussi.
+
+À propos des déficits du cycle de l'urée :
+$A. Le déficit en OTC (Ornithine transcarbamylase) est le plus fréquent.
+$B. Le déficit en OTC provoque un effondrement du taux de citrulline.
+$C. En cas de déficit en OTC, le carbamyl phosphate est éliminé sous forme d'acide orotique.
+D. Le déficit en CPS1 entraîne une augmentation du carbamyl phosphate.
+$E. Les déficits du cycle de l'urée peuvent se manifester par un coma.
+
+Concernant la régulation et la comparaison entre jeûne et post-prandial (PP) :
+$A. L'ammoniogénèse est favorisée en acidose.
+B. En période de jeûne, le foie limite la glutamine synthétase.
+$C. En PP, le foie réalise l'uréogenèse en partie stimulée par l'augmentation des substrats NH3 et HCO3-.
+D. L'uréogenèse est plus sollicitée en période de jeûne.
+$E. L'ammoniogénèse est augmentée lors d'une insuffisance hépatique.
+
+À propos de la glutamine, acide aminé particulier :
+$A. Elle est captée par les reins pour le maintien de l'équilibre acido-basique.
+$B. Une infime partie de la glutamine peut être captée par les hépatocytes.
+C. Elle ne transporte l'azote que vers les reins.
+$D. Sa métabolisation entraîne une grande production de NH3 dans les reins en période de jeûne.
+E. Elle est uniquement synthétisée dans les hépatocytes périportaux.
+
+Concernant le dosage de l'urée :
+$A. C'est un témoin majeur du catabolisme azoté.
+$B. Une augmentation de l'urée est un bon marqueur d'évaluation de la fonction rénale.
+$C. Une augmentation de la concentration d'urée est souvent observée chez le sujet âgé.
+D. Une diminution de l'urée peut être le signe d'une insuffisance rénale aiguë.
+$E. L'urée est éliminée à 90% par les reins (urine).
