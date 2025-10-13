@@ -137,3 +137,143 @@ $B. Elle est située sur la face médiale (cloison inter-atriale) de l'atrium dr
 $C. Elle est bordée par un croissant fibreux appelé le limbe de la fosse ovale.
 $D. C'est la séquelle du foramen ovale qui permettait le shunt droit-gauche chez le fœtus.
 E. Sa fermeture est nécessaire avant la naissance.
+
+Concernant le ventricule gauche (VG) :
+A. Il est de forme triangulaire sur une coupe transversale.
+B. Il possède des parois musculaires moins épaisses que le ventricule droit (VD).
+$C. Il forme l'apex du cœur.
+$D. Il possède deux bords et trois faces.
+$E. Sa capacité est d'environ 260 cc.
+
+À propos de l'atrium gauche (AG) :
+$A. Il reçoit du sang hyperoxygéné provenant des poumons.
+B. Il est ovoïde avec un grand axe vertical.
+C. Il communique avec l'atrium droit (AD) par le foramen ovale après la naissance.
+$D. Il possède quatre ostiums pour les veines pulmonaires sur sa face postérieure.
+E. Il se situe majoritairement dans le médiastin postérieur.
+
+Concernant la valve mitrale (valve atrio-ventriculaire gauche) :
+A. Son orifice est parfaitement circulaire.
+$B. Elle est également appelée valve atrio-ventriculaire gauche.
+C. Elle possède trois cuspides quadrilatères.
+$D. Son anneau est fibro-élastique et dépourvu de myocarde.
+$E. L'une de ses cuspides est dite septale ou antérieure.
+
+À propos des structures musculaires internes du ventricule gauche :
+$A. Il est constitué d'une chambre d’admission et d’une chambre d’éjection.
+$B. Les parois musculaires sont très trabéculées au niveau de la chambre d’admission.
+C. Les trabécules charnues y sont plus volumineuses que dans le ventricule droit.
+$D. Les muscles papillaires postérieurs sont très épais.
+E. La chambre d’éjection est en regard de l'ostium atrio-ventriculaire.
+
+Concernant l’ostium aortique :
+$A. Il est circulaire et mesure environ 25 mm de diamètre.
+$B. Il est composé de trois valvules semi-lunaires (postérieure, droite et gauche).
+C. Les artères coronaires émergent en dessous de ses valvules semi-lunaires.
+D. Il regarde en arrière, en haut et à gauche.
+E. Ses valvules possèdent des cordages tendineux pour éviter le reflux.
+
+Concernant la vascularisation du cœur gauche :
+A. L'artère coronaire droite vascularise l'atrium gauche.
+$B. L'artère coronaire gauche donne la branche interventriculaire antérieure (IVA).
+C. La branche interventriculaire postérieure (IVP) vascularise principalement le ventricule gauche.
+$D. Le ventricule gauche est vascularisé par les branches de la coronaire gauche.
+$E. L’artère coronaire gauche vascularise les deux tiers antérieurs de la cloison ventriculaire.
+
+À propos de la circulation sanguine dans le cœur gauche :
+$A. Le sang oxygéné passe de l'atrium gauche au ventricule gauche par la valve mitrale.
+$B. Le ventricule gauche éjecte le sang dans la grande circulation via l'aorte.
+C. Le sang contenu dans les veines pulmonaires est désoxygéné.
+D. La grande circulation a un objectif uniquement d'oxygénation.
+E. La capacité totale des cavités gauches est supérieure aux cavités droites.
+
+Concernant la structure du ventricule gauche :
+$A. Les fibres musculaires sont organisées en trois couches, dont une superficielle spiralée autour de l'apex.
+B. La couche moyenne est faite de fibres communes aux deux ventricules.
+$C. Le myocarde du VG est très vascularisé.
+$D. Les trabécules et les muscles papillaires proviennent de la couche profonde du myocarde.
+$E. La pression plus importante dans le VG nécessite des muscles papillaires plus volumineux pour attacher les cordages.
+
+À propos des valvules semi-lunaires de l'ostium aortique :
+$A. Elles sont concaves vers le haut.
+B. L'étanchéité est assurée par la présence de cordages.
+$C. Elles possèdent sur leur bord libre un épaississement fibreux appelé lunule.
+$D. Le nodule de Morgagni se trouve au centre de la lunule.
+E. Elles ne permettent pas l'émergence des artères coronaires.
+
+Concernant la charpente fibreuse du cœur :
+A. Elle est située en avant des atriums.
+B. Elle permet le passage de toutes les fibres musculaires entre atriums et ventricules.
+$C. Elle est constituée d’anneaux fibreux autour des ostiums atrio-ventriculaires et ventriculaires.
+$D. Le trigone fibreux gauche réunit l’anneau aortique et l’anneau atrio-ventriculaire gauche.
+E. Elle maintient la forme du cœur mais ne permet pas l'insertion des valves.
+
+Concernant le cheminement de l’influx cardiaque dans le CG :
+A. L'innervation intrinsèque est assurée par le système végétatif.
+$B. La branche gauche du faisceau atrio-ventriculaire est plus épaisse que la branche droite.
+C. La branche gauche pénètre dans le ventricule gauche au niveau de la trabécule septo-marginale.
+D. La ramification sous-endocardique dans le VG forme le nœud de Keith et Flack.
+$E. L'innervation extrinsèque des ventricules est gérée par le plexus cardiaque superficiel.
+
+À propos de l'atrium gauche et ses rapports :
+$A. L'atrium gauche est l'organe qui est contourné en arrière par le sinus oblique du péricarde.
+B. La face postérieure de l’atrium gauche est entièrement couverte par le péricarde séreux.
+C. L'auricule gauche dépend du ventricule gauche.
+$D. La face médiale de l'AG est la paroi interatriale.
+$E. L'œsophage est un rapport postérieur majeur de la base du cœur.
+
+Concernant la circulation systémique (grande circulation) :
+A. Elle a lieu uniquement intra-thoracique.
+$B. Elle part du ventricule gauche et emprunte l'aorte.
+$C. Elle a pour objectif la vascularisation nourricière des tissus.
+D. Elle draine le sang vers l'atrium gauche par les veines caves.
+$E. Elle est retrouvée au niveau thoracique pour la vascularisation nourricière des poumons.
+
+À propos du péricarde entourant le cœur gauche :
+$A. Le péricarde séreux possède un feuillet viscéral appelé épicarde.
+B. La cavité péricardique est un espace réel rempli de liquide.
+C. Le péricarde fibreux a la même structure que le péricarde séreux.
+$D. Le péricarde fibreux permet de fixer le cœur au sein du médiastin.
+E. Le cœur est entièrement recouvert par le péricarde séreux.
+
+Concernant les cuspides de la valve mitrale :
+$A. Elles sont au nombre de deux.
+B. La cuspide gauche/postérieure est la plus grande (principale).
+$C. Elles sont attachées par des cordages aux muscles papillaires du ventricule gauche.
+D. Leur rupture provoque une insuffisance cardiaque tricuspidienne.
+E. L’orifice regarde quasiment verticalement, légèrement à droite et en avant.
+
+À propos de la transposition des gros vaisseaux :
+A. C'est une malformation non cyanogène.
+$B. Elle est causée par un septum aortico-pulmonaire rectiligne et non spiralé.
+C. Elle est viable sans intervention chirurgicale néonatale.
+D. Elle est souvent associée à une sténose pulmonaire infundibulaire.
+$E. Elle peut être associée à une persistance du canal artériel.
+
+Concernant la dépolarisation du myocarde gauche visible à l'ECG :
+A. L'onde P correspond à la contraction du ventricule gauche.
+$B. Le complexe QRS représente la contraction des ventricules (droits et gauches).
+C. Une extrasystole ventriculaire (ESV) résulte d'un ordre provenant du nœud sinu-atrial.
+D. L'espace PQ correspond au passage de l'influx au niveau du faisceau de Purkinje.
+$E. Une anomalie de dépolarisation visible à l'ECG peut indiquer un infarctus du myocarde.
+
+À propos de l'artère coronaire gauche (ACG) :
+$A. Elle naît de l'aorte ascendante, au-dessus de la valvule semi-lunaire gauche.
+$B. Son trajet est très court avant de se diviser.
+C. Elle contourne le bord antérieur du tronc pulmonaire.
+D. Elle se termine en donnant l'artère interventriculaire postérieure (IVP) et l'artère circonflexe.
+E. Elle vascularise principalement le nœud sino-atrial.
+
+Concernant les caractéristiques physiques du cœur gauche (CG) :
+A. La masse du cœur varie généralement entre 300 et 350 g.
+$B. L'axe du cœur est oblique, orienté vers le bas, en avant et à gauche.
+$C. Les deux tiers du cœur sont situés à gauche de la ligne médiane.
+D. L'atrium gauche a la même forme que l'atrium droit.
+E. Le cœur est interposé uniquement entre le système sanguin et le système lymphatique.
+
+Concernant la connexion du ventricule gauche avec les valves :
+$A. Le ventricule gauche présente deux ostiums à sa base : l’ostium atrio-ventriculaire et l’ostium aortique.
+$B. L’ostium atrio-ventriculaire gauche contient la valve mitrale.
+C. La chambre d’éjection du VG est la zone la plus trabéculée.
+$D. Le bord antérieur du VG possède un muscle papillaire antérieur.
+E. Les cordages tendineux fixent les valvules pour favoriser l'inversion de sens des valves atrio-ventriculaires.
