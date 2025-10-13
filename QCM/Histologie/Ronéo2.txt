@@ -1,0 +1,335 @@
+Concernant les différents types d’artères :
+$A. Les artères sont classées selon leur diamètre, leur structure et leur fonction.
+$B. Les artères musculaires sont les plus répandues dans l'organisme.
+C. Il existe deux types d’artères : élastiques et vasculaires.
+D. Les artérioles représentent les branches de division principales des artères élastiques.
+E. Les artères élastiques sont appelées vaisseaux de résistance.
+
+À propos des artères élastiques :
+A. Elles reçoivent le sang par le cœur par intermittence sous basse pression.
+$B. Leur intima est épaisse et comporte un endartère constitué de deux sous-couches.
+$C. Elles sont impliquées dans la formation des plaques d’athérome au cours de l’athérosclérose.
+$D. Leur média est épaisse et présente plusieurs dizaines de couches de lames élastiques concentriques et fenêtrées.
+E. La limitante élastique externe est très visible entre la média et l’adventice.
+
+Concernant les cellules myo-intimales dans les artères élastiques :
+$A. Elles sont retrouvées dans la couche profonde de l’endartère.
+$B. Elles possèdent des propriétés de contraction.
+$C. Elles peuvent effectuer de la phagocytose, notamment des lipides.
+$D. Elles peuvent être issues de la migration et dédifférenciation des cellules musculaires lisses de la média.
+E. Elles ne sécrètent jamais de composants de la Matrice Extracellulaire (MEC).
+
+À propos des artères musculaires :
+$A. Elles sont de moyen calibre, autour de 3 mm.
+$B. Elles sont des vaisseaux de distribution qui distribuent de manière sélective le sang aux organes et tissus.
+C. La limitante élastique interne est peu visible à l’hémalun éosine.
+$D. Elles assurent le tonus vasomoteur grâce aux capacités de vasoconstriction et vasodilatation.
+E. Leur média est uniquement constituée de couches de cellules musculaires lisses.
+
+Concernant les artérioles :
+$A. Elles sont les vaisseaux de résistance qui régulent l’apport de sang dans la microcirculation.
+B. Elles ont un diamètre supérieur à 0,5 mm.
+$C. Leur média est constituée d’une à deux couches de cellules musculaires lisses.
+D. La limitante élastique externe et les vasa vasorum sont généralement présents.
+$E. L’adventice est fine et fusionne avec le conjonctif voisin.
+
+Concernant la vascularisation des artères :
+$A. Les vasa vasorum nourrissent l’adventice et les deux tiers externes de la média pour les artères de calibre supérieur à 1 mm.
+B. L’intima et la totalité de la média sont nourries par diffusion directe du sang intraluminal.
+C. Les vaisseaux de moins de 1 mm (artérioles) nécessitent des vasa vasorum.
+$D. Une zone de faiblesse de la paroi est située au plus loin du sang intraluminal et des vasa vasorum.
+E. Les vasa vasorum apportent uniquement l'oxygène à la paroi artérielle.
+
+Concernant les pathologies et le vieillissement de la paroi artérielle :
+$A. L’artériosclérose est le vieillissement de la paroi caractérisé par le durcissement de la média (fibrose).
+$B. L’artériosclérose entraîne une perte d’extensibilité et peut causer la formation d’un anévrisme.
+C. L’athérosclérose est causée uniquement par des facteurs génétiques.
+$D. L'accumulation de lipoprotéines de faible densité (LDL) dans l’intima marque la première étape de l’athérosclérose.
+$E. La rupture d’une plaque d’athérome peut entraîner la formation d’un thrombus et un infarctus.
+
+À propos de la microcirculation :
+$A. Elle est constituée de vaisseaux sanguins de petit calibre (capillaires).
+$B. C’est la zone où se font les échanges tissulaires (gaz, fluides, nutriments et déchets).
+$C. Les métartérioles sont des vaisseaux de transition entre l’artériole et les capillaires.
+D. Le système porte veineux se situe entre deux artérioles.
+E. Les capillaires ont un diamètre généralement bien supérieur à celui d’une hématie.
+
+Concernant les différents types de capillaires :
+$A. Les capillaires continus sont majoritaires dans l’organisme et se trouvent notamment dans le muscle et la peau.
+$B. Les capillaires fenêtrés possèdent de petits pores transcytoplasmiques.
+C. Les capillaires sinusoïdes sont retrouvés au niveau du glomérule rénal pour la formation de l'urine primitive.
+$D. La basale est discontinue au niveau des capillaires sinusoïdes.
+$E. Les capillaires fenêtrés se trouvent dans les glandes endocrines et au niveau de la muqueuse digestive.
+
+À propos des veines :
+$A. Elles sont des vaisseaux de remplissage qui assurent le retour sanguin des tissus vers le cœur.
+B. Elles possèdent une paroi plus épaisse et une lumière plus étroite que les artères.
+$C. La limitante élastique interne est absente ou très fragmentée dans l’intima.
+D. La média des veines est bien organisée en couches circulaires de cellules musculaires lisses.
+$E. Les valves veineuses sont une expansion de l’intima composées d'un centre conjonctif tapissé d’endothélium.
+
+Concernant le système vasculaire lymphatique :
+A. Il fonctionne en boucle, possédant à la fois un circuit de départ et un circuit de retour.
+$B. Les capillaires lymphatiques naissent dans les tissus sous forme de vaisseaux borgnes.
+$C. La basale des capillaires lymphatiques est discontinue pour favoriser le passage de molécules et du liquide interstitiel.
+D. La lymphe est déversée dans les petits troncs veineux de la microcirculation.
+$E. Les vaisseaux collecteurs lymphatiques ont une paroi ressemblant à celle des veines et possèdent de nombreuses valves.
+
+À propos des rôles de l’appareil respiratoire :
+$A. Il assure l’hématose.
+$B. Il contribue à la défense immunitaire grâce au tissu lymphoïde associé (MALT et BALT).
+C. Il est uniquement une zone de conduction de l’air.
+$D. Il contient le système endocrinien diffus (SED) composé de cellules endocrines éparpillées.
+E. La plèvre est la surface d’échange entre l’air et le sang.
+
+Concernant l’épithélium de l’appareil respiratoire :
+A. L’épithélium respiratoire est généralement un épithélium pavimenteux stratifié non kératinisé.
+$B. Il est conventionnellement un épithélium cylindrique pseudostratifié.
+$C. L’épithélium cylindrique pseudostratifié se retrouve des fosses nasales jusqu’aux bronches sus-lobulaires.
+D. Toutes les cellules de cet épithélium atteignent la surface.
+$E. Les zones soumises à des contraintes mécaniques, comme les vraies cordes vocales, sont tapissées d’épithélium malpighien stratifié non kératinisé.
+
+À propos des cellules de l’épithélium respiratoire :
+$A. Les cellules ciliées sont les plus nombreuses et possèdent des cils mobiles ancrés par des corpuscules basaux.
+$B. Le battement ciliaire est coordonné, synchrone et unidirectionnel vers l'oropharynx.
+C. Les cellules caliciformes sont plus nombreuses que les cellules ciliées.
+$D. Le mucus des cellules caliciformes est acide, visqueux et sert à coller les microorganismes.
+E. Le noyau des cellules caliciformes est bien visible et central en coloration classique (hémalun éosine).
+
+Concernant les structures du système respiratoire :
+$A. Les cellules de remplacement sont des cellules indifférenciées qui ne vont pas atteindre la surface de l’épithélium.
+B. Les cellules neuroendocrines sont facilement observables avec une coloration à l’hématoxyline-éosine.
+$C. Les cellules neuroendocrines régulent l’activité des cellules musculaires lisses de la paroi respiratoire.
+$D. Le chorion est composé d’un tissu conjonctif lâche riche en fibres élastiques à orientation longitudinale.
+E. Le réseau élastique du chorion permet uniquement de faciliter la filtration des agents pathogènes.
+
+À propos des glandes séro-muqueuses tubulo-acineuses du chorion respiratoire :
+$A. Les acini séreux sont constitués de cellules séreuses pyramidales qui entourent une lumière virtuelle.
+B. Les acini muqueux sont caractérisés par un cytoplasme fortement coloré et un noyau arrondi.
+$C. Dans les acini séreux, l’aspect acidophile au pôle apical est dû à la présence de grains de zymogènes.
+$D. Des cellules myo-épithéliales, entourées par la basale, aident à la vidange du contenu de l’acinus.
+$E. Les acini mixtes (séro-muqueux) possèdent des cellules séreuses regroupées formant le croissant de Gianuzzi.
+
+Concernant l’épuration de l’air inspiré :
+$A. L’avancement du tapis de mucus (épuration) est permis par le battement des cils.
+B. La face superficielle du mucus est fluide pour faciliter le mouvement des cils.
+$C. La dyskinésie ciliaire entraîne des infections précoces et répétées de l’arbre respiratoire.
+$D. L'agression chronique (ex: tabac) cause une diminution du nombre de cellules ciliées et une augmentation des cellules caliciformes.
+$E. La métaplasie malpighienne remplace l'épithélium respiratoire par un épithélium pluristratifié pavimenteux qui peut évoluer vers la dysplasie.
+
+Rédiges des QCM d’examen finaux.
+
+Concernant la structure des artères élastiques :
+$A. Leur intima est épaisse et l'endartère est constitué d’une sous-couche riche en fibres élastiques immédiatement sous-endothéliale.
+$B. La limitante élastique interne est peu visible, car elle est confondue avec les fibres élastiques de la média.
+$C. La média est caractérisée par plusieurs dizaines de couches de lames élastiques concentriques, épaisses et fenêtrées.
+$D. Les cellules musculaires lisses de la média sont rameuses et peuvent se dédifférencier pour donner des cellules myo-intimales dans l'endartère.
+E. La limitante élastique externe est très visible entre la média et l’adventice, notamment en coloration spéciale.
+
+À propos des artères musculaires, aussi appelées artères de distribution :
+$A. Ce sont les artères de moyen calibre et les plus répandues dans l'organisme.
+$B. Elles assurent le tonus vasomoteur grâce à la vasoconstriction et la vasodilatation.
+C. L'intima est épaisse et l'endartère contient des cellules myo-intimales impliquées dans la phagocytose des lipides.
+$D. La limitante élastique interne est très visible, elle présente un aspect festonné et fenestré.
+E. L'adventice est un tissu conjonctif mince.
+
+Concernant les artérioles et la vascularisation artérielle :
+$A. Les artérioles sont les branches terminales du système artériel et sont des vaisseaux de résistance.
+B. Les artérioles possèdent une média constituée de plusieurs dizaines de couches de cellules musculaires lisses.
+C. La présence de vasa vasorum est nécessaire dans les artérioles.
+$D. L'apport en oxygène et nutriments pour l'intima et le tiers interne de la média se fait par diffusion directe du sang intraluminal.
+$E. Les artères ayant un calibre supérieur à 1 mm ont des vaisseaux nourriciers appelés vasa vasorum qui arrivent par l’adventice.
+
+À propos de la terminaison artérielle et des conséquences pathologiques :
+$A. Le mode de terminaison terminale ne forme pas de branche avec la division voisine et est retrouvé dans le cœur et le rein.
+B. Le mode de terminaison anastomotique permet un apport rapide dans les organes.
+$C. Si un thrombus survient dans une artère à terminaison terminale, cela peut entraîner une nécrose des territoires dépendants, à l’origine d’un infarctus.
+D. L'artériosclérose est le processus d’accumulation de lipides dans la paroi artérielle.
+$E. L’artériosclérose correspond au vieillissement de la paroi artérielle, entraînant la perte d’élasticité et un durcissement de la média.
+
+Concernant l'athérosclérose, la pathologie liée à l'accumulation de lipides :
+$A. L'HTA, le tabac et le diabète sont des facteurs de risque de l'athérosclérose.
+$B. La première étape implique l'infiltration des lipoprotéines de faible densité (LDL) dans l'intima.
+$C. La phagocytose des LDL par les macrophages de l'endartère mène à la formation de cellules spumeuses.
+D. La formation des plaques d'athérome se produit principalement dans la média.
+$E. Une rupture de la plaque d'athérome peut activer les plaquettes et former un thrombus, entraînant un infarctus.
+
+À propos des généralités de la microcirculation et des systèmes spéciaux :
+$A. La microcirculation correspond à tous les vaisseaux compris entre une artériole et une veinule.
+$B. Les capillaires, d'un diamètre de 5-10 µm, sont constitués d’une unique couche de cellules endothéliales.
+C. Les sphincters pré-capillaires sont situés au niveau des veinules et régulent la sortie du sang.
+$D. Le système admirable (ou porte-artériel) dans le glomérule rénal relie deux artérioles et a un rôle dans la formation de l'urine.
+E. Le système porte veineux dans le foie a pour seul rôle d'amener les nutriments au foie pour un rôle nutritif.
+
+Concernant les différents types de capillaires :
+$A. Les capillaires continus sont majoritaires dans l'organisme et présentent des péricytes qui ont des propriétés contractiles et phagocytaires.
+B. Les capillaires continus permettent les échanges rapides de macromolécules grâce à des pores transcytoplasmiques.
+$C. Les capillaires fenêtrés se retrouvent dans les glandes endocrines et au niveau du glomérule rénal.
+$D. Les capillaires sinusoïdes sont caractérisés par des cellules endothéliales aux jonctions lâches et une basale discontinue.
+$E. Les capillaires sinusoïdes sont présents dans la moelle osseuse hématopoïétique.
+
+À propos des veines et du système vasculaire lymphatique :
+$A. Les veines sont des vaisseaux de remplissage dont la lumière est plus large et la paroi plus fine que les artères.
+B. La média des veines est épaisse et possède une capacité de vasomotricité importante.
+$C. Les veines contiennent des valves, qui sont des expansions de l’intima, pour empêcher le reflux sanguin.
+$D. Le système vasculaire lymphatique draine le liquide interstitiel et ne fonctionne pas en boucle.
+$E. Les capillaires lymphatiques ont une basale discontinue et des cellules endothéliales peu jointives pour favoriser le passage de molécules des tissus vers la lymphe.
+
+Rédiges des QCM d’examen finaux.
+
+Concernant la structure histologique des artères élastiques (ex: l'aorte) :
+A. Elles sont principalement considérées comme des vaisseaux de distribution du sang.
+$B. L’intima est épaisse et contient un endartère riche en fibres élastiques dans sa sous-couche immédiatement sous-endothéliale.
+$C. La limitante élastique interne est généralement peu visible car elle se confond avec les fibres élastiques de la média.
+$D. La média est composée de plusieurs dizaines de couches de lames élastiques épaisses et fenêtrées.
+E. La limitante élastique externe est très visible et sépare clairement la média de l’adventice.
+
+À propos des cellules myo-intimales présentes dans les artères élastiques :
+$A. Ce sont des cellules musculaires lisses qui ont migré depuis la média.
+$B. Elles sont localisées dans l’endartère, sous l’endothélium.
+$C. Elles ont des propriétés de phagocytose, notamment vis-à-vis des lipides.
+$D. Elles peuvent participer à la formation des plaques d’athérome.
+E. Elles sont abondantes dans l'intima des artérioles, où elles assurent la contraction de la paroi.
+
+Concernant les artères musculaires (ou artères de distribution) :
+$A. Elles sont les artères de moyen calibre et les plus répandues dans l'organisme.
+$B. Elles sont responsables du tonus vasomoteur grâce à leur capacité de vasoconstriction et vasodilatation.
+C. L'intima est épaisse et ne présente aucune limitante élastique interne.
+$D. La limitante élastique interne est très visible, elle a un aspect festonné et fenestré.
+E. Leur média est plus riche en lames élastiques qu'en cellules musculaires lisses.
+
+À propos de la structure des artérioles :
+$A. Elles représentent les branches terminales du système artériel avant d'arriver aux capillaires.
+B. Elles sont classées comme des vaisseaux de conduction.
+$C. Leur média est réduite au minimum, étant constituée d'une à deux couches de cellules musculaires lisses.
+$D. Elles ne possèdent plus de limitantes élastiques.
+E. Il est nécessaire qu'elles aient des vasa vasorum pour l'apport de nutriments à la média.
+
+Concernant la vascularisation de la paroi artérielle :
+$A. Les artères de calibre supérieur à 1 mm sont pourvues de vasa vasorum qui pénètrent par l'adventice.
+B. Les vasa vasorum nourrissent l’intima et le tiers interne de la média.
+$C. L’apport en oxygène pour l'intima et le tiers interne de la média se fait par diffusion directe du sang intraluminal.
+D. La zone de faiblesse artérielle se développe au plus près du sang intraluminal.
+E. Les artères de calibre inférieur à 1 mm (artérioles) n'ont pas de vasa vasorum.
+
+À propos des modes de terminaison artérielle :
+$A. Le mode de terminaison terminale est caractérisé par l'absence d'anastomose avec la division voisine.
+B. Le mode de terminaison anastomotique est rare et est retrouvé uniquement dans le cœur et le rein.
+$C. Le mode de terminaison terminale permet un apport rapide de sang dans les organes où il est présent.
+$D. La survenue d’un thrombus dans une artère à terminaison terminale risque d’entraîner la nécrose du territoire dépendant (infarctus).
+E. Le mode de terminaison anastomotique ralentit le flux sanguin par rapport au mode terminal.
+
+Concernant les pathologies de la paroi artérielle :
+$A. L'artériosclérose est le vieillissement de la paroi artérielle entraînant un durcissement de la média.
+$B. L'athérosclérose est la pathologie liée à l’accumulation de lipides dans la paroi artérielle, formant des plaques d’athéromes.
+$C. Le diabète, le tabac et l'HTA sont des facteurs de risque de l'athérosclérose.
+D. La formation de cellules spumeuses résulte de la phagocytose des lipides par les fibroblastes de la média.
+$E. La rupture d'une plaque d’athérome peut activer les plaquettes et former un thrombus, bouchant l’artère.
+
+À propos de l'étape initiale de l'athérosclérose :
+$A. Elle commence par un dysfonctionnement de la cellule endothéliale.
+$B. Elle implique l'infiltration des lipoprotéines de faible densité (LDL) dans l’intima.
+$C. Les macrophages de l’endartère phagocytent les LDL pour former des cellules spumeuses.
+D. La formation de la plaque d'athérome se produit initialement dans la média.
+E. L'inflammation locale est déclenchée uniquement après la rupture de la plaque.
+
+Concernant les généralités sur la microcirculation :
+$A. La microcirculation est l’ensemble des vaisseaux situés entre une artériole et une veinule.
+$B. Les capillaires ont un diamètre de 5 à 10 µm et sont constitués d’une unique couche de cellules endothéliales.
+C. Les échanges gazeux et nutritifs se font principalement au niveau des artérioles.
+$D. Les péricytes sont des cellules contractiles et phagocytaires parfois présentes dans la paroi des capillaires.
+E. Les sphincters pré-capillaires sont composés de fibres élastiques qui régulent la pression sanguine systémique.
+
+À propos des systèmes capillaires spéciaux :
+$A. Le système admirable (ou porte-artériel) relie deux artérioles dans le glomérule rénal.
+B. Le système porte-artériel rénal a un rôle essentiellement nutritif pour le parenchyme rénal.
+$C. Le système porte veineux se retrouve dans le foie et relie deux veines.
+D. Le système porte veineux dans le foie a un rôle nutritif essentiel pour les hépatocytes.
+$E. Le système porte-artériel dans le glomérule rénal est impliqué dans la formation de l'urine primitive.
+
+Concernant les capillaires continus :
+$A. Ils sont le type de capillaire le plus majoritaire dans l’organisme.
+$B. Ils sont caractérisés par des cellules endothéliales jointives et reposent sur une basale continue.
+C. Ils permettent le passage rapide de macromolécules par des pores transcytoplasmiques.
+$D. Ils sont présents dans le cerveau, participant à la formation de la barrière hémato-encéphalique.
+$E. Les péricytes qui les entourent ont un rôle dans la défense immunologique et l’angiogenèse.
+
+À propos des capillaires fenêtrés et sinusoïdes :
+$A. Les capillaires fenêtrés sont retrouvés dans les glandes endocrines et au niveau du glomérule rénal.
+$B. Les capillaires fenêtrés possèdent une basale continue et des pores transcytoplasmiques (20-100 nm) parfois occlus par un diaphragme.
+C. Les capillaires sinusoïdes se retrouvent dans les muscles squelettiques.
+$D. Les capillaires sinusoïdes ont des jonctions lâches entre les cellules endothéliales et une basale discontinue.
+$E. Les capillaires sinusoïdes sont présents dans la moelle osseuse hématopoïétique et la rate.
+
+Concernant la structure générale des veines :
+$A. Elles sont des vaisseaux de remplissage assurant le retour sanguin vers le cœur.
+$B. Elles ont une lumière plus large et une paroi plus fine que les artères.
+C. Leur média est très épaisse, leur conférant une capacité de vasomotricité importante.
+$D. L'intima des veines est fine et la limitante élastique interne est souvent absente ou très fragmentée.
+$E. Leur adventice est généralement plus épais que leur média.
+
+À propos des valves veineuses :
+$A. Elles sont des expansions de l'intima.
+$B. Elles sont composées d'un centre conjonctif tapissé d'endothélium.
+$C. Elles sont orientées dans le sens du courant sanguin.
+$D. Elles servent de système anti-retour, empêchant le sang de retomber, notamment dans la partie inférieure du corps.
+E. Un défaut de structure ou de fonction des valves veineuses est à l'origine de l’artériosclérose.
+
+Concernant le système vasculaire lymphatique :
+$A. Il est parallèle au système vasculaire sanguin mais ne fonctionne pas en boucle, assurant uniquement un retour.
+$B. Il draine le liquide interstitiel formé au niveau du tissu conjonctif.
+C. Les capillaires lymphatiques naissent en se connectant aux veinules post-capillaires.
+$D. Les capillaires lymphatiques ont des cellules endothéliales peu jointives et une basale discontinue.
+E. La lymphe est déversée dans les gros troncs artériels proches du cœur après filtration.
+Rédiges des QCM d’examen finaux.
+
+### HISTOLOGIE DE L’APPAREIL RESPIRATOIRE
+
+Concernant le rôle de l'appareil respiratoire. :
+$A. Le processus d'hématose permet au sang de se charger en oxygène et de se débarrasser du CO2.
+B. Le système endocrinien diffus (SED) est constitué d'une glande endocrine spécifique située dans les poumons.
+$C. La défense immunitaire est assurée par le tissu lymphoïde associé aux muqueuses (MALT) et aux bronches (BALT).
+$D. La plèvre est constituée de deux feuillets et facilite les mouvements des poumons lors de la respiration.
+$E. L'appareil respiratoire est divisé en zones de conduction, zones d'échange (alvéoles) et la séreuse pleurale.
+
+À propos de la structure de la muqueuse respiratoire. :
+A. L'épithélium respiratoire est typiquement un épithélium cylindrique simple.
+$B. L'épithélium respiratoire conventionnel est un épithélium cylindrique pseudostratifié non kératinisé.
+C. Toutes les cellules de l'épithélium respiratoire n'atteignent pas la lame basale.
+$D. L'épithélium de type respiratoire est retrouvé des fosses nasales jusqu'aux plus petites bronches cartilagineuses.
+E. L'épithélium malpighien stratifié non kératinisé se trouve au niveau des alvéoles pulmonaires.
+
+Concernant les cellules ciliées de l'épithélium respiratoire. :
+$A. Elles sont les cellules les plus nombreuses de l'épithélium respiratoire.
+$B. Elles possèdent environ 200 à 300 cils par cellule.
+C. Les cils sont des structures fixes ancrées par des corpuscules basaux.
+$D. Le battement ciliaire est coordonné et unidirectionnel vers l'oropharynx.
+$E. Une anomalie de la structure des cils est nommée dyskinésie ciliaire et peut conduire au syndrome des cils immobiles.
+
+À propos des cellules caliciformes et neuroendocrines. :
+$A. Il y a environ une cellule caliciforme pour quatre à cinq cellules ciliées.
+$B. Le noyau des cellules caliciformes est refoulé à la basale.
+C. La mise en évidence du mucus nécessite toujours une coloration à l'hémalun éosine.
+$D. Les cellules neuroendocrines sécrètent des molécules comme la bombésine et la sérotonine.
+$E. Les cellules neuroendocrines régulent l'activité des cellules musculaires lisses de la paroi respiratoire.
+
+Concernant le chorion de la muqueuse respiratoire. :
+A. Le chorion est un tissu conjonctif lâche qui contient uniquement des fibres de collagène.
+$B. Le chorion est riche en fibres élastiques dont l'orientation longitudinale favorise les mouvements de la paroi.
+$C. Les glandes séro-muqueuses présentes dans le chorion sont de type tubulo-acineuses.
+$D. Les cellules myo-épithéliales sont situées autour de la basale des glandes et aident à la vidange des acinus.
+$E. Le chorion inclut des formations lymphoïdes qui participent à l'immunité (BALT).
+
+À propos des acini dans les glandes séro-muqueuses de la muqueuse respiratoire. :
+$A. Les acini séreux ont une lumière virtuelle et leur produit de sécrétion est fluide et riche en protéines enzymatiques.
+B. Les acini muqueux sont tapissés par des cellules dont le noyau arrondi est situé au centre.
+$C. Le croissant de Gianuzzi est formé par des cellules séreuses et est observé dans les acini séro-muqueux.
+$D. Les cellules des acini séreux présentent un pôle apical acidophile dû aux grains de zymogènes.
+E. La contraction des cellules myo-épithéliales au contact des acini est sans effet sur la vidange glandulaire.
+
+Concernant l'épuration de l'air et les pathologies associées à l'épithélium respiratoire. :
+$A. Le tapis de mucus possède une face superficielle épaisse et gluante qui attrape les particules.
+B. La face profonde du mucus est épaisse pour permettre de faciliter les battements des cils.
+$C. Le tabac est une agression chronique qui entraîne une diminution du nombre de cellules ciliées.
+D. La métaplasie malpighienne se traduit par le remplacement de l'épithélium par un épithélium unistratifié et pavimenteux.
+$E. La dysplasie peut être une lésion pré-cancéreuse se développant après une métaplasie malpighienne.
