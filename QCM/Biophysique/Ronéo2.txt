@@ -1,0 +1,377 @@
+Concernant la Dose Absorbée (D) :
+$A. Elle est le quotient de l’énergie moyenne communiquée à la matière par des rayonnements ionisants dans un élément de volume par la masse de matière contenue dans ce dernier.
+$B. Son unité SI est le gray (Gy).
+C. L'unité dérivée hors SI, le rad (rd), est égale à 10^2 grays.
+$D. Elle représente l’énergie cédée par le rayonnement à l’organisme ou à un objet qu’il rencontre.
+E. Elle s’exprime en Sievert (Sv).
+
+À propos du Kerma :
+$A. Il concerne les rayonnements X, gamma et les neutrons.
+B. Il est directement mesurable au niveau du point considéré.
+$C. Il signifie « énergie cinétique libérée dans la matière ».
+D. En surface, à l'entrée du flux de rayonnement, l'énergie transférée est inférieure à l'énergie absorbée (K < D).
+$E. Il est utilisé comme grandeur pour caractériser le faisceau servant à étalonner les dosimètres pour le cas des photons gamma.
+
+Concernant la Dose Équivalente (H) :
+$A. Elle permet d’additionner des effets biologiques produits par des rayonnements différents.
+$B. Son unité est le Sievert (Sv).
+$C. Elle est définie par l’équation H,ᵣ = ∑ Wᵣ * Dₜ,ᵣ.
+D. Pour les particules alpha, le facteur de pondération lié au rayonnement Wᵣ est de 1.
+E. Elle prend en compte le risque d’induction de cancer dans l’organisme entier.
+
+À propos de la Dose Efficace (E) :
+$A. Elle est un estimateur du risque d’induction de cancer.
+$B. Elle est la somme des doses équivalentes pour chaque organe ou tissu, pondérée par le facteur Wₜ.
+$C. Selon la CIPR 103, la moelle osseuse rouge, le côlon et les poumons ont un facteur de pondération tissulaire (Wₜ) de 0,12.
+D. Elle sert notamment à comparer des techniques médicales de traitement pour des groupes de même âge et même sexe.
+$E. Elle est, avec la dose équivalente, une des grandeurs de protection utilisées dans la réglementation.
+
+Concernant les grandeurs dosimétriques en radioprotection :
+$A. La dose absorbée est la seule dose qui peut être directement mesurée.
+B. La dose équivalente est une grandeur physique.
+$C. L’équivalent de dose individuel Hₚ₍d₎ est une grandeur opérationnelle.
+$D. Les grandeurs opérationnelles sont mesurées par des dosimètres d’ambiance ou individuels.
+E. Le kerma dans l’air est la grandeur physique de base pour la caractérisation des neutrons.
+
+À propos de la Dose Engagée :
+$A. Elle concerne les cas d’exposition interne.
+$B. L'équivalent de dose engagé s'exprime en sieverts.
+$C. Le temps d'irradiation dépend de la période radioactive et de la période biologique de l'élément.
+D. Le cumul pris en compte par la réglementation correspond à une durée de vie moyenne de 30 ans.
+$E. L'équivalent de dose engagé cumulé sur cinquante ans est symbolisé par H₅₀.
+
+Concernant les principes généraux de la radioprotection :
+$A. Ils incluent la Justification, l'Optimisation et la Limitation.
+$B. L'activité nucléaire doit être justifiée par les avantages qu'elle procure, notamment en matière sanitaire.
+$C. Le principe ALARA signifie que l'exposition doit être maintenue au niveau le plus faible qu'il est raisonnablement possible d'atteindre.
+D. Le principe de limitation des doses s'applique uniquement au public.
+E. La minimisation de l’intensité de la source d’exposition est une mesure relevant du principe de Justification.
+
+À propos des sources de radioactivité :
+A. La vie sur Terre s'est développée dans une ambiance moins radioactive qu’aujourd’hui.
+$B. La principale source d’irradiation artificielle est médicale.
+$C. Les isotopes fondamentaux présents sur Terre incluent l'uranium, le thorium et le potassium-40.
+D. La magnétosphère est la couche d'ozone qui protège la Terre des radiations cosmiques.
+$E. L’irradiation liée au radon est la source naturelle irradiant le plus les populations.
+
+Concernant les effets biologiques des rayonnements ionisants :
+$A. La sensibilité des tissus aux rayonnements dépend de leur vitesse de renouvellement.
+B. Les tissus peu ou pas en division, comme le cerveau, sont généralement plus sensibles.
+C. L’effet biologique observé est lié à la quantité de chaleur.
+$D. La CIPR a proposé le concept de doses équivalentes pour caractériser le fait que tous les rayonnements n'ont pas la même efficacité à dose égale.
+E. Dans le cas d’une irradiation aiguë localisée à la peau, une dose absorbée de 5 Gy provoque des rougeurs.
+
+À propos des unités de mesure utilisées en radioprotection :
+A. Il faut confondre les Curie (Ci) et les Becquerel (Bq) avec les Gray (Gy).
+$B. L’unité SI de l’activité radionucléaire est le Becquerel (Bq).
+$C. Le Gray (Gy) est l'unité du SI pour la Dose Absorbée.
+$D. Le Sievert (Sv) est l'unité de l'Équivalent de dose radiologique.
+E. Le Rad (rd) est l'unité légale du SI pour la Dose Absorbée.
+
+Concernant la dose absorbée (D) :
+$A. Elle est mesurée par des dosimètres.
+$B. Son unité SI est le gray (Gy).
+C. Elle dépend de la radiosensibilité des tissus touchés.
+$D. Elle représente l'énergie cédée par le rayonnement à la matière.
+E. 1 Gray équivaut à 10⁻² rads.
+
+À propos du Kerma :
+A. Il s'applique uniquement aux rayonnements alpha et bêta.
+$B. Il n'est pas directement mesurable.
+C. Il est l'énergie absorbée au niveau d'un point P.
+$D. Il concerne les rayonnements X, gamma et les neutrons.
+E. Son unité SI est le sievert (Sv).
+
+Concernant la relation entre le Kerma (K) et la Dose absorbée (D) :
+$A. En surface, à l’entrée du faisceau, l'énergie transférée est supérieure à l'énergie absorbée (K > D).
+B. En profondeur, l'énergie transférée est toujours inférieure à l'énergie absorbée (K < D).
+$C. L'égalité K = D se produit en profondeur, où il y a équilibre électronique.
+D. K < D se produit en surface, à l'entrée du flux.
+E. K est toujours égal à D quelle que soit la profondeur.
+
+À propos de la dose équivalente (Hₜ) :
+$A. Elle permet d’additionner des effets biologiques produits par des rayonnements différents.
+$B. Son unité est le Sievert (Sv).
+C. Elle prend en compte la radiosensibilité de l'organe touché.
+D. Elle est une grandeur physique directement mesurable.
+$E. Elle est calculée en utilisant le facteur de pondération lié à la nature du rayonnement (Wᵣ).
+
+Concernant la dose efficace (E) :
+$A. Elle est un estimateur du risque d’induction de cancer dans l’organisme entier.
+$B. Elle utilise les facteurs de pondération tissulaires (Wₜ).
+C. Elle est l'une des grandeurs physiques de base en radioprotection.
+$D. Elle est utile pour comparer des risques pour des irradiations de nature différente.
+E. Elle est la seule dose qui prend en compte le facteur de pondération du rayonnement (Wᵣ).
+
+Concernant les unités de mesure :
+A. Le Becquerel (Bq) et le Gray (Gy) sont des unités légales du SI qui mesurent la même grandeur.
+$B. Le Gray (Gy) est l'unité de la dose absorbée.
+$C. Le Curie (Ci) est une unité hors SI de l'activité radionucléaire.
+D. Le rad (rd) est une unité dérivée du SI pour la dose absorbée.
+$E. Le Sievert (Sv) est l'unité de l'équivalent de dose radiologique.
+
+À propos des grandeurs dosimétriques en radioprotection :
+A. La dose efficace est une grandeur opérationnelle.
+$B. La fluence et le Kerma sont des grandeurs physiques.
+C. Les équivalents de dose ambiant, directionnel et individuel sont des grandeurs de protection.
+$D. La dose équivalente à l'organe (Hₜ) est une grandeur de protection.
+E. La dose absorbée est une grandeur de protection.
+
+Concernant la mesure et le calcul des doses :
+A. Seule la dose efficace est calculée, les autres sont mesurées.
+$B. La dose absorbée est la seule grandeur de dose directement mesurable.
+$C. La dose équivalente et la dose efficace sont des grandeurs calculées.
+D. Le Kerma est directement mesurable au niveau du point considéré.
+$E. Les grandeurs opérationnelles sont définies par l'ICRU pour les mesures pratiques de radioprotection.
+
+À propos du facteur de pondération du rayonnement (Wᵣ) :
+A. Il est utilisé pour calculer la dose efficace à partir de la dose équivalente.
+$B. Il est égal à 1 pour les photons X et gamma.
+C. Il est égal à 10 pour les particules alpha.
+$D. Il est utilisé pour calculer la dose équivalente à partir de la dose absorbée.
+E. Il dépend uniquement de l'organe ou du tissu atteint.
+
+Concernant la sensibilité des tissus (selon CIPR 103) :
+A. Les gonades ont un facteur de pondération (Wₜ) de 0,20.
+$B. Les poumons et l'estomac ont le même Wₜ (0,12).
+C. La peau et la surface des os ont un Wₜ de 0,05.
+$D. Les seins ont un Wₜ de 0,12.
+E. Les tissus à renouvellement rapide sont généralement plus résistants aux rayonnements.
+
+Les principes généraux de la radioprotection sont :
+$A. La Justification.
+$B. L'Optimisation.
+C. L'Équivalence.
+$D. La Limitation.
+E. La Maximalisation du bénéfice.
+
+Concernant l'Optimisation (principe ALARA) :
+$A. Il signifie "as low as reasonably achievable".
+$B. Il implique la diminution de la fréquence et/ou de la durée des expositions.
+C. Il signifie que le risque doit être nul.
+$D. Il inclut l'augmentation des protections individuelles ou collectives.
+E. Il ne tient pas compte des facteurs économiques et sociaux.
+
+À propos de la Limitation des doses :
+$A. Elle nécessite le respect de limites fixées par voie réglementaire.
+$B. Les limites peuvent changer selon que la personne est un travailleur en milieu RI ou un public.
+C. Les protocoles de recherche biomédicale nécessitent une traçabilité plus faible des doses.
+D. Elle concerne seulement la dose absorbée.
+E. Elle s'applique aux grandeurs de protection E et Hₜ.
+
+Concernant les sources de radioactivité naturelle :
+$A. Elles incluent le rayonnement cosmique.
+$B. Elles sont classifiées en sources terrestres, cosmiques et internes.
+C. Le Césium-137 (Cs-137) est un isotope produit naturellement.
+$D. Le Potassium-40 (K-40) fait partie des isotopes fondamentaux.
+E. Les rayons cosmiques sont totalement absorbés par la couche terrestre.
+
+À propos des sources de radioactivité artificielle :
+$A. Elles sont utilisées dans le domaine médical pour le diagnostic et la thérapie.
+$B. Elles sont employées dans l'industrie et la recherche (ex : stérilisation, contrôle de soudure).
+C. Elles sont principalement dues au radon.
+$D. Elles incluent les utilisations militaires (essais, munitions).
+E. La cause principale d’irradiation artificielle des populations est l'industrie nucléaire.
+
+Concernant les sources principales d'exposition :
+$A. La principale source d’irradiation naturelle des mammifères est le radon.
+$B. La principale source d’irradiation artificielle des populations est médicale.
+C. La principale source d’irradiation tellurique est l'uranium 238.
+D. La magnétosphère protège la Terre des rayonnements électromagnétiques.
+E. Le rayonnement interne est inexistant.
+
+À propos de la dose engagée :
+$A. Elle concerne les cas d'exposition interne où un radioélément a pénétré dans l'organisme.
+B. Elle est fonction uniquement de la période radioactive du radioélément.
+$C. Elle est exprimée en sieverts.
+D. La réglementation prend en compte le cumul sur 30 ans du débit d’équivalent de dose.
+$E. Elle est désignée par le symbole H₅₀ dans la réglementation.
+
+Concernant l’impact des rayonnements sur la santé :
+$A. Les effets dépendent de la quantité d’énergie transmise dans le tissu.
+B. L’effet biologique est principalement lié à la quantité de chaleur dégagée.
+$C. Les tissus à renouvellement rapide (intestin, moelle) sont généralement plus sensibles.
+D. Les tissus peu ou pas en division (cerveau, os) sont plus sensibles.
+$E. Des rougeurs cutanées apparaissent pour une dose absorbée supérieure à 1 Gy.
+
+À propos du Kerma dans l'air :
+$A. C'est la grandeur utilisée pour caractériser le faisceau servant à étalonner les dosimètres pour les photons gamma.
+B. C'est la grandeur de base utilisée pour les neutrons.
+C. Il est une grandeur de protection.
+D. Son acronyme signifie "Kilometric Energy Released in Material".
+$E. Il est une grandeur physique de référence pour les photons X et gamma dans le calcul des grandeurs opérationnelles.
+
+Concernant les grandeurs opérationnelles :
+$A. Elles ont été développées pour la surveillance de zone ou individuelle.
+$B. Elles sont calculées à partir d’une grandeur physique en multipliant par un coefficient de conversion.
+$C. L’équivalent de dose individuel Hp(d) en fait partie.
+D. Elles sont un estimateur par défaut de la dose efficace.
+E. Elles sont mesurées uniquement dans un fantôme standard.
+
+À propos des facteurs de pondération tissulaires (Wₜ) :
+A. Selon la CIPR 60, les gonades ont le même Wₜ que la moelle osseuse (0,12).
+$B. Selon la CIPR 60, les poumons ont un Wₜ de 0,12.
+C. Selon la CIPR 103, les gonades ont le Wₜ le plus élevé (0,20).
+$D. Selon la CIPR 103, les seins ont un Wₜ de 0,12, égal à celui des poumons.
+E. La peau a toujours un Wₜ plus élevé que les gonades.
+
+Concernant le théranostique en médecine nucléaire :
+$A. Il est basé sur le couplage d’un même vecteur moléculaire à des radionucléides diagnostiques et thérapeutiques.
+$B. Il cible spécifiquement une tumeur via une molécule vectrice.
+C. Le $^{68}$Ga PSMA 11 est utilisé comme agent thérapeutique.
+$D. Le Lutétium-177-PSMA est utilisé dans le traitement des cancers de la prostate métastatique.
+E. Il utilise systématiquement des rayonnements X pour l'imagerie.
+
+À propos de la radiothérapie interne vectorisée (RIV) :
+A. Elle utilise des accélérateurs linéaires.
+$B. Elle est basée sur l'utilisation de radionucléides émetteurs alpha ou bêta⁻.
+$C. Elle vise à délivrer localement une irradiation pour détruire les cellules tumorales.
+D. L'étude VISION concerne le Lutathera®.
+$E. Le ¹⁷⁷Lu DOTATATE (LUTATHERA®) est un exemple de RIV.
+
+Les effets provoqués par les rayonnements ionisants sur la santé dépendent :
+$A. De la nature du rayonnement (alpha, gamma, X).
+$B. Des modalités d’exposition (interne ou externe).
+$C. De la dose d’irradiation.
+$D. De l’organe ou du tissu atteint.
+E. Uniquement du nombre de particules incidentes.
+
+À propos de la différence entre Dose et Activité :
+$A. La dose absorbée est mesurée en Gray (Gy).
+B. L'activité radioactive correspond à l'énergie transférée à la matière.
+$C. L'activité est mesurée en Becquerel (Bq).
+$D. Le Bq et le Ci mesurent la fréquence de désintégration.
+E. On utilise un dosimètre pour mesurer l'activité.
+
+La durée d'irradiation d'une exposition interne est influencée par :
+$A. La période radioactive (physique) de l'isotope.
+$B. La période biologique (élimination par l'organisme).
+$C. La période effective Teff.
+$D. La clairance de l'élément.
+E. Le Kerma dans l'air.
+
+Concernant le cadre réglementaire de la dosimétrie :
+$A. Les limites de doses sont exprimées en termes de dose efficace (E) et dose équivalente (Hₜ).
+B. L'ICRU définit les grandeurs de protection.
+$C. Les modèles dosimétriques sont développés dans une perspective réglementaire ou opérationnelle.
+$D. Des approximations sont admises, comme l'utilisation du concept de dose moyenne au tissu.
+E. Le modèle de l'homme standard prend en compte l'héritage génétique.
+
+Les grandeurs physiques permettent de mesurer directement :
+$A. Le type de particules ou la nature du rayonnement.
+$B. L'énergie des particules.
+$C. L'intensité de l’émission.
+D. La dose équivalente.
+E. La radiosensibilité tissulaire.
+
+La quantification du risque radiologique est essentielle car :
+$A. Tous les rayonnements n'ont pas la même efficacité biologique à dose égale.
+$B. L'effet biologique dépend du site cellulaire touché (ex: brin d'ADN).
+$C. Tous les tissus n'ont pas la même sensibilité aux rayonnements.
+D. La dose absorbée est la seule grandeur qui tienne compte de tous ces facteurs.
+E. Elle permet de définir l'énergie transférée à la masse.
+
+La dose efficace (E) est utilisée pour :
+$A. Estimer rapidement les doses reçues en cas d’incident.
+$B. Comparer des risques pour des irradiations de nature différente.
+C. Servir de grandeur physique de base.
+$D. Estimer la dose engagée reçue par une personne contaminée.
+$E. Comparer des techniques médicales de traitement.
+
+Concernant les applications médicales des rayonnements :
+$A. L'accélérateur linéaire produit des faisceaux très énergétiques destinés à détruire des cellules tumorales.
+B. En médecine nucléaire, la source radioactive est toujours administrée par voie intraveineuse.
+C. L’imagerie pulmonaire ventilation/perfusion est utilisée pour diagnostiquer l’anévrisme.
+$D. Les radionucléides émetteurs de positons sont utilisés en TEP (Tomographie par Émission de Positons).
+E. La dosimétrie en radiothérapie externe calcule la dose absorbée uniquement pour la tumeur.
+
+Concernant le rad (rd) :
+$A. C'est une unité dérivée hors SI.
+$B. Il était couramment employé avant 1985.
+C. 100 rd équivaut à 1 J/kg.
+D. Son symbole est Rad.
+$E. Il vaut 10⁻² grays.
+
+Les grandeurs dosimétriques servent à définir ou calculer :
+$A. L'énergie transférée par un rayonnement donné.
+$B. La quantité de matière définie (masse).
+$C. Les caractéristiques qualitatives (Z) de la matière touchée.
+D. L'activité radioactive du produit.
+E. Le nombre de désintégrations par seconde.
+
+La CIPR a proposé d'appeler « doses équivalentes » les doses utilisées pour caractériser le risque biologique car :
+$A. Tous les rayonnements n'ont pas la même efficacité à dose égale.
+B. Il est nécessaire de définir des équivalents de dose dans un fantôme standard.
+C. Elles sont directement mesurables.
+D. Elles tiennent compte de la radiosensibilité des tissus.
+$E. Il faut utiliser un facteur de pondération du rayonnement (facteur de qualité).
+
+Les grandeurs de protection sont :
+A. L'équivalent de dose ambiant.
+$B. La dose équivalente à l'organe (Hₜ).
+$C. La dose efficace (E).
+D. La fluence.
+E. La dose absorbée.
+
+Concernant la fluence :
+A. C'est une grandeur de protection.
+$B. Elle correspond à un nombre de neutrons d'énergie donnée par unité de surface pour les neutrons.
+$C. Son unité est le m⁻².
+D. Elle décrit l'énergie reçue par unité de surface.
+$E. Elle décrit le nombre de particules qui arrivent sur la surface et interagissent.
+
+Les Isotopes produits naturellement par l'interaction du rayonnement avec la matière sont :
+A. L'Uranium.
+$B. L'Hydrogène 3 (H-3).
+$C. Le Carbone 14 (C-14).
+D. Le Technétium-99m (Tc-99m).
+E. Le Plutonium-239 (Pu-239).
+
+Concernant la radiosensibilité des tissus :
+$A. Le risque de production de cancer est lié à la dose.
+B. L'effet biologique observé est lié à la quantité de chaleur cédée.
+$C. Les cellules sont particulièrement vulnérables pendant la division cellulaire (mitose).
+D. Les cellules du cerveau sont plus sensibles que celles de l'intestin.
+$E. La radiosensibilité peut varier selon l’âge et le sexe.
+
+La grandeur de base utilisée pour caractériser le faisceau servant à étalonner les dosimètres est :
+A. La dose absorbée dans les tissus pour les photons gamma.
+$B. Le KERMA dans l'air pour les photons gamma.
+$C. La fluence pour les neutrons.
+D. La dose absorbée dans les tissus pour les neutrons.
+E. La fluence pour les photons X.
+
+Les grandeurs dosimétriques sont développées en utilisant :
+$A. Des facteurs de pondération pour les tissus et organes (Wₜ).
+$B. Le modèle simplifié de l’homme standard (fantôme anthropomorphe).
+$C. Des grandeurs « macroscopiques » basées sur le concept de dose moyenne au tissu.
+D. Le concept de la dose maximale au tissu.
+$E. Des facteurs de pondération pour les rayonnements (Wᵣ).
+
+Le principe de Justification en radioprotection implique que :
+$A. Une activité nucléaire ne peut être entreprise que si elle est justifiée par les avantages qu'elle procure.
+$B. Le bénéfice doit dépasser le risque inhérent à l'exposition aux rayonnements ionisants.
+C. L'exposition doit être maintenue au niveau le plus faible qu'il est raisonnablement possible d'atteindre.
+D. Il concerne uniquement les expositions professionnelles.
+E. Il n'est pas applicable aux objectifs médicaux.
+
+Concernant les effets d'une irradiation aiguë localisée sur la peau :
+A. Des brûlures apparaissent pour une dose absorbée de plus de 1 Gy.
+$B. Des rougeurs apparaissent pour une dose absorbée supérieure à 1 Gy.
+$C. La peau devient brûlée pour une dose supérieure à 5 Gy.
+D. L'apparition de rougeurs dépend de la dose équivalente.
+E. La dose absorbée représente l'énergie moyenne communiquée à la matière.
+
+Les limites de doses indiquées dans la réglementation s'expriment en termes de grandeurs de protection suivantes :
+$A. La dose efficace (E).
+B. L'équivalent de dose ambiant H*(d).
+$C. La dose équivalente (Hₜ).
+D. La dose absorbée (D).
+E. L'équivalent de dose individuel Hp(d).
+
+Les données biologiques nécessaires pour modéliser la dose efficace en médecine nucléaire comprennent :
+$A. La localisation du radiopharmaceutique.
+$B. Le processus d'élimination du radiopharmaceutique.
+C. La géométrie du dépôt d'énergie.
+D. L'énergie incidente du faisceau.
+E. La dose absorbée.
