@@ -1,0 +1,344 @@
+Concernant les premières formes de vie et l'évolution :
+$A. L'apparition de la vie sur Terre a eu lieu il y a environ 3,5 milliards d’années.
+B. L'O2 était disponible dans l'atmosphère terrestre avant l'émergence des Archées et des cyanobactéries.
+$C. Les cyanobactéries sont à l'origine de la formation de la couche d'ozone (O3) qui filtre une grande partie des UV létaux.
+$D. Le monde végétal représente la majorité du carbone stocké dans la biomasse sur Terre.
+E. La divergence des espèces et les interactions entre les individus ont été pour la première fois représentées par Claude Bernard.
+
+À propos des caractéristiques de l'oxygène (O2) :
+A. L'O2 est très soluble dans l’eau, environ 30 fois plus que le CO2.
+$B. L’O2 est produit comme un « déchet » par les végétaux chlorophylliens (photosynthèse).
+$C. L'O2 est apparu il y a environ 2,7 milliards d’années.
+$D. Le transport de l’oxygène chez l’homme est permis grâce à l’hémoglobine utilisant notamment le fer ferreux (Fe2+).
+E. Le volume de globules rouges doit être maintenu au-dessus de 50% du volume sanguin pour maximiser le transport d'O2.
+
+Concernant le métabolisme énergétique :
+$A. La glycolyse anaérobie a permis l'évolution du vivant pendant 1 milliard d'années.
+$B. La glycolyse génère 2 pyruvates qui peuvent se transformer en lactate et acidifier le milieu.
+C. La majorité de l'ATP est produite par la glycolyse anaérobie (2 ATP).
+$D. 34 ATP proviennent de la phosphorylation oxydative.
+E. Le métabolisme oxydatif est essentiel pour le cerveau et le cœur.
+
+À propos de l'adaptation du vivant à l'O2 :
+$A. L’échange d'oxygène au niveau des branchies des poissons se fait par un système à contre-courant.
+B. Les globules rouges des mammifères sont ovales et nucléés.
+$C. La solubilité de l’O2 est le double de celle à l’équateur au niveau des pôles.
+$D. Certains poissons, comme les poissons de glace, n'ont pas d’hémoglobine car l’O2 est suffisamment soluble dans l'eau à basse température.
+E. L’hémoglobine se charge en O2 au niveau des capillaires et le délivre aux poumons.
+
+Concernant la fonction de l'hémoglobine :
+$A. L'hémoglobine est saturée au niveau du poumon avec un chargement maximal.
+$B. L'hémoglobine permet de délivrer jusqu'à 4 molécules d’oxygène par molécule dans les organes.
+$C. Lors d’un exercice physique maximal, l’atteinte de la capacité aérobie entraîne le basculement vers la voie anaérobie.
+D. Le basculement vers la voie anaérobie pendant l'exercice n'entraîne pas d'acidité.
+E. L'hémoglobine est apparue tardivement dans l'évolution, uniquement chez les mammifères.
+
+À propos de l'évolution de la circulation sanguine :
+A. Le système circulatoire chez le poisson est dit à haute pression, avec un maximum de 120 mmHg.
+$B. Chez le poisson, il n'y a pas de pompe entre les branchies et le reste du corps, ce qui résulte en une pression faible.
+$C. Les mammifères possèdent un système circulatoire à forte pression grâce à quatre cavités.
+$D. Les amphibiens possèdent un cœur à 3 cavités (2 atriums et 1 ventricule) avec la création d'un septum.
+E. L'innovation chez les reptiles est un cloisonnement complet, permettant une séparation totale des circulations.
+
+Concernant la physiologie comparée :
+$A. Le métabolisme d’un mammifère « classique » est 10 fois supérieur à celui d’un poisson.
+$B. Les animaux homéothermes (mammifères) ont des besoins et dépenses 10 fois supérieurs aux poïkilothermes (poissons, reptiles).
+C. Les animaux poïkilothermes ont plus de mitochondries que les homéothermes.
+$D. Les poïkilothermes basculent rapidement sur un métabolisme anaérobie, expliquant la courte durée de leur déploiement de puissance maximale.
+E. Le sauropode pouvait verticaliser son cou car son cœur délivrait une pression suffisante pour alimenter son cerveau.
+
+Concernant la « rançon du progrès O2 » (stress oxydant) :
+$A. Le stress oxydant agit de manière permanente.
+$B. L’organisme utilise des enzymes comme la superoxyde dismutase (SOD) et les catalases pour se défendre contre les Espèces Réactives de l’Oxygène (ERO).
+C. Les petites molécules anti-oxydantes incluent uniquement les vitamines E et C.
+$D. Les ERO peuvent avoir des utilités bénéfiques pour l'organisme, comme dans certaines voies de signalisation (ex: vasodilatation par H2O2).
+$E. La lyse des agents pathogènes dans les phagosomes est un exemple d'application de l'utilité des ERO.
+
+À propos de l'organisation anatomique et fonctionnelle du tissu nodal :
+$A. Le nœud sinusal est situé à proximité de la veine cave supérieure.
+$B. L'excitation des oreillettes vers les ventricules est transmise uniquement par le faisceau de His.
+C. Le nœud auriculo-ventriculaire est le chef d'orchestre de la contraction cardiaque.
+D. La fréquence intrinsèque de dépolarisation du nœud sinusal est de 40/minute.
+$E. En cas de défaillance du nœud sinusal, les autres tissus nodaux peuvent prendre le relais, mais à une fréquence inférieure.
+
+Concernant la conduction intracardiaque :
+A. La vitesse de propagation de l'activation électrique cardiaque est de l'ordre de 100 m/s.
+$B. Le retard de l'activité électrique dans le nœud auriculo-ventriculaire permet le bon remplissage des ventricules avant leur contraction.
+C. La pente de dépolarisation du faisceau de His est plus importante que celle du nœud sinusal.
+D. Le faisceau de His est ramifié en quatre branches principales dans les muscles ventriculaires.
+$E. L'activation électrique part du nœud sinusal et se propage dans les oreillettes de manière automatique et répétitive.
+
+À propos des grands principes de l'électrocardiographie :
+$A. L'ECG enregistre la sommation des potentiels électriques extracellulaires.
+$B. L'ECG ne mesure pas directement l'activité intracellulaire.
+C. Quand le cœur est au repos, un champ électrique intense est généré par les charges positives à l'extérieur des cellules.
+$D. L'enregistrement doit être réalisé lorsque le patient est au repos musculaire pour éviter des activités parasites.
+$E. L’ECG permet d’analyser la dépolarisation auriculaire, la dépolarisation ventriculaire et la repolarisation ventriculaire.
+
+Concernant le positionnement des électrodes ECG :
+$A. Dans le plan vertical, les électrodes sur les poignets et la cheville forment le triangle d'Einthoven.
+$B. Les dérivations unipolaires du plan vertical sont nommées AVR, AVL et AVF.
+C. Dans le plan horizontal, l’électrode V1 est placée au niveau du 4ème espace intercostal gauche au bord du sternum.
+$D. Les dérivations V5 et V6 regardent principalement le ventricule gauche.
+E. V3 et V4 apportent principalement des informations sur la paroi libre du ventricule droit.
+
+À propos de l’enregistrement de l’activité électrique ventriculaire (complexe QRS) :
+$A. La dépolarisation ventriculaire représente l'événement électrique le plus ample de l'organisme.
+B. Le premier vecteur de dépolarisation ventriculaire (V1) est orienté vers l'arrière et vers le haut.
+$C. Le deuxième vecteur (V2), qui représente l’activation de la grande masse du ventricule gauche, est responsable de l'onde S dominante.
+$D. En dérivation V6, l'onde R est grande car la dépolarisation de la grande masse ventriculaire s'approche de cette électrode.
+E. Une onde est considérée comme grande si son amplitude est inférieure à 0,5 cm.
+
+Concernant l’analyse de la physiopathologie cardiovasculaire par l'ECG :
+$A. Un taux de potassium trop haut ou trop bas peut entraîner des altérations de l’ECG.
+$B. La dépolarisation ventriculaire se fait de l'endocarde vers l'épicarde.
+$C. La repolarisation se fait en sens inverse de la dépolarisation, de l’épicarde vers l’endocarde.
+D. Dans le cas d'une Hypertrophie Ventriculaire Gauche (HVG), l'onde T devient positive.
+$E. Dans le Bloc de Branche Droit (BBD), le ventricule droit se dépolarise avec retardement.
+
+À propos des souffrances myocardiques :
+A. L'ischémie expérimentale se traduit initialement par un sus-décalage du segment S-T.
+$B. Une modification primaire de l'onde T (négative, symétrique et pointue) est très évocatrice d’une ischémie.
+$C. Si le clampage d'une artère coronaire est maintenu, une nécrose peut survenir et est marquée par l'apparition d'une onde Q.
+D. L'ischémie correspond à une lésion sur le plan anatomopathologique mais pas sur le plan électrophysiologique.
+$E. L’onde Q de nécrose est due au fait que la partie nécrosée du myocarde perd son potentiel électrique de façon irréversible.
+
+Concernant la représentation emblématique de l’Homme de Vitruve :
+$A. Elle est tirée du traité d’architecture rédigé par l’ingénieur romain Vitruve.
+B. Elle est devenue le symbole du créationnisme.
+C. Dans cette représentation, les organes génitaux sont au centre du cercle.
+$D. Elle symbolise l’Humanisme et le rationalisme.
+$E. Léonard de Vinci a repris cette représentation.
+
+À propos de l'évolution des espèces et des grands noms de la physiologie :
+$A. C. Darwin a été le premier à comprendre et à représenter la divergence des espèces.
+$B. L’ouvrage « The origin of species » contient un diagramme montrant l’évolution de LUCA.
+C. Buffon s’intéresse aux variations s’écartant de la moyenne, considérant qu’elles peuvent devenir avantageuses.
+$D. Claude Bernard est le premier à avoir décrit la méthode expérimentale.
+E. Le créationnisme était minoritaire à la fin du 18ème siècle.
+
+Concernant la biomasse et l’apparition de la vie sur Terre :
+A. La majorité du carbone stocké sur Terre se trouve dans le monde animal.
+$B. Les arthropodes et les poissons dominent la biomasse dans le monde animal.
+$C. L’apparition de la vie sur Terre a eu lieu il y a 3,5 milliards d’années.
+D. L’apparition de la vie a eu lieu après que le dioxygène soit disponible dans l’atmosphère.
+E. La Terre s’est créée il y a environ 3,5 milliards d’années.
+
+À propos du métabolisme et de l'oxygène (O2) :
+$A. Notre métabolisme oxydatif est extrêmement dépendant de l’oxygène.
+B. La glycolyse anaérobie produit 36 ATP pour une molécule de glucose.
+$C. La glycolyse anaérobie, peu rentable, a permis l’évolution pendant 1 milliard d'années.
+$D. L’activité des cyanobactéries a modifié l'atmosphère terrestre.
+$E. L’enrichissement en O2 a permis l’apparition de la couche d’ozone (O3) protectrice.
+
+Concernant les propriétés de l’oxygène moléculaire (O2) :
+$A. Il représente 20,9% de l’atmosphère terrestre.
+B. Il est très soluble dans l’eau.
+$C. Il est environ 30 fois moins soluble dans l’eau que le CO2.
+$D. Du point de vue de la masse, l’oxygène est l’élément chimique le plus abondant dans la biosphère, l’air, l’eau et les roches terrestres.
+$E. La formation de l’O2 peut être due à la décomposition de H2O dans la haute atmosphère.
+
+À propos de l’hémoglobine et du transport de l’oxygène :
+$A. L’hémoglobine utilise notamment le fer ferreux (Fe2+) pour capter l’oxygène.
+B. Chez l’Homme, les globules rouges représentent 50% du volume du sang.
+$C. Si le volume des globules rouges dépasse 50%, il y a un fort risque de thrombose.
+D. Les globules rouges des oiseaux et des reptiles sont dépourvus de noyaux.
+$E. L'échange d'oxygène au niveau des branchies des poissons se fait par un système à contre-courant.
+
+Concernant la pression en O2 et les adaptations physiologiques :
+$A. La pression partielle en O2 dans l’atmosphère au niveau de la mer est de 0,21 multiplié par 760 mmHg.
+$B. Au sommet du Mont Blanc, le pourcentage d’oxygène dans l’air est le même qu’au niveau de la mer.
+C. Tous les poissons possèdent de l’hémoglobine dans le sang pour assurer le transport de l’O2.
+$D. La solubilité de l’O2 est le double aux pôles par rapport à celle à l’équateur.
+E. La densité d’espèces vivantes est plus importante dans les eaux équatoriales que dans les eaux polaires.
+
+À propos de la sortie des eaux et du développement des poumons :
+$A. L’évolution des membres a d’abord commencé chez les végétaux.
+B. L’ancêtre des poumons a été détenu par les amphibiens.
+$C. Les sacs aériens du Lungfish (poisson à poumon) se sont développés en poumons actuels.
+$D. Le développement d’un revêtement cutané est indispensable pour éviter les pertes hydriques chez les animaux terrestres.
+$E. L’adaptation des tétrapodes au milieu terrestre s’est affirmée au cours du Carbonifère.
+
+Concernant l’évolution du système circulatoire :
+$A. Chez le poisson, il n’y a qu’un atrium et un ventricule.
+B. Chez le poisson, le sang oxygéné est distribué sous forte pression aux tissus.
+$C. Le cœur des poissons ne possède pas l’équivalent du cœur gauche humain.
+$D. L’apparition des amphibiens s’est faite avec un cœur à 3 cavités et la création d’un septum.
+E. Les mammifères et les reptiles possèdent un cloisonnement cardiaque complet.
+
+À propos de la circulation et du métabolisme chez les vertébrés :
+$A. La pression maximale chez les poissons est de 30 mmHg.
+B. La pression systémique chez les mammifères atteint 30 mmHg.
+$C. Le métabolisme d’un mammifère est environ 10 fois supérieur à celui d’un poïkilotherme.
+D. Les animaux poïkilothermes basculent lentement sur un métabolisme anaérobie.
+$E. Les homéothermes possèdent plus de mitochondries que les poïkilothermes.
+
+Concernant la physiologie des sauropodes et des girafes :
+$A. Les sauropodes (dinosaures) possédaient un long cou qu'ils tenaient horizontalement.
+B. Une taille plus grande entraîne des systèmes digestifs plus courts.
+C. Le fait de tenir leur cou horizontalement permettait aux sauropodes de verticaliser leur cou facilement.
+$D. Les girafes sont les seuls animaux capables de verticaliser leur cou malgré sa hauteur, car elles sont physiologiquement hypertendues.
+E. Le myocarde de la girafe est très mince.
+
+Concernant le stress oxydant et les Espèces Réactives de l’Oxygène (ERO) :
+$A. La formation d’ERO est une conséquence obligatoire de l’utilisation de l’oxygène.
+$B. Les enzymes de défense contre les ERO incluent les superoxyde dismutases, les catalases et la glutathion peroxydase.
+C. La surproduction d’ERO ne peut pas être associée à l’inflammation.
+$D. Le stress, l’exercice physique intensif et les rayons ionisants peuvent accroître la formation des ERO.
+$E. L’anion superoxyde et le peroxyde d'hydrogène sont des ERO importantes.
+
+À propos de l’utilité et de la gestion des ERO dans l’organisme :
+$A. Le stress oxydant est difficile à quantifier car les ERO réagissent très rapidement.
+$B. Les ERO peuvent avoir des utilités bénéfiques pour l’organisme, notamment dans des voies de signalisation comme la vasodilatation avec le H2O2.
+$C. La phagocytose implique une grande production d’anions superoxydes pour la lyse des agents pathogènes.
+D. Le prix à payer pour le métabolisme anaérobie est la formation d’ERO.
+E. Consommer des antioxydants artificiels ne peut pas perturber le métabolisme.
+
+Concernant l'électrocardiogramme (ECG) en tant qu'outil de diagnostic :
+A. L'ECG enregistre directement l'activité intracellulaire des cellules cardiaques.
+$B. Il est très rapide à réaliser, environ 5 minutes, et peu coûteux.
+$C. Il permet de renseigner sur la souffrance myocardique, les troubles ioniques ou le fonctionnement du tissu nodal.
+$D. Il ne mesure pas directement l'activité intracellulaire, mais les différences de potentiel entre les masses musculaires cardiaques activées et au repos.
+$E. En cas de suspicion d’anomalie du potassium, l’ECG est la méthode la plus rapide pour orienter le diagnostic.
+
+À propos des ondes classiques de l’ECG :
+A. L’onde T représente la dépolarisation des ventricules.
+$B. La dépolarisation des oreillettes est représentée par l'onde P.
+$C. La repolarisation des oreillettes n'est pas détectée car elle survient en même temps que la dépolarisation ventriculaire, dont la masse est plus importante.
+D. Le complexe QRS représente la repolarisation des ventricules.
+$E. L'onde QRS, qui représente la dépolarisation des ventricules, est l'événement électrique le plus ample de l'organisme.
+
+Concernant la dépolarisation et la repolarisation ventriculaire :
+$A. La dépolarisation se fait de l’endocarde vers l’épicarde.
+B. Le mouvement de repolarisation se traduit par une onde T majoritairement négative.
+$C. La repolarisation se fait de l’épicarde vers l’endocarde, en sens inverse de la dépolarisation.
+D. La dépolarisation ventriculaire se décompose en cinq grands types de vecteurs.
+$E. La fin de la dépolarisation a lieu à la base du ventricule gauche (VG) car cette partie est plus épaisse que dans le ventricule droit (VD) et plus éloignée du faisceau de His.
+
+À propos de l'Hypertrophie Ventriculaire Gauche (HVG) :
+A. L’HVG est une adaptation du ventricule qui survient en cas d’hypotension artérielle.
+$B. L'hypertrophie est un épaississement du ventricule qui augmente l'amplitude des signaux électriques.
+$C. Elle se traduit par une augmentation de l’amplitude de l’onde R en V5 et de l’onde S en V1.
+$D. L'HVG peut entraîner un trouble de la repolarisation où l’onde T devient négative.
+E. Si les signes ECG sont validés, un scanner doit être réalisé pour confirmer l'HVG.
+
+Concernant le Bloc de Branche Droit (BBD) :
+$A. C’est une physiopathologie très fréquente, touchant 10 à 20% de la population à partir de 65 ans.
+B. Lors d'un BBD, le ventricule droit (VD) se dépolarise simultanément avec le ventricule gauche (VG).
+$C. Le BBD signifie que le VD se dépolarise à retardement, après le VG.
+$D. Il se traduit, en V1, par un élargissement du complexe QRS (> 0,1s).
+$E. Cet élargissement est dû à une grande onde R qui “empâte” sur le complexe QRS en V1.
+
+À propos des modifications ECG lors de l’ischémie myocardique :
+$A. L'ischémie expérimentale est initialement une lésion électrophysiologique sans lésion anatomopathologique réelle.
+$B. L'ischémie se traduit par une modification primaire de l'onde T, qui devient négative, symétrique et pointue.
+C. Si l’ischémie est maintenue, la lésion évolue vers la nécrose, marquée par une onde T négative.
+$D. Un clampage prolongé de l’artère coronaire entraîne un sus-décalage du segment S-T dû à la dépolarisation permanente d’une partie du myocarde.
+$E. La nécrose myocardique est marquée sur l'ECG par l’apparition d’une onde Q.
+
+Évolution et Métabolisme de l’Oxygène :
+A. L’apparition de la vie sur Terre a eu lieu il y a 4,5 milliards d’années, en même temps que la création de la Terre. 
+$B. L’enrichissement de l'atmosphère terrestre en O2 est dû principalement à l'activité des cyanobactéries et des végétaux chlorophylliens. 
+$C. Le métabolisme dit oxydatif est extrêmement dépendant de l’oxygène et permet d’obtenir 34 ATP par la phosphorylation oxydative pour une molécule de glucose. 
+D. L'O2 est un gaz très soluble dans l'eau, ce qui rend son transport aisé pour toutes les espèces. 
+$E. La glycolyse anaérobie, peu rentable (2 ATP), a permis l'évolution pendant environ 1 milliard d'années avant que l’O2 ne soit disponible. 
+
+Transport de l’Oxygène et Adaptation :
+A. Le transport de l’oxygène chez l’homme est assuré par l'hémoglobine, utilisant notamment le fer ferrique (Fe3+). 
+$B. L’hémoglobine constitue le meilleur compromis entre le chargement maximal au niveau du poumon et le déchargement efficace dans les tissus. 
+C. Un volume de globules rouges (hématocrite) dépassant 45% du volume sanguin total représente un risque élevé de thrombose. 
+$D. Les poissons de glace (poïkilothermes vivant à basse température) ont perdu l’hémoglobine car l’O2 est beaucoup plus soluble dans l’eau froide, ce qui compense l'absence de transporteur. 
+E. La densité d’espèces vivantes est plus faible dans les eaux polaires en raison de la concentration en O2 réduite. 
+
+Évolution du Système Circulatoire :
+$A. Chez le poisson, la circulation est un système à basse pression, sans pompe entre les branchies (organe d’échange) et le reste du corps. 
+B. Le système circulatoire du poisson est l'équivalent de la double circulation humaine (systémique et pulmonaire). 
+$C. Le cœur des amphibiens possède trois cavités deux atriums et un ventricule. 
+$D. L'évolution vers les mammifères et les oiseaux a conduit à un cloisonnement cardiaque complet, permettant d’établir une haute pression systémique (environ 120 mmHg) et une basse pression pulmonaire (30 mmHg). 
+E. Les reptiles ont développé un cloisonnement cardiaque complet pour limiter le mélange du sang oxygéné et désoxygéné au niveau cardiaque. 
+
+Stress Oxydant et ERO :
+A. La formation d’espèces réactives de l’oxygène (ERO) n'est pas une conséquence obligatoire du métabolisme aérobie. 
+$B. L’organisme se défend contre les ERO grâce à des enzymes comme les superoxyde dismutases, les catalases et la glutathion peroxydase. 
+$C. Les vitamines E et C, ainsi que les polyphénols, sont des petites molécules qui agissent comme antioxydants. 
+D. L'exercice physique intensif, la consommation de tabac et le stress diminuent la production d'ERO. 
+$E. Les ERO ne sont pas foncièrement mauvais et peuvent avoir des utilités bénéfiques, comme dans certaines voies de signalisation (ex vasodilatation avec H2O2) ou lors de la phagocytose. 
+
+Conduction Intracardiaque et Hiérarchie :
+$A. Le nœud sinusal est le chef d’orchestre de la contraction cardiaque, possédant la fréquence de dépolarisation intrinsèque la plus élevée (100/min). 
+B. La fréquence de dépolarisation du nœud auriculo-ventriculaire est plus importante que celle du nœud sinusal. 
+$C. Le retard de l’activation électrique au niveau du nœud auriculo-ventriculaire permet un décalage temporel entre la contraction des oreillettes et celle des ventricules. 
+D. Les branches du faisceau de His ont une fréquence de dépolarisation de secours de 50/min. 
+E. La conduction intracardiaque est aussi rapide que dans les grosses fibres nerveuses, soit 100 m/s. 
+
+Principes de l'Électrocardiographie (ECG) :
+A. L'électrocardiogramme enregistre l'activité électrique intracellulaire du cœur. 
+$B. L’onde QRS, représentant la dépolarisation ventriculaire, est l'événement électrique le plus ample du corps en raison de l'activation d'une grande masse musculaire. 
+C. L'onde P représente la repolarisation des oreillettes. 
+$D. La repolarisation des oreillettes n'est pas visible sur l’ECG car elle survient en même temps que la dépolarisation ventriculaire, dont la masse est plus importante. 
+$E. L'onde T correspond à la repolarisation des ventricules. 
+
+Signes ECG de Pathologies :
+$A. L'Hypertrophie Ventriculaire Gauche (HVG) se traduit à l'ECG par une augmentation de l'amplitude de l'onde R en dérivation V5 et de l'onde S en V1. 
+$B. En cas d'HVG, la repolarisation peut se faire de l’endocarde vers l’épicarde, ce qui provoque une onde T négative. 
+C. Un Bloc de Branche Droit (BBD) se manifeste par un complexe QRS qui est plus étroit que la normale. 
+$D. Le sus-décalage du segment S-T est un signe de lésion myocardique due au maintien du clampage de l'artère coronaire. 
+E. L'onde Q de nécrose est la conséquence de l'activation permanente de la paroi nécrosée. 
+
+Concernant la classification et la biomasse des êtres vivants sur Terre :
+A. Le monde animal représente la majorité du carbone stocké dans la biomasse terrestre.
+$B. Les arthropodes et les poissons sont les groupes qui dominent la biomasse dans le monde animal.
+C. Avant l’apparition de l’humain, les mammifères représentaient la majorité de la biomasse animale.
+D. L'apparition de la vie sur Terre a eu lieu il y a 4,5 milliards d'années.
+E. La divergence des espèces et leurs interactions ont été comprises et représentées pour la première fois par Claude Bernard.
+
+Concernant l’évolution du système circulatoire des vertébrés :
+$A. Chez les poissons, la pompe cardiaque est composée d’un atrium et d’un ventricule.
+$B. La circulation chez le poisson est un système à basse pression, car il n'y a pas de pompe entre les branchies et le reste du corps.
+C. La pression maximale dans le système circulatoire du poisson est d'environ 120 mmHg.
+$D. Les amphibiens possèdent un cœur à trois cavités, incluant deux atriums et un ventricule.
+$E. Le cœur des mammifères et celui des oiseaux possèdent un cloisonnement complet à quatre cavités.
+
+À propos des caractéristiques des premiers mammifères :
+$A. Les mammifères sont apparus il y a 200 millions d’années, avant l’extinction des dinosaures.
+$B. Leur petite taille et leur vie nocturne ont permis aux premiers mammifères de cohabiter avec les dinosaures.
+$C. Les premiers mammifères étaient insectivores.
+D. La vie nocturne a entraîné chez les premiers mammifères un développement important de la vision colorée.
+$E. Le développement des aires cérébrales associatives a été un moteur de l’évolution de leur cerveau, en compensant la faible vision.
+
+Concernant les sauropodes et la girafe :
+$A. Les sauropodes étaient des dinosaures herbivores de grande taille.
+B. Malgré leur masse importante, les sauropodes avaient des systèmes digestifs courts et peu efficaces.
+$C. Le cou des sauropodes était tenu horizontalement, permettant une économie d'énergie.
+D. Les sauropodes pouvaient verticaliser leur cou grâce à une pression cardiaque suffisante pour alimenter le cerveau.
+$E. La girafe est un animal physiologiquement hypertendu.
+
+À propos de la physiologie comparée entre homéothermes et poïkilothermes :
+$A. Les animaux homéothermes, comme les mammifères, ont des besoins et des dépenses 10 fois supérieurs aux animaux poïkilothermes.
+$B. Les homéothermes possèdent plus de mitochondries que les poïkilothermes.
+C. Les animaux poïkilothermes peuvent maintenir une puissance maximale de déploiement pendant une longue durée.
+$D. Le fait que les poïkilothermes basculent rapidement sur un métabolisme anaérobie est directement lié à la performance de leur système circulatoire (un seul ventricule).
+$E. La puissance et la vitesse maximales pouvant être déployées par les homéothermes et les poïkilothermes sont assez similaires.
+
+Concernant l'adaptation à l'oxygène dans le vivant :
+$A. L’hémoglobine utilise du fer ferreux (Fe2+) pour capter l'oxygène.
+B. Le transport de l’oxygène chez l’homme est permis par des globules rouges ovales et nucléées.
+$C. Le transport de l’oxygène est un élément clé de son utilisation du fait de sa faible solubilité dans l’eau.
+$D. Les poissons de glace peuvent se passer de transporteurs d'oxygène car l'oxygène est beaucoup plus soluble à basse température.
+E. Le développement des poumons a été rendu nécessaire pour le passage au milieu aérien, et cet organe est apparu initialement chez les tétrapodes.
+
+À propos des mécanismes d'échanges gazeux chez les animaux aquatiques :
+$A. La densité d’espèces vivantes est plus importante dans les eaux polaires en raison d’une plus forte concentration en O2.
+$B. La captation de l’O2 au niveau des branchies se fait selon des mécanismes voisins de ceux observés au niveau des poumons.
+$C. Dans les branchies, l'échange d'oxygène entre l'eau et le sang se fait par un système à contre-courant.
+$D. Les globules rouges des poissons sont ovales et nucléés.
+E. Tous les poissons possèdent de l'hémoglobine dans leur sang.
+
+Concernant l'évolution des structures respiratoires :
+$A. L’ancêtre des poumons actuels était détenu par le Lungfish (poisson à poumon).
+$B. Le Lungfish utilise des sacs aériens pour respirer l'air.
+$C. Le Lungfish peut survivre aux périodes estivales sèches en se réfugiant dans la boue pour former un cocon.
+D. Les tétrapodes actuels comprennent uniquement les reptiles, les oiseaux et les mammifères.
+$E. Le développement d'un revêtement cutané pour éviter les pertes hydriques fait partie des adaptations pour la vie terrestre.
+
+
