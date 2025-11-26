@@ -1,12 +1,12 @@
 {
-    "Anatomie": ["Ronéo2.txt"],
-    "Pharmacologie": ["Ronéo1.txt", "Ronéo2.txt", "Ronéo3.txt", "Ronéo4.txt"],
-    "Physiologie": ["Ronéo2.txt", "Ronéo3.txt", "Ronéo4.txt"],
-    "Biochimie": ["Ronéo1.txt", "Ronéo2.txt", "Ronéo3.txt", "Ronéo4.txt"],
-    "Biophysique": ["Ronéo1.txt", "Ronéo2.txt", "Ronéo3.txt", "Ronéo4.txt"],
-    "Histologie": ["Ronéo1.txt", "Ronéo2.txt", "Ronéo3.txt", "Ronéo4.txt"],
-    "Semiologie": ["Ronéo1.txt", "Ronéo3.txt", "Ronéo4.txt"]
+    "Anatomie": ["AnnalesAR", "AnnalesCV"],
+    "Pharmacologie": ["Annales"],
+    "Physiologie": ["AnnalesAR", "AnnalesCV"],
+    "Biochimie": ["Annales"],
+    "Biophysique": ["Annales"],
+    "Semiologie": ["AnnalesG", "AnnalesAR", "AnnalesCV"]
 }
+
 
 
 
