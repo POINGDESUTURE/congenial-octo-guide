@@ -263,3 +263,304 @@ $B. Le baroréflexe est réinitialisé à une valeur de consigne plus élevée (
 $C. La FC maximale est théoriquement de 220, moins l'âge du sujet.
 D. Le rendement cardiaque diminue, car la contraction est plus intense et donc plus coûteuse en énergie.
 $E. L'augmentation de la FC et de l'inotropie sont orchestrées par les catécholamines (stimulation ortho-sympathique).
+
+Concernant le potentiel de membrane de repos d'un cardiomyocyte :
+$A. Le potentiel d'équilibre du Na+ est voisin de +60 mV.
+$B. La conductance membranaire au K+ est la plus importante à ce potentiel de repos.
+C. L'ATPase Na+/K+ expulse 2 ions Na+ pour 3 ions K+ qui entrent dans la cellule.
+D. Le potentiel de membrane est davantage influencé par le gradient de concentration du Na+ que celui du K+.
+$E. Sa valeur est habituellement stable autour de -90 mV.
+
+À propos du potentiel d'action du cardiomyocyte :
+$A. La phase 0, ou dépolarisation rapide, est principalement due à l'ouverture des canaux sodiques voltage-dépendants.
+$B. La phase 2, ou phase de plateau, est liée à l'entrée de Ca2+ au travers de canaux de type L.
+$C. La repolarisation (phase 3) est essentiellement liée à la sortie massive de K+ de la cellule.
+D. L'inactivation des canaux Na+ survient pendant la phase de plateau.
+$E. La longue durée de ce potentiel d'action empêche la sommation temporelle des contractions cardiaques.
+
+Concernant le tissu nodal et l'automatisme cardiaque :
+$A. Le nœud sinusal impose la fréquence de dépolarisation la plus élevée, d'environ 100 battements par minute.
+$B. Le potentiel de membrane des fibres nodales est instable et ne présente pas de potentiel de repos maximal stable.
+C. La phase de dépolarisation diastolique lente (DDL) est principalement due à l'ouverture des canaux calciques de type T.
+$D. La hiérarchie des fréquences spontanées est maintenue par la pente de la DDL, qui est plus raide dans le nœud sinusal.
+E. La phase 0 du potentiel d'action du nœud sinusal est déclenchée par une entrée massive de Na+.
+
+À propos du rôle du calcium (Ca2+) dans le couplage excitation-contraction :
+$A. Le Ca2+ intracellulaire passe d'environ 10^-7 M en diastole à 10^-5 M en systole.
+$B. L'entrée de Ca2+ extracellulaire par les canaux L-type est la cause principale de la libération de Ca2+ par le réticulum sarcoplasmique.
+$C. L'augmentation du Ca2+ cytosolique permet l'engrènement des filaments d'actine et de myosine, générant la contraction.
+D. La relaxation (diastole) est un phénomène actif qui dépend majoritairement de l'expulsion de Ca2+ hors de la cellule par l'échangeur Na+/Ca2+.
+$E. La stimulation adrénergique augmente la relaxation du cœur (effet lusitrope) en favorisant le repompage de Ca2+ par le réticulum sarcoplasmique.
+
+Concernant les différences entre le muscle cardiaque et le muscle strié squelettique :
+$A. Le muscle cardiaque ne peut pas être soumis à la sommation temporelle en raison de sa longue période réfractaire absolue.
+$B. Dans le muscle strié squelettique, la modulation de la force totale de contraction se fait par le recrutement progressif des unités motrices.
+$C. La force de contraction du muscle cardiaque est modulable en fonction de la quantité de Ca2+ libérée dans le cytosol.
+D. La durée totale du potentiel d'action d'un cardiomyocyte (environ 250 ms) est beaucoup plus courte que celle d'un potentiel d'action neuronal.
+$E. La contractilité du muscle squelettique est indépendante des catécholamines car il ne possède pas de récepteurs B1-adrénergiques.
+
+À propos du système de conduction électrique cardiaque :
+$A. Le plancher conjonctif atrio-ventriculaire agit comme un isolant électrique séparant les oreillettes des ventricules.
+$B. Le ralentissement de l'onde d'activation entre les oreillettes et les ventricules se produit au niveau du nœud auriculo-ventriculaire.
+$C. Le nœud sinusal est situé à proximité de l'abouchement de la veine cave supérieure dans l'oreillette droite.
+$D. Le réseau de Purkinje présente la fréquence de dépolarisation spontanée la plus faible, autour de 5 battements par minute.
+$E. La conduction électrique est nécessaire pour assurer une contraction homogène et séquentielle des oreillettes puis des ventricules.
+
+À propos de la régulation de la fréquence cardiaque (FC) :
+$A. Le nœud sinusal, en l'absence de toute influence neuro-humorale, bat naturellement à une fréquence d'environ 100/min.
+$B. Au repos, la FC observée (60-80/min) est inférieure à la fréquence intrinsèque du nœud sinusal grâce au tonus parasympathique.
+C. L'activation parasympathique entraîne une accélération de la FC (effet chronotrope positif).
+D. Le système parasympathique ralentit la FC en augmentant la pente de la Dépolarisation Diastolique Lente (DDL).
+$E. L'activation orthosympathique via les récepteurs B1-adrénergiques entraîne une tachycardie et augmente l'inotropie.
+
+Concernant les bases électro-ioniques des cellules excitables cardiaques :
+$A. L'ouverture des canaux potassiques de fuite engendre une sortie de K+ de la cellule, créant un excès de charges négatives en intracellulaire.
+$B. Le sodium (Na+) est attiré vers l'intérieur de la cellule à la fois par son gradient de concentration et par le gradient électrique.
+$C. L'échangeur Na+/Ca2+ (NCX) contribue à la relaxation cellulaire en faisant sortir du Ca2+ du cytosol.
+D. Un potentiel de membrane de -70 mV est observé chez les neurones au repos, du fait d'une perméabilité membranaire élevée au Na+.
+E. Le potentiel d'action des cellules nodales est caractérisé par un potentiel de repos très stable, contrairement aux cardiomyocytes.
+
+À propos du rôle du potassium (K+) dans la physiologie cardiaque :
+A. Le potentiel d'équilibre du K+ est plus positif que le potentiel de membrane de repos d'un cardiomyocyte.
+$B. La phase 3 de repolarisation du cardiomyocyte est due à un efflux massif de K+.
+C. Une hyperkaliémie est toujours sans conséquence sur l'activité électrique cardiaque.
+$D. La dépolarisation diastolique lente des cellules nodales est principalement induite par une diminution de la perméabilité membranaire au K+.
+E. La pompe Na+/K+ ATPase permet de maintenir le fort gradient de concentration du K+, qui est plus concentré dans le milieu extracellulaire.
+
+Concernant les concentrations ioniques et gradients dans le cardiomyocyte au repos :
+A. La concentration intracellulaire de Na+ est très supérieure à sa concentration extracellulaire.
+$B. Le gradient de concentration du K+ est orienté vers l'extérieur de la cellule, tandis que le gradient électrique l'attire vers l'intérieur.
+C. La concentration intracellulaire de Ca2+ en diastole est de l'ordre de 10^3 M.
+$D. Le gradient électrochimique du Na+ favorise son entrée massive lors de la phase 0 du potentiel d'action.
+E. Le potentiel de membrane des fibres nodales est proche du potentiel d'équilibre du K+, soit environ -90 mV.
+
+À propos des mécanismes de la repolarisation ventriculaire :
+$A. La repolarisation ventriculaire se fait de l'épicarde vers l'endocarde.
+$B. Ce sens de repolarisation explique que l'onde T sur l'ECG soit généralement positive et dans le même sens que le complexe QRS.
+C. Les différences de repolarisation transmurale sont indépendantes de la densité des canaux potassiques.
+D. La repolarisation complète du cardiomyocyte correspond à la phase 4 du potentiel d'action.
+E. La relaxation diastolique est un processus actif qui consomme de l'énergie, notamment pour le repompage du Ca2+.
+
+Concernant le potentiel d'action des cellules du nœud auriculo-ventriculaire (n. A-V) :
+A. Sa fréquence de dépolarisation spontanée est supérieure à celle du nœud sinusal.
+B. Il est principalement régulé par le système orthosympathique.
+C. Sa phase de dépolarisation lente (DDL) présente une pente plus raide que celle du faisceau de His.
+$D. Il peut prendre le relais du nœud sinusal en cas de défaillance, mais à une fréquence plus basse, autour de 50/min.
+E. Son rôle est d'accélérer la conduction électrique entre les oreillettes et les ventricules.
+
+Concernant l'évolution du système cardio-vasculaire :
+A. Le poisson possède un système circulatoire systémique à haute pression, similaire à celui du ventricule gauche des mammifères.
+$B. Chez le poisson, l'écoulement du sang oxygéné des branchies vers les tissus se fait de façon passive, sans relai de pompe.
+$C. La circulation du poisson est caractérisée par la présence d'une unique pompe cardiaque, composée d'un atrium et d'un ventricule.
+$D. Le système de double pompe en série des mammifères permet de maintenir une pression élevée (120 mmHg) pour la circulation systémique.
+E. Le métabolisme du poisson nécessite un système circulatoire 10 fois plus performant que celui des mammifères.
+
+À propos des différences entre animaux poïkilothermes et homéothermes :
+$A. Les animaux poïkilothermes peuvent utiliser rapidement la voie anaérobie, limitant la durée de leur déploiement de puissance maximale.
+$B. Les animaux homéothermes présentent des besoins et des dépenses énergétiques 10 fois supérieurs aux poïkilothermes.
+C. Les poissons de glace du fait de la faible solubilité de l'O2 dans l'eau à basse température, sont dépourvus d'hémoglobine.
+$D. La puissance et la vitesse maximales déployées par les animaux homéothermes et poïkilothermes sont similaires.
+$E. Les animaux homéothermes possèdent davantage de mitochondries dans leurs muscles striés que les poïkilothermes.
+
+Concernant l'hémoglobine et le transport de l'oxygène :
+$A. L'hémoglobine est présente très tôt dans l'évolution, chez la plupart des êtres vivants pluricellulaires.
+$B. Les globules rouges des poissons, des oiseaux et des reptiles sont ovales et nucléées, contrairement à ceux des mammifères.
+$C. L'échange d'oxygène au niveau des branchies des poissons se réalise grâce à un système à contre-courant très efficace.
+D. Le volume des globules rouges (hématocrite) peut atteindre 52% chez l'Homme, mais un volume supérieur à 50% entraîne un risque de thrombose.
+$E. L'augmentation de la solubilité de l'O2 à basse température dans les eaux polaires explique la forte densité d'espèces vivantes dans ces zones.
+
+Concernant les adaptations physiologiques liées à la sortie des eaux :
+$A. Le développement d'un revêtement cutané et de reins capables de retenir l'eau et le sel fut nécessaire pour la vie terrestre.
+$B. Le Lungfish possédait des sacs aériens considérés comme l'ancêtre des poumons actuels.
+$C. Le développement du système rénine angiotensine aldostérone (SRAA) a permis aux organismes terrestres de faire face à la pénurie de sodium.
+D. Chez les reptiles, le cloisonnement cardiaque est complet, comme chez les mammifères, sans mélange de sang oxygéné et désoxygéné.
+E. Les premiers mammifères étaient probablement diurnes et de grande taille pour cohabiter avec les dinosaures jusqu'à leur extinction.
+
+À propos des systèmes circulatoires extrêmes :
+$A. La girafe est considérée comme physiologiquement hypertendue en raison de la nécessité de maintenir une perfusion cérébrale contre la gravité.
+$B. Les sauropodes ne pouvaient pas verticaliser leur cou en raison de l'insuffisance de la pression pompée par leur cœur pour alimenter le cerveau à cette hauteur.
+$C. Le kangourou présente des ondes de réflexion qui reviennent très rapidement et se superposent à la systole, augmentant sa postcharge.
+$D. Chez le serpent, le profil de l'onde de pression artérielle est très lisse car il n'existe pas d'ondes de réflexion significatives.
+E. La pression artérielle systolique mesurée à la sortie du cœur d'une girafe est similaire à celle d'un humain sain (environ 120 mmHg).
+
+Concernant la postcharge du ventricule gauche (VG) :
+$A. Elle correspond à l'ensemble des facteurs qui s'opposent à l'éjection du sang par le ventricule.
+$B. Elle représente la contrainte (stress) de la paroi myocardique perçue durant la phase d'éjection systolique.
+$C. Elle est principalement déterminée par la Pression Sanguine Artérielle (PSA) en conditions physiologiques.
+D. La vasoconstriction de l'aorte contribue fortement à son augmentation, notamment dans l'hypertension artérielle.
+E. Elle est inversement proportionnelle à la rigidité des grosses artères.
+
+À propos d'une augmentation aiguë de la postcharge du ventricule gauche :
+A. Elle augmente immédiatement le Volume d'Éjection Systolique (VES).
+$B. Elle entraîne une augmentation du Volume Télédiastolique (VTD).
+$C. Elle se traduit par un déplacement de la courbe pression-volume vers la droite.
+$D. Elle est compensée par une augmentation de la précharge grâce à la loi de Starling.
+E. Elle est associée à une augmentation de la vitesse de raccourcissement des fibres myocardiques.
+
+Parmi les facteurs suivants, lesquels peuvent augmenter la postcharge du ventricule gauche ?
+$A. Une diminution de la compliance des grosses artères, comme l'aorte ou les carotides.
+$B. L'activation orthosympathique provoquant une vasoconstriction artériolaire via les récepteurs alpha-adrénergiques.
+$C. Une augmentation du Volume Télédiastolique (VTD) qui accentue le stress pariétal.
+D. La stimulation parasympathique qui augmente le tonus vasculaire artériolaire.
+$E. L'augmentation de la vitesse de propagation de l'onde de pouls.
+
+Concernant la postcharge et la rigidité artérielle :
+$A. Chez un sujet jeune, la rigidité des gros troncs artériels représente environ 10% de la postcharge totale.
+$B. Avec l'âge, l'augmentation de la postcharge systolique est principalement due à la rigidification des grosses artères.
+C. La rigidité artérielle est estimée en mesurant la vitesse du sang circulant dans l'aorte.
+$D. L'augmentation de la postcharge chronique entraîne un remodelage du VG conduisant à une hypertrophie concentrique.
+E. La rigidité des artères contribue à augmenter la Pression Artérielle Diastolique (PAD).
+
+À propos de la postcharge du VG et de la courbe Pression-Volume :
+A. L'augmentation de la postcharge déplace la courbe Pression-Volume vers la gauche.
+B. L'augmentation de la postcharge diminue la Pression Télédiastolique du Ventricule Gauche (PTDVG).
+C. La postcharge est l'un des déterminants de la pente de la droite VTS-PTS (Volume Télésystolique - Pression Télésystolique).
+$D. Lorsque la postcharge augmente, le Volume Télésystolique (VTS) augmente si la contractilité reste constante.
+$E. Le point où la pression ventriculaire dépasse la pression aortique correspond à l'ouverture de la valve aortique et à l'atteinte de la postcharge.
+
+Concernant la détermination de la postcharge :
+$A. Les Résistances Périphériques Totales (RPT), principalement au niveau des artérioles, constituent le facteur le plus important de la postcharge en conditions physiologiques.
+B. La postcharge est uniquement influencée par les facteurs de charge (précharge et volume télédiastolique).
+$C. L'Angiotensine II augmente la postcharge en provoquant une vasoconstriction artériolaire et une augmentation de la PSA.
+D. La loi de Laplace indique que la tension pariétale est inversement proportionnelle à la pression dans le ventricule.
+E. La rigidité artérielle est un facteur modulable par des médicaments vasodilatateurs.
+
+Concernant l'application de la Loi de Laplace au myocarde ventriculaire :
+A. Elle définit la contrainte (stress) exercée sur la paroi ventriculaire, notée σ.
+B. La tension pariétale est inversement proportionnelle à la pression P dans la cavité.
+$C. Elle explique l'intérêt énergétique de la forme de "ballon de rugby" du ventricule gauche par rapport à une forme sphérique.
+$D. La tension T est proportionnelle au rayon r de la cavité et à la pression P interne.
+$E. L'augmentation de l'épaisseur (hypertrophie) du ventricule gauche permet de normaliser la tension pariétale en cas de postcharge chronique élevée.
+
+À propos de la Loi d'Ohm appliquée à la circulation systémique :
+$A. Elle s'écrit P = D x R, où P est la Pression Sanguine Artérielle (PSA), D le Débit Cardiaque (DC) et R les Résistances Périphériques Totales (RPT).
+$B. La PSA est le paramètre le plus régulé de l'organisme, notamment à court terme par le baroréflexe.
+C. L'augmentation du rayon artériolaire entraîne une diminution des RPT et une augmentation potentielle du DC et de la PSA.
+D. Une chute importante de la PSA n'affecte pas l'irrigation du cerveau grâce à son autorégulation tant que la pression est supérieure à 50 mmHg.
+$E. La PSA moyenne doit rester supérieure à 65 mmHg pour garantir une perfusion correcte des organes vitaux en réanimation.
+
+Concernant la loi de Poiseuille dans la régulation du débit sanguin :
+$A. Le débit est inversement proportionnel à la longueur du vaisseau et à la viscosité du sang (η).
+$B. Le débit sanguin est proportionnel à la différence de pression entre les deux extrémités du vaisseau (ΔP).
+C. L'influence du rayon (r) est faible car il n'est pas élevé à la puissance 4 dans la formule.
+$D. Si le rayon d'une artériole est divisé par deux, la résistance à l'écoulement est multipliée par 16.
+$E. Les artérioles sont les principaux vaisseaux de résistance car leur calibre est significativement petit, induisant la chute de pression.
+
+À propos de la Loi de Frank-Starling :
+$A. Elle s'applique au muscle strié cardiaque, contrairement au muscle strié squelettique dont la force chute lorsque la longueur s'écarte trop de l'optimum.
+$B. L'augmentation du Volume Télédiastolique (VTD) étire les sarcomères, améliorant la géométrie de recouvrement de l'actine et de la myosine.
+$C. Elle stipule que si le ventricule se remplit davantage (augmentation de la Précharge), il se vide davantage dès la systole suivante.
+$D. Elle permet de maintenir le Volume d'Éjection Systolique (VES) lors d'une augmentation de la postcharge, au prix d'une augmentation de la Pression Télédiastolique du Ventricule Gauche (PTDVG).
+E. Dans le contexte de l'insuffisance cardiaque décompensée (FE 25%), la mise en jeu de cette loi permet de normaliser le VES sans augmentation significative du VTD.
+
+À propos des facteurs régissant les résistances et le débit sanguin :
+$A. La viscosité du sang (η) est un facteur de la Loi de Poiseuille et est directement proportionnelle à l'hématocrite.
+B. Les artères de compliance (aorte, carotides) contribuent à hauteur de 50% aux Résistances Périphériques Totales (RPT) chez le sujet jeune.
+$C. D'après la loi d'Ohm, si les RPT sont constantes, le débit cardiaque est directement proportionnel à la Pression Sanguine Artérielle (PSA).
+$D. La vasodilatation métabolique locale dans les muscles actifs prédomine sur le tonus vasoconstricteur orthosympathique par inhibition de la libération de noradrenaline.
+$E. En situation physiologique au repos, l'irrigation des muscles squelettiques est limitée par le tonus vasoconstricteur assuré par la noradrenaline sur les récepteurs alpha-adrénergiques.
+
+Concernant les barorécepteurs artériels :
+$A. Ils sont principalement localisés au niveau du sinus carotidien et de la crosse aortique.
+$B. Ils sont des mécanorécepteurs sensibles aux variations de tension et de déformation de la paroi artérielle.
+$C. Ils transmettent le signal au centre cardiovasculaire bulbaire sous forme de potentiels d'action codés en fréquence.
+D. Une chute de la pression artérielle moyenne augmente la fréquence de décharge de ces récepteurs.
+E. Ils sont les régulateurs principaux de la volémie à long terme, en collaboration avec l'ADH.
+
+À propos de l'arc réflexe barosensible :
+$A. La voie afférente du baroréflexe emprunte les nerfs glossopharyngien (IX) et vague (X).
+B. Le tonus du système parasympathique (SNP) est normalement faible au repos.
+$C. Le centre cardio-modérateur est activé lorsque les barorécepteurs détectent une augmentation de la pression.
+D. L'activation de la branche orthosympathique (OS) entraîne une vasodilatation des artérioles pour abaisser les résistances périphériques.
+E. L'information est traitée exclusivement par le cortex moteur avant d'atteindre le tronc cérébral.
+
+Lors d'une hémorragie aiguë entraînant une hypotension :
+$A. La baisse de la pression artérielle est détectée par une diminution de la fréquence de décharge des barorécepteurs.
+B. Le baroréflexe induit une inhibition du système nerveux orthosympathique (OS).
+$C. Le baroréflexe provoque une augmentation de la fréquence cardiaque (tachycardie réflexe).
+$D. L'activation OS mène à une vasoconstriction des artérioles et une veinoconstriction.
+E. Ce mécanisme est la principale réponse lente (plusieurs jours) visant à restaurer la volémie.
+
+Concernant la régulation de la pression artérielle :
+$A. Le baroréflexe agit comme le mécanisme le plus rapide (immédiat) pour ajuster la pression.
+$B. Le système Rénine-Angiotensine-Aldostérone (SRAA) est essentiel dans la régulation chronique de la PSA.
+C. L'angiotensine II est un puissant vasodilatateur qui augmente la rétention hydrosodée.
+$D. L'activation parasympathique (SNP) sur les cellules du nœud sinusal diminue la pente de la dépolarisation diastolique lente (DDL).
+$E. Le réflexe en cas d'hypertension aiguë est la bradycardie, médiée par l'activation du centre cardio-inhibiteur bulbaire.
+
+À propos de la fonction du baroréflexe à l'exercice physique intense :
+A. Il maintient la pression artérielle moyenne (PAM) à sa valeur de repos, soit environ 95 mmHg.
+$B. Le point de consigne du baroréflexe est réajusté pour tolérer des valeurs de pression artérielle plus élevées.
+C. Il s'active de façon à inhiber l'activité sympathique et à maximiser le frein parasympathique.
+$D. L'activation des mécanorécepteurs musculaires contribue à moduler le point de consigne du baroréflexe.
+$E. Bien que la pression artérielle soit augmentée, le réflexe agit comme s'il y avait une hypotension, maintenant l'activité sympathique.
+
+Concernant le passage de la position couchée à la position debout :
+$A. Il entraîne une diminution du retour veineux, car le sang s'accumule dans les vaisseaux de capacitance des membres inférieurs.
+$B. La baisse de la pression artérielle est détectée par les barorécepteurs.
+C. La réponse compensatoire immédiate implique une inhibition réflexe de la fréquence cardiaque.
+$D. L'activation orthosympathique réflexe augmente les résistances périphériques totales (RPT) par vasoconstriction artériolaire.
+E. Une chute de la pression systolique de 25 mmHg est la manifestation normale du baroréflexe.
+
+À propos des effets du système nerveux végétatif sur la régulation cardiaque :
+$A. Le système parasympathique (SNP) exerce en permanence un tonus inhibiteur (frein vagal) sur la fréquence de dépolarisation du nœud sinusal.
+$B. Le nœud sinusal, sans influence extérieure, bat spontanément à une fréquence d'environ 100/min.
+$C. L'activation orthosympathique déplace la relation volume télé-systolique/pression télé-systolique vers le haut et la gauche.
+D. L'activation parasympathique provoque une augmentation de la contractilité myocardique.
+E. L'activation orthosympathique n'a d'effet que sur la fréquence cardiaque.
+
+Concernant la régulation centrale du baroréflexe :
+$A. L'effet "blouse blanche" est dû à un état de stress qui active l'orthosympathique, augmentant temporairement la PSA.
+B. L'activation des aires motrices corticales lors de l'exercice inhibe le système orthosympathique pour permettre la vasodilatation musculaire.
+$C. Les chémorécepteurs glomiques perçoivent les variations de PCO2 et pH, influençant ainsi les centres cardiovasculaires.
+$D. L'hypercapnie (augmentation de la PCO2) tend à favoriser l'activation orthosympathique et donc l'hypertension artérielle.
+E. La régulation de la PSA par le baroréflexe est insensible aux émotions véhiculées par l'amygdale.
+
+Concernant la définition et la perception du cisaillement (shear stress) :
+A. Le cisaillement est principalement perçu par les cellules musculaires lisses de la média.
+$B. Il représente la force de frottement du sang agissant sur la monocouche de cellules endothéliales.
+C. La contrainte pariétale (wall stress) et la force de cisaillement sont des synonymes.
+$D. Le cisaillement est l'une des deux contraintes mécaniques principales perçues par la paroi artérielle en conditions physiologiques.
+E. Son intensité est constante, quelle que soit la vitesse d'écoulement du sang.
+
+À propos des conséquences d'un cisaillement élevé :
+$A. Il est associé à un régime d'écoulement sanguin dit laminaire.
+B. Il provoque la désorganisation de l'endothélium, rendant les cellules arrondies.
+$C. II est nécessaire pour maintenir l'intégrité de la barrière endothéliale.
+$D. II stimule la production du monoxyde d'azote (NO) par les cellules endothéliales.
+E. Il conduit à une augmentation du stress oxydant mitochondrial dans les cellules endothéliales.
+
+Concernant le rôle du shear stress dans la régulation vasomotrice :
+A. Le monoxyde d'azote (NO) produit en réponse au cisaillement agit directement sur le cœur pour augmenter l'inotropie.
+B. Le cisaillement s'oppose à la vasodilatation artériolaire car il active le système orthosympathique.
+$C. Dans le muscle strié squelettique, l'augmentation du cisaillement en amont favorise la vasodilatation endothélium-dépendante.
+D. Le NO résultant du cisaillement provoque l'entrée de Ca2+ dans les cellules musculaires lisses pour induire une contraction.
+$E. L'augmentation du cisaillement due à un débit accru est le plus puissant stimulus pour la production de NO.
+
+À propos de la morphologie de l'endothélium en fonction du cisaillement :
+A. L'hyper cisaillement induit un aspect pavimenteux polyédrique des cellules.
+$B. Un cisaillement régulier allonge les cellules endothéliales dans le sens du flux sanguin.
+$C. L'écoulement turbulent entraîne la perte d'alignement des cellules endothéliales.
+D. Les cellules endothéliales deviennent arrondies uniquement en cas de lésion ischémique.
+$E. L'endothélium polyédrique est observé dans les zones de flux sanguin turbulent en aval d'une sténose.
+
+Concernant l'athérome et le cisaillement :
+$A. La désorganisation de l'endothélium due à un faible cisaillement augmente la perméabilité endothéliale.
+B. Les zones de cisaillement élevé, comme la carotide commune, sont les sites préférentiels d'accumulation lipidique.
+$C. Un défaut de shear stress réduit la production de NO par l'endothélium.
+D. Le flux laminaire est favorable à la formation de plaque d'athérome.
+$E. Le sinus carotidien est particulièrement vulnérable à l'athérome en raison du faible cisaillement et du flux turbulent.
+
+À propos de l'adaptation vasculaire et du cisaillement lors de l'exercice :
+$A. Un cisaillement important et répété favorise l'angiogenèse capillaire avec l'entraînement.
+B. La vasodilatation métabolique est uniquement contrôlée par la concentration locale en K+ et en CO2, sans influence du cisaillement.
+$C. L'augmentation du débit cardiaque à l'exercice génère un shear stress plus important dans les artérioles des muscles actifs.
+D. Le recrutement des capillaires est indépendant des contraintes de cisaillement perçues par l'endothélium.
+$E. Le manque de cisaillement active l'adhésion leucocytaire et favorise l'inflammation.
+
+Concernant les facteurs déterminant la force de cisaillement tau :
+$A. Tau est influencée par la viscosité (η) du sang.
+$B. Le cisaillement est inversement proportionnel au rayon du vaisseau à la puissance 3 (r^3).
+C. Si le débit sanguin est multiplié par deux, le cisaillement reste inchangé.
+D. Une augmentation du rayon artériolaire de deux fois diminue le cisaillement d'un facteur 16. 
+E. La régulation du cisaillement est le mécanisme principal de régulation chronique de la Pression Sanguine Artérielle (PSA). 
