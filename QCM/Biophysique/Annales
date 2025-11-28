@@ -158,3 +158,283 @@ B. toutes les lésions radio-induites entrainent une mutation
 C. pour un effet stochastique il faut induire une lésion létale au niveau cellulaire
 $D. les effets aigues sont fonction de la dose
 $E. la radiothérapie externe est responsable des effets secondaires précoces
+
+Concernant l'activité radioactive :
+A. Elle s'exprime en Gray (Gy), l'unité de la dose absorbée.
+$B. Elle est l'unité SI de l'activité radionucléaire.
+$C. Elle se définit comme le nombre de désintégrations par seconde.
+D. Elle est mesurée avec un dosimètre, l'outil servant à déterminer la dose absorbée.
+E. Elle est directement liée à l'énergie transférée à une quantité de matière.
+
+À propos de la dose absorbée (D) :
+A. Elle quantifie l'activité d'une source radioactive.
+$B. Elle s'exprime en Joule par kilogramme (J/kg).
+$C. Elle est l'unité SI de la dose absorbée, le Gray (Gy).
+D. Elle est une grandeur calculée à partir des grandeurs opérationnelles.
+$E. Elle est la seule dose qui est directement mesurée, contrairement à la Dose Équivalente et à la Dose Efficace.
+
+Concernant le Kerma (K) :
+A. Il est exprimé en Sievert (Sv).
+$B. Il est une quantité applicable aux rayonnements indirectement ionisants, comme les photons et les neutrons.
+C. Il est directement mesurable au niveau du point considéré.
+D. Il est toujours supérieur à la dose absorbée (D).
+$E. Il quantifie l'énergie transférée par les rayons X et les photons aux électrons de la matière.
+
+À propos de la Dose Équivalente (HT) :
+$A. Son unité SI est le Sievert (Sv).
+B. Elle est calculée en multipliant la dose absorbée par le facteur de pondération tissulaire (WT).
+$C. Elle permet d'additionner les effets biologiques produits par des rayonnements de nature différente.
+$D. Elle est une grandeur de protection, non directement mesurable.
+E. Elle prend en compte la radiosensibilité des organes touchés.
+
+Concernant la Dose Efficace (E) :
+A. Elle est calculée en Gray.
+$B. Elle prend en compte la radiosensibilité spécifique des tissus irradiés via le facteur WT.
+$C. Elle estime le risque d'induction de cancer dans l'organisme entier.
+D. Elle est égale à la Dose Absorbée multipliée par le facteur de pondération du rayonnement (WR).
+$E. Elle est calculée en faisant la somme des produits de la dose équivalente (HT) par le facteur de pondération tissulaire (WT).
+
+À propos des facteurs de pondération :
+A. Le facteur WT (tissulaire) prend en compte la nature du rayonnement.
+$B. Le facteur WT (tissulaire) est une grandeur sans unité.
+C. La valeur de WR (rayonnement) pour les électrons est de 20.
+$D. La valeur de WR (rayonnement) pour les particules alpha est de 20.
+E. Le facteur de pondération (WT) des gonades (0,20) est inférieur à celui de la peau (0,01).
+
+Concernant la relation entre dose absorbée et dose équivalente :
+A. Pour le rayonnement alpha, la Dose Équivalente est égale à la Dose Absorbée.
+$B. Pour les photons gamma et les électrons, la Dose Équivalente est égale à la Dose Absorbée.
+C. La Dose Équivalente est toujours supérieure à la Dose Absorbée.
+$D. Le facteur de pondération du rayonnement (WR) pour les protons est de 5.
+$E. L'impact biologique est plus élevé pour les particules alpha que pour les photons à dose absorbée égale.
+
+À propos des grandeurs dosimétriques :
+$A. La Dose Absorbée (D) est classée parmi les grandeurs physiques.
+B. L'Équivalent de dose ambiant (H*(d)) est une grandeur de protection.
+$C. La Dose Efficace (E) est une grandeur de protection.
+D. Les grandeurs opérationnelles sont définies pour des mesures théoriques et complexes.
+$E. Les grandeurs physiques décrivent des phénomènes directement mesurables, comme la Fluence ou le Kerma.
+
+Concernant le TLE (Transfert Linéique d'Énergie) :
+$A. Il traduit l'énergie moyenne transférée au milieu par unité de longueur de trajectoire parcourue.
+B. Plus le TLE est élevé, plus l'énergie est cédée sur une longue distance.
+$C. Les particules alpha sont caractérisées par un TLE beaucoup plus élevé (200 à 500 fois) que celui des particules bêta.
+$D. Il reflète directement la nuisance biologique d'un rayonnement donné.
+E. Un TLE élevé entraîne des dommages biologiques locaux moins importants.
+
+Concernant la Justification d'un examen irradiant :
+$A. Elle est l'un des trois principes généraux de la radioprotection.
+B. Elle consiste à maintenir l'exposition au niveau le plus faible qu'il est raisonnablement possible d'atteindre (ALARA).
+C. Elle s'applique uniquement à la radiothérapie, où de fortes doses sont utilisées.
+$D. Le bénéfice pour le patient doit dépasser les risques inhérents à l'exposition aux rayonnements ionisants.
+E. Elle ne concerne pas les examens non irradiants comme l'échographie.
+
+L'Optimisation (ALARA) en radioprotection implique :
+A. De se concentrer uniquement sur les aspects techniques des équipements.
+$B. De réduire la durée d'exposition d'un patient.
+$C. D'utiliser des protections individuelles ou collectives.
+D. De ne jamais recourir aux rayonnements ionisants pour les enfants.
+$E. De prendre en compte les facteurs économiques et sociaux dans le maintien de l'exposition au niveau le plus faible possible.
+
+Le principe de Limitation en radioprotection :
+A. Est le seul principe qui ne s'applique pas aux protocoles de recherche biomédicale.
+$B. Vise à respecter les limites de dose fixées par voie réglementaire.
+C. Est régi par l'Autorité de Sûreté Nucléaire (ASN) sans implication de l'IRSN.
+$D. Détermine des limites annuelles différentes pour le public et les travailleurs.
+$E. Fixe, pour une femme enceinte, une limite d'exposition totale inférieure à celle d'un travailleur.
+
+Dans le contexte de la radioprotection et de l'évaluation du risque :
+A. La Dose Efficace (E) est l'unité de référence pour l'évaluation des effets déterministes.
+$B. La Dose Équivalente (HT) est essentielle pour les faibles doses et l'étude des effets stochastiques.
+C. Le Kerma (K) est l'unité privilégiée pour évaluer le risque génétique.
+$D. La Dose Efficace (E) est utile pour estimer la dose reçue par un groupe de personnes (dose collective).
+E. La Dose Absorbée (D) est calculée en utilisant des facteurs de pondération des rayonnements.
+
+Les grandeurs opérationnelles en radioprotection :
+A. Sont mesurables mais ne peuvent pas être calculées.
+$B. Sont des estimateurs (par excès) des grandeurs de protection comme la Dose Efficace.
+$C. Comprennent l'équivalent de dose ambiant, directionnel et individuel.
+D. Ne s'appliquent qu'à l'exposition des travailleurs et non aux patients.
+E. Sont des grandeurs physiques comme la Fluence et le Kerma.
+
+Concernant l'effet des doses sur l'organisme :
+A. Les effets stochastiques apparaissent avec certitude si la dose dépasse un seuil.
+$B. Les effets déterministes présentent une sévérité qui augmente avec la dose.
+$C. Les cancers radio-induits sont des effets stochastiques qui augmentent en probabilité avec la dose.
+D. Les effets déterministes surviennent après une longue période de latence (plusieurs années).
+E. Les nausées et vomissements suivant une irradiation (prodromes) sont des effets stochastiques.
+
+La Dose Absorbée (Gray) est insuffisante pour évaluer complètement le risque biologique car :
+A. Elle ne peut être mesurée qu'avec des fantômes anthropomorphiques.
+$B. L'effet biologique dépend non seulement de la dose, mais aussi du site d'impact, tel qu'un brin d'ADN.
+$C. Elle ne tient pas compte du type de rayonnement (alpha, bêta, X, gamma).
+D. Elle est l'unité de référence pour les faibles doses et la relation linéaire sans seuil.
+E. Elle est exprimée en Sievert.
+
+Concernant le principe de Justification :
+A. Il exige que les examens à rayonnement ionisant (RI) soient toujours privilégiés.
+$B. Il impose que les avantages procurés par l'activité dépassent les risques inhérents à l'exposition aux RI.
+$C. Il fait partie des trois principes généraux de la radioprotection.
+D. Il s'applique uniquement aux expositions professionnelles.
+$E. Il implique de considérer l'utilisation de techniques d'imagerie non ionisantes (IRM, échographie) si elles sont appropriées.
+
+À propos de l'Optimisation, également appelée ALARA :
+A. ALARA signifie "As Long As Reasonably Achievable".
+$B. Ce principe vise à maintenir l'exposition aux rayonnements ionisants au niveau le plus faible qu'il est raisonnablement possible d'atteindre.
+C. Elle s'applique uniquement au domaine de la thérapie (fortes doses).
+$D. Elle implique la diminution de la fréquence et/ou de la durée des expositions.
+$E. Elle doit être appliquée en tenant compte des facteurs économiques et sociaux.
+
+Concernant le principe de Limitation des doses :
+A. La Dose Efficace (E) maximale annuelle pour un adulte travailleur exposé est fixée à 10 mSv.
+$B. La Dose Efficace maximale admissible pour les femmes enceintes est de 1 mSv sur toute la grossesse.
+$C. Ce principe concerne l'ensemble des limites fixées par voie réglementaire.
+$D. La dose équivalente maximale admissible pour les mains et avant-bras d'un adulte est de 500 mSv par an.
+E. Il concerne uniquement le respect des débits de dose.
+
+À propos des mesures d'Optimisation :
+$A. L'achat de machines plus récentes et modernes fait partie des mesures d'Optimisation.
+$B. L'augmentation des protections individuelles ou collectives contribue au respect du principe ALARA.
+C. L'Optimisation impose de ne jamais utiliser de facteurs de modulation de courant (mAs modulation).
+D. L'Optimisation des protocoles d'imagerie concerne uniquement les scanners (TDM).
+$E. Le choix du protocole d'examen par le radiologue doit viser à minimiser le risque d'exposition aux RI.
+
+Concernant l'évaluation de la Justification d'un examen d'imagerie :
+A. Elle doit être réalisée par le physicien médical seul.
+$B. Elle implique la comparaison des bénéfices cliniques attendus et des risques radiologiques inhérents à l'exposition.
+$C. Pour un enfant, une échographie est souvent privilégiée par rapport à un scanner si la sensibilité diagnostique est comparable.
+D. La Justification incombe uniquement au radiologue.
+$E. L'approche EBM (Evidence-Based Medicine) est recommandée pour la démarche diagnostique.
+
+À propos des limites de dose réglementaires :
+$A. La dose efficace corps entier pour un jeune de 16 à 18 ans est limitée à 6 mSv.
+$B. La dose équivalente maximale annuelle pour le cristallin d'un adulte travailleur est de 150 mSv.
+C. La Dose Efficace fait partie des Grandeurs Opérationnelles.
+$D. Les limites s'expriment en termes de Dose Efficace (E) et Dose Équivalente (HT).
+$E. Pour le public, la limite de dose efficace annuelle ajoutée par les activités humaines (hors médecine) est de 1 mSv.
+
+Dans le cadre de l'Optimisation (ALARA) :
+$A. Il est recommandé de minimiser l'intensité de la source d'exposition.
+B. Le but est de maintenir la Dose Efficace au niveau le plus élevé que l'on peut atteindre.
+$C. L'Optimisation est l'un des trois principes généraux définis par la CIPR (Commission Internationale de Protection Radiologique).
+$D. Utiliser des algorithmes de reconstruction pour les TDM permet de réduire la dose délivrée tout en maintenant une qualité diagnostique.
+E. L'utilisation d'un tablier plombé pour le personnel est un exemple de protection collective.
+
+Concernant les limites de dose admissibles :
+A. La limite de Dose Efficace annuelle pour le public est de 20 mSv.
+$B. La Dose Efficace est l'estimateur qui prend en compte la radiosensibilité spécifique des tissus (via WT).
+$C. Le Sievert (Sv) est l'unité de la Dose Efficace et de la Dose Équivalente.
+$D. La Dose Efficace pour les gonades est pondérée par le facteur WT le plus élevé (0,20).
+E. Une Dose Efficace de 20 mSv est la limite de dose autorisée pour toute une carrière professionnelle.
+
+Concernant la différence entre Justification et Optimisation :
+A. La Justification se concentre sur la minimisation de la dose pour un examen déjà décidé.
+$B. L'Optimisation est caractérisée par le principe ALARA.
+$C. La Justification est le fait de s'assurer que le bénéfice d'un examen surpasse le risque.
+$D. La Justification doit être considérée avant l'étape de l'Optimisation.
+E. Le respect des limites réglementaires est le principe d'Optimisation.
+
+Dans le cadre de l'Optimisation d'un examen par scanner (TDM) :
+A. L'utilisation du réglage le plus élevé en tension (kVp) est obligatoire pour optimiser l'image.
+$B. L'acquisition hélicoïdale, comparée à la séquentielle, permet de réduire la Dose Efficace.
+$C. La réduction de la tension en kVp peut diminuer la dose absorbée.
+$D. La Dose Efficace dépend de la superposition des coupes (pitch).
+$E. L'Optimisation concerne l'adaptation des protocoles en fonction de la taille et du volume du patient.
+
+Concernant les limites réglementaires pour les jeunes de 16 à 18 ans exposés :
+$A. Leur Dose Efficace corps entier est limitée à 6 mSv.
+$B. La Dose Équivalente pour le cristallin est limitée à 50 mSv.
+$C. La Dose Équivalente pour la peau ne doit pas dépasser 150 mSv.
+$D. Les limites de dose qui leur sont appliquées sont différentes de celles des adultes.
+E. Les limites de Dose Efficace corps entier sont identiques à celles du public (1 mSv).
+
+Le principe d'Optimisation (ALARA) en pratique physique implique :
+$A. De rester le plus loin possible de la source d'exposition.
+B. D'augmenter au maximum la durée d'exposition pour diminuer le débit de dose.
+$C. D'utiliser des écrans dont l'épaisseur est calculée en fonction de la couche de demi-atténuation (CDA).
+D. D'utiliser l'équivalent de dose individuel (Hpd) pour la surveillance de zone.
+$E. De réduire au minimum la durée d'exposition.
+
+À propos du principe de Justification en cas de grossesse :
+A. L'imagerie diagnostique est formellement contre-indiquée en cas de grossesse connue.
+$B. Si la dose fœtale absorbée est inférieure à 0,05 Gy pendant l'organogenèse, on rassure la patiente.
+$C. Si la dose absorbée est supérieure à 0,2 Gy pendant la période d'organogenèse (10 jours-fin 2e mois), un avortement est conseillé.
+$D. La loi du "tout ou rien" s'applique durant la période de pré-implantation (0 à 9 jours).
+$E. Si une irradiation foetale est avérée, la démarche est pluridisciplinaire.
+
+Dans le contexte du principe de Limitation :
+A. Les limites de dose pour le public sont exprimées en mGy (milligrays).
+B. La limite de Dose Équivalente pour le cristallin d'un adulte travailleur est de 500 mSv.
+$C. L'équivalent de dose ambiant (H*d) est une grandeur opérationnelle utilisée pour la surveillance de zone.
+$D. La Dose Efficace annuelle pour un adulte travailleur est de 20 mSv.
+E. Les limites de dose des travailleurs s'appliquent sur 10 ans consécutifs.
+
+L'Optimisation inclut la protection contre l'exposition interne. Cela implique :
+$A. L'interdiction de consommer de la nourriture ou des boissons dans les zones contrôlées.
+$B. L'utilisation d'extracteurs d'air dans les atmosphères polluées.
+$C. Le port d'équipements de protection individuelle (EPI) comme des gants et masques.
+D. L'utilisation de béton et de plomb comme écrans de protection principale.
+$E. La vérification de l'absence de contamination en sortie de zone.
+
+Le principe d'Optimisation (ALARA) en TDM implique de moduler certains facteurs tels que :
+$A. Le courant dans le tube (mAs).
+$B. La tension en kilovolt peaks (kVp).
+$C. Le pitch (superposition des coupes).
+D. La dose fœtale absorbée par le patient.
+$E. Les algorithmes de reconstruction utilisés.
+
+Concernant la signalétique des zones contrôlées :
+A. La zone Surveillée (Bleue) a un débit de dose compris entre $1,25~mSv/mois$ et $4~mSv/mois.
+$B. La zone contrôlée Jaune nécessite obligatoirement une dosimétrie opérationnelle et à lecture différée.
+$C. Une zone contrôlée Rouge est signalée lorsque le débit de dose est supérieur à $100~mSv/h.
+D. L'entrée dans une zone contrôlée Verte est soumise à un enregistrement nominatif obligatoire.
+$E. Le franchissement d'une zone signalée par un panneau rouge est strictement interdit.
+
+À propos des principes généraux de la radioprotection :
+A. Ils s'appliquent uniquement aux rayonnements indirectement ionisants.
+$B. Le principe de Justification doit toujours être appliqué en amont des deux autres principes.
+$C. Le principe de Limitation s'applique aux travailleurs, au public et aux jeunes de 16-18 ans.
+$D. L'Optimisation est synonyme d'ALARA.
+E. Ils ont été établis par l'ASNR.
+
+L'Optimisation des pratiques radiologiques inclut :
+A. La Dose Efficace doit être maintenue au niveau le plus bas, indépendamment des facteurs sociaux.
+$B. L'utilisation de moyens de protection (écrans, distance, temps) pour diminuer l'exposition externe.
+$C. L'utilisation de machines de dernière génération pour réduire le temps d'exposition aux RI.
+D. L'augmentation du nombre d'examens de suivi pour compenser une faible dose initiale.
+$E. Le respect du contrôle qualité et des bonnes pratiques cliniques (BPC).
+
+Concernant les responsabilités en radioprotection :
+A. La CIPR fixe les limites réglementaires de dose en France.
+$B. La Dose Efficace est une grandeur de protection.
+$C. Le KERMA est la grandeur utilisée pour caractériser le faisceau servant à étalonner les dosimètres pour les photons gamma.
+D. La Justification est une responsabilité partagée entre le médecin et le patient.
+$E. La Personne Compétente en Radioprotection (PCR) peut calculer la Dose Efficace en cas d'exposition importante.
+
+Le principe de Limitation est essentiel car :
+A. Il permet de s'assurer que les dommages biologiques sont toujours réversibles.
+$B. Il s'exprime en Sievert (Sv) pour la Dose Efficace et la Dose Équivalente.
+$C. Il s'applique notamment aux mains, avant-bras, pieds et chevilles avec une limite spécifique.
+D. Il permet de quantifier l'énergie transférée à la matière, mesurée en Gray (Gy).
+$E. Il est différent pour les travailleurs en milieu RI et le public.
+
+L'Optimisation du parcours patient en imagerie diagnostique inclut :
+A. Le choix de la radiographie standard plutôt que de l'IRM pour un diagnostic précis de la moelle épinière.
+B. La vérification, par le radiologue, de la conformité de l'acte prescrit aux besoins du patient.
+$C. La modulation de l'intensité du courant dans le tube (mAs) en fonction de l'anatomie.
+$D. L'utilisation de la Distance comme moyen de protection (loi de l'inverse du carré).
+E. La limitation stricte des doses d'irradiation aux niveaux fixés par la réglementation.
+
+La Justification implique que les examens soient privilégiés si :
+A. La sensibilité diagnostique de la technique est faible, mais peu coûteuse.
+$B. Les alternatives non irradiantes (échographie ou IRM) ne sont pas possibles ou pertinentes.
+$C. Le bénéfice attendu pour le patient dépasse clairement le risque d'exposition aux rayonnements ionisants.
+D. Le patient est un enfant, car ils sont moins radiosensibles que les adultes.
+E. Il s'agit d'une technique d'imagerie fonctionnelle uniquement.
+
+Dans le cadre de la Limitation des doses, la réglementation exige pour le cristallin :
+A. Une limite de 150 mSv pour les jeunes de 16 à 18 ans.
+$B. Une limite de 150 mSv pour les adultes.
+C. Une limite de 50 mSv pour les jeunes de 16 à 18 ans.
+D. Que cette limite soit exprimée en Gray (Gy).
+E. Que cette limite soit la même que pour la peau.
