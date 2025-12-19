@@ -1,11 +1,15 @@
 {
-    "Anatomie": ["AnnalesAR", "AnnalesCV"],
-    "Pharmacologie": ["Annales"],
-    "Physiologie": ["AnnalesAR", "AnnalesCV"],
-    "Biochimie": ["Annales"],
-    "Biophysique": ["Annales"],
-    "Semiologie": ["AnnalesG", "AnnalesAR", "AnnalesCV"]
+    "Anatomie": ["AnnalesDig", "AnnalesLoco"],
+    "Pharmacologie": ["AnnalesS3", "AnnalesS4"],
+    "Physiologie": ["AnnalesLoco"],
+    "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
+    "Histologie": ["Annales"],
+    "Immuno": ["Annales"],
+    "Hémato": ["Annales"],
+    "Génétique": ["Annales"],
+    "SSH": ["Annales"]
 }
+
 
 
 
