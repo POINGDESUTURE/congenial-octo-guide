@@ -1,0 +1,1042 @@
+A propos de la tolérance centrale :
+$A. La délétion des thymocytes auto-réactifs se déroule dans le thymus
+B. Les lymphocytes T régulateurs sont indispensables à l'établissement de la tolérance centrale
+C. L'édition du répertoire est un mécanisme de sauvegarde des précurseurs lymphocytaires T et B
+D. La sélection positive élimine les thymocytes auto-réactifs
+$E. L'absence de sélection entraine l'apoptose des thymocytes
+
+A propos des lymphocytes T régulateurs :
+A. Ils ont fréquemment un phénotype CD8+
+$B. Ils peuvent être induits lors de la rencontre antigénique dans les organes lymphoides secondaires
+$C. Leur absence congénitale entraine un déficit immunitaire appelé syndrome IPEX
+$D. Ils peuvent exercer leurs fonctions sur les cellules dendritiques
+E. Les thymocytes non sélectionnés dans le thymus peuvent se différencier en lymphocytes T régulateurs
+
+A propos de la polarisation des lymphocytes T CD4+ auxiliaires :
+$A. Les lymphocytes Th1 produisent de l'interféron $\gamma$
+B. Les lymphocytes Th2 produisent de l'IL-4 et IL-17
+$C. L'IL-12 produites par les cellules dendritiques est nécessaire à la différenciation Th1
+$D. Les lymphocytes T auxiliaires folliculaires (TFH) exercent leurs fonctions dans les centres germinatifs des ganglions lymphoides
+E. Les cytokines impliquées dans la polarisation des T CD4+ auxiliaires constituent le 2ème signal d'activation lymphocytaire
+
+Les éléments suivant font partie des barrières non spécifiques contre les micro-organismes pathogènes :
+$A. Le mucus intestinal
+B. Le système du complément
+C. Les anticorps
+$D. La flore bactérienne commensale
+$E. Le pH acide de l'estomac
+
+A propos de les récepteurs aux antigènes :
+A. Ils sont le produit d'un gène spécifique localisé sur le chromosome X
+$B. Ce sont des récepteurs réarrangés
+C. Ils sont exprimés par les lymphocytes Natural Killer (NK)
+D. Il existe une très grande diversité allélique de ces récepteurs
+$E. Ils sont spécifiques aux lymphocytes adaptatifs
+
+A propos du système du Complément :
+A. Les fractions du complément circulent sous forme active
+$B. La voie classique d'activation du complément est dépendante des anticorps
+C. La C2 convertase constitue le point de convergence des voies d'activation du complément
+$D. Il existe une voie d'activation reposant sur une hydrolyse spontanée du C3
+$E. Les fragments C3a et C5a solubles constituent des anaphylatoxines
+
+A propos des Antigènes :
+$A. Les protéines sont plus antigéniques que les polysaccharides.
+$B. Plus une structure moléculaire est complexe, plus elle a de chances d'être antigénique
+C. Par définition, un antigène est un immunogène
+$D. Par définition, un immunogène est antigénique
+$E. Les récepteurs à l'antigène se lient à une petite portion d'un antigène, appelée épitope antigéniquE.
+
+A propos de la commutation isotypique et de la maturation d'affinité :
+$A. La commutation permet de modifier les fonctions des Immunoglobulines (Ig)
+$B. La maturation d'affinité est dépendante du phénomène d'hypermutations somatiques
+$C. La commutation et la maturation d'affinité dépendent des interactions avec les lymphocytes T CD4+.
+$D. Les hypermutations somatiques modifient la séquence des régions variables
+E. La commutation isotypique permet de modifier une IgG en IgM au cours de la réponse immunitaire
+
+A propos du système HLA (Human Leucocyte Antigens) :
+$A. C'est un système multi-allélique
+$B. C'est un système polymorphique
+$C. Il existe des molécules HLA de classe I et de classe II
+D. Les molécules HLA présentent des antigènes natifs aux lymphocytes T
+$E. L'apprêtement de l'antigène est nécessaire à la présentation aux lymphocytes T
+
+A propos des cytokines de l'inflammation :
+A. Les principales sont l'IL-1beta, l'IL-6 et le TGF-beta
+$B. Elles agissent sur l'hypothalamus
+$C. Elles agissent localement sur l'endothélium vasculaire
+D. Elles sont produites suite à la phagocytose des corps apoptotiques
+$E. Elles induisent la synthèse hépatique des protéines de la phase aigüe de l'inflammation
+
+A propos des récepteurs de l'immunité innée :
+A. Ce sont des récepteurs spécifiques des antigènes
+$B. Ce sont des récepteurs spécifiques de profils moléculaires associés aux pathogènes
+C. Ces récepteurs sont les produits de réarrangements de segments géniques.
+$D. Leur activation est nécessaire à l'induction d'une réponse inflammatoire
+$E. Leur activation permet la maturation des cellules dendritiques
+
+A propos de la dynamique de la réponse immunitaire :
+A. Les anticorps produits au cours d'une réponse immunitaire disparaissent au cours de la phase de contraction de la réponse
+$B. La majorité des lymphocytes effecteurs produits au cours d'une réponse immunitaire est éliminée lors de la phase de contraction
+C. Les lymphocytes mémoires spécifiques d'un antigène pré-existent à la première introduction de cet antigène
+$D. La fréquence clonale des lymphocytes mémoires est largement supérieure à celle des lymphocytes naïfs
+$E. Il existe des lymphocytes B mémoires
+
+A propos des cellules phagocytaires :
+$A. Elles se développent dans la moelle osseuse
+$B. Elles sont capables de produire des cytokines inflammatoires
+C. Elles résident majoritairement dans la moelle osseuse
+$D. Elles font partie de l'immunité innée
+E. Elles peuvent produire des anticorps
+
+A propos des anticorps :
+$A. Les anticorps circulants sont polyclonaux chez un sujet sain
+B. Le taux circulant de tous les isotypes est bas à la naissance
+$C. L'électrophorèse des protéines sériques permet le dosage des $\gamma$-globulines
+D. Les IgE sont abondantes dans les muqueuses
+$E. Les IgG constituent la majority des anticorps sériques
+
+A propos du développement lymphocytaire :
+$A. Les lymphocytes T CD8+ sont cytotoxiques
+B. Les lymphocytes B transitent par le thymus avant de rejoindre la circulation sanguine
+$C. Les lymphocytes NK se développent dans la moelle osseuse
+D. Les lymphocytes T CD8+ ne se développent pas dans le thymus
+E. Le thymus est un organe qui involue dès la naissance
+
+A propos des fonctions des Ig :
+A. Les IgM activent le complément par la voie alterne
+$B. Les IgG sont transportées au travers du placenta dans le sang fœtal
+C. Les Ig reconnaissent les antigènes présentés par les molécules du système HLA
+$D. Les fonctions d'opsonisation et d'ADCC dépendent du domaine constant.
+$E. La neutralisation est un élément majeur de la défense contre les toxines bactériennes
+
+A propos de la structure des Immunoglobulines (Ig) :
+A. Il existe 3 types de chaines légères
+$B. Il existe 5 types de chaines lourdes
+$C. Le paratope est le site de fixation à l'antigène
+$D. Le fragment Fc définit les isotypes d'Ig
+E. Les IgG peuvent être dimériques
+
+A propos des hypermutations somatiques :
+$A. Se produisent dans les lymphocytes B
+$B. Permettent la maturation d'affinité des anticorps
+C. Se produisent dans la moelle osseuse
+D. Ciblent les domaines constants des Immunoglobulines
+$E. Sont dépendantes des interactions entre lymphocytes B et T
+
+A propos de la réponse immunitaire anti-virale :
+$A. Elle fait intervenir les IFN de type 1
+B. Elle fait intervenir les mastocytes
+$C. L'IFN-alpha est une cytokine-clé de l'immunité anti-virale
+$D. Les lymphocytes T CD4+ et T CD8+ sont activés dans les ganglions drainants
+E. Les anticorps ne jouent aucun rôle
+
+A propos de la réponse immunitaire adaptative :
+A. La réponse immunitaire primaire nécessite 1 mois pour être efficacE.
+B. La réponse immunitaire secondaire repose sur l'existence de cellules mémoires innées et adaptatives.
+$C. La réponse immunitaire secondaire est caractérisée par une production rapide d'anticorps d'isotype autre que IgM (IgG et/ou IgA)
+$D. Les lymphocytes mémoires peuvent persister pendant des années dans l'organisme
+$E. La clairance d’un agent infectieux est suivie de l’élimination de la grande majorité des lymphocytes T/B effecteurs produits en réponse aux antigènes
+
+A propos de la tolérance centrale :
+A. Elle se déroule dans les organes lymphoides primaires et secondaires
+B. Les thymocytes auto-réactifs peuvent éditer leur TCR pour permettre un réarrangement secondaire et échapper à la délétion
+$C. Les thymocytes dont le TCR présente une affinité intermédiaire pour des auto-antigènes sont sélectionnés positivement
+$D. La sélection intra-thymique élimine environ 95% des thymocytes en développement
+E. L’anergie est un mécanisme de sélection positive des précurseurs lymphocytaires B
+
+A propos de la tolérance périphérique:
+A. Elle se déroule dans les organes lymphoides primaires
+$B. Les lymphocytes T régulateurs sont principalement de phénotype CD4+
+$C. Foxp3 est un facteur de transcription essentiel des lymphocytes T régulateurs CD4+
+$D. Il existe des lymphocytes T régulateurs naturels et induits
+$E. Les cellules dendritiques immatures sont tolérogènes pour les lymphocytes T CD4+ naifs
+
+A propos du système HLA:
+$A. C’est un système multi-allélique
+B. Les gènes du système HLA sont monomorphiques
+$C. Il existe des molécules HLA de classe I et de classe II
+$D. Les molécules HLA présentent des peptides antigéniques aux lymphocytes T
+E. Les molécules HLA présentent des antigènes aux lymphocytes B
+
+A propos des récepteurs antigéniques :
+$A. Le B-Cell Receptor (BCR) est une immunoglobuline membranaire
+$B. Les lymphocytes B naifs portent à leur surface une IgM
+$C. Le T-Cell Receptor (TCR) est exclusivement membranaire
+$D. Le BCR et le TCR sont des récepteurs réarrangés
+E. Le BCR et le TCR sont exprimés sur les progéniteurs lymphoides
+
+A propos de la polarisation des lymphocytes T :
+$A. La polarisation dépend du signal 3 de l’activation lymphocytaire
+$B. La polarisation est dépendante de signaux cytokiniques principalement
+$C. La polarisation se déroule dans les organes lymphoides secondaires
+D. Les lymphocytes T Th1 sont des T CD8+ producteurs d’IFN gamma
+E. Les lymphocytes T Th2 sont impliqués dans les réponses anti-virales
+
+A propos des cellules phagocytaires :
+$A. Elles se développent dans la moelle osseuse
+$B. Elles sont capables de produire des cytokines inflammatoires
+C. Elles résident majoritairement dans la moelle osseuse
+$D. Elles font partie de l’immunité innée
+E. Elles peuvent produire des anticorps
+
+A propos du système du Complément :
+A. Il inclut des protéines plasmatiques et des cellules phagocytaires
+$B. Il est capable d’induire une lyse directe des bactéries
+$C. La voie classique d’activation du complément est dépendante des anticorps
+D. La voie alterne d’activation du complément est dépendante des lymphocytes T
+$E. L’activation du complément induit la libération d’anaphylatoxines
+
+A propos de l’activation des cellules de l’immunité innée :
+$A. Elle dépend principalement de récepteurs appelés «Pattern-Recognition Receptors « (PRR)
+B. Les PRR sont spécifiques d’antigènes polysaccharidiques
+C. Seules les cellules dendritiques expriment des PRR
+$D. Les PRR peuvent reconnaitre des molécules endogènes libérées par des nécroses tissulaires importantes
+$E. L’activation des cellules de l’immunité innée par les PRR induit généralement une réaction inflammatoire
+
+A propos des antigènes :
+A. Ils sont généralement de composition très diverse : protéique, lipidique ou polysaccharidique
+B. Les antigènes sont par définition immunogènes
+C. Les antigènes induisent la réponse inflammatoire par activation des cellules phagocytaires
+D. Les antigènes sont toujours d’origine infectieuse
+$E. Les antigènes se lient directement ou indirectement aux récepteurs antigéniques
+
+A propos des cytokines :
+A. Elles ont toujours une action endocrine
+B. L’IL-6 est la principale cytokine de polarisation des lymphocytes T CD4+
+C. Le « Tumor Necrosis Factor » (TNF)-alpha est une cytokine immunosuppressive
+$D. L’interféron gamma caractérise les lymphocytes T Th1
+$E. Les chimiokines sont des cytokines
+
+A propos de la structure des Immunoglobulines (Ig) :
+A. Il existe 2 types de chaines légères : lambda et oméga
+$B. Il existe 5 types de chaines lourdes
+$C. Le paratope est le site de fixation à l’antigène
+$D. Le fragment Fc définit les isotypes d’Ig
+$E. Les IgA peuvent être dimériques
+
+A propos des macrophages :
+$A. Ce sont des cellules tissulaires
+B. Ils dérivent des plasmocytes sanguins
+$C. Ce sont des cellules présentatrices d’antigène professionnelles
+$D. Ils sont présents dans la grande majorité des tissus
+$E. Leurs fonctions microbicides sont amplifiées par l’interféron gamma
+
+A propos de l’activation des lymphocytes T :
+$A. Les lymphocytes T naifs sont activés dans les ganglions lymphatiques
+$B. L’activation et la polarisation des lymphocytes T nécessitent 3 signaux
+C. La co-stimulation (signal 2) peut remplacer le signal 1
+D. La reconnaissance antigénique en absence de co-stimulation entraine une prolifération sans différenciation
+$E. Les lymphocytes T CD4+ naifs sont activés exclusivement par des cellules présentatrices d’antigène professionnelles
+
+A propos de la commutation isotypique et de la maturation d’affinité :
+A. La commutation isotypique permet de modifier la spécificité antigénique des Immunoglobulines
+$B. La maturation d’affinité est dépendante du phénomène d’hyper-mutations somatiques
+$C. La commutation et la maturation d’affinité dépendent des interactions avec les lymphocytes T CD4+
+D. Les hyper-mutations somatiques modifient la séquence des régions variables du TCR
+E. La commutation isotypique permet de modifier une IgA en IgM au cours de la réponse immunitaire
+
+A propos des fonctions des Immunoglobulines (Ig) :
+A. Les IgM activent le complément par la voie alterne
+$B. Les IgG sont transportées au travers du placenta dans le sang fœtal
+$C. Les IgA n’activent pas le complément
+$D. Les fonctions d’opsonisation et de cytotoxicité dépendante des anticorps (ADCC) dépendent du domaine constant.
+$E. La neutralisation est un élément majeur de la défense contre les toxines bactériennes
+
+A propos du système HLA :
+A. Les molécules HLA de classe 1 ne sont exprimées que dans le thymus
+$B. Les gènes HLA sont transmis par haplotypes
+$C. Il existe une co-dominance des gènes HLA
+$D. Les molécules HLA de classe II présentent des antigènes d’origine exogène
+$E. La transmission des gènes HLA est de type mendélienne
+
+A propos des anticorps :
+$A. Les anticorps circulants sont polyclonaux chez un sujet sain
+B. Le taux circulant de tous les isotypes est bas à la naissance
+$C. L’électrophorèse des protéines sériques permet le dosage des gamma-globulines
+D. Les IgE sont abondantes dans les muqueuses
+$E. Les IgG constituent la majorité des anticorps sériques
+
+A propos de la réponse immunitaire adaptative :
+A. La réponse immunitaire primaire nécessite 1 mois pour être efficacE.
+B. La réponse immunitaire secondaire repose sur l’existence de cellules mémoires innées et adaptatives.
+$C. La réponse immunitaire secondaire est caractérisée par une production rapide d’anticorps d’isotype autre que IgM (IgG et/ou IgA)
+$D. Les lymphocytes mémoires peuvent persister pendant des années dans l’organisme
+$E. La clairance d’un agent infectieux est suivie de l’élimination de la grande majorité des lymphocytes T/B effecteurs produits en réponse aux antigènes.
+
+A propos de l’activation des lymphocytes B :
+$A. L’activation des lymphocytes B par des antigènes protéiques nécessite l’aide des lymphocytes T CD4+
+$B. L’interaction entre un lymphocyte B et un lymphocyte T nécessite qu’ils présentent la même spécificité antigénique
+$C. Les antigènes polysaccharidiques constitués de motifs répétés sont des antigènes thymo-indépendants
+D. Les lymphocytes B ne prolifèrent pas lors de l’activation par un antigènE.
+E. Les lymphocytes T CD8+ peuvent coopérer avec les lymphocytes B pour induire leur différenciation en plasmocyte
+
+A propos des polynucléaires neutrophiles :
+$A. Ils ont une courte durée de vie
+$B. Ils phagocytent les pathogènes et les corps apoptotiques
+$C. Ils peuvent émettre des « NET » (Neutrophil-Extracellular Traps) pour piéger et tuer les microorganismes
+D. Ils résident fréquemment dans les tissus
+E. Ils peuvent activer les lymphocytes T CD4+
+
+A propos de la structure des Immunoglobulines (Ig) :
+A. Il existe 3 types de chaines légères
+$B. Il existe 5 types de chaines lourdes
+$C. Le paratope est le site de fixation à l’antigène
+$D. Le fragment Fc définit les isotypes d’Ig
+E. Les IgG peuvent être dimériques
+
+A propos des polynucléaires neutrophiles :
+$A. Ils ont une courte durée de vie
+$B. Ils phagocytent les pathogènes et les corps apoptotiques
+$C. Ils peuvent émettre des « NET » pour piéger les microorganismes
+D. Ils résident fréquemment dans les tissus
+E. Ils peuvent activer les lymphocytes T CD4+
+
+A propos de l’activation des lymphocytes T :
+$A. Les lymphocytes T naifs sont activés dans les ganglions lymphatiques
+$B. L’activation et la polarisation des lymphocytes T nécessitent 3 signaux
+C. La costimulation peut remplacer le signal 1
+D. La reconnaissance antigénique en absence de costimulation entraine une prolifération sans différenciation
+$E. Les lymphocytes T naifs sont activés exclusivement par des cellules présentatrices d’antigène professionnelles
+
+A propos des fonctions lymphocytaires :
+$A. Les lymphocytes T naifs n’ont pas de fonctions effectrices immédiates
+B. Les lymphocytes B sont capables d’exercer une cytotoxicité dépendante des anticorps
+$C. Les lymphocytes T CD4+ de type Th1 produisent de l’interféron gamma
+D. Les lymphocytes T CD8+ ne produisent pas de cytokines
+E. Il n’existe pas de lymphocytes T CD8+ mémoires
+
+A propos des antigènes :
+$A. Les protéines sont plus antigéniques que les polysaccharides.
+$B. Plus une structure moléculaire est complexe, plus elle a de chances d’être antigénique
+C. Par définition, un antigène est un immunogène
+$D. Par définition, un immunogène est antigénique
+$E. Les récepteurs à l’antigène se lient à une petite portion d’un antigène, appelée épitope antigéniquE.
+
+À propos des interactions inter-cellulaires par les cytokines et les contacts directs membranaires :
+A. Ces deux types de signaux sont mutuellement exclusifs
+$B. Deux cytokines peuvent présenter un effet synergique sur la même cellule
+$C. Deux cytokines peuvent présenter un effet antagoniste sur la même cellule
+$D. L’interaction entre lymphocytes T et B fait intervenir ces deux types d’interactions.
+E. L’axe IL-10/IFNgamma est crucial dans la différenciation des lymphocytes T CD4+.
+
+A propos de la commutation isotypique et de la maturation d’affinité :
+$A. La commutation isotypique permet de modifier les fonctions des Ig.
+$B. La maturation d’affinité est dépendante du phénomène d’hypermutations somatiques
+$C. La commutation et la maturation d’affinité dépendent des interactions avec les lymphocytes T CD4+.
+$D. Les hypermutations somatiques modifient la séquence des régions variables
+E. La commutation isotypique permet de modifier une IgG en IgM au cours de la réponse immunitaire
+
+A propos du système HLA :
+$A. C’est un système multi-allélique
+$B. C’est un système polymorphique
+$C. Il existe des molécules HLA de classe I et de classe II
+D. Les molécules HLA présentent des antigènes natifs aux lymphocytes T
+$E. L’apprêtement de l’antigène est nécessaire à la présentation aux lymphocytes T
+
+A propos des fonctions des immunoglobulines (Ig) :
+$A. Les IgM activent le complément par la voie classique
+$B. Les IgG sont transportées au travers du placenta dans le sang fœtal
+C. Les Ig reconnaissent les antigènes présentés par les molécules du système HLA
+$D. Les fonctions d’opsonisation et d’ADCC dépendent du domaine constant.
+$E. La neutralisation est un élément majeur de la défense contre les toxines bactériennes
+
+A propos des cytokines de l’inflammation :
+A. Les principales sont l’IL-1beta, l’IL-6 et le TGFbeta
+$B. Elles agissent sur l'hypothalamus
+$C. Elles agissent localement sur l’endothélium vasculaire
+D. Elles sont produites suite à la phagocytose des corps apoptotiques
+$E. Elles induisent la synthèse hépatique des protéines de la phase aigüe de l’inflammation
+
+A propos de la polarisation des lymphocytes T :
+$A. La voie Th1 est à médiation cellulaire
+B. Il n’y a pas d’anticorps produits dans les réponses Th2
+C. Les virus induisent des lymphocytes T CD4+ de type Th1 producteurs d’IL-4
+D. L’IL-12 est nécessaire pour induire des réponses Th17
+$E. L’IL-17 est une des principales cytokines produites par les lymphocytes Th17
+
+A propos de la tolérance immunitaire :
+$A. La tolérance immunitaire est nécessaire pour prévenir les maladies auto-immunes.
+B. La tolérance immunitaire est nécessaire pour prévenir les cancers.
+C. La tolérance centrale repose sur l’existence de lymphocytes T régulateurs.
+$D. La tolérance centrale repose sur des mécanismes de délétion des précurseurs lymphocytaires au cours de leur développement.
+$E. Il existe des cellules dendritiques tolérogéniques impliqués dans la tolérance périphérique des lymphocytes T.
+
+A propos des hypermutations somatiques :
+$A. elles se produisent dans les lymphocytes B
+$B. elles permettent la maturation d’affinité des anticorps
+C. elles se déroulent dans la moelle osseuse
+D. elles ciblent les domaines constants des Immunoglobulines
+$E. elles sont dépendantes des interactions entre lymphocytes B et T
+
+A propos des lymphocytes Natural Killer (NK) :
+A. ils représentent 5 à 15% des leucocytes circulants
+$B. ils peuvent être activés directement par des cytokines
+C. Ce sont des cellules de l’immunité adaptative
+$D. Ils sont activées par la perte d’expression des molécules du CMH de classe I sur les cellules cibles
+$E. Ils produisent de l’IFNgamma
+
+À propos des macrophages :
+$A. Ce sont des cellules phagocytaires
+B. Ils circulent dans le sang et les organes lymphoides
+$C. Ce sont des cellules présentatrices d’antigène professionnelles
+$D. Ils dérivent majoritairement des monocytes
+E. Ils ne produisent pas de cytokines inflammatoires
+
+À propos de la réponse immunitaire anti-virale :
+$A. Elle fait intervenir les IFN de type 1
+B. Elle fait intervenir les mastocytes
+$C. l’IFNalpha est une cytokine-clé de l’immunité anti-virale
+$D. Les lymphocytes T CD4+ et T CD8+ sont activés dans les ganglions drainants
+E. Les anticorps ne jouent aucun rôle
+
+À propos du système HLA :
+A. Le polymorphisme du HLA est assuré par des mécanismes de réarrangements de segments géniques.
+B. Les molécules HLA sont nécessaires à la présentation antigénique aux lymphocytes TCD4+ mais pas T CD8+.
+$C. Les molécules du HLA de classe I et de classe II sont codées par des gènes sur le même chromosomE.
+$D. La combinaison des allèles HLA sur un chromosome définit un haplotypE.
+E. Les molécules HLA de classe I et de classe II présentent les mêmes peptides aux lymphocytes T.
+
+A propos des récepteurs de l’immunité innée :
+A. Ce sont des récepteurs spécifiques des antigènes
+$B. Ce sont des récepteurs spécifiques de profils moléculaires associés aux pathogènes
+C. Ces récepteurs sont les produits de réarrangements de segments géniques.
+$D. Leur activation est nécessaire à l’induction d’une réponse inflammatoire
+$E. Leur activation permet la maturation des cellules dendritiques
+
+A propos de la réponse immunitaire adaptative :
+A. La réponse immunitaire primaire nécessite 1 mois pour être efficacE.
+B. La réponse immunitaire secondaire repose sur l’existence de cellules mémoires innées et adaptatives.
+$C. La réponse immunitaire secondaire est caractérisée par une production rapide d’anticorps d’isotype autre que IgM (IgG et/ou IgA)
+$D. Les lymphocytes mémoires peuvent persister pendant des années dans l’organisme
+$E. La clairance d’un agent infectieux est suivie de l’élimination de la grande majorité des lymphocytes T/B effecteurs produits en réponse aux antigènes.
+
+A propos de l’Immunité innée :
+A. Les DAMP (Damage-Associated Molecular Patterns) sont des molécules microbiennes qui alertent le système immunitaire
+B. Les cellules dendritiques sont des cellules phagocytaires avec une forte activité bactéricidE.
+$C. Les polynucléaires neutrophiles sont nécessaires à la défense contre les bactéries et les champignons.
+$D. L’activation du système du Complément induit une réponse inflammatoirE.
+E. L’activation du complément ne peut pas se faire en absence d’anticorps.
+
+À propos des cytokines :
+A. L’IL-10 et le TGF bêta sont des cytokines inflammatoires.
+$B. L’IL-1, IL-6 et TNF alpha sont des cytokines inflammatoires
+$C. L'IFN gamma est une cytokine majeure de la réponse Th1
+D. L’IL-4 est nécessaire pour induire la différenciation Th1
+$E. Les interférons de type 1 (IFN alpha/beta) sont des cytokines anti-virales
+
+À propos des antigènes :
+A. Les lipides constituent de bons antigènes.
+$B. Les antigènes ne sont pas toujours immunogènes.
+$C. Les adjuvants permettent d’augmenter l’immunogénicité des antigènes.
+D. Un antigène ne contient généralement qu’un seul épitope antigéniquE.
+E. Les lymphocytes T reconnaissent des épitopes antigéniques conformationnels
+
+À propos de l'immunité innée :
+A. Les DAMP (Damage-Associated Molecular Patterns) sont des molécules microbiennes qui alertent le système immunitairE.
+B. Les cellules dendritiques sont des cellules phagocytaires avec une forte activité bactéricidE.
+$C. Les polynucléaires neutrophiles sont nécessaires à la défense contre les bactéries et les champignons.
+$D. L’activation du système du Complément induit une réponse inflammatoirE.
+E. L’activation du complément ne peut pas se faire en absence d’anticorps.
+
+À propos des lymphocytes B et des plasmocytes :
+A. Les lymphocytes B naifs expriment des IgG ou des IgA.
+$B. Les plasmocytes résident principalement dans la moelle osseuse .
+C. Un lymphocyte B peut exprimer deux BCR spécifiques d’antigènes différents.
+$D. La zone marginale de la rate abrite une population de lymphocytes B thymo-indépendants.
+E. Un plasmocyte peut produire en même temps des IgA et des IgG.
+
+À propos de la commutation isotypique et des hypermutations somatiques :
+$A. La commutation isotypique permet de moduler les fonctions des anticorps.
+B. La commutation isotypique permet de moduler directement l’affinité des anticorps.
+$C. La commutation isotypique se déroule dans les centres germinatifs des organes lymphoïdes secondaires.
+$D. Les hypermutations somatiques se produisent dans les centres germinatifs des organes lymphoïdes secondaires.
+E. Les hypermutations somatiques peuvent se produire dans les lymphocytes T.
+
+À propos de la réponse immunitaire anti-virale :
+$A. Elle fait intervenir les IFN de type 1.
+B. Elle fait intervenir les mastocytes.
+$C. l’IFNgamma est une cytokine-clé de l’immunité anti-viralE.
+$D. Les lymphocytes T CD4+ et T CD8+ sont activés dans les ganglions drainants.
+E. Les anticorps ne jouent aucun rôlE.
+
+À propos des macrophages :
+$A. Sont des cellules phagocytaires.
+B. Circulent dans le sang et les organes lymphoïdes.
+$C. Sont des cellules présentatrices d’antigène professionnelles.
+$D. Dérivent des monocytes.
+E. ne produisent pas de cytokines inflammatoires.
+
+À propos des lymphocytes Natural Killer (NK) :
+A. Représentent 5 à 15% des leucocytes circulants.
+$B. Peuvent être activés directement par des cytokines.
+C. Sont des cellules de l’immunité adaptativE.
+$D. Sont activées par la perte d’expression des molécules du CMH de classe I sur les cellules cibles.
+$E. Produisent de l’IFNgammA.
+
+À propos du B-Cell Receptor (BCR) :
+A. Il est exprimé par les progéniteurs lymphoïdes dans la moelle osseusE.
+$B. Il est toujours associé à un complexe de transduction, l’hétérodimère Iga/IgB.
+C. Sa structure est identique à celle du TCR.
+$D. Il comprend deux chaînes lourdes et deux chaînes légères.
+E. Il est exprimé à la membrane plasmique jusqu’au stade plasmocytaire inclus.
+
+À propos des fonctions des Immunoglobulines (Ig) :
+$A. Les IgM activent le complément par la voie classiquE.
+$B. Les IgG sont transportées au travers du placenta dans le sang fœtal.
+C. Les Ig reconnaissent les antigènes présentés par les molécules du système HLA.
+$D. Les fonctions d’opsonisation et d’ADCC dépendent du domaine constant.
+$E. La neutralisation est un élément majeur de la défense contre les toxines bactériennes.
+
+À propos du système HLA :
+$A. C’est un système multi-alléliquE.
+$B. C’est un système polymorphiquE.
+$C. Il existe des molécules HLA de classe I et de classe II.
+D. Les molécules HLA présentent des antigènes natifs aux lymphocytes T.
+$E. L’apprêtement de l’antigène est nécessaire à la présentation aux lymphocytes T.
+
+À propos de l’activation des lymphocytes B :
+$A. L’activation par des antigènes protéiques nécessite l’aide des lymphocytes T CD4+.
+$B. L’interaction entre un lymphocyte B et un lymphocyte T nécessite qu’ils reconnaissent le même antigènE.
+$C. Les antigènes polysaccharidiques constitués de motifs répétés sont des antigènes thymo-indépendants.
+D. Les lymphocytes B ne prolifèrent pas lors de l’activation par un antigènE.
+E. Les lymphocytes T CD8+ peuvent coopérer avec les lymphocytes B pour induire leur différenciation en plasmocytE.
+
+À propos des isotypes d’Ig :
+A. Il en existe 4 : IgM, IgG, IgA, IgE.
+$B. Les IgM sont pentamériques.
+$C. La polymérisation des Ig dépend d’une chaîne J de jonction.
+D. Les IgE sont dimériques.
+$E. Il existe 4 sous-classes d’IgG.
+
+À propos des organes lymphoïdes :
+A. Les ganglions lymphatiques sont des organes lymphoïdes primaires.
+B. La moelle épinière est un organe lymphoïde primairE.
+$C. La moelle osseuse est nécessaire au développement de tous les lymphocytes.
+$D. La rate est le siège des réponses immunitaires initiées par des antigènes présents dans le sang périphériquE.
+E. La rate et les ganglions lymphatiques sont des organes lymphoïdes tertiaires.
+
+À propos des fonctions lymphocytaires T :
+$A. Les lymphocytes T naifs n’ont pas de fonctions effectrices immédiates.
+B. Les lymphocytes T sont capables d’exercer une cytotoxicité dépendante des anticorps.
+$C. Les lymphocytes T CD4+ de type Th1 produisent de l’interféron gammA.
+D. Les lymphocytes T CD8+ ne produisent pas de cytokines.
+E. Il n’existe pas de lymphocytes T CD8+ mémoires.
+
+À propos de l’activation des lymphocytes T :
+$A. Les lymphocytes T naïfs sont activés dans les ganglions lymphatiques.
+$B. L’activation et la polarisation des lymphocytes T nécessitent 3 signaux.
+C. La costimulation peut remplacer le signal 1.
+D. La reconnaissance antigénique en absence de costimulation entraîne une prolifération sans différenciation.
+$E. Les lymphocytes T naïfs sont activés exclusivement par des cellules présentatrices d’antigène professionnelles.
+
+À propos des récepteurs de l’immunité innée :
+A. Les PRR (pattern-Recognition Receptors) sont des récepteurs réarrangés.
+B. Les PRR reconnaissent des PAMP (Pathogen-Associated Molecular Patterns) mais pas des DAMP (Damage-Associated Molecular Patterns).
+$C. Les PAMP sont généralement des molécules conservées au sein du monde microbien.
+$D. Les DAMP sont généralement d’origine endogène à l’organismE.
+$E. Les DAMP sont responsables de l’inflammation stérilE.
+
+À propos du système du Complément :
+A. Les fractions du complément circulent sous forme active
+$B. La voie classique d’activation du complément est dépendante des anticorps
+C. La C2 convertase constitue le point de convergence des voies d’activation du complément
+$D. Il existe une voie d’activation reposant sur une hydrolyse spontanée du C3
+$E. Les fragments C3a et C5a solubles constituent des anaphylatoxines
+
+À propos du T-Cell Receptor (TCR) :
+A. Il est composé d’une chaîne lourde et d’une chaîne légèrE.
+$B. Il n’est pas sécrété.
+$C. Il ne reconnait jamais d’antigène natif.
+D. Il peut interagir avec des molécules HLA sans peptides.
+$E. Il est toujours associé au complexe CD3.
+
+À propos de la tolérance immunitaire :
+$A. La tolérance immunitaire envers le soi repose sur des mécanismes centraux et périphériques.
+B. Les lymphocytes T régulateurs ne sont pas indispensables pour maintenir la tolérance immunitairE.
+$C. La présentation antigénique en absence de co-stimulation induit l’anergie des lymphocytes T.
+D. Tous les lymphocytes T auto-réactifs sont éliminés dans le thymus par sélection négativE.
+$E. Les cellules dendritiques jouent un rôle important dans la tolérance immunitaire périphériquE.
+
+A propos des plasmocytes : cochez la (les) réponse(s) exacte(s) :
+$A. ils se localisent préférentiellement dans la moelle osseuse mais aussi dans les espaces sous-muqueux
+B. ils circulent en permanence en grand nombre dans le sang
+C. ils dérivent des lymphocytes T
+D. ils prennent naissance dans la moelle osseuse
+$E. ils dérivent des lymphocytes B
+
+A propos du facteur H du complément : cochez la (les) proposition(s) exacte(s) :
+A. c’est l’enzyme plasmatique qui clive le facteur B de la voie alterne
+B. c’est une enzyme qui clive la fraction C3b en C3bi et un petit peptide
+C. c’est une protéine membranaire indispensable à l’inactivation de la fraction C3b
+$D. c’est l’un des cofacteurs solubles du facteur I (facteur « i » inhiteur)
+E. c’est le facteur stabilisateur de la C3 convertase de la voie alterne
+
+A propos des IgM : cochez la (les) proposition(s) exacte(s) :
+$A. elles activent le complément par la voie classique
+$B. elles sont les premières immunoglobulines à apparaître au cours de la vie
+$C. elles sont exprimées à la surface des lymphocytes B naïfs
+D. elles traversent le placenta
+E. elles ne sont produites qu’au décours des réponses secondaires
+
+A propos de la mémoire immunitaire cellulaire vis-à-vis d’un agent infectieux, cochez la (ou les) réponse(s) exacte(s) :
+$A. elle est basée sur la longue persistance de lymphocytes T mémoire spécifiques de cet agent infectieux
+B. elle dépend de la présentation des complexes immuns par les cellules dendritiques folliculaires
+$C. elle repose sur des lymphocytes T mémoire exprimant les molécules CD4 ou CD8
+$D. elle repose en partie sur des lymphocytes T mémoire résidant dans les tissus non lymphoïdes
+E. elle dépend des cellules dendritiques qui sont le support de la mémoire du système immunitaire adaptatif
+
+A propos de l’activation du complément par la voie classique: cochez la (les) proposition(s) exacte(s) :
+$A. une seule IgM fixée sur sa cible antigénique suffit à activer le complément par la voie classique
+$B. les IgG1 et les IgG3 sont capables d’activer la voie classique
+$C. les IgG4 n’activent pas la voie classique
+D. l’hydrolyse spontanée du C3 en milieu acide conduit à l’activation de la voie classique
+E. la C3 convertase de la voie classique est identique à la C5 convertase de la voie alterne
+
+La lutte contre les agents infectieux met en jeu des réponses de la part du système immunitaire adaptatif et du système immunitaire inné. Les deux systèmes sont complémentaires mais diffèrent par leurs propriétés. Parmi les propositions comparatives suivantes, cochez la (ou les) réponse(s) exacte(s) :
+$A. seul le système adaptatif est basé sur les réponses de cellules immunologiquement compétentes possédant un récepteur spécifique de l’antigène
+$B. le système immunitaire inné se caractérise par des réponses plus rapides que celles du système adaptatif
+C. le système immunitaire inné est le seul à permettre la mise en place d’une mémoire immunitaire basée sur des cellules à longue durée de vie
+$D. le système immunitaire adaptatif nécessite la présence d’un thymus fonctionnel qui joue un rôle indispensable dans la maturation fonctionnelle des lymphocytes T
+$E. le système immunitaire inné reconnait des motifs moléculaires exprimés par les agents infectieux mais absents dans l’organisme
+
+A propos des immunoglobulines : cochez la (les) proposition(s) exacte(s) :
+$A. les cellules épithéliales des muqueuses capturent les IgA dimériques grâce à un récepteur particulier
+$B. le récepteur du fragment Fc des IgG de type néonatal (FcRgRn) est responsable de la longue durée de vie des IgG plasmatiques
+$C. les IgG spécifiques des antigènes polyosidiques bactériens sont majoritairement de la sous-classe IgG2
+D. les IgE ne jouent aucun rôle dans la lutte anti-infectieuse
+$E. les IgD sont exprimées à la surface des lymphocytes B naïfs
+
+A propos des récepteurs de l’immunité innée : cochez la (les) proposition(s) exacte(s) :
+$A. ils peuvent reconnaître des molécules du soi
+$B. activés par leurs ligands, ils stimulent les fonctions exercées par les cellules de l’immunité innée
+C. ils sont tous exprimés à la surface de la membrane cytoplasmique des cellules de l’immunité innée
+$D. certains d’entre eux reconnaissent des acides nucléiques
+E. ils appartiennent tous à la famille des TLRs (Toll like receptors)
+
+A propos des interférons : cochez la (les) réponse(s) exacte(s) :
+A. l’IFN gamma est sécrété principalement par les lymphocytes de type Th2
+$B. l’IFN gamma joue un rôle crucial dans la défense contre les mycobactéries
+$C. les interférons de type 1 induisent la production de protéines à action antivirale
+$D. les interférons de type 1 agissent de façon autocrine
+$E. les interférons alpha et bêta ont un récepteur unique
+
+A propos de la réaction antigène anticorps : cochez la (les) proposition(s) exacte(s) :
+$A. elle met en jeu le site anticorps formé par la juxtaposition de six régions hypervariables
+B. elle est irréversible car l’antigène est altéré lors de la fixation de l’anticorps
+C. elle met en jeu des liaisons covalentes
+$D. elle met en jeu de multiples liaisons de faible énergie
+$E. elle peut aboutir à l’inactivation de propriétés biologiques de l’antigène
+
+A propos des cellules dendritiques myéloïdes : cochez la (les) proposition(s) exacte(s) :
+$A. elles capturent les antigènes à l’aide de récepteurs de l’immunité innée exprimés à leur surface
+B. elles ne capturent les antigènes que dans les nœuds lymphatiques
+$C. elles expriment les molécules B7-1 (CD80) et B7-2 (CD86) qui participent à l’activation des lymphocytes T
+D. elles diffèrent des cellules dendritiques folliculaires par leur capacité à endocyter les complexes immuns
+$E. elles sont capables de présenter aux lymphocytes T CD4+ et T CD8+ des peptides dérivés des antigènes qu’elles ont capturés dans le milieu environnant
+
+A propos de la différenciation des cellules souches lymphoïdes en lymphocytes B : cochez la (les) réponse(s) exacte(s) :
+A. elle prend place d’abord dans la moelle osseuse lors de la rencontre avec les antigènes étrangers à l’organisme
+$B. elle requiert l’intervention du complexe RAG1 et RAG2
+$C. elle aboutit, pour chaque lymphocyte B, à la recombinaison fonctionnelle d’un seul locus de chaîne lourde des immunoglobulines et d’un seul locus de chaîne légère des immunoglobulines
+$D. elle se déroule dans la moelle osseuse et ne requiert pas de passage dans le thymus des cellules en voie de maturation
+$E. elle débute par la recombinaison des segments de gènes variables codant les parties variables de la chaîne lourde des immunoglobulines
+
+A propos de la molécule CTLA4 : cochez la (les) proposition(s) exacte(s) :
+$A. comme CD28, la molécule CTLA4 interagit avec les molécules B7-1 (CD80) et/ou B7-2 (CD86) des cellules présentatrices de l’antigène
+B. la molécule CTLA4 possède un domaine intra-cytoplasmique qui contient un motif ITAM (immunoreceptor tyrosine-based activation motif)
+C. elle est responsable du second signal d’activation délivré aux lymphocytes T lors de leur interaction avec les cellules présentatrices de l’antigène
+D. elle est exprimée par tous les lymphocytes T non activés par l’antigène
+$E. elle est exprimée par les lymphocytes T après leur stimulation par l’antigène
+
+A propos des IgE: cochez la (les) réponse(s) exacte(s) :
+A. elles ne sont produites que par les individus souffrant d’allergie
+B. elles jouent un rôle crucial dans la lutte contre les helminthiases (maladies en relation avec des vers) intra-tissulaires
+$C. elles traversent le placenta
+$D. elles sont présentes à la surface de mastocytes et des polynucléaires basophiles
+$E. elles sont soit de type kappa soit de type lambda en fonction de la chaîne légère couplée à la chaîne lourde epsilon
+
+A propos des IgA : cochez la (les) réponse(s) exacte(s) :
+A. elles traversent le placenta
+$B. elles sont produites par des plasmocytes localisés, soit dans l’espace sous-muqueux, soit dans la moelle
+C. elles sont capables d’induire l’ADCC (antibody-dependent cell-mediated cytotoxicity) par l'activation des cellules NK
+$D. dans les sécrétions exocrines, elles sont dimériques et couplées à la pièce sécrétoire
+$E. elles traversent les épithéliums muqueux par transcytose
+
+A propos de l’opsonisation : cochez la (les) proposition(s) exacte(s) :
+$A. elle facilite la reconnaissance des pathogènes par les phagocytes
+B. elle est induite par les quatre sous-classes d’IgG
+$C. elle facilite la destruction des antigènes complexés aux anticorps
+D. elle active les lymphocytes NK (natural killer)
+$E. elle est accrue par la fixation du C3 activé aux complexes immuns
+
+A propos du complexe transporteur de peptides cytoplasmiques vers le réticulum endoplasmique : cochez la (les) proposition(s) exacte(s) :
+$A. les gènes de structure des protéines TAP1 et TAP2 (Transporter associated with antigen processing) qui constituent ce transporteur sont localisés au sein du complexe HLA
+B. il fonctionne de manière passive et n’a pas besoin d’ATP
+$C. il est présent et fonctionnel dans toutes les cellules nucléées
+D. il joue un rôle déterminant dans la présentation des peptides par les molécules de classe II du CMH
+$E. il participe à la présentation des peptides dans le contexte des molécules de classe I du CMH
+
+A propos des cellules dendritiques myéloïdes : cochez la (ou les) réponse(s) exacte(s) :
+$A. ce sont des cellules d’origine médullaire
+$B. expriment à leur membrane des récepteurs de l’immunité innée
+C. elles sont incapables d’activer les lymphocytes T naïfs
+$D. par les interleukines qu’elles sécrètent, elles orientent la différenciation des lymphocytes T CD4+
+$E. jouent un rôle de sentinelle aux sites d’entrée des pathogènes
+
+A propos du complément : cochez la (les) réponse(s) exacte(s) :
+$A. la fraction C3 hydrolysée peut activer la voie alterne d’activation du complément
+$B. le CR2 (récepteur des fractions C3bi, CD3d et C3dg) des lymphocytes B joue le rôle de corécepteur du BCR (B cell receptor)
+$C. le complément participe à l’épuration des complexes immuns
+$D. les peptides C3a et C5a sont des anaphylatoxines
+E. toutes les bactéries sont sensibles à la lyse osmotique provoquée par le complexe d’attaque membranaire
+
+A propos de la commutation de classe des immunoglobulines : cochez la (ou les) réponse(s) exacte(s) :
+A. elle se déroule lors de la lymphopoïèse centrale médullaire
+$B. elle requiert la collaboration entre les lymphocytes B et les lymphocytes T auxiliaires folliculaires
+$C. elle implique une recombinaison des gènes qui codent la partie constante de la chaîne lourde des immunoglobulines
+D. elle requiert l’expression et l’action des protéines RAG1 et RAG2
+$E. elle requiert l’action de l’enzyme AID (Activation-induced cytidine deaminase) exprimée par les lymphocytes B activés par l’antigène
+
+A propos des récepteurs de l'immunité innée : cochez la (les) proposition(s) exacte(s) :
+A. ils sont tous à la surface de la membrane cytoplasmique des cellules de l'immunité innée
+$B. ils peuvent reconnaître des molécules du soi
+$C. ils stimulent les fonctions exercées par les cellules de l'immunité innée, par exemple la phagocytose
+$D. ils peuvent reconnaître des acides nucléiques
+E. ils appartiennent tous à la famille des TLRs (Toll like receptors)
+
+A propos de l'action antivirale des interférons de type l, cochez la (ou les) réponse(s) exacte(s) :
+A. ils ont une action virucide sur les particules virales extracellulaires
+B. ils détruisent des récepteurs viraux à la surface de la cellule
+$C. ils induisent une inhibition de la synthèse des protéines au sein des cellules infectées par un virus
+$D. ils induisent la dégradation des ARNm viraux
+$E. ils peuvent être synthétisés par la cellule infectée elle-même
+
+A propos des chimiokines, parmi les propositions suivantes, cochez la (ou les) réponse(s) exacte(s) :
+$A. elles stimulent et orientent le déplacement des cellules exprimant le récepteur adéquat
+B. elles ne jouent pas de rôle dans la diapédèse des cellules immunitaires
+C. elles sont produites exclusivement en réponse à une infection
+$D. elles jouent un rôle dans la circulation des cellules immunitaires
+$E. l'expression du récepteur CCR7 par les lymphocytes T naïfs conditionne leur entrée dans les organes lymphoïdes secondaires
+
+Les polyosides des capsules bactériennes sont des antigènes thymo-indépendants capables d'induire des réponses de certains lymphocytes B sans l'aide des TCD4 auxiliaires. Parmi les propositions suivantes, cochez la (ou les) réponse(s) exacte(s) :
+$A. les réponses thymo-indépendantes des lymphocytes B sont localisées dans la zone marginale de tous les organes lymphoïdes périphériques.
+$B. avant l'âge de deux ans, les réponses humorales thymo-indépendantes sont très faibles
+$C. couplés à des protéines, les polyosides des capsules bactériennes sont capables de provoquer des réponses thymo-dépendantes intra-folliculaires
+$D. l'immunogénicité pour les lymphocytes B des polyosides des capsules bactériennes repose sur leur structure répétitive
+$E. les anticorps produits contre ces polyosides bactériens jouent un rôle déterminant dans la lutte contre les bactéries qui les expriment.
+
+A propos des cellules dendritiques : cochez la (ou les) réponse(s) exacte(s):
+$A. jouent un rôle de sentinelle aux sites d'entrée des pathogènes
+$B. expriment à leur membrane des récepteurs de l'immunité innée
+C. ne sont pas capables d'activer les lymphocytes T CD8+ naïfs
+$D. orientent, par les interleukines qu'elles sécrètent, la différenciation des lymphocytes T CD4+
+$E. sont des cellules d'origine hématopoïétique
+
+A propos des polynucléaires neutrophiles :
+$A. Sont les leucocytes les plus abondants du sang circulant
+B. Sont les dernières cellules à quitter le sang circulant en cas d’infection
+$C. Expriment des récepteurs du fragment fc des lgg
+$D. Ont une activité bactéricide très efficace grâce aux radicaux libres de l’oxygène qu’ils produisent au décours de l’explosion oxydative (oxydative burst)
+E. Sont les leucocytes les plus efficaces dans la lutte contre les virus
+
+À propos de la cascade du système du complément :
+A. La voie classique est activée par les lga et les lgm
+$B. La voie classique est activée par les igg1 et les lgg3
+C. La voie des mbl est spécifique de motifs peptidiques antigéniques singuliers
+$D. La voie alterne est activée en permanence à bas bruit
+E. La c5 convertase de la voie classique est identique à la c5 convertase de la voie alterne
+
+À propos des gènes qui codent les molécules hla de classe i et de classe ll : cochez la (les) proposition(s) exacte(s) :
+$A. Ils sont situés sur le bras court du chromosome 6
+$B. Ils possèdent pour la plupart un très grand nombre d’allèles
+$C. Leur expression est exaltée par l'interféron gamma
+$D. Ils sont très variables d'un individu à l'autre du fait de réarrangements géniques durant la vie fœtale
+E. Ils sont exprimés seulement au cours des réponses immunitaires
+
+À propos de la réponse humorale à un antigène dit thymo-dépendant dans un ganglion : cochez la (les) proposition(s) exacte(s) :
+$A. elle aboutit à la formation de centres germinatifs
+$B. elle aboutit à la sélection de lymphocytes b exprimant des immunoglobulines de forte affinité
+C. elle est inhibée par la présence de l'antigène à la surface des cellules dendritiques folliculaires
+$D. elle est dépendante de l'interaction cd40 ligand-cd40
+E. elle ne requiert pas la synthèse de cytokines par les lymphocytes t
+
+À propos des lymphocytes natural killer : cochez la (les) proposition(s) exacte(s) :
+A. Ils représentent une fraction infime des lymphocytes circulants (<0,1 %)
+B. Leurs récepteurs kir reconnaissent des peptides très variés présentés par tes molécules hla de classe ll
+$C. Ils peuvent reconnaitre directement des antigènes viraux à la membrane de cellules infectées via leurs récepteurs nkp
+$D. Ils sont capables d'adcc par liaison à des lgg3 spécifiques d’antigènes solubles
+E. Après contact avec l'antigène, ils se différencient rapidement en cellules mémoires
+
+les anticorps (ac) produits au décours d'une réponse humorale de type secondaire diffèrent de ceux produits au décours d'une réponse primairE. Parmi les propositions suivantes, indiquer celle(s) qui est (sont) exacte(s) :
+$A. Un délai plus court d'apparition dans le sang suite au contact avec l’antigène
+B. Une forte prépondérance d’anticorps de classe lgm
+$C. Une augmentation de l'affinité par rapport aux anticorps de réponse primaire
+$D. Des taux d'anticorps dans le sang sont plus importants
+$E. Une diversification accrue des isotypes des ac produits
+
+Parmi les propositions concernant la réaction ag/ac, cochez celle(s)qui est (sont)exacte(s) ?
+A. Elle est irréversible
+B. Elle met en jeu des liaisons covalentes
+$C. Elle met en jeu de multiples liaisons de faible énergie
+$D. Elle peut inhiber des fonctions biologiques de l'antigène
+$E. Elle met en jeu la complémentarité entre le site anticorps et une région de l'antigène dénommée épitope
+
+Parmi les propositions suivantes concernant l'll-2, cochez celle(s) qui est (sont) exacte(s) :
+A. Elle est sécrétée essentiellement par les macrophages
+$B. Elle est produite surtout par certains lymphocytes t auxiliaires cd4+
+$C. Elle est reconnue par un récepteur qui peut ou non comporter une chaîne alpha dénommée cd25
+$D. Elle est indispensable à la maturation des lymphocytes t cytotoxiques
+E. Elle intervient dans la différenciation des lymphocytes b en plasmocytes producteurs d'lga
+
+Les cellules dendritiques représentent une famille de cellules qui ont en commun certaines caractéristiques : cochez la (les) réponse(s)exacte(s) :
+$A. L'expression de récepteurs du fragment fc des lgg
+$B. La capacité de présenter l'antigène aux lymphocytes
+$C. L'aptitude à sécréter des cytokines
+D. Une activité cytotoxique vis à vis des cellules infectées
+$E. La capacité de délivrer des signaux de costimulation aux lymphocytes
+
+À propos des plasmocytes : cochez la (les) réponse(s)exacte(s) :
+A. Ils dérivent des lymphocytes T
+B. Ils prennent naissance dans le thymus
+$C. Ils dérivent des lymphocytes B
+D. Ils circulent en permanence en grande quantité dans le sang
+$E. Ils se localisent préférentiellement dans la moelle osseuse mais aussi dans l'espace sous-muqueux
+
+À propos des cytokines : cochez la (les) réponse(s) exacte(s) :
+A. Ce sont des protéines à action principalement endocrine
+B. Quelle que soit la cellule cible, une cytokine donnée a toujours le même effet
+$C. Le spectre des cytokines sécrétées par les lymphocytes T CD4+ permet de définir des sous- populations fonctionnelles de lymphocytes T CD4+
+D. Elles sont produites exclusivement par les cellules immunocompétentes
+$E. Le tgf bêta est une cytokine inhibitrice de la réponse immune
+
+À propos des récepteurs de cytokines : cochez la (les) réponse(s) exacte(s) :
+$A. Le déficit en chaîne gamma du récepteur de l'll2 est responsable d'un déficit immunitaire combiné sévère
+$B. La molécule CD25 permet la constitution d'un récepteur de l'll2 de haute affinité
+$C. Il existe des formes solubles de certains récepteurs
+$D. La transduction du signal du récepteur de l'll2 passe par JAK3
+$E. Certaines chaînes protéines peuvent être communes à des récepteurs de différentes cytokines
+
+À propos des cytokines inflammatoires : cochez la (les) réponse(s) exacte(s) :
+$A. Le TNF alpha et l'lL-6 sont produits par les macrophages activés
+$B. L'IL1 bêta et le TNF alpha agissent en synergie
+$C. L'lL1 bêta et le TNF alpha agissent sur les cellules endothéliales favorisant la diapédèse des cellules sanguines
+D. Ll-17 est particulièrement efficace contre les virus
+$E. Ll-17 est en fait une famille de cytokines comprenant plusieurs membres
+
+À propos des interférons : cochez la (les) réponse(s) exacte(s) :
+A. L'lFN gamma est typiquement une cytokine sécrétée par les lymphocytes de type Th2 et est impliquée dans la réponse humorale
+$B. L'IFN gamma joue un rôle dans la défense contre les mycobactéries
+$C. Les interférons de type 1 induisent la production de protéines à action antivirale
+$D. Les interférons de type 1 agissent de façon autocrine
+$E. Les interférons de type 1 jouent un rôle déterminant dans la lutte antibactérienne
+
+À propos du complément : cochez la (les) réponse(s) exacte(s) :
+A. le CR2 est (récepteur du C3bi des lymphocytes B) permet l'amplification de la réponse humorale
+$B. le complément participe à l'épuration des complexes immuns
+C. le C2b est une opsonine
+$D. le complexe d'attaque membranaire entraîne une lyse osmotique de la cellule cible
+$E. le peptide C5a est une anaphylatoxine inflammatoire
+
+Parmi les propositions suivantes cochez la (ou les) réponse(s) exacte(s). La cytotoxicité des lymphocytes Natural Killer (NK) peut s'exercer :
+$A. Sur des cellules épithéliales infectées par un virus
+$B. Sur des bactéries extracellulaires
+$C. Sur des cellules tumorales n'exprimant pas de molécules HLA de classe
+$D. Peut impliquer la reconnaissance de molécules de stress exprimées par les cellules tumorales
+$E. Peut impliquer des récepteurs appartenant à la famille des Killer Cell Immunoglobulin-Like Receptors (KIR)
+
+Parmi les propositions suivantes concernant les lymphocytes T "non conventionnels" cochez la (ou les) réponse(s) exacte(s) :
+A. Ils constituent la majorité des lymphocytes T présents dans le sang chez l'Homme
+B. Ils possèdent tous un TCR de type gamma/delta
+$C. Certains d'entre eux reconnaissent des antigènes lipidiques présentés par la molécule CD1d
+D. Ils ont des TCR très diversifiés
+$E. Ils ont des TCR de diversité restreinte
+
+Parmi les propositions suivantes concernant la mémoire immunitaire humorale, cochez la (ou les) réponse(s) exacte(s) :
+A. Elle est supporté par la survie prolongée des lymphocytes B naïfs
+B. Elle nécessite, pour se maintenir vis-à-vis d'un agent infectieux, une réexposition très fréquente de l'individu à cet agent infectieux
+$C. Elle requiert en général une coopération entre les lymphocytes T et B pour l'établissement d'une mémoire humorale post-vaccinale de longue durée
+$D. Elle peut persister tout au long de la vie, vis-à-vis de germes rencontrés dans l'enfance
+E. Elle dépend uniquement des plasmocytes à longue durée de vie de la moelle osseuse
+
+A propos de la mémoire immunitaire cellulaire vis-à-vis d'un agent infectieux, cochez la (ou les) réponse(s) exacte(s) :
+$A. Elle est basée sur la longue persistance de lymphocytes T mémoires spécifiques de cet agent infectieux
+B. Elle peut s'apprécier, pour certains antigènes, par une intradermoréaction
+$C. Elle repose sur des lymphocytes T mémoires exprimant les molécules CD4 ou CD8
+D. Elle repose en grande partie sur la présence de lymphocytes natural killer (NK) mémoire, localisés dans la moelle osseuse
+E. Elle s'établit chez l'individu vacciné grâce à l'apparition de cellules dendritiques mémoire
+
+A propos de l'action antivirale des interférons de type I, cochez la (ou les) réponse(s) exacte(s) :
+A. Ils ont une action virucide sur les particules virales extracellulaires,
+B. Ils détruisent des récepteurs viraux à la surface de la cellule,
+$C. lls induisent une inhibition de la synthèse des protéines au sein des cellules infectées par un virus,
+$D. Ils induisent la dégradation des ARNm viraux,
+$E. Ils peuvent être produits par la cellule infectée elle-mêmE.
+
+A propos des chimiokines, parmi les propositions suivantes, cochez la (ou les) réponse(s) exacte(s) :
+$A. Elles stimulent et orientent le déplacement des cellules exprimant le récepteur adéquat
+B. Elles ne jouent pas de rôle dans la diapédèse des cellules immunitaires
+C. Elles sont produites exclusivement en réponse à une infection
+$D. Elles jouent un rôle dans la circulation des cellules immunitaires
+$E. Le récepteur CCR7 conditionne l'entrée des lymphocytes T naïfs dans les organes lymphoïdes secondaires
+
+A propos de la cascade du système du complément, parmi les propositions suivantes cochez la (ou les) réponse(s) exacte(s) :
+A. La voie classique est activée par les IgA et les IgM
+$B. La voie classique est activée par les IgG1 et les IgG3
+C. La voie des MBL est spécifique de motifs peptidiques antigéniques singuliers
+$D. La voie alterne est activée en permanence à bas bruit
+E. La C3 convertase classique est identique à la C3 convertase alterne
+
+La lutte contre les agents infectieux met en jeu deux volets du système immunitaire : un volet adaptatif et un volet inné. Les deux systèmes sont complémentaires mais diffèrent par leurs propriétés. Parmi les propositions comparatives suivantes cochez la (ou les) réponse(s) exacte(s):
+$A. Seur le système adaptatif est basé sur les réponses de cellules immunologiquement compétentes possédant un récepteur spécifique de l'antigènE.
+$B. Le système immunitaire inné se caractérise par des réponses plus rapides que celles du système adaptatif.
+C. Le système immunitaire inné est le seul à permettre à la mise en place d'une mémoire immunitaire basée sur des cellules à longue durée de viE.
+D. Le système immunitaire inné nécessite la présence d'un thymus fonctionnel qui joue un rôle indispensable dans la maturation fonctionnelle des macrophages.
+E. Le système adaptatif et le système inné agissent indépendamment l'un de l'autre sans aucune collaboration.
+
+A propos des molécules HLA de Classe I, parmi les propositions comparatives suivantes cochez la (ou les) réponse(s) exacte(s) :
+$A. sont exprimées par la plupart des cellules de l'organisme
+$B. sont spécialisées dans la présentation des peptides antigéniques aux lymphocytes T CD8 positifs
+C. sont formées de l'association de deux protéines de taille égale et toutes les deux ancrées dans la membrane de la cellule par un domaine transmembranairE.
+D. sont capables d'interagir avec la molécule CD4 exprimée par les lymphocytes T cytotoxiques
+$E. sont formées de l'association d'une petite protéine appelée bêta 2 microglobuline et d'une chaîne lourde (alpha) codée par un gène appartenant au CMH (complexe majeur d'histocompatibilité).
+
+La réaction antigène-anticorps: cochez la (ou les) réponse(s) exacte(s) :
+$A. est à la base de la spécificité de la phase effectrice de la réponse humorale
+$B. fait intervenir de multiples liaisons faibles qui ne peuvent s'établir que grâce à la complémentarité de structure entre le site anticorps et le site antigénique,
+$C. peut provoquer des modifications fonctionnelles de l'antigène,
+D. met uniquement en jeu les zones constantes des chaînes lourdes et légères d'immunoglobulines
+E. est à la base du recrutement des lymphocytes B spécifiques de l'antigène
+
+Le phénomène de commutation de classe des immunoglobulines est un événement qui: cochez la (ou les) réponse(s) exacte(s) :
+A. se déroule lors de la lymphopoïèse centrale médullaire indépendante du contact avec les antigènes extérieurs à l'organisme,
+B. requiert la collaboration des lymphocytes B avec les lymphocytes natural killer (NK) par le biais du couple moléculaire CD40-CD40 ligand,
+$C. implique une recombinaison des différents segments de gènes qui codent la partie constante de la chaîne lourde des immunoglobulines,
+D. implique une recombinaison génétique dépendante des protéines RAG1 et RAG2,
+E. requiert l'action de l'enzyme AID (Activation-induced cytidine deaminase).
+
+Les récepteurs de l'antigène des cellules lymphocytes T et ceux des lymphocytes B appartiennent à la même famille de molécules. Bien qu'ils partagent nombre de caractéristiques, ils diffèrent par certains points. Parmi les propositions suivantes, cochez la ou les bonnes réponses:
+$A. ces deux types de récepteurs possèdent des parties variables sur lesquelles repose la spécificité du récepteur pour un antigène donné (ou tout au moins un groupe d'antigènes donnés)
+$B. Le phénomène d'hypermutation somatique des parties variables du récepteur de l'antigène n'est observé que dans les lymphocytes B,
+$C. les parties variables de ces deux types de récepteurs sont codées par des régions qui résultent de la recombinaison somatique de deux ou trois segments de gènes
+D. les parties constantes de ces récepteurs sont toujours les mêmes sur tous les lymphocytes B qu'ils aient ou non rencontré l'antigène
+E. les molécules qui constituent l'unité de reconnaissance spécifique de l'antigène des lymphocytes B sont associées au complexe moléculaire CD3 qui permet la transduction du signal
+
+QCM 13 Parmi les propositions suivantes à propos des IgE, donnez la (les) réponse(s) exacte(s) :
+$A. elles sont responsables des manifestations cliniques d'hypersensibilité immédiate lors du premier contact avec l'antigène
+$B. elles sont impliquées dans l'activation des mastocytes et des polynucléaires basophiles
+$C. elles sont présentes à la surface des mastocytes et des polynucléaires basophiles du fait de leur liaison aux récepteur de haute affinité pour fragment Fc des IgE
+D. elles sont produites par les mastocytes et des polynucléaires basophiles qui les expriment fortement à leur surface
+$E. elles sont impliquées dans les réactions d'hypersensibilité immédiate
+
+Les lymphocytes T CD8 cytotoxiques matures sont des cellules tueuses. Parmi les propositions suivantes, donnez la (les) réponse(s) exacte(s) :
+$A. Ils sont capables de détruire successivement plusieurs cellules cibles
+B. Ils exercent leurs activités cytotoxiques par l'intermédiaire de l'IL-12
+$C. lls utilisent la perforine qui permet le passage dans la cellule cible du granzyme B (entres autres) qui induit la cascade d'activation de l'apoptose dans la cellule cible
+D. Ils reconnaissent des peptides présentés par les molécules du CMH de classe II
+$E. Ils sont capables de migrer dans les foyers infectieux pour traquer et détruire les cellules infectées par des pathogènes infectieux intracellulaires
+
+Au décours de la vaccination par l'anatoxine tétanique, l'organisme produit des anticorps capables de se lier à la toxine tétaniquE. Parmi les propositions suivantes, donnez la (les) réponse(s) exacte(s) :
+$A. Les anticorps, qui ont la propriété d'inhiber le pouvoir pathogène de la toxine tétanique, nous protègent du tétanos
+B. Les anticorps produits au décours de la réponse primaire ne sont pas protecteurs vis-à-vis du tétanos car de trop basse affinité
+$C. La protection contre le tétanos dépend du taux des anticorps circulants mais aussi de leur affinité pour la toxine tétanique
+$D. Tous les anticorps produits ne sont pas capables d'inhiber le pouvoir pathogène de la toxine tétanique
+$E. L'affinité des anticorps pour la toxine tétanique augmente au décours des injections de rappel de l'anatoxine tétanique
+
+Parmi les propositions suivantes concernant l'activation du complément, donnez la (les) réponse(s) exacte(s) :
+A. La voie classique est activée par les fragments Fab des immunoglobulines
+$B. La liaison covalente de C3b à un complexe immun participe à l'opsonisation de ce dernier
+$C. Les fragments C3a et C3b, résultant du clivage de la fraction C3, sont reconnus par des récepteurs cellulaires différents
+$D. Les anaphylatoxines C3a et C5a sont des acteurs importants de l'inflammation locale
+$E. L'activation du complément est sous le contrôle d'un inhibiteur soluble le facteur I, qui, associé à ses cofacteurs, dégrade la fraction C3 activé (C3b) en C3bi (C3b inactivé).
+
+Parmi les propositions suivantes, donnez la (les) réponse(s) exacte(s). Les cellules T CD8+ cytotoxiques tuent les cellules cibles infectées par un virus :
+$A. si leur TCR est spécifique d'un peptide viral présenté à surface de la cellule infectée dans le contexte des molécules HLA de classe I,
+$B. par le déversement au contact de la cellule cible du contenu de leurs granules,
+$C. grâce à la perforine et aux granzymes (dont le granzyme B),
+$D. au décours d'un contact étroit avec la cellule infectée,
+E. grâce au complexe d'attaque membranaire du complément.
+
+Parmi les propositions suivantes à propos des réponses immunitaires, laquelle (lesquelles) est (sont) exacte(s) ?
+$A. Il existe une forte intrication entre les réponses innées et adaptatives
+B. Les réponses adaptatives humorales et cellulaires sont deux mécanismes totalement indépendants
+C. La coopération cellulaire entre les lymphocytes T CD4+ et CD8+ n'est pas indispensable à la multiplication des lymphocytes T CD8+ qui ont reconnus l'antigène
+$D. Les cellules dendritiques jouent un rôle clé à l'interface entre immunité innée et adaptative
+$E. Certains lymphocytes issus des réponses adaptatives se différencient en cellules mémoire
+
+Parmi les propositions suivantes à propos des lymphocytes B, donnez la (les) réponse(s) exacte(s).
+$A. Les lymphocytes B acquièrent leur récepteur de l'antigène lors de leur différenciation dans la moelle osseuse
+B. Les lymphocytes B naïfs (n'ayant jamais répondu à un antigène) migrent préférentiellement vers les organes lymphoïdes centraux
+$C. Les lymphocytes B peuvent présenter des peptides exogènes aux lymphocytes T dans le contexte des molécules HLA de classe II
+D. Les lymphocytes B issus du centre germinatif n'ont jamais connu le phénomène d'hypermutation somatique des gènes codant les parties variables des d'immunoglobuline
+$E. Les lymphocytes B ne produisent l'enzyme AID (Activation-induced cytidine deaminase) qu'after interaction avec un lymphocyte T CD4+
+
+La TdT (Terminal deoxynucleotidyl transferase) permet l'addition de nucleotides entre les segments de gènes V et D et D et J. Parmi les propositions suivantes, donnez la (les) réponse(s) exacte(s) :
+$A. La TdT intervient dans la diversification du répertoire des récepteurs de l'antigène des lymphocytes T et B
+B. La TdT ajoute les nucléotides au hasard et génère une diversité génétique non hérité et non transmissible
+$C. La TdT est particulièrement exprimée dans les lymphocytes en voie de différenciation dans les organes lymphoïdes centraux.
+$D. La TdT n'intervient que lors de la recombinaison somatique des segments de gènes codant les parties variables du TCR ou des immunoglobulines
+E. La TdT est indispensable à la commutation de classe (class switch)
+
+A propos du récepteur de l'antigène des lymphocytes T (TCR) de type alpha bêta, donnez la (les) réponse(s) exacte(s) :
+A. La partie intra-cytoplasmique des chaînes alpha et bêta du TCR comporte de multiples motifs ITAM qui assurent la transduction du signal d'activation
+$B. le TCR est associé au complexe CD3 qui est composé de plusieurs protéines comportant des motifs ITAM intra-cytoplasmiques.
+C. Il suffit à lui seul à donner le signal d'activation au lymphocyte T
+$D. Il concourt à activer le lymphocyte T si ce denier reçoit un deuxième signal qui passe par la molécule CD28 quand elle se lie à B7-1 (CD80) ou B7-2 (CD86) exprimés par les cellules présentatrices de l'antigène
+E. Il apparaît à la surface des pro-lymphocytes T dans la moelle osseuse
+
+A propos des peptides étrangers d'origine endogène qui se logent dans les molécules de classe I du CMH donnez la (les) réponse(s) exacte(s) :
+$A. Ils dérivent de la dégradation des protéines intracellulaires par le proteasome
+$B. Les protéines TAP1 et TAP2 les transportent du cytosol vers le réticulum endoplasmique
+$C. S'ils sont étrangers à l'organisme, ils peuvent être reconnus par les lymphocytes T CD8+ grâce à leurs TCR
+D. Les molécules de classe I chargées de peptides étrangers à l'organisme sont reconnues par les lymphocytes T CD4+
+E. leur chargement dans la gouttière des molécules de classe I se produit dans les phagosomes des cellules présentatrices de l'antigène
+
+QCM 23 Les polyosides des capsules bactériennes sont des antigènes thymo-indépendants capables de provoquer des réponses de certains lymphocytes B qui n'ont pas besoin de l'aide des T CD4 auxiliaires. Parmi les propositions suivantes, laquelle (lesquelles) est (sont) exacte(s) ?
+$A. Les réponses thymo-indépendantes des lymphocytes B sont localisées dans la zone marginale de tous les organes lymphoïdes périphériques.
+$B. Avant l'âge de deux ans, les réponses humorales thymo-indépendantes sont très faibles
+$C. Couplés à des protéines, ces polyosides bactériens sont capables de provoquer des réponses thymo-dépendantes intra-folliculaires
+D. Ces polyosides bactériens sont fortement immunogènes pour les lymphocytes B car, de structure répétitive, ils présentent de multiples fois un même épitope
+$E. Les anticorps contre ces polyosides bactériens jouent un rôle déterminant dans la lutte contre les bactéries qui les expriment.
+
+L’immunité innée est :
+$A. primordiale pour la survie du nouveau-né avant l'acquisition de son immunité adaptative
+$B. en grande synergie avec l'immunité adaptative
+$C. capable de produire des substances bactéricides
+$D. opérationnelle dés la naissance
+$E. entre autre due à des lymphocytes non conventionnels, c'est à dire dépourvus de TCR
+
+Les lgG :
+$A. sont les seuls anticorps maternels qui "passent" chez le fœtus
+$B. ont une demi-vie de 3 semaines environ
+$C. sont les Immunoglobulines les plus abondantes dans le sang
+$D. sont le composant majoritaire des protéines de la région gamma à l'électrophorèse des protéines du sérum
+E. sont produites lors du premier contact avec l'antigène
+
+Les cellules infectées par un virus :
+A- sont directement détruites par les interférons
+$B- peuvent être efficacement détruites par un lymphocyte NK de l'immunité innée
+$C- peuvent être efficacement détruites par un lymphocyte T CD8 de l'immunité adaptative
+$D- peuvent échapper à l'immunité adaptative en n'exprimant pas-ou très peu d’épitopes viraux.
+$E- peuvent produire des molécules inhibant les lymphocytes T
+
+L'initiation d'une réponse immune contre un antigène donné :
+$A. ne peut avoir lieu que si les anticorps et les TCR spécifiques préexistent au premier contact de l'organisme avec cet antigène
+$B. nécessite l'intervention d'une cellule présentatrice pour induire une réponse cellulaire
+C. nécessite une "coopération" entre plusieurs cellules
+$D. n'est efficace que si l'antigène est une glycoprotéine de haut poids moléculaire
+$E. peut déclencher une tolérance
+
+Les molécules HLA :
+$A. servent à exprimer les auto-antigènes d'une cellule pour maintenir la tolérance au soi,
+$B. servent à exprimer les antigènes étrangers ou anormaux produits par une cellule cible d'une réponse T cytotoxique,
+$C. servent à une cellule dendritique pour initier une réponse adaptative spécifique d'un antigène
+D. sont absentes à la naissance, d'où le déficit immunitaire transitoire du nouveau né
+$E. sont la cause du phénomène dit de restriction au CMH
+
+La tolérance à un antigène :
+A. est acquise dès la naissance
+B. dure toute la vie
+C. est une incapacité des cellules présentatrices à reconnaître et donc présenter l'antigène
+D. est une défaillance du système immunitaire en général
+$E. pourrait être induite par une vaccination à but thérapeutique par exemple en allergie
