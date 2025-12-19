@@ -4,11 +4,12 @@
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
     "Histologie": ["Annales"],
-    "Immuno": ["Annales"],
+    "Immunologie": ["Annales"],
     "Hémato": ["Annales"],
     "Génétique": ["Annales"],
     "SSH": ["Annales"]
 }
+
 
 
 
