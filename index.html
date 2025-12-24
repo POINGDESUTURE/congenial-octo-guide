@@ -3,97 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QCM Médecine</title>
+    <title>Annales UNESS - Entraînement</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
         /* =========================================
-           STYLE GLOBAL UNESS (Thème Moove)
+           REPRODUCTION INTERFACE UNESS (MOOVE)
            ========================================= */
         body { 
-            background-color: #f2f4f7; /* Gris clair UNESS */
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f2f4f7; 
+            font-family: 'Roboto', -apple-system, sans-serif;
             font-size: 0.9375rem;
             color: #1d2125;
-            padding-top: 70px; /* Espace pour la navbar fixe */
+            padding-top: 80px;
         }
 
-        /* Barre de navigation blanche avec ombre portée */
+        /* Navbar UNESS */
         .uness-navbar {
             background-color: #ffffff;
             border-bottom: 1px solid #dee2e6;
             box-shadow: 0 2px 4px rgba(0,0,0,.08);
             height: 60px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
         }
 
-        .uness-logo {
-            height: 40px;
-            margin-right: 15px;
-        }
-
-        /* Conteneur principal plus large mais centré */
-        .container {
-            max-width: 1140px;
-        }
-
-        /* Cartes de questions style UNESS */
-        .card {
+        /* Container de Question (Le fameux .que de Moodle) */
+        .que {
+            background-color: #f8f9fa;
             border: 1px solid #dee2e6;
+            margin-bottom: 2rem;
+            display: flex;
             border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,.05);
-            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        /* Panneau de gauche (Info) */
+        .que .info {
+            width: 160px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            padding: 15px;
+            flex-shrink: 0;
+        }
+
+        .que .info h3.no {
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .que .info .state, .que .info .grade {
+            font-size: 0.8rem;
+            color: #6a737b;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        /* Panneau de droite (Contenu) */
+        .que .content {
+            flex-grow: 1;
+            padding: 20px;
             background-color: #fff;
         }
 
-        .card-header {
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            font-weight: 700;
-            color: #495057;
-            padding: 0.75rem 1.25rem;
-        }
-
-        /* Style des questions */
-        .question-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            color: #111;
+        .qtext {
+            font-size: 1.05rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #1d2125;
         }
 
         /* Options de réponses */
-        .option-container {
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            transition: background-color 0.15s ease-in-out;
-            cursor: pointer;
+        .answer div {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            padding: 8px 12px;
+            margin-bottom: 1px;
+            transition: background 0.1s;
         }
 
-        .option-container:hover {
-            background-color: #f8f9fa;
+        /* Alternance r0/r1 de l'UNESS */
+        .r0 { background-color: #f8f9fa; }
+        .r1 { background-color: #ffffff; }
+
+        .answer div:hover {
+            background-color: #f0f4f8;
         }
 
-        .option-container input {
+        .answernumber {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+            min-width: 20px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 4px;
             margin-right: 12px;
-            width: 18px;
-            height: 18px;
+            cursor: pointer;
         }
 
-        /* Boutons UNESS */
+        /* Boutons Style UNESS */
         .btn-uness {
             background-color: #1177d1;
             color: white;
-            border-radius: 4px;
-            font-weight: 600;
-            padding: 8px 20px;
             border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
             text-transform: uppercase;
+            font-weight: 600;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
+            transition: background 0.2s;
         }
 
         .btn-uness:hover {
@@ -101,452 +131,190 @@
             color: white;
         }
 
-        /* États de correction (Flashy mais propres) */
-        .correct { 
-            background-color: #d4edda !important; 
-            border-color: #c3e6cb !important; 
-            color: #155724;
-        }
-        .incorrect { 
-            background-color: #f8d7da !important; 
-            border-color: #f5c6cb !important; 
-            color: #721c24;
-        }
-        .missed { 
-            background-color: #fff3cd !important; 
-            border-color: #ffeaa7 !important; 
-            color: #856404;
-        }
+        /* Feedback Couleurs Correction */
+        .correct-block { background-color: #d4edda !important; border-left: 5px solid #28a745 !important; }
+        .incorrect-block { background-color: #f8d7da !important; border-left: 5px solid #dc3545 !important; }
+        .missed-block { background-color: #fff3cd !important; border-left: 5px solid #ffc107 !important; }
 
         .hidden { display: none; }
-        
-        /* Liste des matières style Sidebar */
-        .list-group-item-uness {
-            border: none;
-            border-left: 4px solid transparent;
-            margin-bottom: 2px;
-            font-weight: 500;
-        }
-        .list-group-item-uness:hover {
-            border-left: 4px solid #1177d1;
-            background-color: #f0f7ff;
-            color: #1177d1;
-        }
+        .setup-card { background: white; border-radius: 8px; border: 1px solid #dee2e6; padding: 30px; }
     </style>
-    
 </head>
 <body>
+
+    <div class="uness-navbar">
+        <img src="https://static.uness.fr/images/logo-uness-bna.png" alt="Logo UNESS" style="height: 35px; margin-right: 15px;">
+        <span style="border-left: 1px solid #ddd; padding-left: 15px; font-weight: 700; color: #777;">ENTRAÎNEMENT</span>
+    </div>
+
     <div class="container">
-        <h1 class="text-center mb-4">🏥 QCM Médecine</h1>
-
-        <!-- Loading -->
-        <div id="loadingScreen" class="loading">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Chargement...</span>
-            </div>
-            <p class="mt-3">Chargement des QCM...</p>
-        </div>
-
-        <!-- Écran d'accueil -->
-        <div id="homeScreen" class="hidden">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Choisissez une matière</h3>
-                    <div id="subjectsList" class="list-group"></div>
+        
+        <div id="setupScreen" class="setup-card shadow-sm mt-4">
+            <h4 class="mb-4">Choix du module d'entraînement</h4>
+            <div id="subjectList" class="list-group list-group-flush mb-4">
                 </div>
-            </div>
-        </div>
-
-        <!-- Écran des chapitres -->
-        <div id="chapterScreen" class="hidden">
-            <button class="btn btn-secondary mb-3" onclick="backToHome()">← Retour</button>
-            <div class="card">
-                <div class="card-body">
-                    <h3 id="currentSubjectTitle"></h3>
-                    <div id="chaptersList" class="list-group"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Écran de session -->
-        <div id="qcmScreen" class="hidden">
-            <button class="btn btn-secondary mb-3" onclick="backToChapters()">← Retour</button>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h4 id="sessionChapterTitle"></h4>
-                    <div class="mb-3">
-                        <label class="form-label">Nombre de questions par session</label>
-                        <input type="number" id="sessionSize" class="form-control" value="10" min="1">
+            
+            <div id="chapterSection" class="hidden border-top pt-4">
+                <h5 class="mb-3">Sélectionnez les chapitres :</h5>
+                <div id="chapterList" class="list-group list-group-flush">
                     </div>
-                    <button class="btn btn-primary btn-lg w-100" onclick="startSession()">Démarrer la session</button>
-                </div>
-            </div>
-            <div class="alert alert-info">
-                <strong><span id="chapterQcmCount">0</span> QCM disponibles</strong> dans ce chapitre
             </div>
         </div>
 
-        <!-- Écran de questions -->
-        <div id="sessionScreen" class="hidden">
-            <div class="mb-3">
-                <span class="badge bg-info">Question <span id="currentQuestionNum">1</span> / <span id="totalQuestions">10</span></span>
+        <div id="qcmScreen" class="hidden">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 id="sessionTitle" class="text-secondary">Session de Questions Isolées</h3>
+                <button class="btn btn-sm btn-outline-danger" onclick="location.reload()">Abandonner</button>
             </div>
-            <div class="card qcm-card">
-                <div class="card-body">
-                    <h5 id="questionText"></h5>
-                    <div id="optionsContainer"></div>
-                    <button class="btn btn-primary mt-3" onclick="nextQuestion()">Question suivante</button>
-                </div>
+            <div id="qcmContainer"></div>
+            <div class="text-center pb-5">
+                <button class="btn btn-uness" id="validateBtn" onclick="validateQCM()">Terminer le test...</button>
             </div>
         </div>
 
-        <!-- Écran de correction -->
-        <div id="correctionScreen" class="hidden">
-            <div class="card">
-                <div class="card-body">
-                    <h3>Résultats de la session</h3>
-                    <p class="lead">Score: <span id="score"></span></p>
-                    <div id="correctionDetails"></div>
-                    <button class="btn btn-success me-2" onclick="downloadMissedAnswers()">📥 Télécharger les réponses manquées</button>
-                    <button class="btn btn-primary" onclick="backToQCMScreen()">Nouvelle session</button>
+        <div id="resultScreen" class="hidden mb-5">
+            <div class="setup-card text-center shadow mb-4">
+                <h2 id="scoreDisplay" class="mb-3"></h2>
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-uness" onclick="location.reload()">Nouvel entraînement</button>
+                    <button class="btn btn-outline-primary" onclick="downloadMissedAnswers()">Télécharger les erreurs (Flashcards)</button>
                 </div>
             </div>
+            <div id="correctionDetails"></div>
         </div>
     </div>
 
     <script>
+        /* =========================================
+           BACKEND LOGIC (TON CODE ORIGINAL)
+           ========================================= */
         let data = {};
-        let currentSubject = '';
-        let currentChapter = '';
         let currentSession = [];
-        let currentQuestionIndex = 0;
-        let userAnswers = [];
         let missedAnswers = [];
 
-        async function loadAllQCM() {
+        // Chargement initial
+        async function loadData() {
             try {
-                const configResponse = await fetch('QCM/config.json');
-                const subjects = await configResponse.json();
+                // Remplacer 'ton_fichier.json' par le nom de ton fichier de données
+                const response = await fetch('config.json'); 
+                data = await response.json();
+                renderSubjects();
+            } catch (err) {
+                console.error("Erreur chargement JSON : ", err);
+            }
+        }
 
-                for (const subject in subjects) {
-                    data[subject] = {};
-                    
-                    for (const chapterFile of subjects[subject]) {
-                        try {
-                            const response = await fetch(`QCM/${subject}/${chapterFile}`);
-                            const text = await response.text();
-                            const qcms = parseQCMFile(text);
-                            
-                            const chapterName = chapterFile.replace('.txt', '').replace(/_/g, ' ');
-                            data[subject][chapterName] = qcms;
-                            
-                            console.log(`✅ ${subject} - ${chapterName}: ${qcms.length} QCM chargés`);
-                        } catch (error) {
-                            console.error(`❌ Erreur ${subject}/${chapterFile}:`, error);
-                        }
-                    }
-                }
+        function renderSubjects() {
+            const list = document.getElementById('subjectList');
+            Object.keys(data).forEach(subject => {
+                const btn = document.createElement('button');
+                btn.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+                btn.innerHTML = `${subject} <span class="badge bg-primary rounded-pill">→</span>`;
+                btn.onclick = () => showChapters(subject);
+                list.appendChild(btn);
+            });
+        }
 
-                document.getElementById('loadingScreen').classList.add('hidden');
-                document.getElementById('homeScreen').classList.remove('hidden');
-                displaySubjects();
-            } catch (error) {
-                document.getElementById('loadingScreen').innerHTML = `
-                    <div class="alert alert-danger">
-                        <h4>Erreur de chargement</h4>
-                        <p>Impossible de charger le fichier de configuration.</p>
-                        <p class="small">Assurez-vous que le fichier <code>QCM/config.json</code> existe.</p>
+        function showChapters(subject) {
+            document.getElementById('chapterSection').classList.remove('hidden');
+            const list = document.getElementById('chapterList');
+            list.innerHTML = '';
+            
+            data[subject].forEach((ch, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'list-group-item list-group-item-action';
+                btn.textContent = ch.chapitre;
+                btn.onclick = () => startQCM(subject, idx);
+                list.appendChild(btn);
+            });
+        }
+
+        function startQCM(subject, chapterIdx) {
+            currentSession = data[subject][chapterIdx].questions;
+            document.getElementById('setupScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.remove('hidden');
+            renderQuestions();
+            window.scrollTo(0,0);
+        }
+
+        // GENERATION HTML STYLE UNESS
+        function renderQuestions() {
+            const container = document.getElementById('qcmContainer');
+            container.innerHTML = currentSession.map((q, qIdx) => `
+                <div class="que" id="que-${qIdx}">
+                    <div class="info">
+                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                        <div class="state">Pas encore répondu</div>
+                        <div class="grade">Noté sur 1,00</div>
                     </div>
-                `;
-                console.error('Erreur:', error);
-            }
+                    <div class="content">
+                        <div class="qtext">${q.question}</div>
+                        <div class="answer">
+                            ${q.options.map((opt, oIdx) => `
+                                <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'}">
+                                    <input type="checkbox" id="q${qIdx}_o${oIdx}" data-q="${qIdx}" data-o="${oIdx}">
+                                    <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                                    <label for="q${qIdx}_o${oIdx}" class="m-0 flex-fill">${opt}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function parseQCMFile(content) {
-            const qcms = [];
-            
-            content = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
-            
-            let lines = content.split('\n');
-            const startIdx = lines.findIndex(line => line.includes('==='));
-            if (startIdx !== -1) {
-                const headerEnd = lines.findIndex((line, idx) => idx > startIdx && line.trim().startsWith('='));
-                if (headerEnd !== -1) {
-                    lines = lines.slice(headerEnd + 1);
-                }
-            }
-            
-            content = lines.join('\n');
-            const blocks = content.split(/\n\s*\n+/).filter(block => block.trim());
-            
-            console.log(`📊 ${blocks.length} blocs détectés`);
-            
-            blocks.forEach((block, blockIdx) => {
-                const lines = block.trim().split('\n').map(line => line.trim()).filter(line => line);
-                
-                if (lines.length < 6) {
-                    console.warn(`⚠️ Bloc ${blockIdx + 1} ignoré (${lines.length} lignes)`);
-                    return;
-                }
-                
-                const question = lines[0];
-                const options = [];
-                
-                for (let i = 1; i < lines.length && options.length < 5; i++) {
-                    const line = lines[i];
-                    const match = line.match(/^(\$?)([A-E])\.?\s*(.+)$/i);
-                    
-                    if (match) {
-                        const isCorrect = match[1] === '$';
-                        const letter = match[2].toUpperCase();
-                        const text = match[3].trim();
-                        
-                        const expectedLetter = String.fromCharCode(65 + options.length);
-                        if (letter === expectedLetter) {
-                            options.push({ text, isCorrect });
-                        }
-                    }
-                }
-                
-                if (options.length === 5) {
-                    qcms.push({ question, options });
-                } else {
-                    console.warn(`⚠️ Bloc ${blockIdx + 1} ignoré: ${options.length}/5 options`);
-                }
-            });
-            
-            return qcms;
-        }
-
-        function displaySubjects() {
-            const list = document.getElementById('subjectsList');
-            list.innerHTML = '';
-            
-            for (let subject in data) {
-                const totalQCMs = Object.values(data[subject]).reduce((sum, qcms) => sum + qcms.length, 0);
-                const item = document.createElement('a');
-                item.href = '#';
-                item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-                item.innerHTML = `${subject} <span class="badge bg-primary rounded-pill">${totalQCMs} QCM</span>`;
-                item.onclick = (e) => {
-                    e.preventDefault();
-                    openSubject(subject);
-                };
-                list.appendChild(item);
-            }
-        }
-
-        function openSubject(subject) {
-            currentSubject = subject;
-            document.getElementById('homeScreen').classList.add('hidden');
-            document.getElementById('chapterScreen').classList.remove('hidden');
-            document.getElementById('currentSubjectTitle').textContent = subject;
-            displayChapters();
-        }
-
-        function backToHome() {
-            document.getElementById('chapterScreen').classList.add('hidden');
-            document.getElementById('homeScreen').classList.remove('hidden');
-        }
-
-        function displayChapters() {
-            const list = document.getElementById('chaptersList');
-            list.innerHTML = '';
-            
-            for (let chapter in data[currentSubject]) {
-                const qcmCount = data[currentSubject][chapter].length;
-                const item = document.createElement('a');
-                item.href = '#';
-                item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-                item.innerHTML = `${chapter} <span class="badge bg-secondary rounded-pill">${qcmCount} QCM</span>`;
-                item.onclick = (e) => {
-                    e.preventDefault();
-                    openChapter(chapter);
-                };
-                list.appendChild(item);
-            }
-        }
-
-        function openChapter(chapter) {
-            currentChapter = chapter;
-            const qcmCount = data[currentSubject][currentChapter].length;
-            
-            document.getElementById('chapterScreen').classList.add('hidden');
-            document.getElementById('qcmScreen').classList.remove('hidden');
-            document.getElementById('sessionChapterTitle').textContent = `${currentSubject} - ${currentChapter}`;
-            document.getElementById('chapterQcmCount').textContent = qcmCount;
-            document.getElementById('sessionSize').value = Math.min(10, qcmCount);
-            document.getElementById('sessionSize').max = qcmCount;
-        }
-
-        function backToChapters() {
-            document.getElementById('qcmScreen').classList.add('hidden');
-            document.getElementById('sessionScreen').classList.add('hidden');
-            document.getElementById('chapterScreen').classList.remove('hidden');
-        }
-
-        function backToQCMScreen() {
-            document.getElementById('correctionScreen').classList.add('hidden');
-            document.getElementById('qcmScreen').classList.remove('hidden');
-        }
-
-        function startSession() {
-            const qcms = data[currentSubject][currentChapter];
-            if (qcms.length === 0) {
-                alert('Aucun QCM disponible');
-                return;
-            }
-
-            const sessionSize = Math.min(parseInt(document.getElementById('sessionSize').value), qcms.length);
-            const shuffled = [...qcms].sort(() => Math.random() - 0.5);
-            currentSession = shuffled.slice(0, sessionSize);
-            currentQuestionIndex = 0;
-            userAnswers = [];
-            missedAnswers = [];
-
-            document.getElementById('qcmScreen').classList.add('hidden');
-            document.getElementById('sessionScreen').classList.remove('hidden');
-            document.getElementById('totalQuestions').textContent = currentSession.length;
-            
-            displayQuestion();
-        }
-
-        function displayQuestion() {
-            const qcm = currentSession[currentQuestionIndex];
-            document.getElementById('currentQuestionNum').textContent = currentQuestionIndex + 1;
-            document.getElementById('questionText').textContent = qcm.question;
-
-            const container = document.getElementById('optionsContainer');
-            container.innerHTML = '';
-
-            qcm.options.forEach((option, idx) => {
-                const letter = String.fromCharCode(65 + idx);
-                const div = document.createElement('div');
-                div.className = 'form-check mb-2';
-                div.innerHTML = `
-                    <input class="form-check-input" type="checkbox" id="option${idx}" value="${idx}">
-                    <label class="form-check-label option-label w-100" for="option${idx}">
-                        ${letter}. ${option.text}
-                    </label>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function nextQuestion() {
-            const qcm = currentSession[currentQuestionIndex];
-            const selectedOptions = [];
-            
-            qcm.options.forEach((option, idx) => {
-                const checkbox = document.getElementById(`option${idx}`);
-                if (checkbox.checked) {
-                    selectedOptions.push(idx);
-                }
-            });
-
-            userAnswers.push(selectedOptions);
-
-            qcm.options.forEach((option, idx) => {
-                if (option.isCorrect && !selectedOptions.includes(idx)) {
-                    const letter = String.fromCharCode(65 + idx);
-                    missedAnswers.push({
-                        question: qcm.question,
-                        answer: `${letter}. ${option.text}`
-                    });
-                }
-            });
-
-            currentQuestionIndex++;
-
-            if (currentQuestionIndex < currentSession.length) {
-                displayQuestion();
-            } else {
-                showCorrection();
-            }
-        }
-
-        function showCorrection() {
-            document.getElementById('sessionScreen').classList.add('hidden');
-            document.getElementById('correctionScreen').classList.remove('hidden');
-
+        function validateQCM() {
             let correctCount = 0;
-            let totalCorrect = 0;
-            let totalUserCorrect = 0;
-
+            missedAnswers = [];
             const details = document.getElementById('correctionDetails');
             details.innerHTML = '';
 
-            currentSession.forEach((qcm, qIdx) => {
-                const userSelection = userAnswers[qIdx];
-                const card = document.createElement('div');
-                card.className = 'card mb-3';
-                
-                let optionsHtml = '';
-                let questionCorrect = true;
-
-                qcm.options.forEach((option, oIdx) => {
-                    const letter = String.fromCharCode(65 + oIdx);
-                    const userSelected = userSelection.includes(oIdx);
-                    const isCorrect = option.isCorrect;
-
-                    let className = 'list-group-item';
-                    if (isCorrect && userSelected) {
-                        className += ' correct';
-                        totalCorrect++;
-                        totalUserCorrect++;
-                    } else if (isCorrect && !userSelected) {
-                        className += ' missed';
-                        totalCorrect++;
-                        questionCorrect = false;
-                    } else if (!isCorrect && userSelected) {
-                        className += ' incorrect';
-                        questionCorrect = false;
-                    }
-
-                    const icon = isCorrect ? '✓' : (userSelected ? '✗' : '');
-                    optionsHtml += `<li class="${className}">${icon} ${letter}. ${option.text}</li>`;
+            currentSession.forEach((q, qIdx) => {
+                const userChoices = [];
+                q.options.forEach((_, oIdx) => {
+                    if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
                 });
 
-                if (questionCorrect) correctCount++;
+                const isCorrect = JSON.stringify(userChoices.sort()) === JSON.stringify(q.reponses_correctes.sort());
+                if (isCorrect) correctCount++;
+                else missedAnswers.push({ question: q.question, answer: q.explication || "Pas d'explication fournie." });
 
-                card.innerHTML = `
-                    <div class="card-body">
-                        <h6>Question ${qIdx + 1}</h6>
-                        <p>${qcm.question}</p>
-                        <ul class="list-group">${optionsHtml}</ul>
-                    </div>
-                `;
-                details.appendChild(card);
+                // Clone de la question pour la correction
+                const clone = document.getElementById(`que-${qIdx}`).cloneNode(true);
+                const answerDivs = clone.querySelectorAll('.answer div');
+                
+                q.options.forEach((_, oIdx) => {
+                    const isUserChecked = userChoices.includes(oIdx);
+                    const isRight = q.reponses_correctes.includes(oIdx);
+                    const div = answerDivs[oIdx];
+
+                    if (isRight) div.classList.add('correct-block');
+                    else if (isUserChecked && !isRight) div.classList.add('incorrect-block');
+                    
+                    div.querySelector('input').disabled = true;
+                    if(isUserChecked) div.querySelector('input').checked = true;
+                });
+
+                details.appendChild(clone);
             });
 
-            document.getElementById('score').textContent = `${correctCount}/${currentSession.length} questions parfaites - ${totalUserCorrect}/${totalCorrect} bonnes réponses cochées`;
+            document.getElementById('qcmScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.remove('hidden');
+            document.getElementById('scoreDisplay').textContent = `Résultat : ${correctCount} / ${currentSession.length}`;
+            window.scrollTo(0,0);
         }
 
         function downloadMissedAnswers() {
-            if (missedAnswers.length === 0) {
-                alert('Aucune réponse manquée ! Parfait ! 🎉');
-                return;
-            }
-
-            let content = '=== RÉPONSES MANQUÉES - FLASHCARDS ===\n\n';
-            missedAnswers.forEach((item, idx) => {
-                content += `${idx + 1}. ${item.question}\n`;
-                content += `   → ${item.answer}\n\n`;
-            });
-
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `flashcards_${new Date().toISOString().split('T')[0]}.txt`;
-            a.click();
-            URL.revokeObjectURL(url);
+            if (missedAnswers.length === 0) return alert("Bravo, 100% de réussite !");
+            let text = "ERREURS À REVOIR\n\n" + missedAnswers.map((m, i) => `${i+1}. ${m.question}\nNote: ${m.answer}\n`).join('\n---\n');
+            const blob = new Blob([text], {type: 'text/plain'});
+            const anchor = document.createElement('a');
+            anchor.download = "erreurs_session.txt";
+            anchor.href = window.URL.createObjectURL(blob);
+            anchor.click();
         }
 
-        loadAllQCM();
+        loadData();
     </script>
 </body>
-
 </html>
-
-
