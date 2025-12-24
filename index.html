@@ -9,7 +9,7 @@
     
     <style>
         /* =========================================
-           STYLE UNESS FIDÈLE (MOOVE)
+           STYLE UNESS FIDÈLE
            ========================================= */
         body { background-color: #f2f4f7; font-family: 'Roboto', sans-serif; font-size: 0.9375rem; color: #1d2125; padding-top: 20px; }
         .container { max-width: 1100px; }
@@ -20,18 +20,9 @@
         .que .info .state { font-size: 0.8rem; color: #6a737b; }
 
         .que .content { flex-grow: 1; padding: 25px; background-color: #fff; }
-        .qtext { font-size: 1.05rem; font-weight: 400; margin-bottom: 20px; line-height: 1.5; }
+        .qtext { font-size: 1.05rem; font-weight: 500; margin-bottom: 20px; line-height: 1.5; }
 
-        /* STYLE POUR LES IMAGES (ECG, ANAT, ETC.) */
-        .q-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto 20px auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: zoom-in; /* Pour indiquer qu'on peut regarder de plus près */
-        }
+        .q-image { max-width: 100%; height: auto; display: block; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 4px; }
 
         .answer .r0 { display: flex; align-items: flex-start; padding: 8px 12px; background-color: #ffffff; }
         .answernumber { font-weight: bold; color: #555; margin-right: 10px; min-width: 22px; }
@@ -70,7 +61,7 @@
             <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToChapters()">← Retour</button>
             <h4 id="sessionChapterTitle" class="text-primary mb-4"></h4>
             <div class="mb-4" style="max-width: 300px;">
-                <label class="form-label fw-bold">Questions :</label>
+                <label class="form-label fw-bold">Nombre de questions :</label>
                 <input type="number" id="sessionSize" class="form-control" value="10">
             </div>
             <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
@@ -84,7 +75,7 @@
         </div>
 
         <div id="correctionScreen" class="hidden">
-            <div class="setup-card text-center mb-4 shadow">
+            <div class="setup-card text-center mb-4">
                 <h2 id="score" class="text-primary"></h2>
                 <button class="btn btn-uness mt-3" onclick="backToQCMScreen()">Nouvelle session</button>
             </div>
@@ -103,9 +94,14 @@
                 for (const subject in subjects) {
                     data[subject] = {};
                     for (const file of subjects[subject]) {
-                        const res = await fetch(`QCM/${subject}/${file}`);
-                        const text = await res.text();
-                        data[subject][file.replace('.txt','').replace(/_/g,' ')] = parseQCMFile(text);
+                        try {
+                            const res = await fetch(`QCM/${subject}/${file}`);
+                            const text = await res.text();
+                            const parsed = parseQCMFile(text);
+                            if (parsed.length > 0) {
+                                data[subject][file.replace('.txt','').replace(/_/g,' ')] = parsed;
+                            }
+                        } catch (e) { console.error("Erreur fichier:", file); }
                     }
                 }
                 document.getElementById('loadingScreen').classList.add('hidden');
@@ -114,42 +110,52 @@
         }
 
         /* =========================================
-           PARSER MIS À JOUR POUR LES IMAGES
+           PARSER CORRIGÉ ET SÉCURISÉ
            ========================================= */
         function parseQCMFile(content) {
             const qcms = [];
+            // On sépare par double saut de ligne pour isoler les blocs
             const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
             
             blocks.forEach(block => {
-                const lines = block.trim().split('\n').map(l => l.trim());
-                if (lines.length < 2) return;
+                const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                
+                // Un QCM valide doit avoir au moins Question + 5 options = 6 lignes
+                if (lines.length < 6) return;
 
                 let question = lines[0];
+                
+                // SÉCURITÉ : Si la ligne contient du code CSS ou HTML, on ignore direct
+                if (question.includes('{') || question.includes(';') || question.includes('<')) return;
+
                 let imagePath = null;
                 let optionStartIndex = 1;
 
-                // Vérifie si la deuxième ligne est un chemin d'image
+                // On vérifie la présence d'une image
                 if (lines[1] && lines[1].toUpperCase().startsWith('IMG:')) {
                     imagePath = lines[1].substring(4).trim();
-                    optionStartIndex = 2; // Les options commencent donc après l'image
+                    optionStartIndex = 2;
                 }
 
                 const options = [];
-                for (let i = optionStartIndex; i < lines.length && options.length < 5; i++) {
-                    const match = lines[i].match(/^(\$?)([A-E])\.?\s*(.+)$/i);
-                    if (match) options.push({ text: match[3], isCorrect: match[1] === '$' });
+                // REGEX STRICTE : "A. " ou "A) " uniquement en MAJUSCULES
+                const optionRegex = /^(\$?)([A-E])[\.\)]\s+(.+)$/;
+
+                for (let i = optionStartIndex; i < lines.length; i++) {
+                    const match = lines[i].match(optionRegex);
+                    if (match) {
+                        options.push({ text: match[3], isCorrect: match[1] === '$' });
+                    }
                 }
 
-                if (options.length > 0) {
+                // ON N'ACCEPTE QUE SI ON A TROUVÉ EXACTEMENT 5 OPTIONS
+                if (options.length === 5) {
                     qcms.push({ question, image: imagePath, options });
                 }
             });
             return qcms;
         }
 
-        /* =========================================
-           AFFICHAGE AVEC GESTION IMAGE
-           ========================================= */
         function startSession() {
             const qcms = data[currentSubject][currentChapter];
             const size = Math.min(parseInt(document.getElementById('sessionSize').value), qcms.length);
@@ -160,15 +166,14 @@
             
             const container = document.getElementById('questionsContainer');
             container.innerHTML = currentSession.map((q, qIdx) => `
-                <div class="que" id="que-${qIdx}">
+                <div class="que">
                     <div class="info">
                         <h3 class="no">Question <span>${qIdx + 1}</span></h3>
                         <div class="state">Pas encore répondu</div>
                     </div>
                     <div class="content">
                         <div class="qtext">${q.question}</div>
-                        ${q.image ? `<img src="${q.image}" class="q-image" alt="Illustration question ${qIdx+1}">` : ''}
-                        
+                        ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
                         <div class="answer">
                             ${q.options.map((opt, oIdx) => `
                                 <div class="r0">
@@ -184,51 +189,47 @@
             window.scrollTo(0,0);
         }
 
-        // Logic de validation (presque identique, on ajoute juste l'image dans le clone de correction)
         function validateFullSession() {
-            let perfectCount = 0;
+            let score = 0;
             const details = document.getElementById('correctionDetails');
             details.innerHTML = '';
             missedAnswers = [];
 
             currentSession.forEach((q, qIdx) => {
-                const userSelected = [];
+                const userChoices = [];
                 q.options.forEach((_, oIdx) => {
-                    if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userSelected.push(oIdx);
+                    if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
                 });
 
-                let qCorrect = true;
-                const optionsHtml = q.options.map((opt, oIdx) => {
-                    const isChecked = userSelected.includes(oIdx);
+                let isCorrect = true;
+                const optHtml = q.options.map((opt, oIdx) => {
+                    const checked = userChoices.includes(oIdx);
                     let cls = 'r0';
-                    if (opt.isCorrect && isChecked) cls += ' correct-ans';
-                    else if (opt.isCorrect && !isChecked) { cls += ' missed-ans'; qCorrect = false; }
-                    else if (!opt.isCorrect && isChecked) { cls += ' incorrect-ans'; qCorrect = false; }
-                    if (opt.isCorrect && !isChecked) missedAnswers.push({question: q.question, answer: opt.text});
-
+                    if (opt.isCorrect && checked) cls += ' correct-ans';
+                    else if (opt.isCorrect && !checked) { cls += ' missed-ans'; isCorrect = false; missedAnswers.push({q: q.question, a: opt.text}); }
+                    else if (!opt.isCorrect && checked) { cls += ' incorrect-ans'; isCorrect = false; }
                     return `<div class="${cls}"><span class="answernumber">${String.fromCharCode(97 + oIdx)}.</span><div class="flex-fill">${opt.text} ${opt.isCorrect ? '✓' : ''}</div></div>`;
                 }).join('');
 
-                if (qCorrect) perfectCount++;
+                if (isCorrect) score++;
 
                 details.innerHTML += `
                     <div class="que">
-                        <div class="info"><h3 class="no">Question ${qIdx + 1}</h3><div class="state">${qCorrect ? 'Correct' : 'Incorrect'}</div></div>
+                        <div class="info"><h3 class="no">Question ${qIdx + 1}</h3><div class="state">${isCorrect?'Correct':'Incorrect'}</div></div>
                         <div class="content">
                             <div class="qtext">${q.question}</div>
                             ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
-                            <div class="answer">${optionsHtml}</div>
+                            <div class="answer">${optHtml}</div>
                         </div>
                     </div>`;
             });
 
             document.getElementById('sessionScreen').classList.add('hidden');
             document.getElementById('correctionScreen').classList.remove('hidden');
-            document.getElementById('score').textContent = `${perfectCount} / ${currentSession.length}`;
+            document.getElementById('score').textContent = `Résultat : ${score} / ${currentSession.length}`;
             window.scrollTo(0,0);
         }
 
-        // --- Fonctions Navigation (inchangées) ---
         function displaySubjects() {
             const list = document.getElementById('subjectsList');
             for (let s in data) {
@@ -254,15 +255,11 @@
                 list.appendChild(item);
             }
         }
-        function openChapter(ch) {
-            currentChapter = ch;
-            document.getElementById('chapterScreen').classList.add('hidden');
-            document.getElementById('qcmScreen').classList.remove('hidden');
-            document.getElementById('sessionChapterTitle').textContent = ch;
-        }
+        function openChapter(ch) { currentChapter = ch; document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); document.getElementById('sessionChapterTitle').textContent = ch; }
         function backToHome() { document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('homeScreen').classList.remove('hidden'); }
         function backToChapters() { document.getElementById('qcmScreen').classList.add('hidden'); document.getElementById('chapterScreen').classList.remove('hidden'); }
         function backToQCMScreen() { document.getElementById('correctionScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); }
+        
         loadAllQCM();
     </script>
 </body>
