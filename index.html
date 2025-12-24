@@ -17,159 +17,131 @@
         .loading { text-align: center; padding: 40px; }
 
 /* =========================
-   UNESS-LIKE GLOBAL STYLE
+   QUESTION UNESS-LIKE
    ========================= */
 
-body {
-    background-color: #f2f4f7;
-    font-family: "Arial", "Helvetica", sans-serif;
-    font-size: 15px;
-    color: #1f2937;
-}
-
-/* Titres sobres */
-h1, h2, h3, h4, h5 {
-    font-weight: 600;
-    color: #111827;
-}
-
-/* Container plus étroit comme UNESS */
-.container {
-    max-width: 900px;
-}
-
-/* =========================
-   CARDS
-   ========================= */
-
-.card {
-    border-radius: 4px;
+/* Carte principale = bloc plat */
+.qcm-card {
     border: 1px solid #d1d5db;
+    border-left: 3px solid #9ca3af;
+    border-radius: 2px;
     box-shadow: none;
     background-color: #ffffff;
 }
 
-.card-body {
-    padding: 20px;
-}
-
 /* =========================
-   LISTES (matières / chapitres)
+   HEADER QUESTION (Question X / état)
    ========================= */
 
-.list-group-item {
-    border-radius: 0;
-    border: 1px solid #d1d5db;
-    margin-bottom: -1px;
-    font-weight: 500;
-}
-
-.list-group-item:hover {
-    background-color: #eef2ff;
-}
-
-/* Badges discrets */
-.badge {
-    font-size: 0.8rem;
+.qcm-card::before {
+    content: "Question";
+    display: block;
+    font-size: 13px;
     font-weight: 600;
+    color: #374151;
+    background-color: #f3f4f6;
+    padding: 8px 12px;
+    border-bottom: 1px solid #d1d5db;
 }
 
-/* =========================
-   BOUTONS UNESS-LIKE
-   ========================= */
-
-.btn {
-    border-radius: 3px;
+/* Badge question */
+.badge.bg-info {
+    background-color: #e5e7eb !important;
+    color: #374151;
     font-weight: 600;
-}
-
-.btn-primary {
-    background-color: #1e40af;
-    border-color: #1e40af;
-}
-
-.btn-primary:hover {
-    background-color: #1e3a8a;
-}
-
-.btn-secondary {
-    background-color: #6b7280;
-    border-color: #6b7280;
-}
-
-.btn-success {
-    background-color: #047857;
-    border-color: #047857;
+    border-radius: 2px;
 }
 
 /* =========================
-   QCM
+   TEXTE QUESTION
    ========================= */
 
-.qcm-card {
-    border-left: 4px solid #1e40af;
-}
-
-/* Question */
 #questionText {
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 20px;
+    line-height: 1.45;
 }
 
-/* Réponses façon UNESS */
+/* =========================
+   RÉPONSES UNESS
+   ========================= */
+
 .form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
     border: 1px solid #d1d5db;
-    padding: 10px 15px;
-    margin-bottom: 8px;
+    border-radius: 0;
+    background-color: #ffffff;
+}
+
+/* Hover ultra discret */
+.form-check:hover {
     background-color: #f9fafb;
 }
 
-.form-check:hover {
-    background-color: #eef2ff;
-}
-
+/* Checkbox alignée comme UNESS */
 .form-check-input {
     margin-top: 4px;
+    cursor: pointer;
+}
+
+/* Label = zone cliquable large */
+.option-label {
+    width: 100%;
+    padding: 0;
+    font-weight: 400;
+    color: #111827;
+    cursor: pointer;
+}
+
+/* Lettre A/B/C style UNESS */
+.option-label::before {
+    content: attr(data-letter);
+    font-weight: 600;
+    margin-right: 6px;
 }
 
 /* =========================
-   CORRECTIONS
+   CORRECTION (UNESS sobre)
    ========================= */
 
 .correct {
     background-color: #ecfdf5 !important;
-    border-color: #10b981 !important;
+    border-left: 3px solid #10b981 !important;
 }
 
 .incorrect {
     background-color: #fef2f2 !important;
-    border-color: #ef4444 !important;
+    border-left: 3px solid #ef4444 !important;
 }
 
 .missed {
     background-color: #fffbeb !important;
-    border-color: #f59e0b !important;
+    border-left: 3px solid #f59e0b !important;
+}
+
+/* Icônes correction minimalistes */
+.list-group-item {
+    font-size: 14px;
+    border-radius: 0;
 }
 
 /* =========================
-   ALERTES
+   BOUTON SUIVANT
    ========================= */
 
-.alert {
-    border-radius: 4px;
-    font-weight: 500;
+#sessionScreen .btn-primary {
+    margin-top: 15px;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 2px;
 }
 
-/* =========================
-   SPINNER
-   ========================= */
-
-.loading {
-    color: #1e40af;
-}
-
-
-        
     </style>
 </head>
 <body>
@@ -585,3 +557,4 @@ h1, h2, h3, h4, h5 {
 </body>
 
 </html>
+
