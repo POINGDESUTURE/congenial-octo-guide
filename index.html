@@ -196,7 +196,7 @@
         async function loadData() {
             try {
                 // Remplacer 'ton_fichier.json' par le nom de ton fichier de données
-                const response = await fetch('config.json'); 
+                const response = await fetch('QCM/config.json'); 
                 data = await response.json();
                 renderSubjects();
             } catch (err) {
@@ -318,3 +318,4 @@
     </script>
 </body>
 </html>
+
