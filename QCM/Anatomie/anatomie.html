@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomie Locomotrice — Cours Complet</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0e12;
+    --surface: #13151c;
+    --surface2: #1a1d27;
+    --border: #252836;
+    --accent: #c8a96e;
+    --accent2: #e84545;
+    --accent3: #4fc3f7;
+    --text: #e8e3d8;
+    --text-dim: #8c8677;
+    --text-bright: #f5f0e8;
+    --annale: #e84545;
+    --annale-bg: #1f0d0d;
+    --annale-border: #5c1a1a;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --display: 'Playfair Display', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* SIDEBAR NAV */
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 24px 0;
+  }
+
+  #sidebar .logo {
+    font-family: var(--display);
+    font-size: 1rem;
+    color: var(--accent);
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  #sidebar .logo span {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    font-style: normal;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  #sidebar nav a {
+    display: block;
+    padding: 6px 20px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    transition: color 0.2s, background 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  #sidebar nav a:hover {
+    color: var(--accent);
+    background: rgba(200,169,110,0.06);
+    border-left-color: var(--accent);
+  }
+
+  #sidebar nav .section-header {
+    padding: 14px 20px 4px;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  /* MAIN CONTENT */
+  #main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d0e12 0%, #13151c 40%, #1a0a0a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,169,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: 'ANATOMIA';
+    position: absolute;
+    bottom: -20px; right: 60px;
+    font-family: var(--display);
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(200,169,110,0.03);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: var(--text-bright);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* CONTENT AREA */
+  .content {
+    padding: 0 80px;
+    max-width: 960px;
+  }
+
+  /* PART HEADER */
+  .part-header {
+    padding: 70px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .part-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .part-header h2 {
+    font-family: var(--display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    line-height: 1.15;
+  }
+
+  .part-header .subtitle {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section h3 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 20px;
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.01em;
+  }
+
+  .section h4 {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent3);
+    margin: 28px 0 14px;
+  }
+
+  .section p {
+    color: var(--text);
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  .section ul, .section ol {
+    padding-left: 1.5em;
+    margin-bottom: 14px;
+  }
+
+  .section li {
+    color: var(--text);
+    margin-bottom: 8px;
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  /* ANNALE BOX */
+  .annale {
+    background: var(--annale-bg);
+    border: 1px solid var(--annale-border);
+    border-left: 3px solid var(--annale);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    position: relative;
+  }
+
+  .annale::before {
+    content: '⚠ ANNALE';
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--annale);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .annale p {
+    color: #f0c0c0;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .annale strong {
+    color: #ff9090;
+  }
+
+  /* INLINE ANNALE TAG */
+  .atag {
+    display: inline-block;
+    background: var(--annale);
+    color: white;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 4px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* TABLE */
+  .tbl-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+
+  td.annale-cell {
+    color: #ff9090;
+    font-weight: bold;
+  }
+
+  /* HIGHLIGHT BLOCK */
+  .highlight {
+    background: rgba(79,195,247,0.05);
+    border-left: 3px solid var(--accent3);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+
+  .highlight p {
+    color: #b8dff5;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  /* DEFINITION BLOCK */
+  .def {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+
+  .def .def-term {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .def p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  /* SEPARATOR */
+  .sep {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 50px 0;
+  }
+
+  /* SCROLLBAR */
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* FOOTER */
+  .footer {
+    padding: 60px 80px;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    #sidebar { display: none; }
+    #main { margin-left: 0; }
+    .hero, .content { padding-left: 24px; padding-right: 24px; }
+    .hero h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="logo">Anatomie Locomotrice<span>Cours Complet & Exhaustif</span></div>
+  <nav>
+    <div class="section-header">Glossaire</div>
+    <a href="#glossaire">Terminologie fondamentale</a>
+
+    <div class="section-header">Membre Thoracique</div>
+    <a href="#epaule-osteo">Épaule — Ostéologie</a>
+    <a href="#epaule-arthro">Épaule — Arthrologie</a>
+    <a href="#epaule-syss">Syssarcoses</a>
+    <a href="#epaule-myo">Myologie de l'épaule</a>
+    <a href="#fosse-axillaire">Fosse axillaire</a>
+    <a href="#plexus">Plexus brachial</a>
+    <a href="#vascu-thoracique">Vascularisation</a>
+    <a href="#coude-osteo">Coude — Ostéologie</a>
+    <a href="#coude-arthro">Coude — Arthrologie</a>
+    <a href="#coude-myo">Myologie du coude</a>
+    <a href="#fosse-ulnaire">Fosse ulnaire</a>
+    <a href="#pronosup">Prono-supination</a>
+    <a href="#poignet-osteo">Poignet — Ostéologie</a>
+    <a href="#poignet-arthro">Poignet — Arthrologie</a>
+    <a href="#poignet-myo">Myologie du poignet</a>
+    <a href="#main">La Main</a>
+    <a href="#innervation-sensitive">Innervation sensitive</a>
+
+    <div class="section-header">Membre Pelvien</div>
+    <a href="#hanche-osteo">Hanche — Ostéologie</a>
+    <a href="#hanche-arthro">Hanche — Arthrologie</a>
+    <a href="#hanche-biom">Biomécanique</a>
+    <a href="#cuisse-myo">Myologie de la cuisse</a>
+    <a href="#fessiers">Fessiers & rotateurs</a>
+    <a href="#trigone">Trigone fémoral</a>
+    <a href="#genou">Genou & fosse poplitée</a>
+    <a href="#jambe">Jambe — Loges</a>
+    <a href="#pied">Pied</a>
+    <a href="#innervation-pelvien">Innervation pelvienne</a>
+    <a href="#vascu-pelvien">Vascularisation pelvienne</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Faculté de Médecine · Anatomie Locomotrice</div>
+    <h1>Membres Thoracique<br>& <em>Pelvien</em></h1>
+    <p>Cours exhaustif et intégral — toutes les micro-notions, tous les points d'annales, de la ceinture scapulaire jusqu'au pied. Aucune information laissée de côté.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- GLOSSAIRE -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="glossaire" class="part-header">
+      <div class="part-num">Préambule</div>
+      <h2>Glossaire Technique Fondamental</h2>
+      <p class="subtitle">Maîtriser ces définitions, c'est maîtriser le vocabulaire des examens.</p>
+    </div>
+
+    <div class="section">
+      <p>Avant d'aborder les structures, il est impératif de définir précisément les termes que vous rencontrerez à chaque question d'anatomie. Ces définitions sont mobilisées implicitement dans toutes les annales.</p>
+
+      <div class="def"><div class="def-term">Congruence</div><p>Adaptation parfaite des surfaces articulaires l'une à l'autre. Elle est rarement parfaite d'emblée sur le plan osseux et est souvent améliorée par un fibrocartilage complémentaire appelé <strong>labrum</strong> (bourrelet fibrocartilagineux).</p></div>
+
+      <div class="def"><div class="def-term">Énarthrose / Articulation sphéroïde</div><p>Articulation offrant <strong>trois degrés de liberté</strong> (flexion/extension, abduction/adduction, rotations médiale/latérale → circumduction). Exemples : hanche, épaule.</p></div>
+
+      <div class="def"><div class="def-term">Ginglyme / Articulation trochlée</div><p>Articulation de type <strong>charnière à un seul degré de liberté</strong> : flexion/extension uniquement. Exemple : articulation huméro-ulnaire, articulations inter-phalangiennes.</p></div>
+
+      <div class="def"><div class="def-term">Trochoïde</div><p>Articulation de type <strong>pivot</strong> permettant la rotation axiale. Exemple : radio-ulnaire proximale et distale (à la base de la prono-supination).</p></div>
+
+      <div class="def"><div class="def-term">Ellipsoïde</div><p>Articulation à deux degrés de liberté. Exemple : radio-carpienne, articulations métacarpo-phalangiennes.</p></div>
+
+      <div class="def"><div class="def-term">Arthrodie (synoviale plane)</div><p>Articulation à très faible mobilité, surfaces presque planes. Exemple : articulation acromio-claviculaire.</p></div>
+
+      <div class="def"><div class="def-term">Syssarcose</div><p>"Fausse" articulation constituée d'un espace de glissement musculo-fibreux sans capsule articulaire proprement dite. Exemple : articulation scapulo-thoracique.</p></div>
+
+      <div class="def"><div class="def-term">Balance de Pauwels</div><p>Principe biomécanique d'équilibre de la hanche en appui monopodal. <strong>Ce sont les muscles abducteurs</strong> (et non les adducteurs) qui luttent contre le poids du corps pour maintenir l'horizontalité du bassin.</p></div>
+
+      <div class="def"><div class="def-term">Inversion du pied</div><p>Mouvement combinant <strong>adduction + rotation médiale + flexion plantaire</strong>. Le moteur principal est le muscle tibial postérieur.</p></div>
+
+      <div class="def"><div class="def-term">Éversion du pied</div><p>Mouvement combinant <strong>abduction + rotation latérale + flexion dorsale</strong>. Mouvement classiquement impliqué dans les entorses.</p></div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PARTIE I — MEMBRE THORACIQUE -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="part-header">
+      <div class="part-num">Partie I — Membre Thoracique (Supérieur)</div>
+      <h2>De l'épaule à la main</h2>
+      <p class="subtitle">L'articulation la plus mobile du corps humain se prolonge jusqu'à la précision chirurgicale des doigts.</p>
+    </div>
+
+    <!-- ─── ÉPAULE OSTÉO ─── -->
+    <div id="epaule-osteo" class="section">
+      <h3>I.1 — L'Épaule : Ostéologie</h3>
+
+      <h4>La Clavicule</h4>
+      <p>Os allongé en forme de <strong>"S" italique</strong>, situé à la partie antéro-supérieure du thorax. Sa face supérieure est lisse et parfaitement palpable. Sa face inférieure est riche en repères :</p>
+      <ul>
+        <li>En médial : l'empreinte du <strong>ligament costo-claviculaire</strong>.</li>
+        <li>Au milieu : le sillon du muscle subclavier.</li>
+        <li>En latéral : le <strong>tubercule conoïde</strong> et la <strong>ligne trapézoïde</strong>, sites d'insertion des ligaments coraco-claviculaires (conoïde et trapézoïde).</li>
+      </ul>
+
+      <h4>La Scapula (Omoplate)</h4>
+      <p>Os plat et triangulaire situé entre la 2e et la 7e côte, présentant deux faces et plusieurs processus.</p>
+      <ul>
+        <li><strong>Face ventrale (subscapulaire) :</strong> présente la fosse subscapulaire.</li>
+        <li><strong>Face dorsale :</strong> divisée par l'épine de la scapula (en regard de T4) en deux fosses — supra-épineuse et infra-épineuse.</li>
+        <li><strong>Angle latéral :</strong> porte la cavité glénoïdale (glène) et le processus coracoïde.</li>
+        <li><strong>Épine scapulaire :</strong> se termine par l'acromion latéralement.</li>
+        <li><strong>Tubercules supra-glénoïdal</strong> (au-dessus de la glène) et <strong>infra-glénoïdal</strong> (en dessous, appartenant au "pilier" de la scapula).</li>
+      </ul>
+
+      <p>La cavité glénoïdale est de forme <strong>piriforme (en poire)</strong>, orientée en haut, en dehors et en avant. Elle est naturellement peu profonde — sa congruence avec la tête de l'humérus est donc imparfaite.</p>
+
+      <div class="annale"><p><strong>Le labrum (bourrelet glénoïdal)</strong> est un fibrocartilage annulaire qui s'insère sur le pourtour de la glène et en approfondit la cavité. Son rôle est triple : améliorer la congruence, augmenter la profondeur, et contribuer à la stabilité de la tête humérale. Il est systématiquement interrogé.</p></div>
+
+      <h4>L'Humérus — Extrémité Proximale</h4>
+      <p>La tête humérale représente approximativement <strong>1/3 de sphère</strong>, recouverte de cartilage hyalin, orientée en haut, en dedans et en arrière.</p>
+      <ul>
+        <li><strong>Angle d'inclinaison :</strong> 130° (entre l'axe de la tête et l'axe diaphysaire).</li>
+        <li><strong>Angle de déclinaison (rétroversion) :</strong> 20° à 30° vers l'arrière.</li>
+        <li><strong>Tubercule majeur (trochiter) :</strong> latéral — insertions des muscles supra-épineux, infra-épineux, petit rond.</li>
+        <li><strong>Tubercule mineur (trochin) :</strong> médial — insertion du subscapulaire.</li>
+        <li><strong>Sillon inter-tuberculaire (gouttière bicipitale) :</strong> sépare les deux tubercules, livre passage au tendon du chef long du biceps.</li>
+      </ul>
+
+      <div class="annale"><p><strong>Le col chirurgical</strong> (situé sous les tubercules, en zone métaphysaire) est le siège de la grande majorité des fractures de l'extrémité proximale de l'humérus. Il est en rapport étroit avec le <strong>nerf axillaire</strong> qui le contourne, d'où le risque de paralysie en cas de fracture ou de luxation antérieure. Ne pas confondre avec le col anatomique (jonction entre la tête et les tubercules), moins souvent fracturé.</p></div>
+    </div>
+
+    <!-- ─── ARTHROLOGIE ÉPAULE ─── -->
+    <div id="epaule-arthro" class="section">
+      <h3>I.2 — Arthrologie de l'Épaule</h3>
+      <p>L'épaule est une <strong>poly-articulation</strong> comprenant 3 articulations vraies et 2 espaces de glissement (syssarcoses). C'est l'unité fonctionnelle la plus mobile de l'économie humaine — 3 degrés de liberté permettant la circumduction — mais cette mobilité se paye au prix d'une stabilité osseuse délibérément sacrifiée.</p>
+
+      <h4>1 — Articulation Scapulo-Humérale (Gléno-Humérale)</h4>
+      <p>C'est une <strong>sphéroïde (énarthrose)</strong>. Sa congruence imparfaite la rend très instable et prédispose aux luxations antérieures.</p>
+
+      <p><strong>Moyens d'union passifs :</strong></p>
+      <ul>
+        <li>La capsule articulaire, renforcée en avant par les <strong>ligaments gléno-huméraux supérieur, moyen et inférieur</strong>, formant un "Z" sur la face ventrale de la capsule.</li>
+      </ul>
+
+      <div class="annale"><p>Le <strong>ligament gléno-huméral inférieur est le plus puissant et le plus étendu</strong>. C'est lui qui stabilise principalement la partie déclive de l'articulation. Entre les ligaments moyen et inférieur se trouve le <strong>foramen de Rouvière</strong>, zone de faiblesse constituant la brèche préférentielle lors des luxations antérieures de la tête humérale.</p></div>
+
+      <p>Le <strong>ligament coraco-huméral</strong> possède deux faisceaux et limite l'extension et la rotation médiale (il empêche l'ascension de la tête humérale).</p>
+
+      <div class="annale"><p>Le <strong>tendon du chef long du biceps</strong> est <strong>intra-capsulaire mais extra-synovial</strong>. Il chemine depuis le tubercule supra-glénoïdal à travers l'articulation puis s'engage dans le sillon inter-tuberculaire, maintenu dans ce sillon par le ligament transverse de l'humérus.</p></div>
+
+      <h4>2 — Articulation Acromio-Claviculaire (AC)</h4>
+      <p>Synoviale plane (arthrodie) à mobilité faible, contenant un ménisque inconstant et très petit. C'est la <strong>"clef de voûte"</strong> de l'épaule.</p>
+      <ul>
+        <li>Ligaments <strong>intrinsèques</strong> : acromio-claviculaires (faibles).</li>
+        <li>Ligaments <strong>extrinsèques</strong> : coraco-claviculaires — <strong>conoïde</strong> (en dehors) et <strong>trapézoïde</strong> (en dedans). Ce sont ces ligaments qui assurent réellement la stabilité de l'articulation.</li>
+      </ul>
+
+      <div class="annale"><p>La rupture des ligaments coraco-claviculaires extrinsèques provoque le <strong>signe de la "touche de piano"</strong> : l'extrémité de la clavicule fait saillie sous la peau (luxation acromio-claviculaire) et peut être ré-enfoncée de façon élastique, comme une touche de piano.</p></div>
+
+      <h4>3 — Articulation Sterno-Claviculaire</h4>
+      <p>Articulation <strong>"en selle" (turcique)</strong>, elle participe aux mouvements d'accompagnement du moignon de l'épaule (élévation/abaissement, protraction/rétraction). C'est la seule vraie articulation reliant le membre supérieur au thorax.</p>
+    </div>
+
+    <!-- ─── SYSSARCOSES ─── -->
+    <div id="epaule-syss" class="section">
+      <h3>I.3 — Les Syssarcoses (Espaces de Glissement)</h3>
+
+      <h4>Espace Scapulo-Thoracique</h4>
+      <p>Ce n'est pas une vraie articulation mais un espace de glissement musculo-fibreux permettant à la scapula de glisser sur le gril costal. Il est divisé en deux espaces par le <strong>muscle dentelé antérieur (grand dentelé)</strong> :</p>
+      <ul>
+        <li><strong>Espace serrato-thoracique</strong> (entre le dentelé et le thorax — espace interne).</li>
+        <li><strong>Espace serrato-scapulaire</strong> (entre le dentelé et la face ventrale de la scapula — espace externe).</li>
+      </ul>
+      <p>Le dentelé antérieur s'insère sur le <strong>bord médial de la scapula</strong> et sur <strong>les 10 premiers arcs costaux</strong>.</p>
+
+      <h4>Espace Sous-Acromio-Deltoïdien</h4>
+      <p>Situé entre le deltoïde/l'acromion en superficie et la tête humérale/le supra-épineux en profondeur. Il contient une <strong>bourse séreuse (bourse sous-acromio-deltoïdienne)</strong> indispensable au glissement lors des mouvements.</p>
+
+      <div class="annale"><p>L'inflammation de cette bourse est la <strong>bursite sous-acromio-deltoïdienne</strong>, visible à l'échographie par un épanchement liquidien entre le muscle deltoïde et le muscle supra-épineux. Elle entraîne une limitation douloureuse de l'abduction. C'est une pathologie extrêmement fréquente en clinique.</p></div>
+    </div>
+
+    <!-- ─── MYOLOGIE ÉPAULE ─── -->
+    <div id="epaule-myo" class="section">
+      <h3>I.4 — Myologie de l'Épaule</h3>
+
+      <h4>La Coiffe des Muscles Péri-Articulaires (Coiffe des Rotateurs)</h4>
+      <p>Ce terme regroupe 4 muscles profonds qui enveloppent la tête humérale et jouent un rôle fondamental de centrage et de stabilisation dynamique :</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Insertion</th><th>Action principale</th><th>Innervation</th></tr>
+          <tr><td><strong>Subscapulaire</strong></td><td>Tubercule mineur (trochin)</td><td>Rotation médiale (seul rotateur médial de la coiffe)</td><td>N. subscapulaire</td></tr>
+          <tr><td><strong>Supra-épineux</strong></td><td>Tubercule majeur (trochiter) — facette sup.</td><td>Abduction, centrage, stabilisation, proprioception</td><td>N. supra-scapulaire</td></tr>
+          <tr><td><strong>Infra-épineux</strong></td><td>Tubercule majeur — facette moyenne</td><td>Rotation latérale</td><td>N. supra-scapulaire</td></tr>
+          <tr><td><strong>Petit Rond</strong></td><td>Tubercule majeur — facette inférieure</td><td>Rotation latérale</td><td>N. axillaire</td></tr>
+        </table>
+      </div>
+
+      <div class="annale"><p><strong>Le muscle Grand Rond (Teres major) ne fait PAS partie de la coiffe des rotateurs.</strong> C'est un adducteur et extenseur du bras. Cette distinction est systématiquement piégée en annales. Le supra-épineux n'est pas un rotateur — c'est avant tout un stabilisateur et un centreur de la tête, avec un rôle proprioceptif.</p></div>
+
+      <h4>Muscles Superficiels de l'Épaule</h4>
+      <ul>
+        <li><strong>Deltoïde :</strong> 3 faisceaux. Faisceau antérieur/claviculaire (flexion, rotation médiale) ; moyen/acromial (abducteur principal) ; postérieur/spinal (extension, rotation latérale). Innervé par le nerf axillaire.</li>
+      </ul>
+
+      <div class="annale"><p>Le deltoïde est le muscle le plus superficiel de l'épaule, il donne son galbe caractéristique. Sa paralysie (atteinte du nerf axillaire) entraîne une atrophie visible et l'impossibilité de l'abduction active.</p></div>
+
+      <ul>
+        <li><strong>Grand Pectoral :</strong> adducteur principal, ses insertions distales sur l'humérus sont <strong>croisées en forme de "U"</strong> (faisceau claviculaire en bas, faisceau sternal en haut). Innervé par les nerfs pectoraux médial et latéral.</li>
+        <li><strong>Grand Dorsal :</strong> extenseur et adducteur puissant. Innervé par le nerf thoraco-dorsal.</li>
+        <li><strong>Coraco-brachial :</strong> s'insère sur le processus coracoïde, fléchisseur/élévateur de l'épaule. Innervé par le nerf musculo-cutané (qui le transfixie).</li>
+      </ul>
+
+      <div class="annale"><p>Le <strong>biceps brachial</strong> est considéré comme un <strong>élévateur (fléchisseur) de l'articulation scapulo-humérale</strong>, en plus de son rôle de fléchisseur du coude et de supinateur de l'avant-bras.</p></div>
+    </div>
+
+    <!-- ─── FOSSE AXILLAIRE ─── -->
+    <div id="fosse-axillaire" class="section">
+      <h3>I.5 — La Fosse Axillaire (Aisselle)</h3>
+      <p>C'est une région en forme de <strong>pyramide à 4 parois</strong> dont le sommet est le défilé costo-claviculaire. Elle est palpable lorsque le bras est en abduction.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Paroi</th><th>Structures</th></tr>
+          <tr><td>Antérieure</td><td>Muscles grand et petit pectoraux. Le petit pectoral est innervé par l'anse des pectoraux.</td></tr>
+          <tr><td>Postérieure</td><td>Muscles subscapulaire, grand rond et grand dorsal</td></tr>
+          <tr><td>Latérale</td><td>Humérus + muscle coraco-brachial</td></tr>
+          <tr><td class="annale-cell">Médiale ★</td><td>Muscle <strong>dentelé antérieur</strong> sur les 10 premières côtes</td></tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>La paroi médiale de la fosse axillaire est formée par le <strong>muscle dentelé antérieur</strong>. Son contenu comprend : les vaisseaux axillaires, les faisceaux du plexus brachial, et les <strong>lymphonoeuds axillaires</strong> qui drainent la glande mammaire et la paroi thoracique — d'où leur importance capitale dans le bilan d'extension du cancer du sein.</p></div>
+
+      <p>Le sommet de la fosse axillaire est le défilé costo-claviculaire, zone de passage des troncs du plexus brachial issus du rachis cervico-brachial.</p>
+    </div>
+
+    <!-- ─── PLEXUS BRACHIAL ─── -->
+    <div id="plexus" class="section">
+      <h3>I.6 — Le Plexus Brachial</h3>
+      <p>Il naît du <strong>renflement cervico-brachial (C5 à T1)</strong> et s'organise de la façon suivante :</p>
+      <ul>
+        <li><strong>Racines</strong> : C5, C6, C7, C8, T1.</li>
+        <li><strong>Troncs</strong> : Supérieur (C5-C6), Moyen (C7), Inférieur (C8-T1).</li>
+        <li><strong>Faisceaux</strong> (organisés autour de l'artère axillaire) : Latéral, Médial, Postérieur (dorsal).</li>
+      </ul>
+
+      <h4>Branches Terminales</h4>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Nerf</th><th>Origine</th><th>Muscles innervés (moteur)</th><th>Territoire sensitif "forteresse"</th></tr>
+          <tr>
+            <td><strong>Nerf Médian</strong></td>
+            <td>Faisceaux latéral + médial (forme le "M du médian")</td>
+            <td>Pronateurs (rond et carré), fléchisseurs du poignet/doigts (FRC, LP, FDS, 2 FDP latéraux), muscles thénariens (opposant, court abducteur, faisceau superficiel du court fléchisseur)</td>
+            <td class="annale-cell">Pulpe des 2e et 3e doigts (index et majeur)</td>
+          </tr>
+          <tr>
+            <td><strong>Nerf Ulnaire</strong></td>
+            <td>Faisceau médial</td>
+            <td>FUC, 2 FDP médiaux, muscles hypothénariens, interosseux, adducteur du pouce, faisceau profond du court fléchisseur du pouce</td>
+            <td class="annale-cell">Pulpe du 5e doigt (auriculaire)</td>
+          </tr>
+          <tr>
+            <td><strong>Nerf Radial</strong></td>
+            <td>Faisceau postérieur</td>
+            <td>Triceps, brachio-radial, extenseurs du poignet (LERC, CERC, EUC), extenseurs des doigts, supinateur</td>
+            <td class="annale-cell">Tabatière anatomique + face dorsale latérale de la main</td>
+          </tr>
+          <tr>
+            <td><strong>Nerf Axillaire</strong></td>
+            <td>Faisceau postérieur</td>
+            <td>Deltoïde + Petit Rond</td>
+            <td class="annale-cell">Moignon de l'épaule (zone deltoïdienne)</td>
+          </tr>
+          <tr>
+            <td><strong>Nerf Musculo-cutané</strong></td>
+            <td>Faisceau latéral</td>
+            <td>Biceps brachial, Brachial, Coraco-brachial (le transfixie)</td>
+            <td class="annale-cell">Face latérale du coude et de l'avant-bras</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Le nerf axillaire contourne le <strong>col chirurgical de l'humérus</strong> — une fracture à ce niveau ou une luxation antérieure de l'épaule expose directement ce nerf à une lésion par compression ou section, entraînant une paralysie du deltoïde et du petit rond avec impossibilité de l'abduction.</p></div>
+    </div>
+
+    <!-- ─── VASCULARISATION THORACIQUE ─── -->
+    <div id="vascu-thoracique" class="section">
+      <h3>I.7 — Vascularisation du Membre Thoracique</h3>
+
+      <h4>Artères</h4>
+      <p>L'<strong>artère axillaire</strong> fait suite à la subclavière après le défilé costo-claviculaire. Elle donne 7 branches collatérales (thoracique supérieure, pectorale, deltoïdienne, thoracique latérale, thoraco-dorsale, circonflexes antérieure et postérieure, brachiale profonde).</p>
+      <p>Elle devient l'<strong>artère brachiale</strong> au bord inférieur du muscle subscapulaire. Elle chemine dans le sillon bicipital médial avec le nerf médian.</p>
+
+      <div class="annale"><p>Au pli du coude, l'artère brachiale se divise en <strong>artère radiale</strong> (latérale) et <strong>artère ulnaire</strong> (médiale, dominante chez la plupart des individus). Elle chemine sous le <strong>lacertus fibrosus</strong> dans la fosse ulnaire. Le <strong>test d'Allen</strong> permet de vérifier la suppléance entre ces deux artères au niveau des arcades palmaires superficielle et profonde.</p></div>
+
+      <h4>Veines et Lymphatiques</h4>
+      <ul>
+        <li><strong>Réseau superficiel :</strong> veine basilique (face médiale), veine céphalique (face latérale, chemine dans le sillon delto-pectoral avant de se jeter dans la veine axillaire) et veine médiane. Ces veines forment le <strong>"M" veineux du pli du coude</strong>, site de ponction veineuse.</li>
+        <li><strong>Lymphatiques :</strong> le drainage profond se fait vers la fosse axillaire, crucial dans le bilan du cancer du sein.</li>
+      </ul>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ─── COUDE OSTÉO ─── -->
+    <div id="coude-osteo" class="section">
+      <h3>I.8 — Le Coude : Ostéologie</h3>
+
+      <div class="annale"><p>Le coude est une <strong>articulation de force</strong> — il joue un rôle d'"équerre" réglant la distance entre la main et un objet, transformant la puissance de l'épaule en précision de la main.</p></div>
+
+      <h4>Extrémité Distale de l'Humérus (Palette Humérale)</h4>
+      <p>L'extrémité inférieure de l'humérus est <strong>antéversée de 30 à 40°</strong>. On y distingue :</p>
+      <ul>
+        <li><strong>Le Capitulum :</strong> surface sphéroïde en dehors, répond à la tête radiale. Visible uniquement en vue ventrale.</li>
+        <li><strong>La Trochlée :</strong> en dedans, en forme de diabolo (poulie). Répond à l'ulna. C'est la surface d'un ginglyme.</li>
+        <li><strong>Sillon capitulo-trochléaire :</strong> sépare les deux surfaces.</li>
+        <li><strong>Fossettes :</strong> fosse radiale (au-dessus du capitulum, reçoit la tête radiale en flexion) ; fosse coronoïdienne (au-dessus de la trochlée, reçoit le processus coronoïde en flexion) ; fosse olécrânienne (face postérieure, reçoit l'olécrâne en extension).</li>
+        <li><strong>Épicondyle médial :</strong> saillant, quadrangulaire, palpable. Derrière lui : le <strong>sillon du nerf ulnaire</strong>.</li>
+        <li><strong>Épicondyle latéral :</strong> plus arrondi, moins saillant.</li>
+      </ul>
+
+      <h4>Radius Proximal</h4>
+      <p>Présente une <strong>tête cylindrique</strong> avec une cupule (fovéa) qui répond au capitulum huméral. Le col chirurgical et le col anatomique y sont superposés. Sous le col se trouve la <strong>tubérosité radiale (ou bicipitale)</strong>, site d'insertion du biceps brachial.</p>
+
+      <h4>Ulna Proximal</h4>
+      <p>Son extrémité supérieure ressemble à un <strong>"livre ouvert" ou un crochet</strong>, formé par :</p>
+      <ul>
+        <li><strong>L'olécrâne :</strong> en haut et en arrière (pointe du coude, palpable).</li>
+        <li><strong>Le processus coronoïde :</strong> en bas et en avant. Non palpable.</li>
+        <li><strong>L'incisure trochléaire :</strong> répond à la trochlée humérale.</li>
+        <li><strong>L'incisure radiale :</strong> sur la face latérale, pour la tête du radius.</li>
+        <li>La <strong>tubérosité ulnaire</strong> reçoit le muscle brachial.</li>
+      </ul>
+    </div>
+
+    <!-- ─── COUDE ARTHRO ─── -->
+    <div id="coude-arthro" class="section">
+      <h3>I.9 — Arthrologie du Coude</h3>
+      <p>Le coude comprend <strong>3 articulations dans une seule capsule articulaire</strong> :</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>#</th><th>Articulation</th><th>Type</th><th>Mouvement</th></tr>
+          <tr><td>1</td><td>Huméro-radiale</td><td>Sphéroïde (ellipsoïde fonctionnelle)</td><td>Flexion/extension + prono-supination</td></tr>
+          <tr><td>2</td><td>Huméro-ulnaire</td><td>Ginglyme (trochlée)</td><td>Flexion/extension uniquement</td></tr>
+          <tr><td>3</td><td>Radio-ulnaire proximale</td><td>Trochoïde (pivot)</td><td>Prono-supination</td></tr>
+        </table>
+      </div>
+
+      <h4>Système Ligamentaire et Stabilité</h4>
+      <ul>
+        <li><strong>Ligament annulaire :</strong> entoure la tête radiale comme une "cravate", tapissé de cartilage hyalin sur sa face profonde (permettant la rotation de la tête radiale sans frottement osseux).</li>
+        <li><strong>Ligament carré de Dénucé :</strong> tendu du bord inférieur de l'incisure radiale au col du radius. Stabilise la radio-ulnaire proximale.</li>
+      </ul>
+
+      <div class="annale">
+        <p><strong>Ligament collatéral radial (latéral) :</strong> présente <strong>3 faisceaux</strong> (antérieur, moyen, postérieur). Le faisceau antérieur est le plus important — il s'oppose à la luxation antérieure du coude. Détail crucial : il <strong>ne s'insère PAS sur le radius</strong> mais sur l'ulna (processus coronoïde).</p>
+        <p style="margin-top:8px"><strong>Ligament collatéral ulnaire (médial) :</strong> 3 faisceaux également (antérieur, moyen, postérieur).</p>
+        <p style="margin-top:8px"><strong>L'olécrâne s'oppose naturellement à la luxation postérieure</strong> du coude en s'engageant dans la fosse olécrânienne.</p>
+      </div>
+
+      <h4>Amplitudes Articulaires</h4>
+      <ul>
+        <li>Extension : <strong>0°</strong> (position de référence anatomique).</li>
+        <li>Flexion active : <strong>140°</strong>.</li>
+        <li>Flexion passive : <strong>160°</strong>.</li>
+        <li>Position de fonction : <strong>90°</strong> (angle droit — position d'immobilisation fonctionnelle).</li>
+      </ul>
+
+      <div class="annale"><p>La <strong>flexion passive peut atteindre 160°</strong> (contre 140° en actif). Ce chiffre est systématiquement interrogé.</p></div>
+    </div>
+
+    <!-- ─── MYOLOGIE COUDE ─── -->
+    <div id="coude-myo" class="section">
+      <h3>I.10 — Myologie du Coude</h3>
+
+      <h4>Muscles Fléchisseurs</h4>
+
+      <p><strong>Biceps Brachial :</strong> deux chefs d'origine —</p>
+      <ul>
+        <li>Chef long : tubercule supra-glénoïdal (intra-capsulaire, extra-synovial).</li>
+        <li>Chef court : processus coracoïde.</li>
+      </ul>
+      <p>Insertion distale sur la <strong>tubérosité radiale</strong> + expansion fibreuse appelée <strong>lacertus fibrosus</strong> (renforce l'aponévrose de l'avant-bras, recouvrira l'artère brachiale dans la fosse ulnaire).</p>
+      <p>C'est un muscle <strong>dynamique</strong> (flexion rapide), <strong>supinateur accessoire</strong>, et <strong>élévateur de l'articulation scapulo-humérale</strong>.</p>
+
+      <p><strong>Muscle Brachial :</strong> plus profond et plus épais que le biceps, il s'insère sur la <strong>diaphyse humérale</strong> et se termine sur la <strong>tubérosité ulnaire</strong>.</p>
+
+      <div class="annale"><p>Le muscle brachial est un <strong>muscle de force et de stabilité statique</strong>, pas de flexion "rapide" dynamique pure. Contrairement au biceps qui est dynamique, le brachial maintient la flexion dans des postures prolongées et transmet des charges importantes.</p></div>
+
+      <p><strong>Muscle Brachio-radial :</strong> s'insère sur la <strong>crête supracondylaire latérale</strong> et se termine sur le <strong>processus styloïde radial</strong>. Il donne le galbe de l'avant-bras. Innervé par le <strong>nerf radial</strong> (exception notable : c'est un fléchisseur innervé par le nerf de l'extension).</p>
+
+      <h4>Muscles Extenseurs</h4>
+      <p><strong>Triceps Brachial :</strong> principal extenseur du coude. Trois chefs :</p>
+      <ul>
+        <li>Longue portion : tubercule infra-glénoïdal de la scapula.</li>
+        <li>Vaste latéral et vaste médial : diaphyse humérale.</li>
+      </ul>
+      <p>Tous se terminent sur l'<strong>olécrâne</strong>. Innervé par le nerf radial.</p>
+
+      <p><strong>Muscle Anconé :</strong> petit muscle accessoire s'insérant sur l'épicondyle latéral et se terminant sur l'olécrâne. Son rôle principal est <strong>proprioceptif</strong> (tenseur de la capsule articulaire).</p>
+    </div>
+
+    <!-- ─── FOSSE ULNAIRE ─── -->
+    <div id="fosse-ulnaire" class="section">
+      <h3>I.11 — La Fosse Ulnaire (Pli du Coude)</h3>
+
+      <div class="annale"><p>La fosse ulnaire est une <strong>zone triangulaire à la face ventrale du coude</strong>. Elle est systématiquement interrogée sur ses limites et son contenu.</p></div>
+
+      <h4>Limites</h4>
+      <ul>
+        <li>En haut : la ligne bi-épicondylienne (virtuelle).</li>
+        <li>En dehors (latéralement) : le <strong>bord médial du muscle brachio-radial</strong>.</li>
+        <li>En dedans (médialement) : le <strong>bord latéral du muscle rond pronateur</strong>.</li>
+      </ul>
+
+      <h4>Contenu Superficiel</h4>
+      <ul>
+        <li>Le <strong>"M" veineux</strong> du pli du coude (veines céphalique, basilique et médiane — site de ponction veineuse).</li>
+        <li>Les branches sensitives du <strong>nerf musculo-cutané</strong> (face latérale).</li>
+      </ul>
+
+      <h4>Contenu Profond</h4>
+      <div class="annale"><p><strong>Artère brachiale :</strong> chemine sous le lacertus fibrosus et se divise ici en artères radiale et ulnaire.<br>
+      <strong>Nerf Médian :</strong> son trajet est oblique en bas et en dehors. Il passe entre les deux faisceaux du muscle rond pronateur (faisceau huméral en superficie, faisceau ulnaire en profondeur).<br>
+      <strong>Le nerf ulnaire ne traverse PAS cette fosse</strong> — il passe en arrière de l'épicondyle médial dans son propre sillon (sillon du nerf ulnaire), où il est palpable et vulnérable aux traumatismes.</p></div>
+    </div>
+
+    <!-- ─── PRONO-SUPINATION ─── -->
+    <div id="pronosup" class="section">
+      <h3>I.12 — La Prono-Supination</h3>
+      <p>La prono-supination est le "mouvement des marionnettes" — amplitude totale de <strong>180°</strong> (90° de pronation + 90° de supination depuis la position neutre).</p>
+
+      <h4>Mécanique Osseuse</h4>
+      <p>C'est une <strong>double trochoïde inversée</strong> : c'est le radius qui est mobile et tourne autour de l'ulna fixe (et non l'inverse). Le radius présente deux courbures :</p>
+      <ul>
+        <li><strong>Courbure supinatrice</strong> (en haut, au tiers proximal).</li>
+        <li><strong>Courbure pronatrice</strong> (en bas, au tiers distal).</li>
+      </ul>
+
+      <div class="annale"><p>Lors de la <strong>pronation</strong>, la courbure pronatrice du radius <strong>bascule en avant de l'ulna</strong>. Les deux os, qui étaient parallèles en supination, se croisent en pronation.</p></div>
+
+      <h4>Bases Ligamentaires</h4>
+      <ul>
+        <li><strong>Membrane interosseuse :</strong> c'est le stabilisateur le plus fort du système radio-ulnaire. Elle transmet les forces de la main vers le coude.</li>
+        <li><strong>Corde oblique :</strong> renforcement supplémentaire.</li>
+      </ul>
+
+      <h4>Articulation Radio-Ulnaire Distale</h4>
+      <p>Fermée par le <strong>ligament triangulaire (disque articulaire)</strong> qui s'interpose entre la tête ulnaire et le carpe, empêchant le contact direct ulna-carpe.</p>
+
+      <div class="annale"><p>L'ulna ne s'articule PAS directement avec le carpe — le ligament triangulaire fait office d'intermédiaire. Ce même ligament est mentionné à l'articulation radio-carpienne (voir poignet).</p></div>
+
+      <h4>Muscles</h4>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Mouvement</th><th>Muscles</th><th>Innervation</th></tr>
+          <tr><td>Pronation</td><td>Rond pronateur + Carré pronateur</td><td class="annale-cell">Nerf Médian ★</td></tr>
+          <tr><td>Supination</td><td>Muscle supinateur</td><td>Nerf Radial</td></tr>
+          <tr><td>Supination (accessoire)</td><td>Biceps brachial</td><td>Nerf Musculo-cutané</td></tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Le <strong>nerf médian est le nerf principal de la pronation</strong>. Le nerf médian traverse le muscle rond pronateur entre ses deux faisceaux (faisceau huméral et faisceau ulnaire).</p></div>
+    </div>
+
+    <!-- ─── POIGNET OSTÉO ─── -->
+    <div id="poignet-osteo" class="section">
+      <h3>I.13 — Le Poignet : Ostéologie du Carpe</h3>
+      <p>Le carpe est composé de <strong>8 os</strong> répartis en deux rangées.</p>
+
+      <div class="annale"><p>La disposition des os du carpe fait l'objet d'une question systématique en annales. Apprenez-les dans l'ordre latéral → médial :</p></div>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Rangée</th><th>Os (de dehors/latéral en dedans/médial)</th></tr>
+          <tr>
+            <td><strong>Proximale</strong></td>
+            <td>Scaphoïde (naviculaire) — Lunatum (semi-lunaire) — Triquetrum (pyramidal) — Pisiforme</td>
+          </tr>
+          <tr>
+            <td><strong>Distale</strong></td>
+            <td>Trapèze — Trapézoïde — Capitatum (Grand os) — Hamatum (os crochu)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Le <strong>pisiforme</strong> n'est visible qu'en vue ventrale (face palmaire). Il s'articule <strong>uniquement avec le triquetrum</strong>. C'est l'os d'insertion du fléchisseur ulnaire du carpe (FUC).</p></div>
+
+      <h4>Le Canal Carpien</h4>
+      <p>Le carpe est concave en avant (sillon carpien). Ce sillon est <strong>fermé par le rétinaculum des fléchisseurs</strong>, tendu entre 4 piliers osseux :</p>
+      <ul>
+        <li>Tubercule du scaphoïde (latéro-proximal).</li>
+        <li>Tubercule du trapèze (latéro-distal).</li>
+        <li>Pisiforme (médio-proximal).</li>
+        <li>Hamulus de l'hamatum/Capitatum (médio-distal).</li>
+      </ul>
+
+      <div class="annale"><p>Le canal carpien contient <strong>9 tendons fléchisseurs + le nerf médian</strong> :<br>
+      — 4 tendons du Fléchisseur Superficiel des Doigts (FDS)<br>
+      — 4 tendons du Fléchisseur Profond des Doigts (FDP)<br>
+      — 1 tendon du Long Fléchisseur du Pouce (LFP)<br>
+      Le nerf ulnaire, lui, chemine dans la <strong>loge de Guyon</strong> (médiale et superficielle au rétinaculum).<br>
+      Note clinique : les gaines synoviales des rayons I et V communiquent souvent avec le carpe, favorisant la propagation des infections (phlegmons).</p></div>
+    </div>
+
+    <!-- ─── POIGNET ARTHRO ─── -->
+    <div id="poignet-arthro" class="section">
+      <h3>I.14 — Arthrologie du Poignet</h3>
+
+      <h4>Articulation Radio-Carpienne</h4>
+      <p>Type <strong>ellipsoïde</strong>. Le radius s'articule avec le scaphoïde et le lunatum.</p>
+
+      <div class="annale"><p><strong>L'ulna ne s'articule pas directement avec le carpe</strong> — il en est séparé par le ligament triangulaire (disque articulaire). Cette distinction est fréquemment interrogée.</p></div>
+
+      <h4>Articulation Médio-Carpienne</h4>
+      <p>Articulation entre les deux rangées du carpe. Sa surface articulaire a une forme de <strong>"S" italique</strong>. Elle contribue avec la radio-carpienne aux mouvements de flexion/extension et d'inclinaisons latérales du poignet.</p>
+
+      <h4>Articulation Trapézo-Métacarpienne (du Pouce)</h4>
+      <p>Articulation <strong>en selle (turcique)</strong>, à 2 degrés de liberté, permettant notamment l'<strong>opposition du pouce</strong> (mouvement unique à l'Homme et à certains primates).</p>
+    </div>
+
+    <!-- ─── MYOLOGIE POIGNET ─── -->
+    <div id="poignet-myo" class="section">
+      <h3>I.15 — Myologie du Poignet</h3>
+
+      <h4>Muscles Fléchisseurs (Épicondyliens Médiaux)</h4>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Abrév.</th><th>Insertion distale</th><th>Innervation</th></tr>
+          <tr><td>Fléchisseur Radial du Carpe</td><td>FRC</td><td>Base de M2</td><td>Nerf Médian</td></tr>
+          <tr>
+            <td><strong>Long Palmaire</strong></td><td>LP</td>
+            <td class="annale-cell">Aponévrose palmaire ★ (plus superficielle que le rétinaculum)</td>
+            <td>Nerf Médian</td>
+          </tr>
+          <tr>
+            <td><strong>Fléchisseur Ulnaire du Carpe</strong></td><td>FUC</td>
+            <td class="annale-cell">Os Pisiforme ★</td>
+            <td class="annale-cell">Nerf Ulnaire ★</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Deux pièges fréquents : (1) le <strong>FUC est innervé par le nerf ulnaire</strong> et non médian. (2) Le long palmaire se termine par l'<strong>aponévrose palmaire</strong>, qui est distincte du rétinaculum des fléchisseurs et lui est superficielle.</p></div>
+
+      <h4>Muscles Extenseurs (Épicondyliens Latéraux)</h4>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Abrév.</th><th>Insertion distale</th><th>Innervation</th></tr>
+          <tr><td>Long Extenseur Radial du Carpe</td><td>LERC</td><td>Base de M2</td><td>Nerf Radial</td></tr>
+          <tr><td>Court Extenseur Radial du Carpe</td><td>CERC</td><td>Base de M3</td><td>Nerf Radial</td></tr>
+          <tr>
+            <td><strong>Extenseur Ulnaire du Carpe</strong></td><td>EUC</td>
+            <td>Base de M5</td>
+            <td class="annale-cell">Nerf Radial ★ (et NON nerf ulnaire — piège classique !)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ─── LA MAIN ─── -->
+    <div id="main" class="section">
+      <h3>I.16 — La Main</h3>
+
+      <h4>Ostéologie et Articulations des Doigts</h4>
+      <ul>
+        <li><strong>Articulations Métacarpo-phalangiennes (MCP) :</strong> type ellipsoïde (ou condylienne). Les ligaments collatéraux se tendent en flexion, supprimant les mouvements de latéralité — c'est pourquoi on immobilise les MCP en flexion.</li>
+        <li><strong>Articulations Inter-Phalangiennes (IPP et IPD) :</strong> type ginglyme (charnière), un seul degré de liberté.</li>
+      </ul>
+
+      <h4>Muscles Extrinsèques</h4>
+      <div class="annale"><p>Les <strong>fléchisseurs superficiels des doigts (FDS)</strong> se terminent sur <strong>P2</strong> (phalange intermédiaire). Les <strong>fléchisseurs profonds (FDP)</strong> se terminent sur <strong>P3</strong> (phalange distale). Le <strong>long fléchisseur du pouce (LFP)</strong> chemine dans le canal carpien avec les 8 autres tendons fléchisseurs.</p></div>
+
+      <h4>Éminence Thénar (Muscles Intrinsèques du Pouce)</h4>
+      <p>4 muscles constituant le galbe du pouce :</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Position</th><th>Innervation</th></tr>
+          <tr><td class="annale-cell">Court Abducteur du Pouce ★</td><td class="annale-cell">Le plus superficiel ★</td><td>Nerf Médian</td></tr>
+          <tr><td class="annale-cell">Opposant du Pouce ★</td><td>Profond</td><td class="annale-cell">Nerf Médian ★</td></tr>
+          <tr>
+            <td>Court Fléchisseur du Pouce</td>
+            <td>Chef superficiel + chef profond</td>
+            <td><em>Chef superficiel</em> : N. Médian<br><em>Chef profond</em> : N. Ulnaire</td>
+          </tr>
+          <tr><td class="annale-cell">Adducteur du Pouce ★</td><td>Plan profond (faisceau transverse → M2/M3)</td><td class="annale-cell">Nerf Ulnaire ★</td></tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Points clés piégés en annales : (1) <strong>Le court abducteur est le plus superficiel</strong> de l'éminence thénar. (2) <strong>L'adducteur du pouce est innervé par le nerf ulnaire</strong> (et non médian). (3) <strong>L'opposant est innervé par le nerf médian</strong>. (4) Le court fléchisseur a une <strong>double innervation</strong> (médian pour le chef superficiel, ulnaire pour le chef profond).</p></div>
+
+      <h4>Muscles Interosseux</h4>
+      <ul>
+        <li><strong>Interosseux dorsaux (4) :</strong> abducteurs des doigts (écartent de l'axe du médius).</li>
+        <li><strong>Interosseux palmaires (3) :</strong> adducteurs des doigts (rapprochent de l'axe du médius).</li>
+        <li>Tous innervés par le <strong>nerf ulnaire</strong>.</li>
+      </ul>
+
+      <div class="annale"><p>En cas de <strong>paralysie du nerf radial</strong>, le poignet chute ("main tombante"). Cependant, l'extension des deux dernières phalanges (IPP et IPD) est partiellement préservée grâce aux interosseux, innervés par le nerf ulnaire — ce signe clinique est important à connaître.</p></div>
+
+      <h4>Le Signe de Froment</h4>
+      <p>Test de la paralysie de l'<strong>adducteur du pouce (nerf ulnaire)</strong> : on demande au patient de maintenir une feuille de papier entre le pouce et l'index. En cas de paralysie de l'adducteur, il fléchit l'interphalangienne du pouce via le long fléchisseur (nerf médian) pour compenser — c'est le signe de Froment positif.</p>
+    </div>
+
+    <!-- ─── INNERVATION SENSITIVE ─── -->
+    <div id="innervation-sensitive" class="section">
+      <h3>I.17 — Innervation Sensitive : Territoires "Forteresse"</h3>
+      <p>Ces territoires cutanés sont les zones de référence diagnostique lors d'une paralysie nerveuse — si la sensibilité y est abolie, le tronc correspondant est lésé.</p>
+
+      <div class="annale">
+        <p>À retenir impérativement :</p>
+        <ul>
+          <li><strong>Nerf Axillaire :</strong> moignon de l'épaule (zone deltoïdienne).</li>
+          <li><strong>Nerf Musculo-cutané :</strong> face latérale du coude et de l'avant-bras.</li>
+          <li><strong>Nerf Médian :</strong> face palmaire des 3 premiers doigts et moitié latérale du 4e — pulpe de l'index et du majeur en zone autonome.</li>
+          <li><strong>Nerf Ulnaire :</strong> face palmaire ET dorsale du 5e doigt et moitié médiale du 4e — pulpe de l'auriculaire.</li>
+          <li><strong>Nerf Radial :</strong> tabatière anatomique (entre le tendon du long abducteur et des extenseurs du pouce) + face dorsale latérale de la main.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PARTIE II — MEMBRE PELVIEN -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="part-header">
+      <div class="part-num">Partie II — Membre Pelvien (Inférieur)</div>
+      <h2>De la hanche au pied</h2>
+      <p class="subtitle">Puissance biomécanique et architecture portante — chaque muscle, chaque nerve, chaque vaisseau compte.</p>
+    </div>
+
+    <!-- ─── HANCHE OSTÉO ─── -->
+    <div id="hanche-osteo" class="section">
+      <h3>II.1 — La Hanche : Ostéologie</h3>
+
+      <h4>L'Acétabulum</h4>
+      <p>C'est une <strong>demi-sphère creuse (180°)</strong> à la face latérale de l'os coxal (os iliaque). Elle présente :</p>
+      <ul>
+        <li>Une <strong>surface semi-lunaire cartilagineuse</strong> avec deux cornes (la corne dorsale est plus basse que la corne ventrale).</li>
+        <li>Une <strong>fosse acétabulaire centrale</strong>, non cartilagineuse, occupée par le ligament de la tête fémorale et du tissu graisseux.</li>
+      </ul>
+
+      <div class="annale"><p>Le <strong>labrum (bourrelet acétabulaire)</strong> est un fibrocartilage de section triangulaire qui s'insère sur le limbus (sourcil acétabulaire). Son rôle est fondamental : il <strong>augmente la profondeur de la cavité</strong>, assure la congruence et la stabilité articulaire, et maintient une <strong>pression négative intra-articulaire</strong> qui contribue au verrouillage de la tête fémorale. Une lésion du labrum est à l'origine du "conflit fémoro-acétabulaire".</p></div>
+
+      <h4>L'Épiphyse Proximale du Fémur</h4>
+      <p>La tête fémorale représente <strong>2/3 de sphère (240°)</strong> — elle est donc nettement plus enveloppante que la tête humérale (1/3 de sphère), d'où la plus grande stabilité de la hanche par rapport à l'épaule.</p>
+      <p>La tête présente la <strong>fovéa capitis</strong> (petite dépression pour le ligament de la tête fémorale).</p>
+
+      <div class="annale">
+        <p><strong>Angles du col fémoral :</strong></p>
+        <ul>
+          <li><strong>Angle d'inclinaison</strong> (entre axe du col et axe diaphysaire) : <strong>125°</strong> (normal entre 110 et 135°).</li>
+          <li>Si &gt; 135° : <strong>Coxa Valga</strong> (mnémotechnique : Valga = Vaste comme dans "valgus"). Le col est trop "dressé".</li>
+          <li>Si &lt; 110° : <strong>Coxa Vara</strong>. Le col est trop "abaissé".</li>
+          <li><strong>Angle de déclinaison (antéversion)</strong> : 15 à 25° vers l'avant. La tête regarde en haut, en dedans et en avant.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ─── HANCHE ARTHRO ─── -->
+    <div id="hanche-arthro" class="section">
+      <h3>II.2 — Arthrologie de la Hanche</h3>
+      <p>La hanche est une articulation <strong>sphéroïde (énarthrose) de force</strong>, à 3 degrés de liberté.</p>
+
+      <h4>Capsule</h4>
+      <p>Très résistante. Elle présente des fibres circulaires formant la <strong>zone orbiculaire</strong> qui "serre" le col fémoral comme un corset. La capsule est plus épaisse en avant (résistance aux forces d'extension).</p>
+
+      <h4>Ligaments Extra-Capsulaires</h4>
+      <div class="annale"><p>La face <strong>antérieure</strong> de la hanche est renforcée par deux ligaments qui forment une figure en <strong>"Z"</strong> :</p>
+      <ul>
+        <li><strong>Ligament ilio-fémoral</strong> (le plus puissant de l'organisme) : deux faisceaux (pré-trochantérien et pré-trochantinien). Il limite l'<strong>hyperextension</strong> de hanche.</li>
+        <li><strong>Ligament pubo-fémoral</strong> : limite l'<strong>abduction</strong>.</li>
+      </ul>
+      <p>Ces deux ligaments se tendent en extension et se détendent en flexion. En arrière : le <strong>ligament ischio-fémoral</strong>, limitant la rotation médiale et la flexion extrême.</p></div>
+
+      <h4>Ligament Intra-Capsulaire</h4>
+      <div class="annale"><p>Le <strong>ligament de la tête fémorale (ligament rond)</strong> est <strong>intra-articulaire MAIS extra-synovial</strong>. Il relie la fovéa capitis à la fosse acétabulaire. Il contribue à la stabilité et véhicule l'artère de la tête fémorale (branche de l'obturatrice), vascularisation importante chez l'enfant.</p></div>
+
+      <h4>Amplitudes Articulaires de la Hanche</h4>
+      <ul>
+        <li>Flexion genou tendu : 90° (limitée par les ischio-jambiers).</li>
+        <li>Flexion genou fléchi : 120-130° (ischio-jambiers relâchés).</li>
+        <li>Extension : 10-20°.</li>
+        <li>Abduction : 40-50° (limitée par le ligament pubo-fémoral).</li>
+      </ul>
+    </div>
+
+    <!-- ─── BIOMÉCANIQUE HANCHE ─── -->
+    <div id="hanche-biom" class="section">
+      <h3>II.3 — Biomécanique : Balance de Pauwels</h3>
+
+      <div class="annale"><p><strong>En appui monopodal</strong>, la hanche supporte <strong>4 fois le poids du corps</strong>. Comment ? Le centre de gravité corporel se projette médialement par rapport à la tête fémorale, créant un bras de levier du poids. Pour maintenir l'horizontalité du bassin, les <strong>muscles abducteurs</strong> (moyen et petit fessiers) doivent générer une force égale à <strong>3 fois le poids du corps (M = 3P)</strong>, positionnés à un bras de levier plus court. La résultante transmise à la tête fémorale est donc 4P.</p></div>
+
+      <h4>Signe de Trendelenburg</h4>
+      <p>En cas d'insuffisance du <strong>moyen fessier</strong> (muscle principal de l'abduction), le bassin s'abaisse du côté opposé à la lésion lors de l'appui monopodal — c'est la <strong>boiterie de Trendelenburg</strong>. Causes : insuffisance musculaire, lésion du nerf glutéal supérieur, ou douleur inhibant la contraction.</p>
+
+      <h4>Pathologie Articulaire</h4>
+      <p>Contrairement à l'épaule (mobilité = arthrose rare), la hanche est portante et sujette à l'arthrose (coxarthrose). Elle n'est pas le siège électif de pathologies inflammatoires primitives.</p>
+    </div>
+
+    <!-- ─── MYOLOGIE CUISSE ─── -->
+    <div id="cuisse-myo" class="section">
+      <h3>II.4 — Myologie de la Cuisse</h3>
+      <p>Les muscles sont répartis en 3 loges séparées par des septums intermusculaires (latéral et médial) et entourés par le <strong>fascia lata</strong>.</p>
+
+      <h4>Loge Ventrale (Antérieure) — Nerf Fémoral</h4>
+
+      <p><strong>Muscle Ilio-Psoas :</strong> composé du muscle iliaque (fosse iliaque interne) et du grand psoas (corps vertébraux de T12 à L5). C'est le <strong>fléchisseur principal de la hanche</strong>. Il se termine sur le petit trochanter. Également rotateur latéral. Sa bourse ilio-pectinée peut s'enflammer (bursite ilio-psoatique).</p>
+
+      <p><strong>Muscle Sartorius :</strong> le muscle le plus long du corps humain. Il chemine en "S" italique à travers la cuisse (polyarticulaire — fléchisseur de hanche + fléchisseur/rotateur médial de genou).</p>
+
+      <div class="annale"><p>Le sartorius forme la <strong>limite latérale du trigone fémoral</strong> (triangle de Scarpa).</p></div>
+
+      <p><strong>Muscle Quadriceps Fémoral :</strong> le plus puissant de l'organisme, 4 chefs :</p>
+      <ul>
+        <li><strong>Droit fémoral</strong> : bi-articulaire (fléchisseur de hanche + extenseur de genou).</li>
+        <li><strong>Vastes Médial, Latéral et Intermédiaire</strong> : mono-articulaires.</li>
+        <li>Le <strong>muscle articulaire du genou</strong> (petit faisceau profond du vaste intermédiaire) assure la tension de la synoviale.</li>
+      </ul>
+
+      <div class="annale"><p>Le droit fémoral possède <strong>deux tendons d'origine</strong> : un tendon direct sur l'<strong>épine iliaque antéro-inférieure (EIAI)</strong> et un tendon réfléchi sur le <strong>sillon supra-acétabulaire</strong>. Les 4 chefs convergent vers la <strong>patella (rotule)</strong> puis le <strong>tendon patellaire</strong> sur la <strong>tubérosité tibiale</strong>.</p></div>
+
+      <h4>Loge Médiale — Nerf Obturateur</h4>
+      <p>Les adducteurs sont organisés en 3 plans :</p>
+      <ul>
+        <li><strong>Plan superficiel :</strong> Pectiné, Long adducteur, Gracile.</li>
+        <li><strong>Plan moyen :</strong> Court adducteur.</li>
+        <li><strong>Plan profond :</strong> Grand adducteur.</li>
+      </ul>
+
+      <div class="annale"><p>Exception importante : le <strong>muscle pectiné est innervé par le nerf fémoral</strong> (et non obturateur comme les autres adducteurs). Le <strong>grand adducteur</strong> a une <strong>double innervation</strong> : faisceau adducteur (nerf obturateur) et faisceau extenseur (nerf sciatique/ischiatique). Il présente le <strong>hiatus de l'adducteur</strong> par lequel l'artère fémorale passe de la face antérieure vers la fosse poplitée pour devenir l'artère poplitée.</p></div>
+
+      <h4>Loge Dorsale (Postérieure) — Nerf Sciatique</h4>
+      <p>Les <strong>ischio-jambiers</strong> : extenseurs de la hanche et fléchisseurs du genou.</p>
+      <ul>
+        <li><strong>Biceps fémoral :</strong> latéral — chef long (tubérosité ischiatique) + chef court (diaphyse fémorale).</li>
+        <li><strong>Semi-tendineux :</strong> tendon long et grêle.</li>
+        <li><strong>Semi-membraneux :</strong> le plus profond.</li>
+      </ul>
+
+      <div class="annale"><p><strong>La Patte d'Oie :</strong> formation anatomique regroupant les tendons terminaux de 3 muscles <em>aux origines et innervations différentes</em> qui s'insèrent ensemble sur la face <strong>médiale de l'épiphyse proximale du tibia</strong> :</p>
+      <ul>
+        <li><strong>Sartorius</strong> (nerf fémoral) — origine : EIAS.</li>
+        <li><strong>Gracile</strong> (nerf obturateur) — origine : branche ischio-pubienne.</li>
+        <li><strong>Semi-tendineux</strong> (nerf sciatique) — origine : tubérosité ischiatique.</li>
+      </ul>
+      <p>Malgré leurs fonctions opposées sur la hanche, ils agissent de concert comme de puissants <strong>stabilisateurs du genou fléchi</strong> (flexion + rotation médiale du genou). La bursite de la patte d'oie est fréquente chez les sportifs et les patients arthrosiques.</p></div>
+    </div>
+
+    <!-- ─── FESSIERS & ROTATEURS ─── -->
+    <div id="fessiers" class="section">
+      <h3>II.5 — Fessiers et Muscles Pelvi-Trochantériens</h3>
+
+      <h4>Muscles Fessiers</h4>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Action</th><th>Innervation</th></tr>
+          <tr><td><strong>Grand Fessier</strong></td><td>Extenseur principal + rotateur latéral (le plus puissant du corps)</td><td>Nerf glutéal inférieur</td></tr>
+          <tr><td class="annale-cell"><strong>Moyen Fessier ★</strong></td><td>Abducteur principal — face latérale du grand trochanter — équilibre monopodal</td><td class="annale-cell">Nerf glutéal supérieur ★</td></tr>
+          <tr><td><strong>Petit Fessier</strong></td><td>Abducteur accessoire + rotateur médial</td><td>Nerf glutéal supérieur</td></tr>
+        </table>
+      </div>
+
+      <div class="annale"><p>Le <strong>moyen fessier s'insère sur la face latérale du grand trochanter</strong>. Son insuffisance (lésion ou inhibition douloureuse) entraîne la <strong>boiterie de Trendelenburg</strong>. Il est innervé par le <strong>nerf glutéal supérieur</strong>.</p></div>
+
+      <h4>Muscles Pelvi-Trochantériens (Rotateurs Latéraux)</h4>
+      <p>6 muscles rotateurs latéraux de la hanche, analogues fonctionnels des muscles de la coiffe des rotateurs de l'épaule :</p>
+      <ul>
+        <li>Piriforme (Pyramidal)</li>
+        <li>Obturateur interne + Obturateur externe</li>
+        <li>Jumeau supérieur + Jumeau inférieur</li>
+        <li>Carré fémoral</li>
+      </ul>
+
+      <div class="annale"><p>Le <strong>muscle piriforme (S2-S4)</strong> naît de la <strong>face ventrale du sacrum</strong>, sort par la <strong>grande incisure ischiatique (grand foramen sciatique)</strong> et s'insère sur le grand trochanter. Il délimite deux espaces cruciaux :</p>
+      <ul>
+        <li><strong>Espace supra-piriforme :</strong> passage du nerf glutéal supérieur et des vaisseaux glutéaux supérieurs.</li>
+        <li><strong>Espace infra-piriforme :</strong> passage du <strong>nerf sciatique</strong> (et des nerfs glutéal inférieur, honteux interne, obturateur interne).</li>
+      </ul>
+      <p>Le syndrome du piriforme comprime le nerf sciatique à ce niveau.</p></div>
+    </div>
+
+    <!-- ─── TRIGONE FÉMORAL ─── -->
+    <div id="trigone" class="section">
+      <h3>II.6 — Le Trigone Fémoral (Triangle de Scarpa)</h3>
+      <p>Situé à la face <strong>antéro-supérieure</strong> de la cuisse. C'est une zone chirurgicale majeure d'abord vasculaire.</p>
+
+      <div class="annale">
+        <p><strong>Limites :</strong></p>
+        <ul>
+          <li>Haut (base) : <strong>Ligament inguinal</strong>.</li>
+          <li>Dehors (latéral) : <strong>Muscle Sartorius</strong>.</li>
+          <li>Dedans (médial) : <strong>Muscle Long Adducteur</strong>.</li>
+          <li>Plancher : <strong>Muscles Pectiné et Ilio-Psoas</strong>.</li>
+        </ul>
+        <p><strong>Contenu (de dehors en dedans — mnémotechnique NAV) :</strong></p>
+        <ul>
+          <li><strong>N</strong>erf fémoral (le plus latéral).</li>
+          <li><strong>A</strong>rtère fémorale.</li>
+          <li><strong>V</strong>eine fémorale (la plus médiale).</li>
+          <li>+ La crosse de la grande veine saphène (se jette dans la veine fémorale à la fosse ovale).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ─── GENOU & FOSSE POPLITÉE ─── -->
+    <div id="genou" class="section">
+      <h3>II.7 — Le Genou et la Fosse Poplitée</h3>
+
+      <h4>Articulation du Genou</h4>
+      <p>Le genou unit le fémur, la patella et le tibia. C'est l'articulation la plus volumineuse du corps, très sollicitée mécaniquement.</p>
+      <ul>
+        <li><strong>Ménisques :</strong> fibrocartilages en croissant adhérant aux condyles tibiaux par leur face caudale. Le ménisque médial est plus souvent lésé (moins mobile).</li>
+        <li><strong>Ligaments croisés :</strong></li>
+        <ul>
+          <li><strong>LCA (Ligament Croisé Antérieur) :</strong> oblique en bas, en avant et en dedans. S'oppose à la translation antérieure du tibia sous le fémur.</li>
+          <li><strong>LCP (Ligament Croisé Postérieur) :</strong> s'oppose à la translation postérieure.</li>
+        </ul>
+      </ul>
+
+      <div class="annale"><p>Les ligaments croisés sont <strong>intra-articulaires MAIS extra-synoviaux</strong>. Ils sont donc dans l'articulation mais non baignés par le liquide synovial.</p></div>
+
+      <h4>La Fosse Poplitée</h4>
+      <p>Espace en forme de <strong>losange</strong> à la face postérieure du genou.</p>
+      <ul>
+        <li><strong>Limites :</strong> en haut-latéral (biceps fémoral) ; en haut-médial (semi-membraneux + semi-tendineux) ; en bas (deux chefs du gastrocnémien).</li>
+        <li><strong>Contenu (de superficiel en profond) :</strong>
+          <ul>
+            <li>Nerf tibial + Nerf fibulaire commun (division du nerf sciatique).</li>
+            <li>Veine poplitée.</li>
+            <li>Artère poplitée (l'élément le plus profond — au contact de la capsule articulaire).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="annale"><p><strong>L'artère poplitée est l'élément le plus profond de la fosse poplitée</strong>. Elle fait suite à l'artère fémorale après son passage dans le hiatus du grand adducteur. L'arcade du soléaire marque le point de division de l'artère poplitée en artères tibiales antérieure et postérieure. Le nerf fibulaire commun contourne le col de la fibula, où il est vulnérable aux compressions (plâtre, traumatisme direct).</p></div>
+    </div>
+
+    <!-- ─── JAMBE ─── -->
+    <div id="jambe" class="section">
+      <h3>II.8 — Myologie de la Jambe (3 Loges)</h3>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Loge</th><th>Muscles principaux</th><th>Action</th><th>Innervation</th></tr>
+          <tr>
+            <td><strong>Ventrale (Antérieure)</strong></td>
+            <td>Tibial antérieur, Long extenseur de l'hallux (LFH), Long extenseur des orteils (LEO), 3e fibulaire</td>
+            <td>Flexion dorsale du pied + inversion (tibial antérieur)</td>
+            <td>Nerf fibulaire profond</td>
+          </tr>
+          <tr>
+            <td><strong>Latérale (Fibulaire)</strong></td>
+            <td>Long fibulaire (péronier), Court fibulaire</td>
+            <td class="annale-cell">Éversion du pied ★ (abduction + rotation latérale + dorsiflexion)</td>
+            <td>Nerf fibulaire superficiel</td>
+          </tr>
+          <tr>
+            <td><strong>Dorsale (Postérieure)</strong></td>
+            <td><em>Superficielle :</em> Triceps sural (gastrocnémiens + soléaire)<br><em>Profonde :</em> Poplité, Tibial postérieur, LFO, LFH</td>
+            <td>Flexion plantaire (triceps sural — marche sur les pointes) + inversion (tibial postérieur)</td>
+            <td>Nerf tibial</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>Le <strong>tibial antérieur</strong> est le muscle de la flexion dorsale et de l'inversion (innervé par le nerf fibulaire profond). Les muscles de la loge ventrale passent sous le <strong>rétinaculum des extenseurs</strong>.</p>
+
+      <p>Le <strong>triceps sural</strong> regroupe les deux gastrocnémiens (bi-articulaires, s'insèrent au-dessus du genou) et le soléaire (mono-articulaire). Ils convergent vers le <strong>tendon calcanéen (tendon d'Achille)</strong>. L'<strong>arcade du soléaire</strong> marque le point de division de l'artère poplitée.</p>
+
+      <p>Le <strong>tibial postérieur</strong> est le moteur principal de l'inversion du pied.</p>
+
+      <h4>Articulation Talo-Crurale (Cheville)</h4>
+      <p>C'est un <strong>ginglyme</strong> unissant le talus, le tibia et la fibula (mortaise tibio-fibulaire). Il oriente le pied dans le <strong>plan sagittal</strong> (flexion dorsale/plantaire uniquement). Les mouvements d'inversion/éversion se passent à l'articulation sous-talienne.</p>
+    </div>
+
+    <!-- ─── PIED ─── -->
+    <div id="pied" class="section">
+      <h3>II.9 — Anatomie du Pied</h3>
+
+      <h4>Architecture de la Voûte Plantaire</h4>
+      <div class="annale"><p>La voûte plantaire repose sur <strong>3 points d'appui</strong> :</p>
+      <ul>
+        <li>Tête du 1er métatarse (M1) — médial.</li>
+        <li>Tête du 5e métatarse (M5) — latéral.</li>
+        <li>Calcanéus — postérieur.</li>
+      </ul>
+      <p>Elle est maintenue par des "tirants" ligamentaires : le <strong>ligament plantaire long</strong> et le <strong>ligament calcanéo-naviculaire (spring ligament)</strong>. Sa dépression provoque le pied plat.</p></div>
+
+      <h4>Aponévrose Plantaire</h4>
+      <p>Rempart fibreux épais protégeant les muscles intrinsèques du pied et les nerfs plantaires. Son inflammation est la fasciite plantaire (talalgies matinales).</p>
+
+      <h4>Loges Musculaires du Pied (5 loges)</h4>
+      <ul>
+        <li><strong>Loge dorsale :</strong> Court extenseur des orteils + Court extenseur de l'hallux. Innervés par le nerf fibulaire profond.</li>
+        <li><strong>Loge plantaire médiale :</strong> Abducteur, Court fléchisseur et Adducteur de l'hallux.</li>
+        <li><strong>Loge plantaire latérale :</strong> Abducteur, Court fléchisseur et Opposant du 5e orteil.</li>
+        <li><strong>Loge centrale :</strong> Fléchisseur court des orteils, muscles lombricaux, carré plantaire.</li>
+        <li><strong>Loge interosseuse :</strong> 4 interosseux dorsaux (abducteurs) + 3 interosseux plantaires (adducteurs).</li>
+      </ul>
+    </div>
+
+    <!-- ─── INNERVATION PELVIEN ─── -->
+    <div id="innervation-pelvien" class="section">
+      <h3>II.10 — Innervation du Membre Pelvien</h3>
+
+      <h4>Plexus Lombaire (L1-L4)</h4>
+      <ul>
+        <li><strong>Nerf Fémoral :</strong> racines L2-L3-L4. Innerve le quadriceps fémoral, le sartorius, le pectiné. Sensitif : face antérieure de la cuisse + jambe médiale (nerf saphène).</li>
+        <li><strong>Nerf Obturateur :</strong> innerve les adducteurs (sauf pectiné) et le gracile. Sensitif : face médiale de la cuisse.</li>
+      </ul>
+
+      <div class="annale"><p>Le <strong>nerf fémoral est responsable du réflexe patellaire (L4)</strong>. Son atteinte supprime ce réflexe.</p></div>
+
+      <h4>Plexus Sacral (L4-S3, via le Tronc Lombo-Sacral)</h4>
+      <p>Sa branche terminale principale est le <strong>nerf ischiatique (sciatique)</strong> — le plus gros nerf du corps humain.</p>
+
+      <div class="annale"><p>Le nerf ischiatique quitte le pelvis par la <strong>grande incisure sciatique</strong>, en passant impérativement <strong>sous le muscle piriforme (foramen infra-piriforme)</strong>. Il innerve la loge dorsale de la cuisse (ischio-jambiers) et se divise dans la fosse poplitée en :</p>
+      <ul>
+        <li><strong>Nerf tibial :</strong> loge dorsale de la jambe + plante du pied.</li>
+        <li><strong>Nerf fibulaire commun :</strong> contourne le col de la fibula. Se divise en nerf fibulaire profond (loge ventrale de jambe) et nerf fibulaire superficiel (loge latérale — éverseurs).</li>
+      </ul>
+      <p>Clinique : une compression du nerf fibulaire commun au col de la fibula entraîne une <strong>"steppage"</strong> (pied tombant — impossibilité de dorsiflexion).</p></div>
+    </div>
+
+    <!-- ─── VASCULARISATION PELVIEN ─── -->
+    <div id="vascu-pelvien" class="section">
+      <h3>II.11 — Vascularisation du Membre Pelvien</h3>
+
+      <h4>Organisation Artérielle</h4>
+      <p>L'aorte abdominale se divise au niveau de <strong>L4</strong> en deux artères iliaques communes (primitives), qui donnent chacune :</p>
+      <ul>
+        <li><strong>Artère iliaque interne (AII) :</strong> vascularise le pelvis (organes pelviens) et la région fessière via les artères glutéales supérieure et inférieure.</li>
+        <li><strong>Artère iliaque externe (AIE) :</strong> devient l'<strong>artère fémorale</strong> en passant sous le ligament inguinal.</li>
+      </ul>
+
+      <div class="annale"><p>Dans le <strong>trigone fémoral</strong>, la disposition de dehors en dedans est <strong>N-A-V</strong> : Nerf fémoral — Artère fémorale — Veine fémorale.<br>
+      L'<strong>artère fémorale</strong> donne l'<strong>artère profonde de la cuisse (fémorale profonde)</strong>, principale artère nourricière des muscles, qui donne les artères circonflexes et les artères perforantes.<br>
+      L'artère fémorale devient <strong>artère poplitée</strong> après son passage dans le <strong>hiatus du grand adducteur</strong>.</p></div>
+
+      <h4>Réseau Anastomotique Cruciforme</h4>
+      <p>Dans la région glutéale, un réseau anastomotique majeur réunit les <strong>artères glutéales</strong> (branches de l'iliaque interne) et les <strong>artères circonflexes</strong> (branches de la fémorale profonde). Ce cercle vital assure la survie du membre en cas d'occlusion proximale de l'artère fémorale.</p>
+
+      <h4>Vascularisation Veineuse</h4>
+      <ul>
+        <li><strong>Réseau profond :</strong> satellite des artères (2 veines pour 1 artère sous le genou, 1 pour 1 au-dessus du genou).</li>
+        <li><strong>Réseau superficiel :</strong>
+          <ul>
+            <li><strong>Grande veine saphène :</strong> chemine en avant de la malléole médiale, remonte sur la face médiale de la jambe et de la cuisse, et se jette dans la veine fémorale à la <strong>fosse ovale</strong> (crosse de la grande saphène).</li>
+            <li><strong>Petite veine saphène :</strong> en arrière de la malléole latérale, se jette dans la <strong>veine poplitée</strong>.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="annale"><p>Les <strong>varices</strong> sont dues à une insuffisance des valvules veineuses, entraînant un reflux et une dilatation progressive du réseau superficiel. Le reflux est objectivé par la manœuvre de Trendelenburg veineuse.</p></div>
+    </div>
+
+  </div><!-- end content -->
+
+  <div class="footer">
+    Cours d'Anatomie Locomotrice — Membres Thoracique & Pelvien &nbsp;·&nbsp; Toutes sources intégrées &nbsp;·&nbsp; Points annales signalés
+  </div>
+
+</div><!-- end main -->
+
+</body>
+</html>
