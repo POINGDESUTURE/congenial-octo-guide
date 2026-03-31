@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours Complet d'Immunologie — DFGSM2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #131620;
+    --bg3: #1a1e2a;
+    --surface: #1f2435;
+    --surface2: #252b3d;
+    --border: #2e3550;
+    --accent: #4f8ef7;
+    --accent2: #7b5fff;
+    --gold: #f0b429;
+    --annale: #ff4d6d;
+    --annale-bg: rgba(255,77,109,0.08);
+    --annale-border: rgba(255,77,109,0.4);
+    --text: #e2e6f3;
+    --text2: #9aa3bf;
+    --text3: #636d8a;
+    --green: #2dd4bf;
+    --orange: #fb923c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  #toc-panel {
+    position: fixed;
+    top: 0; left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 24px 0;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  #toc-panel h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+    text-transform: uppercase;
+    padding: 0 20px 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  #toc-panel a {
+    display: block;
+    padding: 5px 20px;
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: all 0.15s;
+  }
+  #toc-panel a:hover { color: var(--accent); background: rgba(79,142,247,0.06); }
+  #toc-panel a.h1 { font-weight: 700; color: var(--text); margin-top: 8px; font-size: 13px; }
+  #toc-panel a.h2 { padding-left: 30px; font-size: 12px; }
+  #toc-panel a.h3 { padding-left: 40px; font-size: 11px; color: var(--text3); }
+
+  /* ── MAIN ── */
+  main {
+    margin-left: 280px;
+    padding: 60px 56px 80px;
+    max-width: 1100px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 48px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .hero .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    color: var(--text2);
+    font-size: 17px;
+    max-width: 680px;
+    line-height: 1.65;
+  }
+  .hero .stats {
+    display: flex; gap: 32px; margin-top: 28px;
+  }
+  .hero .stat {
+    text-align: center;
+  }
+  .hero .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .hero .stat .lab {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── SECTIONS ── */
+  .chapter {
+    margin-bottom: 72px;
+    scroll-margin-top: 24px;
+  }
+  .chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.25);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .chapter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .section { margin-bottom: 44px; scroll-margin-top: 24px; }
+  .section h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    scroll-margin-top: 24px;
+  }
+  .section h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 18px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* ── ANNALE BOX ── */
+  .annale {
+    background: var(--annale-bg);
+    border: 1px solid var(--annale-border);
+    border-left: 4px solid var(--annale);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .annale::before {
+    content: '★ ANNALE';
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--annale);
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+  .annale p { margin-bottom: 6px; color: var(--text); font-weight: 400; }
+  .annale p:last-child { margin-bottom: 0; }
+
+  /* ── INFO / NOTE ── */
+  .note {
+    background: rgba(79,142,247,0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    color: var(--text2);
+    font-size: 14.5px;
+  }
+  .note strong { color: var(--accent); }
+
+  .clinical {
+    background: rgba(45,212,191,0.06);
+    border-left: 3px solid var(--green);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+  }
+  .clinical::before { content: '🩺 Application Clinique — '; font-weight: 700; color: var(--green); }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--bg3); }
+  tr:hover td { background: var(--surface2); color: var(--text); transition: 0.15s; }
+
+  /* ── LIST ── */
+  ul, ol {
+    margin: 10px 0 14px 20px;
+    color: var(--text);
+  }
+  li { margin-bottom: 6px; line-height: 1.65; }
+  li::marker { color: var(--accent); }
+  ul ul { margin-top: 6px; }
+  ul ul li::marker { color: var(--text3); }
+
+  /* ── INLINE ── */
+  strong { color: var(--text); font-weight: 700; }
+  em { color: var(--gold); font-style: normal; font-weight: 600; }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  /* ── SCHEMA / FLOW ── */
+  .schema {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+  .schema .title { font-weight: 700; color: var(--accent2); margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .flow-arrow { color: var(--accent); font-size: 18px; }
+
+  /* ── GRID CARDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .card .card-title { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+  .card .card-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-bottom: 10px; }
+  .card p { font-size: 13.5px; color: var(--text2); margin-bottom: 0; }
+
+  /* ── HIGHLIGHT ── */
+  .hl-red { color: var(--annale); font-weight: 700; }
+  .hl-blue { color: var(--accent); font-weight: 700; }
+  .hl-gold { color: var(--gold); font-weight: 700; }
+  .hl-green { color: var(--green); font-weight: 700; }
+
+  /* ── SCROLL ── */
+  html { scroll-behavior: smooth; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .divider { height: 1px; background: var(--border); margin: 40px 0; }
+  .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 600; }
+  .badge.blue { background: rgba(79,142,247,0.15); color: var(--accent); border: 1px solid rgba(79,142,247,0.3); }
+  .badge.red { background: rgba(255,77,109,0.12); color: var(--annale); border: 1px solid rgba(255,77,109,0.3); }
+  .badge.gold { background: rgba(240,180,41,0.12); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
+  .badge.green { background: rgba(45,212,191,0.1); color: var(--green); border: 1px solid rgba(45,212,191,0.25); }
+
+  @media (max-width: 900px) {
+    #toc-panel { display: none; }
+    main { margin-left: 0; padding: 30px 20px; }
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TABLE DES MATIÈRES -->
+<nav id="toc-panel">
+  <h2>Plan du cours</h2>
+  <a href="#chap0" class="h1">0. Architecture du SI</a>
+  <a href="#organes" class="h2">Organes lymphoïdes</a>
+  <a href="#cellules" class="h2">Cellules &amp; facteurs</a>
+  <a href="#chap1" class="h1">1. Barrières non spécifiques</a>
+  <a href="#chap2" class="h1">2. Immunité innée</a>
+  <a href="#pnn" class="h2">PNN &amp; NETose</a>
+  <a href="#mono-macro" class="h2">Monocytes/Macrophages</a>
+  <a href="#dc" class="h2">Cellules Dendritiques</a>
+  <a href="#nk" class="h2">Lymphocytes NK</a>
+  <a href="#masto" class="h2">Mastocytes/Éosinophiles</a>
+  <a href="#prr" class="h2">PRR, PAMP, DAMP</a>
+  <a href="#inflam" class="h2">Inflammation &amp; cytokines</a>
+  <a href="#complement" class="h2">Système du complément</a>
+  <a href="#interferon" class="h2">Interférons de type I</a>
+  <a href="#deficits-innes" class="h2">Déficits innés</a>
+  <a href="#chap3" class="h1">3. Antigènes &amp; récepteurs</a>
+  <a href="#ag" class="h2">Antigènes</a>
+  <a href="#bcr-tcr" class="h2">BCR &amp; TCR</a>
+  <a href="#chap4" class="h1">4. Système HLA (CMH)</a>
+  <a href="#hla-struct" class="h2">Structure &amp; génétique</a>
+  <a href="#hla-classes" class="h2">Classes I &amp; II</a>
+  <a href="#chap5" class="h1">5. Activation des LT</a>
+  <a href="#3signaux" class="h2">Les 3 signaux</a>
+  <a href="#polarisation" class="h2">Polarisation Th</a>
+  <a href="#cd8" class="h2">LT CD8+ cytotoxiques</a>
+  <a href="#chap6" class="h1">6. Réponse humorale (LB)</a>
+  <a href="#activation-b" class="h2">Activation des LB</a>
+  <a href="#cg" class="h2">Centre Germinatif</a>
+  <a href="#ig-struct" class="h2">Structure des Ig</a>
+  <a href="#isotypes" class="h2">Isotypes</a>
+  <a href="#chap7" class="h1">7. Cytokines &amp; CD</a>
+  <a href="#chap8" class="h1">8. Migration &amp; diapédèse</a>
+  <a href="#chap9" class="h1">9. Dynamique &amp; mémoire</a>
+  <a href="#contraction" class="h2">Contraction</a>
+  <a href="#memoire" class="h2">Mémoire immunitaire</a>
+  <a href="#chap10" class="h1">10. Tolérance</a>
+  <a href="#tol-centrale" class="h2">Tolérance centrale</a>
+  <a href="#tol-periph" class="h2">Tolérance périphérique</a>
+  <a href="#chap11" class="h1">11. Immunité anti-infectieuse</a>
+  <a href="#antiviral" class="h2">Anti-virale</a>
+  <a href="#antiparasite" class="h2">Anti-parasitaire</a>
+  <a href="#tb-hiv" class="h2">Tuberculose &amp; VIH</a>
+  <a href="#chap12" class="h1">12. Pathologies &amp; thérapeutiques</a>
+  <a href="#allergie" class="h2">Allergie &amp; hypersensibilité</a>
+  <a href="#autoimmun" class="h2">Auto-immunité</a>
+  <a href="#vieillissement" class="h2">Grossesse &amp; vieillissement</a>
+  <a href="#therapeutiques" class="h2">Biothérapies</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<div class="hero">
+  <div class="tag">DFGSM2 — Immunologie Fondamentale &amp; Clinique</div>
+  <h1>Cours Complet<br>d'Immunologie</h1>
+  <p>Cours magistral exhaustif couvrant l'intégralité du programme. Chaque micro-notion est expliquée dans l'ordre logique de la réponse immunitaire. Les items <span class="hl-red">★ ANNALE</span> sont les notions validées en examens — ils sont amplifiés sans que rien du reste ne soit omis.</p>
+  <div class="stats">
+    <div class="stat"><div class="num">12</div><div class="lab">Chapitres</div></div>
+    <div class="stat"><div class="num">60+</div><div class="lab">Items annales</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lab">Couverture source</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 0 — ARCHITECTURE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap0">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 0</span>
+    <h2>Architecture du Système Immunitaire</h2>
+  </div>
+
+  <p>Le système immunitaire (SI) est l'ensemble des organes, cellules et facteurs solubles dédiés à la <strong>défense contre les infections</strong> (agents exogènes) et les agressions internes (tumeurs). Il est <strong>indispensable à la vie</strong> : un déficit immunitaire — qu'il soit génétique/primitif, iatrogène (immunosuppresseurs), ou acquis (VIH/SIDA) — mène inéluctablement à des infections fatales dans notre environnement septique permanent.</p>
+
+  <p>Le SI fonctionne selon <strong>trois modules successifs</strong> :</p>
+  <ol>
+    <li><strong>Détection</strong> des signaux d'alerte (signaux de danger microbien ou endogène)</li>
+    <li><strong>Intégration</strong> — analyse de la nature du pathogène, du tissu lésé, de la quantité d'agresseurs</li>
+    <li><strong>Réponse appropriée</strong> — coordination des effecteurs, régulation (éviter l'immunopathologie), réparation tissulaire</li>
+  </ol>
+
+  <p>Il se divise en deux systèmes <strong>étroitement liés et interdépendants</strong> :</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-sub">BRAS 1</div>
+      <div class="card-title">Immunité Innée</div>
+      <p>Rapide (minutes → 4 jours). Non spécifique de l'antigène. Pas de mémoire. Elle est le <em>prérequis absolu</em> à l'induction de la réponse adaptative.</p>
+    </div>
+    <div class="card">
+      <div class="card-sub">BRAS 2</div>
+      <div class="card-title">Immunité Adaptative</div>
+      <p>Tardive (7–14 jours). Spécifique, clonale. Dotée de mémoire immunologique. Elle potentialise à son tour l'immunité innée (cercle vertueux).</p>
+    </div>
+  </div>
+
+  <div class="section" id="organes">
+    <h3>Organes Lymphoïdes</h3>
+    <h4>Organes primaires (centraux)</h4>
+    <p>Ce sont les lieux de <strong>développement et de maturation</strong> des leucocytes. Il en existe deux :</p>
+    <ul>
+      <li><strong>Moelle osseuse</strong> — toutes les cellules hématopoïétiques y naissent (hématopoïèse). C'est aussi le site de maturation <em>finale</em> des <strong>lymphocytes B</strong> (LB). Les LB y subissent la tolérance centrale B (sélection, édition du récepteur).</li>
+      <li><strong>Thymus</strong> — lieu <em>exclusif</em> de maturation des <strong>lymphocytes T</strong> (LT). Les précurseurs T arrivent depuis la moelle, et 95 % des thymocytes seront éliminés lors de la sélection. Le thymus <strong>involue progressivement avec l'âge</strong> dès la naissance, expliquant l'immunosénescence du sujet âgé.</li>
+    </ul>
+    <div class="annale">
+      <p>Les organes primaires sont le siège de la <strong>lymphopoïèse</strong> et de la <strong>sélection des répertoires</strong>. La sélection intra-thymique est impitoyable : environ <strong>95 % des thymocytes sont éliminés</strong>. Le thymus est un organe <strong>involutif avec l'âge</strong> — c'est la cause principale du déficit immunitaire du sujet âgé.</p>
+    </div>
+
+    <h4>Organes secondaires (périphériques)</h4>
+    <p>Ce sont les lieux d'<strong>initiation des réponses immunitaires</strong> adaptatives. Leur structure maximise la probabilité de rencontre entre l'antigène et les rares lymphocytes spécifiques (fréquence de 10<sup>−6</sup>).</p>
+    <ul>
+      <li><strong>Rate</strong> — filtre le sang (reliée <em>uniquement</em> à la circulation sanguine). Sa <strong>zone marginale</strong> héberge des lymphocytes B spécialisés contre les antigènes thymo-indépendants (ex : pneumocoque). La pulpe blanche contient les LT (manchon périartériolaire) et les LB (follicules).</li>
+      <li><strong>Ganglions lymphatiques</strong> — répartis par centaines dans tout le corps, ils drainent la lymphe tissulaire. Zone paracorticale = LT ; follicules = LB ; centres germinatifs = réponse humorale active.</li>
+      <li><strong>MALT</strong> (Tissu Lymphoïde Associé aux Muqueuses) — représente environ 80 % du tissu lymphoïde total. Exemples : plaques de Peyer (intestin grêle), amygdales/tonsilles, muqueuses bronchiques.</li>
+    </ul>
+    <div class="annale">
+      <p>La <strong>polarisation des lymphocytes T</strong> se déroule spécifiquement dans les <strong>organes lymphoïdes secondaires</strong>. C'est aussi là que siègent les centres germinatifs. Les patients <strong>splénectomisés</strong> sont vulnérables aux infections à bactéries encapsulées (Pneumocoque, Méningocoque, Haemophilus) car ils perdent les LB de la zone marginale capables de répondre aux antigènes thymo-indépendants de type II.</p>
+    </div>
+  </div>
+
+  <div class="section" id="cellules">
+    <h3>Les Acteurs : Leucocytes &amp; Facteurs Solubles</h3>
+    <p>Les <strong>leucocytes</strong> (globules blancs) se divisent en cellules circulantes (sang/lymphe) et résidentes (tissus). On distingue :</p>
+    <ul>
+      <li><strong>Phagocytes</strong> : monocytes <code>CD14+</code>, macrophages, polynucléaires neutrophiles (PNN)</li>
+      <li><strong>Cellules dendritiques (DC)</strong> : présentes partout en faible quantité — chefs d'orchestre de l'activation adaptative</li>
+      <li><strong>Immunité innée cytotoxique</strong> : NK, mastocytes, basophiles, éosinophiles</li>
+      <li><strong>Immunité adaptative</strong> : LT <code>CD3+</code> (sous-populations <code>CD4+</code> helpers et <code>CD8+</code> cytotoxiques), LB <code>CD19+</code> / <code>CD20+</code></li>
+    </ul>
+    <p><strong>Facteurs solubles</strong> : synthétisés par le foie ou les leucocytes — anticorps, système du complément, CRP, cytokines.</p>
+    <div class="note"><strong>Règle clé :</strong> l'immunité innée et l'adaptative ne sont pas indépendantes — l'innée est <em>absolument requise</em> pour déclencher l'adaptative (via la maturation des DC), et l'adaptative amplifie l'innée en retour.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 1 — BARRIÈRES -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap1">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 1</span>
+    <h2>Les Barrières Non Spécifiques — L'Ante-Immunité</h2>
+  </div>
+
+  <p>Avant toute activation cellulaire, l'organisme oppose des barrières naturelles qui arrêtent la grande majorité des infections de manière <em>inapparente</em>. Une altération de ces barrières (grands brûlés, mucoviscidose, antibiothérapie large spectre, tabac) rend les patients extrêmement vulnérables aux infections opportunistes.</p>
+
+  <div class="annale">
+    <p>C'est un point crucial car <strong>99 % des infections débutent par une interface avec l'extérieur</strong>. Les éléments clés à retenir sont : le <strong>mucus intestinal</strong>, la <strong>flore commensale bactérienne</strong> et le <strong>pH acide stomacal</strong>.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-sub">TYPE 1</div>
+      <div class="card-title">Barrières Anatomiques</div>
+      <p><strong>Peau</strong> : imperméable mécaniquement. <strong>Muqueuses</strong> : recouvrent les surfaces internes. <strong>Cils vibratiles</strong> respiratoires : expulsent les particules inhalées.</p>
+    </div>
+    <div class="card">
+      <div class="card-sub">TYPE 2</div>
+      <div class="card-title">Barrières Chimiques</div>
+      <p><strong>pH acide</strong> du suc gastrique. <strong>Mucus</strong> protecteur (piège les agents). <strong>Lysozyme</strong> (salive, larmes) : enzyme hydrolysant le peptidoglycane bactérien. <strong>Défensines</strong> : peptides antimicrobiens.</p>
+    </div>
+    <div class="card">
+      <div class="card-sub">TYPE 3</div>
+      <div class="card-title">Barrières Biologiques</div>
+      <p><strong>Flore commensale</strong> (microbiote) : entre en compétition avec les pathogènes pour les nutriments et les sites d'adhésion. Colonise la peau, le tube digestif et les voies génitales dès la naissance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 2 — IMMUNITÉ INNÉE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap2">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 2</span>
+    <h2>L'Immunité Innée &amp; la Réaction Inflammatoire</h2>
+  </div>
+
+  <p>L'immunité innée agit de <strong>quelques minutes à 4 jours</strong>. Elle est non spécifique de l'antigène précis, mais ciblée sur des motifs conservés. Elle n'a pas de mémoire spécifique. Cliniquement, elle résout l'immense majorité des infections sans que le sujet ne le sache (infection inapparente). Si le pathogène dépasse cette première ligne, la réponse innée <em>induite</em> se met en place (cellules circulantes recrutées, inflammation, maturation des DC qui vont amorcer l'adaptatif).</p>
+
+  <div class="section" id="pnn">
+    <h3>Polynucléaires Neutrophiles (PNN)</h3>
+    <div class="annale">
+      <p>Les PNN représentent <strong>60 % des leucocytes sanguins</strong>. Ils sont <strong>exclusivement circulants</strong> et absents des tissus sains. Recrutement ultra-précoce en <strong>30 minutes</strong>. Ils ont une <strong>courte durée de vie</strong> (meurent par apoptose — renouvellement constant par la moelle). Ils produisent des <strong>NETs</strong>.</p>
+    </div>
+    <h4>Mécanismes d'action</h4>
+    <ul>
+      <li><strong>Phagocytose</strong> directe (récepteur du mannose) ou opsonisée (IgG, C3b)</li>
+      <li><strong>Dégranulation</strong> : libération de défensines, lactoferrine, protéinase 3</li>
+      <li><strong>Explosion oxydative</strong> : NADPH oxydase → ROS (radicaux libres de l'oxygène) + NO (monoxyde d'azote) — voie O₂-dépendante</li>
+      <li><strong>NETose</strong> : mécanisme de mort particulier des PNN</li>
+    </ul>
+
+    <h4>La NETose en détail</h4>
+    <p>Face à une activation intense, les PNN libèrent leurs filaments d'ADN nucléaire sous forme de <strong>NETs (Neutrophil Extracellular Traps)</strong> — des filets extracellulaires qui piègent et tuent les bactéries. Ces filets sont riches en molécules toxiques : <strong>myéloperoxydase, lactoferrine, protéinase 3</strong>.</p>
+    <div class="annale">
+      <p>Les NETs favorisent la <strong>clairance bactérienne</strong> mais sont paradoxalement impliqués dans des pathologies : ils contribuent aux <strong>thromboses vasculaires</strong> et sont retrouvés dans le <strong>lupus érythémateux systémique</strong> (l'ADN des NETs déclenche des anticorps anti-ADN).</p>
+    </div>
+  </div>
+
+  <div class="section" id="mono-macro">
+    <h3>Monocytes &amp; Macrophages</h3>
+    <div class="annale">
+      <p>Les monocytes représentent <strong>5 à 10 % des leucocytes sanguins</strong>. Règle fondamentale : il n'y a <strong>jamais de macrophages dans le sang</strong>, ni de monocytes (stricts) dans les tissus. Les monocytes se différencient en macrophages <em>quand ils franchissent l'endothélium</em>.</p>
+    </div>
+    <h4>Les macrophages tissulaires résidents</h4>
+    <p>Ils portent des noms spécifiques selon leur tissu d'implantation :</p>
+    <ul>
+      <li>Foie → <strong>Cellules de Kupffer</strong></li>
+      <li>Cerveau → <strong>Microglie</strong></li>
+      <li>Poumon → macrophages alvéolaires</li>
+      <li>Os → ostéoclastes</li>
+    </ul>
+    <h4>Rôles</h4>
+    <ul>
+      <li><strong>Phagocytose</strong> : nettoient les débris des PNN morts, les corps apoptotiques (érythrocytes vieux de 120 jours dans la rate → → libération d'IL-10 et TGF-β anti-inflammatoires)</li>
+      <li><strong>CPA professionnelles</strong> : présentent les antigènes via le HLA de classe II aux LT CD4+</li>
+      <li><strong>Production de cytokines</strong> pro-inflammatoires (IL-1β, IL-6, TNF-α) et anti-inflammatoires</li>
+    </ul>
+    <div class="annale">
+      <p>Les macrophages sont des <strong>CPA (Cellules Présentatrices d'Antigène) professionnelles</strong>. Leur activité microbicide est puissamment amplifiée par l'<strong>IFN-γ</strong> (produit par les LT Th1 et les NK). La <em>Granulomatose septique chronique</em> est un déficit de la NADPH oxydase des macrophages/PNN, conduisant à des infections à bactéries intracellulaires récidivantes.</p>
+    </div>
+  </div>
+
+  <div class="section" id="dc">
+    <h3>Cellules Dendritiques (DC) — Le Pont Innée/Adaptative</h3>
+    <div class="annale">
+      <p>Les DC sont les <strong>seules cellules capables d'activer les LT naïfs</strong>. Sous forme <strong>immature</strong>, elles sont tolérogènes (elles induisent la tolérance). Seule leur maturation (induite par les PRR) leur confère la capacité d'activer l'adaptatif.</p>
+    </div>
+    <p>Les DC immatures résident dans les tissus périphériques. Dès qu'elles détectent un signal de danger (via leurs PRR), elles capturent l'antigène, <strong>maturent</strong> (upregulation du HLA, des molécules de costimulation B7, production de cytokines) et <strong>migrent par voie lymphatique</strong> vers les ganglions drainants pour y présenter l'antigène aux LT naïfs.</p>
+
+    <p>Il existe des sous-types fonctionnels :</p>
+    <ul>
+      <li><strong>DC classiques (cDC)</strong> — présentation antigénique, activation des LT</li>
+      <li><strong>DC plasmacytoïdes (pDC)</strong> — spécialisées dans la production massive d'<strong>IFN-α</strong> lors des infections virales</li>
+      <li><strong>DC folliculaires (FDC)</strong> — dans les centres germinatifs, servent de <em>réservoirs d'antigènes natifs</em> pour la maturation d'affinité des LB</li>
+    </ul>
+  </div>
+
+  <div class="section" id="nk">
+    <h3>Lymphocytes NK (Natural Killer)</h3>
+    <div class="annale">
+      <p>Les NK ont le phénotype <strong>CD3<sup>−</sup> CD56<sup>+</sup></strong> — ils ne sont PAS des LT (pas de CD3). Ils représentent <strong>5 à 15 % des lymphocytes sanguins</strong>. Ils se développent dans la <strong>moelle osseuse</strong>. Ils s'activent par la théorie du "<strong>missing-self</strong>".</p>
+    </div>
+    <h4>Mécanisme du Missing-Self</h4>
+    <p>Les NK intègrent un équilibre entre <em>signaux activateurs</em> et <em>signaux inhibiteurs</em>. Normalement, toute cellule saine exprime le HLA de classe I, qui envoie un signal inhibiteur aux NK ("je suis normal, ne me tue pas"). Si une cellule infectée par un virus (ex : Herpès) ou une cellule tumorale <em>perd son HLA de classe I</em>, le signal inhibiteur disparaît → les NK s'activent et tuent la cellule.</p>
+    <h4>Mécanismes cytotoxiques</h4>
+    <ul>
+      <li><strong>Dégranulation</strong> : perforine (crée des pores dans la membrane cible) + granzymes (induisent l'apoptose)</li>
+      <li><strong>ADCC</strong> (Cytotoxicité Cellulaire Dépendante des Anticorps) : les NK expriment le récepteur <code>FcγRIIIA</code> (CD16) — si une cellule est couverte d'IgG, les NK la reconnaissent et la lysent</li>
+      <li><strong>Production d'IFN-γ</strong> → amplifie les macrophages</li>
+    </ul>
+  </div>
+
+  <div class="section" id="masto">
+    <h3>Mastocytes, Basophiles &amp; Éosinophiles</h3>
+    <h4>Mastocytes</h4>
+    <p>Cellules <em>tissulaires</em> (peau, poumons, intestin, muqueuses) dérivées de précurseurs proches des basophiles. Ils possèdent des <strong>récepteurs FcεRI de haute affinité pour les IgE</strong>. En s'activant (via PAMPs, complément C3a/C5a, ou pontage des IgE par l'allergène), ils <strong>dégranulent</strong> en libérant : <em>histamine, sérotonine, protéases, héparine</em>. Rôle majeur dans l'allergie et la défense anti-helminthes (vers parasites).</p>
+
+    <h4>Basophiles</h4>
+    <p>Polynucléaires circulants, pendant sanguin des mastocytes. Également porteurs de récepteurs IgE. Impliqués dans les réactions allergiques et l'immunité anti-parasitaire.</p>
+
+    <h4>Éosinophiles</h4>
+    <p>Représentent <strong>1 à 3 % des leucocytes</strong>. Cytotoxiques par dégranulation (dérivés de l'O₂ : protéine basique majeure). Essentiels dans la défense <strong>anti-helminthes</strong> et impliqués dans les pathologies atopiques.</p>
+
+    <h4>Cellules immunocompétentes non-leucocytaires</h4>
+    <p>Les cellules épithéliales et endothéliales peuvent exprimer des PRR, produire des défensines, et même présenter l'antigène via HLA de classe II en contexte inflammatoire — elles ne sont donc pas de simples spectatrices.</p>
+  </div>
+
+  <div class="section" id="prr">
+    <h3>Mécanismes de Reconnaissance : PRR, PAMP et DAMP</h3>
+    <p>Les cellules innées possèdent des <strong>PRR (Pattern Recognition Receptors)</strong> — contrairement aux BCR/TCR adaptatifs, ils sont <em>codés par des gènes germinaux sans réarrangement</em>, n'ont pas de spécificité clonale et ne génèrent aucune mémoire immunitaire.</p>
+
+    <h4>Ce qu'ils reconnaissent</h4>
+    <ul>
+      <li><strong>PAMP/MAMP</strong> (Pathogen/Microorganism-Associated Molecular Patterns) : motifs microbiens conservés — ex : LPS des bactéries Gram négatif, flagelline, ARN double brin viral, ADN bactérien hypométhylé, acide lipotéichoïque (Gram+)</li>
+      <li><strong>DAMP</strong> (Danger-Associated Molecular Patterns) : molécules endogènes libérées lors de la <em>nécrose</em> cellulaire (et non lors de l'apoptose) — ex : ATP extracellulaire, protéines de choc thermique (HSP), acide urique, HMGB1. Provoquent une "inflammation stérile".</li>
+    </ul>
+
+    <h4>Familles de PRR</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Famille</th><th>Localisation</th><th>Ligand type</th><th>Exemple</th></tr>
+        <tr><td><strong>TLR (Toll-Like)</strong></td><td>Membranaires</td><td>LPS, flagelline, ARN viral</td><td>TLR4 → LPS ; TLR5 → flagelline</td></tr>
+        <tr><td><strong>NLR (NOD-Like)</strong></td><td>Intracellulaires</td><td>ATP, DAMPs</td><td>NLRP3 (inflammasome)</td></tr>
+        <tr><td><strong>RLR (RIG-Like)</strong></td><td>Cytosoliques</td><td>ARN double brin viral</td><td>RIG-I, MDA5</td></tr>
+      </table>
+    </div>
+
+    <div class="annale">
+      <p>L'activation des PRR induit :<br>
+      1. La réaction inflammatoire (via NF-κB → IL-1, IL-6, TNF-α)<br>
+      2. La maturation des DC (fondamental pour déclencher l'adaptatif)<br>
+      3. La production d'IFN de type I (anti-viral)<br>
+      Le <strong>TLR4 reconnaît le LPS</strong> des bactéries Gram négatif — c'est l'acteur majeur du <strong>choc septique</strong>. Les PRR reconnaissent aussi les molécules libérées par <strong>nécrose</strong> (DAMPs).</p>
+    </div>
+  </div>
+
+  <div class="section" id="inflam">
+    <h3>La Réaction Inflammatoire &amp; les Cytokines Pro-inflammatoires</h3>
+    <p>La réaction inflammatoire se traduit cliniquement par les 4 signes cardinaux : <em>rubor</em> (rougeur), <em>calor</em> (chaleur), <em>dolor</em> (douleur), <em>tumor</em> (œdème). Elle est médiée par 3 cytokines pro-inflammatoires majeures :</p>
+
+    <div class="annale">
+      <p><strong>IL-1β, IL-6 et TNF-α</strong> sont les 3 cytokines inflammatoires clés. Ce sont des <strong>cibles thérapeutiques majeures</strong> (anti-TNF-α, anti-IL-6, anti-IL-1 en thérapeutique).</p>
+    </div>
+
+    <h4>Effets locaux</h4>
+    <ul>
+      <li>Vasodilatation (rougeur, chaleur)</li>
+      <li>Augmentation de la perméabilité vasculaire (œdème)</li>
+      <li>Activation de l'endothélium (expression de sélectines, ICAM) → recrutement des leucocytes par <strong>diapédèse</strong></li>
+      <li>Activation de la coagulation locale (TNF-α)</li>
+    </ul>
+
+    <h4>Effets systémiques</h4>
+    <div class="annale">
+      <p>Les cytokines inflammatoires agissent sur l'<strong>hypothalamus</strong> (déclenchement de la <strong>fièvre</strong> par voie des prostaglandines) et induisent la <strong>synthèse hépatique des protéines de phase aiguë</strong> (réaction de phase aiguë) : <strong>CRP</strong> (marqueur quantitatif de l'inflammation), complément, collectines, fibrinogène. La moelle osseuse est stimulée pour produire massivement des PNN.</p>
+    </div>
+  </div>
+
+  <div class="section" id="complement">
+    <h3>Le Système du Complément</h3>
+    <p>Cascade de protéines plasmatiques (représentent ~5 % des protéines sériques) synthétisées majoritairement par le <strong>foie</strong>. Elles circulent sous forme <strong>inactive</strong> dans le sang et s'activent en cascade par clivages protéolytiques successifs.</p>
+
+    <div class="annale">
+      <p>Les fractions du complément circulent sous forme <strong>inactive</strong> — point piège récurrent aux examens.</p>
+    </div>
+
+    <h4>Les 3 voies d'activation</h4>
+
+    <div class="schema">
+      <div class="title">Convergence vers la C3-convertase</div>
+      <div class="flow">
+        <div class="flow-step">Voie Classique<br><small>Complexes Ag-Ac (IgM, IgG1, IgG3) ou CRP</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:var(--bg2);">C3-convertase</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">C3b + C3a</div>
+      </div>
+      <div class="flow" style="margin-top:10px">
+        <div class="flow-step">Voie des Lectines<br><small>MBL + MASP sur mannoses bactériens</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:var(--bg2);">C3-convertase</div>
+      </div>
+      <div class="flow" style="margin-top:10px">
+        <div class="flow-step">Voie Alterne<br><small>Hydrolyse spontanée C3 sur surfaces microbiennes</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:var(--bg2);">C3-convertase</div>
+      </div>
+    </div>
+
+    <div class="annale">
+      <p>La <strong>voie classique</strong> est dépendante des <strong>anticorps</strong> (IgM surtout, IgG1, IgG3). La voie alterne est indépendante des anticorps — c'est une défense innée d'emblée. La voie des lectines passe par la <strong>MBL</strong> (Mannose-Binding Lectin) associée aux protéases MASP1/2.</p>
+    </div>
+
+    <h4>Les 3 fonctions effectrices</h4>
+    <ul>
+      <li><strong>Opsonisation</strong> : le fragment <em>C3b</em> se dépose sur la bactérie → facilite sa phagocytose (récepteurs CR1 sur les phagocytes). Ce mode est beaucoup plus efficace que la phagocytose directe.</li>
+      <li><strong>Inflammation/Chimiotactisme</strong> : les <em>anaphylatoxines <strong>C3a et C5a</strong></em> sont des fragments solubles qui recrutent les cellules (neutrophiles, mastocytes), augmentent la perméabilité vasculaire et activent les mastocytes.</li>
+      <li><strong>Lyse directe</strong> : formation du <strong>Complexe d'Attaque Membranaire (CAM)</strong> = assemblage de C5b + C6 + C7 + C8 + poly-C9 → crée un pore dans la membrane bactérienne → lyse osmotique.</li>
+    </ul>
+
+    <div class="annale">
+      <p>L'activation du complément induit la libération d'<strong>anaphylatoxines (C3a, C5a)</strong> et peut <strong>lyser directement les bactéries</strong> via le CAM. Ces deux points tombent fréquemment aux annales.</p>
+    </div>
+
+    <h4>Régulation et pathologies liées aux déficits</h4>
+    <p>Le complément doit être régulé pour ne pas attaquer le "soi" : demi-vie brève des fragments activés, protéines membranaires inhibitrices <code>CD55</code> (DAF) et <code>CD59</code>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Déficit</th><th>Conséquence</th><th>Mécanisme</th></tr>
+        <tr><td>C1, C2, C4</td><td>Lupus érythémateux systémique</td><td>Défaut de clairance des complexes immuns et corps apoptotiques</td></tr>
+        <tr><td>C5 à C9 (CAM)</td><td>Infections récidivantes à <em>Neisseria</em> (méningite, gonorrhée)</td><td>Incapacité à lyser les bactéries Gram-</td></tr>
+        <tr><td>CD55/CD59</td><td>Hémoglobinurie Paroxystique Nocturne (HPN)</td><td>Lyse des globules rouges propres par le complément</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="interferon">
+    <h3>Interférons de Type I (IFN-α &amp; IFN-β)</h3>
+    <p>Ce sont des cytokines de l'immunité innée antivirale, produites très rapidement après une infection virale.</p>
+    <ul>
+      <li><strong>IFN-α</strong> : produit principalement par les <em>cellules dendritiques plasmacytoïdes (pDC)</em></li>
+      <li><strong>IFN-β</strong> : produit par <em>n'importe quelle cellule nucléée infectée</em> (réponse autonome de la cellule)</li>
+    </ul>
+    <p>Mécanisme d'action : activation de RNAses intracellulaires → blocage de la synthèse protéique virale. Signal d'alarme aux cellules voisines pour qu'elles se mettent en état de résistance antivirale.</p>
+    <div class="annale">
+      <p>L'<strong>IFN-α</strong> est une cytokine clé de l'<strong>immunité anti-virale</strong>. Un déficit génétique en IFN de type I ou en leurs récepteurs explique certaines formes de <strong>COVID-19 grave</strong> (défaut de réponse interféron). L'IFN est utilisé en thérapeutique (hépatites virales B et C).</p>
+    </div>
+
+    <div class="clinical">La sclérose en plaques est traitée par IFN-β (Bêtaféron) — mécanisme immunomodulateur distinct de l'antiviral direct.</div>
+  </div>
+
+  <div class="section" id="deficits-innes">
+    <h3>Déficits de l'Immunité Innée</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Pathologie</th><th>Déficit</th><th>Conséquences</th></tr>
+        <tr><td>Granulomatose septique chronique</td><td>NADPH oxydase défaillante</td><td>Infections récidivantes à bactéries intracellulaires (Staphylocoque, Aspergillus)</td></tr>
+        <tr><td>Déficit d'adhésion leucocytaire (LAD)</td><td>Défaut d'intégrines (CD18)</td><td>Les PNN ne peuvent pas sortir des vaisseaux (extravasation impossible)</td></tr>
+        <tr><td>Neutropénie</td><td>Baisse des PNN (souvent post-chimiothérapie)</td><td>Infections bactériennes et fongiques sévères</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 3 — ANTIGÈNES & RÉCEPTEURS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap3">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 3</span>
+    <h2>La Reconnaissance Spécifique : Antigènes &amp; Récepteurs</h2>
+  </div>
+
+  <div class="section" id="ag">
+    <h3>Les Antigènes (Ag)</h3>
+    <p>Un <strong>antigène</strong> est une molécule capable d'être reconnue par un BCR ou un TCR. <strong>L'immunogénicité</strong> est la capacité d'un Ag à induire une réponse immunitaire <em>in vivo</em> (implique obligatoirement l'activation de l'immunité innée — d'où le rôle des adjuvants en vaccination).</p>
+
+    <div class="annale">
+      <p>Les <strong>protéines</strong> sont les Ag les plus immunogènes. Les polysaccharides le sont moins. Les lipides et acides nucléiques sont peu ou pas immunogènes pour l'adaptatif. Un <strong>immunogène est forcément antigénique</strong>, mais un antigène n'est pas forcément immunogène (ex : haptènes — petites molécules qui ne déclenchent de réponse qu'en s'associant à une protéine porteuse).</p>
+    </div>
+
+    <p><strong>Épitope</strong> (ou déterminant antigénique) : portion précise de l'Ag liée par le paratope du récepteur lymphocytaire. Il peut être linéaire (séquentiel) ou conformationnel (dépend du repliement 3D).</p>
+    <p>L'immunogénicité dépend de : la dose, la taille de l'Ag, la voie de pénétration, la nature chimique et surtout l'activation concomitante de l'immunité innée.</p>
+  </div>
+
+  <div class="section" id="bcr-tcr">
+    <h3>Les Récepteurs Antigéniques : BCR &amp; TCR</h3>
+    <p>Contrairement aux PRR (gènes germinaux fixes), les récepteurs des lymphocytes sont générés par des <strong>réarrangements géniques somatiques aléatoires (VDJ)</strong> — cela crée un répertoire immense de spécificités différentes. Chaque lymphocyte a une <em>expression clonale</em> : une seule spécificité, présente sur tous ses descendants.</p>
+
+    <div class="annale">
+      <p>BCR et TCR sont des <strong>récepteurs réarrangés</strong> (VDJ) — c'est ce qui les distingue fondamentalement des PRR. Le <strong>TCR est exclusivement membranaire</strong> (jamais sécrété, contrairement au BCR qui a une forme sécrétée = anticorps).</p>
+    </div>
+
+    <h4>BCR (B-Cell Receptor)</h4>
+    <p>Immunoglobuline membranaire associée aux modules de signalisation <strong>Igα/Igβ (CD79a/CD79b)</strong>. Structure : 2 chaînes lourdes + 2 chaînes légères. Reconnaît l'Ag sous <em>forme native</em> (tridimensionnelle) — pas besoin d'apprêtement. Les LB naïfs expriment des IgM et IgD de surface.</p>
+
+    <h4>TCR (T-Cell Receptor)</h4>
+    <p>Hétérodimère <strong>αβ</strong> (ou γδ, minoritaire) associé au complexe <strong>CD3</strong> (contenant les motifs ITAM de signalisation intracellulaire). <em>Exclusivement membranaire</em>. Polymorphisme extrême (jusqu'à 10<sup>15</sup> combinaisons) résultant des réarrangements VDJ. Le TCR ne reconnaît <em>jamais l'Ag natif</em>, mais un <strong>peptide apprêté (dégradé) présenté par une molécule HLA</strong> — c'est la restriction HLA.</p>
+
+    <div class="note">
+      <strong>Résumé de la différence fondamentale :</strong> le BCR voit l'Ag dans sa forme naturelle (protéines, polysaccharides, lipides…). Le TCR ne voit que des peptides fragmentés insérés dans une molécule HLA — d'où l'existence du système de présentation antigénique.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 4 — SYSTÈME HLA -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap4">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 4</span>
+    <h2>Le Système HLA (CMH Humain)</h2>
+  </div>
+
+  <div class="section" id="hla-struct">
+    <h3>Structure &amp; Génétique</h3>
+    <p>Le HLA (Human Leukocyte Antigen) est le nom humain du CMH (Complexe Majeur d'Histocompatibilité). Ses gènes sont situés sur le <strong>chromosome 6</strong>. C'est le système génétique le plus <strong>polymorphe</strong> du génome humain (des milliers d'allèles pour chaque locus).</p>
+
+    <div class="annale">
+      <p>Le système HLA est :<br>
+      — <strong>Multigénique</strong> (plusieurs gènes par classe)<br>
+      — <strong>Multiallélique</strong> (milliers d'allèles par gène)<br>
+      — <strong>Codominant</strong> (chaque allèle hérité est exprimé, qu'il vienne du père ou de la mère)<br>
+      — Transmis par <strong>haplotypes</strong> (bloc de gènes transmis en bloc depuis un seul chromosome parental, de façon mendélienne)</p>
+    </div>
+  </div>
+
+  <div class="section" id="hla-classes">
+    <h3>Classes I &amp; II — Tableau Comparatif</h3>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Caractéristique</th><th>CMH Classe I (HLA-A, B, C)</th><th>CMH Classe II (HLA-DP, DQ, DR)</th></tr>
+        <tr><td>Expression cellulaire</td><td>Toutes les cellules <strong>nucléées</strong></td><td>CPA professionnelles uniquement (DC, Macrophages, LB)</td></tr>
+        <tr><td>Origine des peptides</td><td>Endogène (cytosol) — ex : protéines virales synthétisées par la cellule infectée</td><td>Extracellulaire (phagocytose/endocytose)</td></tr>
+        <tr><td>Machinerie d'apprêtement</td><td>Protéasome → TAP 1/2 → RE</td><td>Endosomes / Lysosomes</td></tr>
+        <tr><td>Structure</td><td>Chaîne lourde α + β₂-microglobuline</td><td>Chaînes α et β (toutes deux codées par le CMH)</td></tr>
+        <tr><td>Restriction lymphocytaire</td><td>LT <strong>CD8+</strong> (Cytotoxiques)</td><td>LT <strong>CD4+</strong> (Auxiliaires)</td></tr>
+      </table>
+    </div>
+
+    <div class="annale">
+      <p>La <strong>classe II présente des antigènes d'origine exogène</strong>. Elle est exprimée uniquement par les CPA professionnelles. L'<strong>apprêtement</strong> (fragmentation de l'Ag en peptides) est <strong>indispensable à sa présentation</strong> — c'est une étape obligatoire.</p>
+    </div>
+
+    <h4>Applications cliniques du HLA</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Allèle HLA</th><th>Maladie associée</th><th>Remarque</th></tr>
+        <tr><td>HLA-B27</td><td>Spondylarthrite ankylosante</td><td>Forte association — prédisposition, pas diagnostic de certitude</td></tr>
+        <tr><td>HLA-DQ2 / DQ8</td><td>Maladie cœliaque</td><td>—</td></tr>
+        <tr><td>HLA-B57</td><td>Hypersensibilité à l'Abacavir (VIH)</td><td>Contre-indication absolue — test obligatoire avant prescription</td></tr>
+      </table>
+    </div>
+
+    <h4>Les Superantigènes</h4>
+    <p>Les superantigènes (ex : TSST-1 du staphylocoque doré, entérotoxines) sont des toxines qui <em>pontent</em> directement le TCR et le CMH de classe II, sans apprêtement, de façon non spécifique. Ils activent simultanément <strong>jusqu'à 20 % des LT</strong> (contre 0,001 % pour un Ag normal) → orage cytokinique → syndrome de choc toxique.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 5 — ACTIVATION LT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap5">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 5</span>
+    <h2>Activation &amp; Polarisation des Lymphocytes T</h2>
+  </div>
+
+  <p>Les LT CD4+ sont les "<strong>chefs d'orchestre</strong>" de la réponse adaptative. Ils coordonnent les effecteurs (LT CD8+, LB, macrophages) selon la nature de la menace. L'activation suit une cinétique rigoureuse : <em>priming</em> dans les ganglions → phase effectrice dans les tissus.</p>
+
+  <div class="section" id="3signaux">
+    <h3>Les 3 Signaux d'Activation (Priming)</h3>
+    <p>L'activation d'un LT naïf nécessite impérativement <strong>3 signaux</strong> délivrés dans les organes lymphoïdes secondaires par une CPA professionnelle — en pratique, la cellule dendritique mature est la plus efficace.</p>
+
+    <div class="schema">
+      <div class="title">Les 3 signaux d'activation du LT naïf</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px">
+        <div class="flow-step" style="text-align:center;padding:14px">
+          <div style="color:var(--accent);font-weight:700;margin-bottom:6px">SIGNAL 1</div>
+          <div style="font-size:13px">Reconnaissance<br>TCR → HLA-Peptide<br><small style="color:var(--text3)">(stabilisé par CD4 ou CD8)</small></div>
+        </div>
+        <div class="flow-step" style="text-align:center;padding:14px">
+          <div style="color:var(--gold);font-weight:700;margin-bottom:6px">SIGNAL 2</div>
+          <div style="font-size:13px">Costimulation<br>CD28 (LT) ↔ B7/CD80/86 (CPA)<br><small style="color:var(--text3)">Sans ce signal → ANERGIE</small></div>
+        </div>
+        <div class="flow-step" style="text-align:center;padding:14px">
+          <div style="color:var(--annale);font-weight:700;margin-bottom:6px">SIGNAL 3</div>
+          <div style="font-size:13px">Polarisation<br>Cytokines environnementales<br><small style="color:var(--text3)">Dictent le type effecteur</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annale">
+      <p>L'activation nécessite <strong>3 signaux</strong>. Les <strong>LT CD4+ naïfs sont activés exclusivement par des CPA professionnelles</strong> (DC en pratique). <strong>Sans signal 2 (costimulation)</strong>, le LT devient <strong>anergique</strong> (état de non-réponse = tolérance périphérique). C'est ce mécanisme qu'exploitent les tumeurs pour échapper à l'immunité.</p>
+    </div>
+
+    <h4>Conséquences de l'activation</h4>
+    <p>Sous l'effet de l'<strong>IL-2</strong> (facteur de croissance autocrine produit par le LT lui-même dès l'activation), les LT prolifèrent massivement (<em>expansion clonale</em>). La fréquence clonale passe de ~10<sup>−7</sup> (naïf) à ~10<sup>−3</sup> (effecteur).</p>
+
+    <h4>Régulation par les récepteurs inhibiteurs</h4>
+    <p>L'activation induit l'expression de récepteurs inhibiteurs ("checkpoints") :</p>
+    <ul>
+      <li><strong>CTLA-4</strong> : compète avec CD28 pour lier B7 (avec une affinité bien supérieure) → freine la costimulation. Exprimé constitutivement par les Treg.</li>
+      <li><strong>PD-1</strong> (Programmed Death-1) : lie PD-L1 sur les cellules tumorales ou en contexte d'inflammation chronique → inhibe le LT.</li>
+    </ul>
+    <div class="clinical">Les <em>immune checkpoint inhibitors</em> (anti-CTLA4 = ipilimumab, anti-PD1 = nivolumab/pembrolizumab) lèvent ces freins en oncologie pour restaurer l'immunosurveillance anti-tumorale.</div>
+  </div>
+
+  <div class="section" id="polarisation">
+    <h3>Polarisation des LT CD4+ (Helpers)</h3>
+    <p>Le signal 3 (cytokines) dicte la différenciation des LT CD4+ vers différentes fonctions effecrtices selon le contexte infectieux :</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Sous-type</th><th>Cytokines inductrices (DC)</th><th>Facteur de transcription</th><th>Cytokines produites</th><th>Cible/rôle</th></tr>
+        <tr><td><strong>Th1</strong></td><td>IL-12, IFN-γ</td><td>T-bet</td><td><strong>IFN-γ</strong>, TNF-α</td><td>Pathogènes intracellulaires (virus, bactéries)</td></tr>
+        <tr><td><strong>Th2</strong></td><td>IL-4, IL-33, IL-25, TSLP (alarmines)</td><td>GATA3</td><td>IL-4, IL-5, IL-13</td><td>Helminthes (vers) ; allergie</td></tr>
+        <tr><td><strong>Th17</strong></td><td>IL-6, TGF-β, IL-23</td><td>RORγt (RORC2)</td><td>IL-17, IL-22</td><td>Bactéries/champignons aux muqueuses (Candida)</td></tr>
+        <tr><td><strong>TFH</strong></td><td>—</td><td>BCL6</td><td>IL-21</td><td>Aide les LB dans les centres germinatifs (expriment CXCR5)</td></tr>
+        <tr><td><strong>Treg</strong></td><td>TGF-β, IL-10</td><td>FoxP3</td><td>IL-10, TGF-β</td><td>Régulation/tolérance</td></tr>
+      </table>
+    </div>
+
+    <div class="annale">
+      <p>La polarisation dépend du <strong>signal 3</strong> (cytokines). L'<strong>IFN-γ</strong> est la cytokine signature des <strong>Th1</strong> et il amplifie les fonctions microbicides des macrophages. <em>Note du prof</em> : les termes "immunité cellulaire" (Th1) et "humorale" (Th2) sont historiquement ancrés mais impropres — toutes ces réponses sont cellulaires.</p>
+    </div>
+  </div>
+
+  <div class="section" id="cd8">
+    <h3>LT CD8+ Cytotoxiques (CTL)</h3>
+    <p>Après activation (Signal 1 via HLA-I/TCR + CD8; Signal 2; souvent aide de l'IL-2 des Th1), les LT CD8+ prolifèrent et migrent dans les tissus pour tuer les cellules infectées par des virus ou les cellules tumorales.</p>
+
+    <div class="annale">
+      <p>Les LT CD8+ sont cytotoxiques — ils reconnaissent des peptides sur le <strong>HLA de classe I</strong> (ubiquitaire). Mécanismes de cytotoxicité :</p>
+      <p>1. <strong>Dégranulation</strong> : formation d'une synapse immunologique → libération de <strong>perforine</strong> (crée des pores) et de <strong>granzymes</strong> (protéases → activation des caspases → apoptose).</p>
+      <p>2. Voie <strong>Fas/FasL</strong> : expression de FasL sur le CTL → liaison au Fas (CD95) sur la cellule cible → apoptose.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 6 — RÉPONSE HUMORALE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap6">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 6</span>
+    <h2>Réponse Humorale — Lymphocytes B &amp; Immunoglobulines</h2>
+  </div>
+
+  <div class="section" id="activation-b">
+    <h3>Activation des Lymphocytes B</h3>
+    <h4>Antigènes Thymo-Indépendants (TI)</h4>
+    <ul>
+      <li><strong>TI-1</strong> (ex : LPS) : activation polyclonale — le LPS lie simultanément le BCR et le TLR4 du LB → activation sans LT</li>
+      <li><strong>TI-2</strong> (ex : polysaccharides encapsulés répétitifs) : pontage massif des BCR → activation sans LT. Produisent <em>uniquement des IgM</em>, pas de mémoire immunitaire durable.</li>
+    </ul>
+    <div class="annale">
+      <p>Les patients <strong>splénectomisés</strong> sont vulnérables aux infections à bactéries encapsulées (<em>Pneumocoque, Méningocoque, Haemophilus</em>) parce que les réponses TI-2 se déroulent dans la <strong>zone marginale de la rate</strong> — perdue lors de l'ablation.</p>
+    </div>
+
+    <h4>Antigènes Thymo-Dépendants (TD)</h4>
+    <p>Les Ag protéiques nécessitent la coopération avec un LT CD4+ de même spécificité. Le LB présente l'Ag via son HLA de classe II au LT TFH → contact <strong>CD40 (LB) / CD40L (LT)</strong> + cytokines → activation complète.</p>
+    <div class="annale">
+      <p>L'activation par Ag protéique nécessite impérativement les <strong>LT CD4+</strong> (coopération T-B via <strong>CD40/CD40L</strong>). Un déficit en CD40 ou CD40L donne un <strong>syndrome d'Hyper-IgM</strong> : incapacité à commuter vers d'autres isotypes (les LB restent bloqués en IgM).</p>
+    </div>
+  </div>
+
+  <div class="section" id="cg">
+    <h3>La Réaction du Centre Germinatif (CG)</h3>
+    <p>Dans les follicules des ganglions, les LB activés forment des <em>centres germinatifs</em> avec deux zones :</p>
+    <ul>
+      <li><strong>Zone sombre</strong> (centroblastes) : prolifération et hypermutations somatiques</li>
+      <li><strong>Zone claire</strong> (centrocytes + FDC) : sélection sur la base de l'affinité</li>
+    </ul>
+
+    <div class="schema">
+      <div class="title">Dynamique du Centre Germinatif</div>
+      <div class="flow">
+        <div class="flow-step">LB activé</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Zone sombre<br><small>Centroblaste + AID<br>Hypermutations somatiques</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Zone claire<br><small>Centrocyte testé sur FDC<br>Sélection par affinité</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Haute affinité → Plasmocyte / LB mémoire<br>Basse affinité → apoptose</div>
+      </div>
+    </div>
+
+    <h4>Hypermutation somatique</h4>
+    <p>L'enzyme <strong>AID</strong> (Activation-Induced cytidine Deaminase) introduit des mutations aléatoires dans les régions variables du BCR (idiotype) → <em>maturation d'affinité</em>. Les centrocytes présentent leur BCR muté aux <strong>FDC</strong> (Cellules Dendritiques Folliculaires) qui arborent l'antigène natif : seuls les LB dont l'affinité a augmenté survivent, les autres font de l'apoptose.</p>
+
+    <h4>Commutation isotypique (Switch)</h4>
+    <p>Sous l'action de l'AID et des cytokines des LT TFH, la région constante de la chaîne lourde change (IgM → IgG, IgA ou IgE) <em>sans modifier la spécificité antigénique</em> (la région variable reste identique). C'est le switch qui donne les différentes fonctions effectrices.</p>
+
+    <div class="annale">
+      <p>L'<strong>hypermutation somatique</strong> (maturation d'affinité) et la <strong>commutation isotypique</strong> dépendent toutes deux de :<br>
+      1. L'enzyme <strong>AID</strong><br>
+      2. L'interaction <strong>CD40/CD40L</strong> avec les LT CD4+ TFH<br>
+      Ces deux phénomènes sont strictement dépendants de la coopération T-B.</p>
+    </div>
+
+    <h4>Devenir des LB après le CG</h4>
+    <ul>
+      <li><strong>Plasmocytes</strong> : usines à anticorps. Migrent dans la moelle osseuse (via CXCR4) où ils deviennent des <em>plasmocytes à longue durée de vie</em> qui sécrètent des anticorps pendant des décennies.</li>
+      <li><strong>LB mémoires</strong> : persistent des années, répondent plus vite lors d'une réexposition.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="ig-struct">
+    <h3>Structure des Immunoglobulines</h3>
+    <p>Une Ig est constituée de :</p>
+    <ul>
+      <li>2 <strong>chaînes lourdes</strong> (γ, α, μ, δ, ε — <strong>5 types</strong> définissant les 5 isotypes IgG, IgA, IgM, IgD, IgE)</li>
+      <li>2 <strong>chaînes légères</strong> (κ ou λ)</li>
+    </ul>
+
+    <div class="schema">
+      <div class="title">Anatomie d'une Immunoglobuline</div>
+      <div style="font-size:13px;line-height:2">
+        <div>Fragment <strong>Fab</strong> (x2) = chaîne légère + partie variable de la chaîne lourde → contient le <strong>paratope</strong> (site de fixation à l'épitope)</div>
+        <div>Fragment <strong>Fc</strong> = partie constante des 2 chaînes lourdes → définit l'<strong>isotype</strong> et les fonctions effectrices (opsonisation, ADCC, activation du complément, passage transplacentaire…)</div>
+        <div>Régions variables = <strong>idiotype</strong> ; hypervariabilité dans les boucles CDR (Complementarity Determining Regions)</div>
+      </div>
+    </div>
+
+    <div class="annale">
+      <p>Il existe <strong>5 types de chaînes lourdes</strong> (γ, α, μ, δ, ε). Le <strong>paratope</strong> est le site de fixation à l'antigène. Le <strong>fragment Fc</strong> définit l'isotype et les fonctions effectrices. L'<strong>opsonisation</strong> et l'<strong>ADCC</strong> dépendent du domaine constant (Fc).</p>
+    </div>
+  </div>
+
+  <div class="section" id="isotypes">
+    <h3>Les 5 Isotypes &amp; leurs Propriétés</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Isotype</th><th>Structure</th><th>Propriétés clés</th><th>Annale</th></tr>
+        <tr>
+          <td><strong>IgG</strong></td>
+          <td>Monomère</td>
+          <td>Majoritaire dans le sérum (80 %). Haute affinité (post-switch). Opsonisation, ADCC.</td>
+          <td class="hl-red">Seules à traverser le placenta (immunité néonatale)</td>
+        </tr>
+        <tr>
+          <td><strong>IgM</strong></td>
+          <td>Pentamère (+ chaîne J)</td>
+          <td>Premières produites lors de la réponse primaire. Forte avidité. Meilleure activation du complément (voie classique).</td>
+          <td class="hl-red">Marqueur d'infection récente. Pentamérique.</td>
+        </tr>
+        <tr>
+          <td><strong>IgA</strong></td>
+          <td>Dimérique dans les sécrétions (+ chaîne J + pièce sécrétoire)</td>
+          <td>Prédominante dans les muqueuses (lait maternel, salive, larmes, sécrétions intestinales).</td>
+          <td class="hl-red">N'active pas le complément. Immunité locale muqueuse.</td>
+        </tr>
+        <tr>
+          <td><strong>IgE</strong></td>
+          <td>Monomère</td>
+          <td>À l'état de traces dans le sang. Se fixe sur les mastocytes/basophiles via FcεRI.</td>
+          <td>Anti-parasitaire, allergie</td>
+        </tr>
+        <tr>
+          <td><strong>IgD</strong></td>
+          <td>Monomère</td>
+          <td>Marqueur des LB naïfs (avec IgM). Rôle mal connu.</td>
+          <td>—</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 7 — CYTOKINES & CD -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap7">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 7</span>
+    <h2>Cytokines, CD et Communication Cellulaire</h2>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:16px;padding-left:12px;border-left:3px solid var(--accent)">Les Clusters de Différenciation (CD)</h3>
+  <p>Nomenclature internationale pour identifier les lignées et états d'activation :</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Marqueur CD</th><th>Cellule / Signification</th></tr>
+      <tr><td>CD3</td><td>Tous les LT (marqueur du complexe TCR-CD3)</td></tr>
+      <tr><td>CD4</td><td>LT helper (auxiliaires) — lie le HLA-II</td></tr>
+      <tr><td>CD8</td><td>LT cytotoxiques — lie le HLA-I</td></tr>
+      <tr><td>CD19 / CD20</td><td>Lymphocytes B</td></tr>
+      <tr><td>CD14</td><td>Monocytes</td></tr>
+      <tr><td>CD25</td><td>Récepteur IL-2α (marqueur d'activation + constitutif sur les Treg)</td></tr>
+      <tr><td>CD28</td><td>Récepteur de costimulation des LT (lie B7/CD80/86)</td></tr>
+      <tr><td>CD56</td><td>Lymphocytes NK (NK = CD3⁻ CD56⁺)</td></tr>
+      <tr><td>CD40</td><td>LB (récepteur du signal de coopération T-B)</td></tr>
+      <tr><td>CD40L (CD154)</td><td>LT CD4+ activés (ligand du CD40)</td></tr>
+    </table>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;color:var(--accent);margin:24px 0 16px;padding-left:12px;border-left:3px solid var(--accent)">Les Cytokines</h3>
+  <p>Petites glycoprotéines solubles assurant la communication intercellulaire. Propriétés essentielles :</p>
+  <ul>
+    <li><strong>Pléiotropie</strong> : une cytokine peut avoir des effets très variés selon la cible</li>
+    <li><strong>Redondance</strong> : plusieurs cytokines peuvent produire le même effet</li>
+    <li><strong>Synergie</strong> : deux cytokines peuvent agir ensemble avec un effet supérieur à la somme</li>
+    <li><strong>Antagonisme</strong> : certaines cytokines s'opposent</li>
+  </ul>
+
+  <h4 style="color:var(--gold);margin:16px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:0.07em">Modes d'action</h4>
+  <ul>
+    <li><strong>Autocrine</strong> : la cellule agit sur elle-même (ex : IL-2 sur le LT activé)</li>
+    <li><strong>Paracrine</strong> : action locale sur les cellules voisines (mode majoritaire)</li>
+    <li><strong>Endocrine</strong> : action à distance via la circulation (ex : IL-1, IL-6 sur l'hypothalamus)</li>
+  </ul>
+
+  <div class="annale">
+    <p>La cascade <strong>IL-12 / IFN-γ</strong> est cruciale pour la réponse anti-virale et anti-bactérienne intracellulaire (Th1). Un défaut génétique sur l'un des deux récepteurs ou cytokines bloque toute la réponse. Les cytokines inflammatoires (<strong>IL-1β, IL-6, TNF-α</strong>) agissent sur l'<strong>hypothalamus</strong> (fièvre) et induisent la synthèse hépatique des protéines de phase aiguë.</p>
+  </div>
+
+  <div class="clinical">Les traitements par cytokines : GM-CSF (stimulation de la moelle en aplasie), IFN-α (hépatites virales), IL-2 (cancers). L'interféron peut provoquer des effets secondaires psychiatriques sévères incluant des tendances suicidaires — à surveiller.</div>
+
+  <div class="clinical">Les inhibiteurs de JAK (Jakinibs : baricitinib, tofacitinib) bloquent la signalisation intracellulaire de nombreuses cytokines en inhibant les kinases JAK qui transmettent le signal depuis les récepteurs cytokiniques.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 8 — MIGRATION / DIAPÉDÈSE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap8">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 8</span>
+    <h2>Migration &amp; Adressage des Leucocytes (Homing)</h2>
+  </div>
+
+  <p>La réponse immunitaire est dynamique : les leucocytes doivent quitter la circulation sanguine pour rejoindre les tissus infectés ou les organes lymphoïdes. Ce processus est la <strong>diapédèse</strong> (extravasation). Il est aussi appelé <em>homing</em> quand on parle du retour des lymphocytes vers les ganglions.</p>
+
+  <div class="schema">
+    <div class="title">Étapes de la Diapédèse</div>
+    <div class="flow">
+      <div class="flow-step">1. Rolling<br><small>Sélectines</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2. Activation<br><small>Chimiokines</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">3. Adhésion ferme<br><small>Intégrines</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">4. Transmigration<br><small>Gradient chimiokines</small></div>
+    </div>
+  </div>
+
+  <h4 style="color:var(--gold);margin:20px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:0.07em">1. Rolling (Roulement)</h4>
+  <p>Médié par les <strong>Sélectines</strong> (interactions faibles, labiles → roulement) :</p>
+  <ul>
+    <li><em>L-sélectine</em> : sur les LT (homing ganglionnaire)</li>
+    <li><em>E-sélectine et P-sélectine</em> : sur l'endothélium activé par l'inflammation</li>
+  </ul>
+
+  <h4 style="color:var(--gold);margin:16px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:0.07em">2. Adhésion Ferme</h4>
+  <p>Médiée par les <strong>Intégrines</strong> (interactions fortes) :</p>
+  <ul>
+    <li><em>LFA-1</em> (CD11a/CD18) ↔ ICAM (sur endothélium)</li>
+    <li><em>VLA-4</em> (CD49d/CD29) ↔ VCAM (sur endothélium)</li>
+  </ul>
+
+  <h4 style="color:var(--gold);margin:16px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:0.07em">3. Transmigration</h4>
+  <p>Guidée par un gradient de <strong>Chimiokines</strong> (cytokines chimiotactiques, ex : IL-8/CXCL8, SDF-1/CXCL12) → le leucocyte suit le gradient croissant de chimiokines vers le foyer inflammatoire, avec remodelage du cytosquelette.</p>
+
+  <div class="clinical"><strong>Sclérose en plaques :</strong> le Natalizumab (Tysabri) bloque l'intégrine <strong>VLA-4</strong>, empêchant les LT pathogènes de traverser la <strong>barrière hémato-encéphalique</strong> pour atteindre le système nerveux central.</div>
+  <div class="clinical"><strong>Rejet de greffe :</strong> le Basiliximab/Daclizumab bloque le <strong>CD25</strong> (récepteur IL-2α), inhibant la prolifération des LT alloréactifs.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 9 — DYNAMIQUE & MÉMOIRE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap9">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 9</span>
+    <h2>Dynamique de la Réponse &amp; Mémoire Immunitaire</h2>
+  </div>
+
+  <div class="section" id="contraction">
+    <h3>Chronologie de la Réponse Primaire</h3>
+    <div class="annale">
+      <p>La réponse primaire nécessite <strong>10 à 14 jours</strong> (et non 1 mois) pour être efficace. Durant cette période, on observe d'abord les <strong>IgM</strong>, puis les <strong>IgG</strong> (après switch isotypique).</p>
+    </div>
+
+    <h4>Phase de Contraction</h4>
+    <p>Après élimination de l'antigène, la réponse doit être maîtrisée pour éviter l'immunopathologie. <strong>90 % des effecteurs</strong> (LT et LB effecteurs) meurent par apoptose via le système Fas/FasL. Les molécules de checkpoint (CTLA-4, PD-1) contribuent à freiner la réponse.</p>
+
+    <div class="annale">
+      <p>Après clairance de l'Ag, la <strong>grande majorité des effecteurs est éliminée par apoptose</strong>. Les cellules survivantes (10 %) constituent le compartiment mémoire.</p>
+    </div>
+  </div>
+
+  <div class="section" id="memoire">
+    <h3>La Mémoire Immunitaire</h3>
+    <p>La mémoire est ce qui distingue fondamentalement l'immunité adaptative de l'immunité innée. Elle repose sur :</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-sub">COMPOSANTE 1</div>
+        <div class="card-title">LB &amp; LT Mémoires</div>
+        <p>Longue durée de vie. Fréquence clonale de 10<sup>−2</sup> à 10<sup>−4</sup> contre 10<sup>−5</sup> à 10<sup>−7</sup> pour les naïfs — soit ~1000× plus nombreux. Répondent plus vite et plus fort.</p>
+      </div>
+      <div class="card">
+        <div class="card-sub">COMPOSANTE 2</div>
+        <div class="card-title">Plasmocytes à longue durée de vie</div>
+        <p>Migrent dans la moelle osseuse (via CXCR4). Sécrètent des anticorps en continu pendant des <em>décennies</em> sans re-stimulation antigénique.</p>
+      </div>
+    </div>
+
+    <div class="annale">
+      <p><strong>Réponse secondaire</strong> (réponse mémoire) vs primaire :</p>
+      <ul>
+        <li>Plus <strong>rapide</strong> (2–3 jours vs 10–14 jours)</li>
+        <li>Plus <strong>intense</strong> (plus d'anticorps)</li>
+        <li>Production d'emblée d'<strong>IgG et IgA</strong> (isotypes commutés de haute affinité)</li>
+        <li>La fréquence clonale des lymphocytes mémoires est bien <strong>supérieure</strong> à celle des naïfs</li>
+      </ul>
+      <p>C'est le principe de la <strong>vaccination</strong>.</p>
+    </div>
+
+    <h4>Electrophorèse des protéines sériques (EPS)</h4>
+    <p>Outil d'exploration humorale : un pic monoclonal (bande étroite en γ) signe une gammapathie monoclonale (myélome). Une hypogammaglobulinémie diffuse signe un déficit humoral.</p>
+    <p>Cinétique des isotypes :</p>
+    <ul>
+      <li><strong>IgM</strong> = marqueur de la phase primaire/récente</li>
+      <li><strong>IgG</strong> = marqueur de mémoire ou de réponse secondaire rapide</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 10 — TOLÉRANCE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap10">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 10</span>
+    <h2>La Tolérance Immunitaire</h2>
+  </div>
+
+  <p>La tolérance est la propriété fondamentale du SI de ne pas attaquer le "soi". Sa rupture aboutit aux maladies auto-immunes.</p>
+
+  <div class="section" id="tol-centrale">
+    <h3>Tolérance Centrale (Organes Primaires)</h3>
+
+    <h4>Dans le Thymus (LT)</h4>
+    <p>Deux étapes successives et obligatoires :</p>
+    <ol>
+      <li><strong>Sélection positive</strong> (cortex thymique) : les thymocytes dont le TCR présente une <em>affinité intermédiaire</em> pour les complexes HLA-peptides du soi sont sélectionnés (survivent). Ceux dont l'affinité est trop faible (TCR non fonctionnel) meurent par défaut (<em>mort par négligence</em>).</li>
+      <li><strong>Sélection négative</strong> (médullaire thymique) : les thymocytes ayant une <em>forte affinité</em> pour les autoantigènes sont éliminés par apoptose. La protéine <strong>AIRE</strong> (AutoImmune REgulator) permet l'expression d'autoantigènes tissulaires dans la médullaire pour cette sélection.</li>
+    </ol>
+
+    <div class="annale">
+      <p>Environ <strong>95 % des thymocytes sont éliminés</strong> lors du développement (sélection positive + négative). La sélection positive choisit les TCR d'<strong>affinité intermédiaire</strong>. L'absence de sélection entraîne l'<strong>apoptose</strong>. La délétion des clones auto-réactifs se déroule dans le <strong>thymus</strong>.</p>
+    </div>
+
+    <h4>Dans la Moelle Osseuse (LB)</h4>
+    <p>Les LB auto-réactifs peuvent soit être délétés par apoptose, soit subir une <strong>édition du récepteur</strong> (nouvelle tentative de réarrangement pour obtenir un BCR non auto-réactif — "seconde chance").</p>
+  </div>
+
+  <div class="section" id="tol-periph">
+    <h3>Tolérance Périphérique</h3>
+    <p>Tous les clones auto-réactifs n'étant pas éliminés en central, la périphérie met en place des mécanismes supplémentaires :</p>
+
+    <h4>Anergie</h4>
+    <p>Si un LT rencontre un antigène <em>sans signal de costimulation</em> (Signal 2 absent = pas de B7 sur la CPA), il devient anergique : incapable de répondre même si l'Ag lui est présenté à nouveau. C'est le mécanisme clé de tolérance induite par les tumeurs (qui n'expriment pas B7).</p>
+    <div class="annale">
+      <p>La présentation de l'Ag sans costimulation induit l'<strong>anergie</strong> (forme de tolérance périphérique).</p>
+    </div>
+
+    <h4>Lymphocytes T Régulateurs (Treg)</h4>
+    <p>Phénotype : <strong>CD4+ CD25+ FoxP3+</strong>. Ils suppriment activement les clones auto-réactifs périphériques par :</p>
+    <ul>
+      <li>Sécrétion d'<strong>IL-10</strong> et <strong>TGF-β</strong> (anti-inflammatoires)</li>
+      <li>Expression constitutive de <strong>CTLA-4</strong> → inhibition de la costimulation des CPA</li>
+      <li>Inhibition directe des LT effecteurs</li>
+    </ul>
+    <div class="annale">
+      <p>Les Treg sont principalement <strong>CD4+</strong>, expriment le facteur de transcription <strong>FoxP3</strong>. Leur absence congénitale (mutation FoxP3) cause le <strong>syndrome IPEX</strong> (Immune dysregulation, Polyendocrinopathy, Enteropathy, X-linked) — polyendocrinopathie auto-immune sévère liée à l'X.</p>
+    </div>
+
+    <h4>Ignorance anatomique</h4>
+    <p>Certains organes sont séparés anatomiquement du SI par des barrières (chambre antérieure de l'œil, barrière hémato-encéphalique, testicules) → les autoantigènes de ces sites ne sont jamais présentés aux LT = ignorance. La rupture de ces barrières (traumatisme oculaire) peut déclencher une uvéite auto-immune.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 11 — IMMUNITÉ ANTI-INFECTIEUSE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap11">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 11</span>
+    <h2>Immunité Anti-Infectieuse Spécifique</h2>
+  </div>
+
+  <div class="section" id="antiviral">
+    <h3>Immunité Anti-Virale</h3>
+    <div class="annale">
+      <p>L'immunité anti-virale repose sur :<br>
+      1. <strong>Interférons de type I (IFN-α/β)</strong> — cytokines clés de la réponse innée antivirale précoce<br>
+      2. Cellules <strong>NK</strong> (reconnaissance missing-self)<br>
+      3. <strong>Anticorps neutralisants</strong> (IgG, IgA muqueuses)<br>
+      4. LT <strong>CD8+ cytotoxiques</strong> (CTL) — effecteurs principaux de la réponse tardive<br>
+      L'<strong>IFN-α</strong> est une cytokine clé de l'immunité anti-virale.</p>
+    </div>
+    <p>Mécanisme de résistance virale : certains virus (Herpès, CMV) masquent le HLA de classe I pour échapper aux CTL → mais la perte du HLA-I active les NK (missing-self). L'évolution a donc prévu une double surveillance complémentaire.</p>
+  </div>
+
+  <div class="section" id="antiparasite">
+    <h3>Immunité Anti-Parasitaire (Helminthes)</h3>
+    <p>Les helminthes (vers) déclenchent une polarisation <strong>Th2</strong> (IL-4, IL-5, IL-13) :</p>
+    <ul>
+      <li>IL-4 et IL-13 → production d'<strong>IgE</strong> (switch) → armement des mastocytes et basophiles</li>
+      <li>IL-5 → recrutement et activation des <strong>éosinophiles</strong></li>
+      <li>IgE sur mastocytes + antigène parasite → dégranulation → histamine, protéases → expulsion du parasite</li>
+    </ul>
+    <p>Ce même mécanisme est détourné dans l'allergie : un allergène déclenche la même cascade que le parasite chez des individus génétiquement prédisposés (terrain atopique).</p>
+  </div>
+
+  <div class="section" id="tb-hiv">
+    <h3>Tuberculose &amp; VIH</h3>
+    <h4>Tuberculose</h4>
+    <p>Mycobacterium tuberculosis est un pathogène intracellulaire → nécessite une réponse <strong>Th1</strong> robuste (IFN-γ, TNF-α) pour activer les macrophages et former des <strong>granulomes</strong> (structure organisée de macrophages qui confine le bacille). La rupture du granulome déclenche la tuberculose maladie. Les anti-TNF-α (biothérapies) réactivent fréquemment une tuberculose latente.</p>
+
+    <h4>VIH / SIDA</h4>
+    <p>Le VIH est un <em>rétrovirus à ARN</em> (intégrase, rétrotranscriptase). Il cible les <strong>LT CD4+</strong> via la protéine d'enveloppe <strong>gp120</strong> qui lie le CD4 puis utilise les corécepteurs <strong>CCR5</strong> (souches M-tropes) ou <strong>CXCR4</strong> (souches T-tropes). Lors de la primo-infection, une destruction massive des LT CD4+ survient dans le <strong>MALT intestinal</strong>. L'immunodéficience s'installe quand le taux de CD4 < 200/mm³ (SIDA déclaré).</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHAPITRE 12 — PATHOLOGIES & THÉRAPEUTIQUES -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="chapter" id="chap12">
+  <div class="chapter-header">
+    <span class="chapter-num">Chapitre 12</span>
+    <h2>Pathologies &amp; Applications Thérapeutiques</h2>
+  </div>
+
+  <div class="section" id="allergie">
+    <h3>Allergie &amp; Hypersensibilité</h3>
+    <p><strong>Hypersensibilité de type I (immédiate) = Allergie</strong> : Dépendante des <strong>IgE</strong>. Phase de sensibilisation (première exposition → production d'IgE → fixation sur mastocytes/basophiles via FcεRI). Phase effectrice (réexposition → pontage des IgE → dégranulation massive → libération d'histamine, leucotriènes → bronchospasme, urticaire, choc anaphylactique).</p>
+  </div>
+
+  <div class="section" id="autoimmun">
+    <h3>Auto-Immunité</h3>
+    <p>Rupture de tolérance. Exemples d'associations HLA-maladie :</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Allèle HLA</th><th>Maladie</th></tr>
+        <tr><td class="hl-red">HLA-B27</td><td>Spondylarthrite ankylosante</td></tr>
+        <tr><td>HLA-DQ2/DQ8</td><td>Maladie cœliaque</td></tr>
+        <tr><td>Déficits C1/C2/C4</td><td>Lupus (défaut de clairance des complexes immuns)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="vieillissement">
+    <h3>Grossesse &amp; Vieillissement</h3>
+
+    <h4>Grossesse</h4>
+    <p>Le fœtus est une "demi-greffe" (antigènes paternels étrangers) toléré par l'organisme maternel. Mécanismes de tolérance maternelle :</p>
+    <ul>
+      <li>Expression de molécules HLA non classiques (<strong>HLA-G, HLA-E</strong>) par le trophoblaste → inhibent les NK maternelles</li>
+      <li>Expansion des <strong>Treg</strong> pendant la grossesse</li>
+      <li>Production locale de IDO (indoleamine dioxygénase) → déplétion en tryptophane → inhibition des LT</li>
+    </ul>
+    <div class="note">Les IgG maternelles traversent le placenta (seul isotype traversant) → immunité passive du nouveau-né pendant les premiers mois de vie.</div>
+
+    <h4>Vieillissement — Immunosénescence</h4>
+    <div class="annale">
+      <p>L'<strong>atrophie thymique</strong> (involution progressive dès l'enfance) est la cause majeure du déficit immunitaire du sujet âgé : moins de LT naïfs produits, accumulation de LT mémoires, répertoire T réduit. S'y ajoute un état inflammatoire chronique bas grade = "<strong>inflammaging</strong>". Résultat : moins bonne réponse aux vaccins, plus grande vulnérabilité aux infections.</p>
+    </div>
+  </div>
+
+  <div class="section" id="therapeutiques">
+    <h3>Biothérapies &amp; Immunothérapies</h3>
+
+    <h4>Anticorps Monoclonaux</h4>
+    <p>Nomenclature par le suffixe :</p>
+    <ul>
+      <li><code>-ximab</code> : chimérique (murin + humain) — ex : Rituximab, Infliximab</li>
+      <li><code>-zumab</code> : humanisé — ex : Natalizumab, Bevacizumab</li>
+      <li><code>-umab</code> : entièrement humain — ex : Adalimumab, Ipilimumab</li>
+    </ul>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Médicament</th><th>Cible</th><th>Indication</th></tr>
+        <tr><td>Anti-TNF-α (Infliximab, Adalimumab)</td><td>TNF-α</td><td>Polyarthrite rhumatoïde, Crohn, MICI</td></tr>
+        <tr><td>Anti-IL-6 (Tocilizumab)</td><td>Récepteur IL-6</td><td>PR, syndrome de libération des cytokines</td></tr>
+        <tr><td>Anti-CD20 (Rituximab)</td><td>CD20 des LB</td><td>Lymphomes B, PR, lupus</td></tr>
+        <tr><td>Anti-PD1 (Nivolumab, Pembrolizumab)</td><td>PD-1</td><td>Oncologie — levée de l'inhibition des CTL</td></tr>
+        <tr><td>Anti-CTLA4 (Ipilimumab)</td><td>CTLA-4</td><td>Mélanome, oncologie</td></tr>
+        <tr><td>Natalizumab</td><td>VLA-4</td><td>Sclérose en plaques — blocage passage BHE</td></tr>
+      </table>
+    </div>
+
+    <h4>CAR-T Cells</h4>
+    <p>Lymphocytes T du patient génétiquement modifiés pour exprimer un récepteur chimérique (CAR = Chimeric Antigen Receptor) reconnaissant un antigène tumoral de surface <em>sans restriction HLA</em> → activation directe contre la tumeur. Révolution thérapeutique en hémato-oncologie (leucémies B).</p>
+
+    <h4>Vaccination</h4>
+    <p>Repose entièrement sur la mémoire immunitaire. Types de vaccins :</p>
+    <ul>
+      <li><strong>Vivants atténués</strong> : meilleure immunogénicité (activation forte de l'innée → adaptative), mémoire durable. Ex : ROR, fièvre jaune.</li>
+      <li><strong>Inactivés</strong> : pathogène tué → moins immunogènes, nécessitent souvent des adjuvants.</li>
+      <li><strong>Antigènes purifiés / sous-unitaires</strong> : ex : anatoxines, HBs. Nécessitent des adjuvants (activation de l'immunité innée indispensable).</li>
+      <li><strong>ARNm</strong> : nouvelle génération (vaccins COVID). L'ARNm est traduit par les cellules → production de protéine antigénique → réponse immunitaire.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Le rôle des adjuvants :</strong> ils activent l'immunité innée (via PRR, ex : hydroxyde d'aluminium active l'inflammasome NLRP3) → maturation des DC → déclenchement de la réponse adaptative spécifique. Sans adjuvant, une protéine seule ne déclenche souvent pas de réponse suffisante.
+    </div>
+
+    <div class="divider"></div>
+
+    <h4>Conclusion — Le Grand Circuit</h4>
+    <div class="schema">
+      <div class="title">Vision intégrée de la réponse immunitaire</div>
+      <div class="flow" style="flex-wrap:wrap">
+        <div class="flow-step">Rupture barrières</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Détection PRR/Complément<br><small>PAMP/DAMP</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Inflammation<br><small>IL-1β, IL-6, TNF-α</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Maturation DC</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Priming LT naïf<br><small>3 signaux, ganglions</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Polarisation Th1/2/17/TFH</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">CTL CD8+ / LB → Ac<br><small>Élimination pathogène</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Contraction (apoptose 90%)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Mémoire (LT/LB + plasmocytes moelle)</div>
+      </div>
+    </div>
+
+    <p style="margin-top:20px;color:var(--text2)">Une défaillance à n'importe quelle étape de cette cascade conduit soit à un <strong>déficit immunitaire</strong> (si le mécanisme de défense est absent), soit à une <strong>rupture de tolérance</strong> auto-immune (si la régulation est défaillante), soit à une <strong>réponse exagérée</strong> (allergie, syndrome cytokinique). L'immunologie est la science de cet équilibre précis.</p>
+  </div>
+</div>
+
+</main>
+</body>
+</html>
