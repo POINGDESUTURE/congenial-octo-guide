@@ -4,7 +4,7 @@
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
     "Histologie": ["Annales"],
-    "Immunologie": ["Annales"],
+    "Immunologie": ["Annales", "Recentes"],
     "Hémato": ["Annales"],
     "Génétique": ["CC", "CT"],
     "SSH": ["Annales"]
