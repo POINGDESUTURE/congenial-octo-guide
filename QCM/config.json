@@ -1,13 +1,13 @@
 {
-    "Anatomie": ["AnnalesDig", "AnnalesLoco"],
+    "Anatomie": ["AnnalesDig", "ADRecentes", "ALRecentes", "AnnalesLoco"],
     "Pharmacologie": ["AnnalesS3", "AnnalesS4"],
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
-    "Histologie": ["Annales"],
+    "Histologie": ["Annales", "Recentes"],
     "Immunologie": ["Annales", "Recentes"],
     "Hémato": ["Annales"],
     "Génétique": ["CC", "CT"],
-    "SSH": ["Annales"]
+    "SSH": ["Annales", "Recentes"]
 }
 
 
