@@ -6,7 +6,7 @@
     "Histologie": ["Annales", "Recentes"],
     "Immunologie": ["Annales", "Recentes"],
     "Hémato": ["Annales"],
-    "Génétique": ["CC", "CT"],
+    "Génétique": ["CC", "CT", "Recentes"],
     "SSH": ["Annales", "Recentes"]
 }
 
