@@ -1,6 +1,6 @@
 {
     "Anatomie": ["AnnalesDig", "ADRecentes", "ALRecentes", "AnnalesLoco"],
-    "Pharmacologie": ["AnnalesS3", "AnnalesS4"],
+    "Pharmacologie": ["AnnalesS3", "AnnalesS4", "RecentesS4"],
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
     "Histologie": ["Annales", "Recentes"],
