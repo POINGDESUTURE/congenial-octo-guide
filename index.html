@@ -190,45 +190,60 @@
         }
 
         function validateFullSession() {
-            let score = 0;
-            const details = document.getElementById('correctionDetails');
-            details.innerHTML = '';
-            missedAnswers = [];
+    let score = 0;
+    const details = document.getElementById('correctionDetails');
+    details.innerHTML = '';
+    missedAnswers = [];
 
-            currentSession.forEach((q, qIdx) => {
-                const userChoices = [];
-                q.options.forEach((_, oIdx) => {
-                    if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
-                });
+    currentSession.forEach((q, qIdx) => {
+        const userChoices = [];
+        q.options.forEach((_, oIdx) => {
+            if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
+        });
 
-                let isCorrect = true;
-                const optHtml = q.options.map((opt, oIdx) => {
-                    const checked = userChoices.includes(oIdx);
-                    let cls = 'r0';
-                    if (opt.isCorrect && checked) cls += ' correct-ans';
-                    else if (opt.isCorrect && !checked) { cls += ' missed-ans'; isCorrect = false; missedAnswers.push({q: q.question, a: opt.text}); }
-                    else if (!opt.isCorrect && checked) { cls += ' incorrect-ans'; isCorrect = false; }
-                    return `<div class="${cls}"><span class="answernumber">${String.fromCharCode(97 + oIdx)}.</span><div class="flex-fill">${opt.text} ${opt.isCorrect ? '✓' : ''}</div></div>`;
-                }).join('');
+        // Comptage des erreurs
+        let errors = 0;
+        q.options.forEach((opt, oIdx) => {
+            const checked = userChoices.includes(oIdx);
+            if (opt.isCorrect && !checked) errors++;   // oubli
+            if (!opt.isCorrect && checked) errors++;   // coché en trop
+        });
 
-                if (isCorrect) score++;
+        // Barème médecine
+        let qScore = 0;
+        if (errors === 0) qScore = 1.0;
+        else if (errors === 1) qScore = 0.5;
+        else if (errors === 2) qScore = 0.2;
+        // sinon 0
 
-                details.innerHTML += `
-                    <div class="que">
-                        <div class="info"><h3 class="no">Question ${qIdx + 1}</h3><div class="state">${isCorrect?'Correct':'Incorrect'}</div></div>
-                        <div class="content">
-                            <div class="qtext">${q.question}</div>
-                            ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
-                            <div class="answer">${optHtml}</div>
-                        </div>
-                    </div>`;
-            });
+        score += qScore;
 
-            document.getElementById('sessionScreen').classList.add('hidden');
-            document.getElementById('correctionScreen').classList.remove('hidden');
-            document.getElementById('score').textContent = `Résultat : ${score} / ${currentSession.length}`;
-            window.scrollTo(0,0);
-        }
+        const isCorrect = errors === 0;
+        const optHtml = q.options.map((opt, oIdx) => {
+            const checked = userChoices.includes(oIdx);
+            let cls = 'r0';
+            if (opt.isCorrect && checked) cls += ' correct-ans';
+            else if (opt.isCorrect && !checked) { cls += ' missed-ans'; missedAnswers.push({q: q.question, a: opt.text}); }
+            else if (!opt.isCorrect && checked) cls += ' incorrect-ans';
+            return `<div class="${cls}"><span class="answernumber">${String.fromCharCode(97 + oIdx)}.</span><div class="flex-fill">${opt.text} ${opt.isCorrect ? '✓' : ''}</div></div>`;
+        }).join('');
+
+        details.innerHTML += `
+            <div class="que">
+                <div class="info"><h3 class="no">Question ${qIdx + 1}</h3><div class="state">${qScore.toFixed(1)}/1</div></div>
+                <div class="content">
+                    <div class="qtext">${q.question}</div>
+                    ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
+                    <div class="answer">${optHtml}</div>
+                </div>
+            </div>`;
+    });
+
+    document.getElementById('sessionScreen').classList.add('hidden');
+    document.getElementById('correctionScreen').classList.remove('hidden');
+    document.getElementById('score').textContent = `Résultat : ${score.toFixed(1)} / ${currentSession.length}`;
+    window.scrollTo(0,0);
+}
 
         function displaySubjects() {
             const list = document.getElementById('subjectsList');
