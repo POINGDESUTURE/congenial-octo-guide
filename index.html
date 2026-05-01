@@ -241,7 +241,8 @@
 
     document.getElementById('sessionScreen').classList.add('hidden');
     document.getElementById('correctionScreen').classList.remove('hidden');
-    document.getElementById('score').textContent = `Résultat : ${score.toFixed(1)} / ${currentSession.length}`;
+    const scoreSur20 = (score / currentSession.length * 20).toFixed(2);
+document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
     window.scrollTo(0,0);
 }
 
