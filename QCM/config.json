@@ -3,7 +3,16 @@
     "Pharmacologie": ["AnnalesS3", "AnnalesS4", "RecentesS4"],
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
-    "Histologie": ["Annales", "Recentes"],
+    "Histologie": [
+        "Annales",
+        "Recentes",
+        "cardiologie",
+        "respiratoire",
+        "lymphoides",
+        "reins-urinaires",
+        "appareil-feminin",
+        "oeil-oreille"
+    ],
     "Immunologie": ["Annales", "Recentes"],
     "Hémato": ["Annales"],
     "Génétique": ["CC", "CT", "Recentes"],
