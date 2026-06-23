@@ -1,4 +1,3 @@
-```json
 {
     "Anatomie": ["AnnalesDig", "ADRecentes", "ALRecentes", "AnnalesLoco"],
     "Pharmacologie": ["AnnalesS3", "AnnalesS4", "RecentesS4"],
@@ -30,4 +29,3 @@
     "Génétique": ["CC", "CT", "Recentes"],
     "SSH": ["Annales", "Recentes"]
 }
-```
