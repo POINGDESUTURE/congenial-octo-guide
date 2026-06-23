@@ -1,8 +1,19 @@
+```json
 {
     "Anatomie": ["AnnalesDig", "ADRecentes", "ALRecentes", "AnnalesLoco"],
     "Pharmacologie": ["AnnalesS3", "AnnalesS4", "RecentesS4"],
     "Physiologie": ["AnnalesLoco"],
-    "Semiologie": ["AnnalesG", "AnnalesDig", "AnnalesLoco"],
+    "Semiologie": [
+        "AnnalesG",
+        "Gériatrie",
+        "Gynécologie",
+        "Pédiatrie",
+        "Psychiatrie",
+        "Biologie",
+        "Douleur",
+        "Générale",
+        "UroAbdo"
+    ],
     "Histologie": [
         "Annales",
         "Recentes",
@@ -15,16 +26,8 @@
         "oeil-oreille"
     ],
     "Immunologie": ["Annales", "Recentes"],
-    "Hémato": ["Annales"],
+    "Hémato": ["Annales", "IA"],
     "Génétique": ["CC", "CT", "Recentes"],
     "SSH": ["Annales", "Recentes"]
 }
-
-
-
-
-
-
-
-
-
+```
