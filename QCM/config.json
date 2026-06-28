@@ -4,6 +4,8 @@
     "Physiologie": ["AnnalesLoco"],
     "Semiologie": [
         "AnnalesG",
+        "S3",
+        "S4",
         "Gériatrie",
         "Gynécologie",
         "Pédiatrie",
