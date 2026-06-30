@@ -27,7 +27,7 @@
         "oeil-oreille"
     ],
     "Immunologie": ["Annales", "Recentes"],
-    "Hémato": ["Annales", "IA"],
+    "Hémato": ["Annales", "IA", "LAST"],
     "Génétique": ["CC", "CT", "Recentes"],
     "SSH": ["Annales", "Recentes"]
 }
