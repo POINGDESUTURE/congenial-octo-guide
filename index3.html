@@ -26,7 +26,12 @@
            (classes et valeurs reprises telles quelles du CSS
            et du HTML réel de la plateforme entrainement.uness.fr)
            ========================================= */
-        #sessionScreen, #correctionScreen { background-color: #fff; padding: 30px; border-radius: 8px; border: 1px solid #dee2e6; }
+        #sessionScreen,
+#correctionScreen{
+    background:#fff;
+    padding:0;
+    border:none;
+}
 
         .que { clear: left; text-align: left; margin: 0 auto 1.8em auto; border-bottom: 2px solid #949494; padding-bottom: 1.5em; }
         .que::after { content: ""; display: table; clear: both; }
@@ -40,8 +45,18 @@
         .que .content { margin: 0 0 0 8.5em; }
         .que .content::after { content: ""; display: table; clear: both; }
 
-        .que .formulation { position: relative; padding: .75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .5rem; color: #001a1e; background-color: #e7f3f5; border-color: #b8dce2; }
-        .que .formulation::after { content: ""; display: table; clear: both; }
+        .que .formulation {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    color: #001a1e;
+    background-color: #e7f3f5;
+    border-color: #b8dce2;
+}
+		
+		.que .formulation::after { content: ""; display: table; clear: both; }
 
         .que .qtext { margin-bottom: 1.5em; }
         .que .qtext p:last-child { margin-bottom: 0; }
@@ -210,7 +225,6 @@
                     </div>
                     <div class="content">
                         <div class="formulation clearfix">
-                            <h4 class="accesshide">Texte de la question</h4>
                             <div class="qtext">
                                 <p>${q.question}</p>
                                 ${q.image ? `<img src="${q.image}">` : ''}
