@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
-    /* =========================================
-       ECRAN D'ACCUEIL / NAVIGATION (inchangé)
-       ========================================= */
     body { background-color: #f2f4f7; font-family: 'Roboto', sans-serif; font-size: 0.9375rem; color: #1d2125; padding-top: 20px; }
     .container { max-width: 1100px; }
 
@@ -22,11 +18,6 @@
     .hidden { display: none; }
     .setup-card { background: white; border-radius: 8px; border: 1px solid #dee2e6; padding: 30px; }
 
-    /* =========================================
-       RENDU QUESTION / REPONSE - COPIE FIDELE UNESS
-       (classes et valeurs reprises telles quelles du CSS
-       et du HTML réel de la plateforme entrainement.uness.fr)
-       ========================================= */
     #sessionScreen, #correctionScreen { background-color: #fff; padding: 30px; border-radius: 8px; border: 1px solid #dee2e6; }
 
     .que { clear: left; text-align: left; margin: 0 auto 1.8em auto; border-bottom: 2px solid #949494; padding-bottom: 1.5em; }
@@ -43,8 +34,7 @@
 
     .que .formulation { position: relative; padding: 0.5rem 0; margin-bottom: 1rem; color: #1d2125; background-color: #ffffff; }
     .que .formulation::after { content: ""; display: table; clear: both; }
-	
-	/* Masquage strict de "Texte de la question" */
+
     .accesshide { display: none !important; }
 
     .que .qtext { margin-bottom: 1.5em; }
@@ -62,7 +52,6 @@
     .que .answer [data-region="answer-label"] p { margin: 0; }
     .que .answer .flex-fill { flex: 1; }
 
-    /* Correction : couleurs exactes du thème Moove/UNESS */
     .que .answer .correct { background-color: #b2edaf; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
     .que .answer .correctnotchecked { background-color: #cde3cd; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
     .que .answer .incorrect { background-color: #f4b9b8; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
@@ -80,9 +69,12 @@
 
     .que img { max-width: 100%; }
 
-    /* Bouton de validation identique au bouton "Page suivante" de Moove (btn-primary) */
     #sessionScreen .btn-primary, #correctionScreen .btn-primary { background-color: #a463ad; border-color: #a463ad; }
     #sessionScreen .btn-primary:hover, #correctionScreen .btn-primary:hover { background-color: #905199; border-color: #894c91; }
+
+    .breadcrumb-nav { font-size: 0.85rem; color: #6c757d; margin-bottom: 1rem; }
+    .breadcrumb-nav span { cursor: pointer; }
+    .breadcrumb-nav span:hover { text-decoration: underline; color: #1177d1; }
 </style>
 
 </head>
@@ -99,7 +91,8 @@
     </div>
 
     <div id="chapterScreen" class="hidden setup-card shadow-sm">
-        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToHome()">← Retour</button>
+        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backOneLevel()">← Retour</button>
+        <div id="breadcrumb" class="breadcrumb-nav"></div>
         <h3 id="currentSubjectTitle" class="mb-4"></h3>
         <div id="chaptersList" class="list-group list-group-flush"></div>
     </div>
@@ -132,44 +125,70 @@
 
 <script>
     let data = {};
-    let currentSubject = '', currentChapter = '', currentSession = [], missedAnswers = [];
+    let currentPath = [], currentSession = [], missedAnswers = [];
+
+    /* Charge récursivement une branche du JSON.
+       - Si le noeud est un array, ce sont des fichiers QCM (feuille).
+       - Si c'est un objet, ce sont des sous-dossiers à explorer. */
+    async function loadNode(node, pathParts) {
+        if (Array.isArray(node)) {
+            const chapters = {};
+            for (const file of node) {
+                try {
+                    const res = await fetch(`QCM/${pathParts.join('/')}/${file}`);
+                    const text = await res.text();
+                    const parsed = parseQCMFile(text);
+                    if (parsed.length > 0) {
+                        chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
+                    }
+                } catch (e) { console.error("Erreur fichier:", file); }
+            }
+            return chapters;
+        } else {
+            const sousDossiers = {};
+            for (const key in node) {
+                sousDossiers[key] = await loadNode(node[key], [...pathParts, key]);
+            }
+            return sousDossiers;
+        }
+    }
 
     async function loadAllQCM() {
         try {
             const configResponse = await fetch('QCM/config.json');
             const subjects = await configResponse.json();
             for (const subject in subjects) {
-                data[subject] = {};
-                for (const file of subjects[subject]) {
-                    try {
-                        const res = await fetch(`QCM/${subject}/${file}`);
-                        const text = await res.text();
-                        const parsed = parseQCMFile(text);
-                        if (parsed.length > 0) {
-                            data[subject][file.replace('.txt','').replace(/_/g,' ')] = parsed;
-                        }
-                    } catch (e) { console.error("Erreur fichier:", file); }
-                }
+                data[subject] = await loadNode(subjects[subject], [subject]);
             }
             document.getElementById('loadingScreen').classList.add('hidden');
             displaySubjects();
         } catch (e) { console.error(e); }
     }
 
-    /* =========================================
-       PARSER CORRIGÉ ET SÉCURISÉ
-       ========================================= */
+    /* Renvoie le noeud correspondant à un chemin donné dans `data` */
+    function getNode(path) {
+        let node = data;
+        for (const key of path) node = node[key];
+        return node;
+    }
+
+    /* Une feuille contient des questions QCM (array d'objets question).
+       Un dossier contient d'autres clés (sous-dossiers ou feuilles). */
+    function isLeaf(node) {
+        return Array.isArray(node);
+    }
+
     function parseQCMFile(content) {
         const qcms = [];
         const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
-        
+
         blocks.forEach(block => {
             const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
-            
+
             if (lines.length < 6) return;
 
             let question = lines[0];
-            
+
             if (question.includes('{') || question.includes(';') || question.includes('<')) return;
 
             let imagePath = null;
@@ -198,13 +217,14 @@
     }
 
     function startSession() {
-        const qcms = data[currentSubject][currentChapter];
+        const node = getNode(currentPath);
+        const qcms = node;
         const size = Math.min(parseInt(document.getElementById('sessionSize').value), qcms.length);
         currentSession = [...qcms].sort(() => Math.random() - 0.5).slice(0, size);
-        
+
         document.getElementById('qcmScreen').classList.add('hidden');
         document.getElementById('sessionScreen').classList.remove('hidden');
-        
+
         const container = document.getElementById('questionsContainer');
         container.innerHTML = currentSession.map((q, qIdx) => `
             <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}">
@@ -238,121 +258,174 @@
                 </div>
             </div>
         `).join('');
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
     function validateFullSession() {
-let score = 0;
-const details = document.getElementById('correctionDetails');
-details.innerHTML = '';
-missedAnswers = [];
+        let score = 0;
+        const details = document.getElementById('correctionDetails');
+        details.innerHTML = '';
+        missedAnswers = [];
 
-currentSession.forEach((q, qIdx) => {
-    const userChoices = [];
-    q.options.forEach((_, oIdx) => {
-        if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
-    });
+        currentSession.forEach((q, qIdx) => {
+            const userChoices = [];
+            q.options.forEach((_, oIdx) => {
+                if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
+            });
 
-    let errors = 0;
-    q.options.forEach((opt, oIdx) => {
-        const checked = userChoices.includes(oIdx);
-        if (opt.isCorrect && !checked) errors++;
-        if (!opt.isCorrect && checked) errors++;
-    });
+            let errors = 0;
+            q.options.forEach((opt, oIdx) => {
+                const checked = userChoices.includes(oIdx);
+                if (opt.isCorrect && !checked) errors++;
+                if (!opt.isCorrect && checked) errors++;
+            });
 
-    let qScore = 0;
-    if (errors === 0) qScore = 1.0;
-    else if (errors === 1) qScore = 0.5;
-    else if (errors === 2) qScore = 0.2;
+            let qScore = 0;
+            if (errors === 0) qScore = 1.0;
+            else if (errors === 1) qScore = 0.5;
+            else if (errors === 2) qScore = 0.2;
 
-    score += qScore;
+            score += qScore;
 
-    // Détermination de la classe de correction (comme sur la plateforme)
-    let correctnessClass, correctnessLabel;
-    if (errors === 0) { correctnessClass = 'correct'; correctnessLabel = 'Correct'; }
-    else if (userChoices.length === 0) { correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; }
-    else if (qScore > 0) { correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; }
-    else { correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; }
+            let correctnessClass, correctnessLabel;
+            if (errors === 0) { correctnessClass = 'correct'; correctnessLabel = 'Correct'; }
+            else if (userChoices.length === 0) { correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; }
+            else if (qScore > 0) { correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; }
+            else { correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; }
 
-    const optHtml = q.options.map((opt, oIdx) => {
-        const checked = userChoices.includes(oIdx);
-        let stateCls = '', icon = '';
-        if (opt.isCorrect && checked) { stateCls = 'correct'; icon = '<i class="icon fa-solid fa-check"></i>'; }
-        else if (opt.isCorrect && !checked) { stateCls = 'correctnotchecked'; icon = '<i class="icon fa-solid fa-check"></i>'; missedAnswers.push({q: q.question, a: opt.text}); }
-        else if (!opt.isCorrect && checked) { stateCls = 'incorrect'; icon = '<i class="icon fa-solid fa-times"></i>'; }
-        else { stateCls = 'incorrectnotchecked'; }
-        return `
-            <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'}">
-                <input type="checkbox" disabled ${checked ? 'checked' : ''}>
-                <label data-region="answer-label" class="${stateCls}">
-                    <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
-                    <div class="flex-fill ml-1"><p>${opt.text}</p></div>
-                    ${icon}
-                </label>
-            </div>`;
-    }).join('');
+            const optHtml = q.options.map((opt, oIdx) => {
+                const checked = userChoices.includes(oIdx);
+                let stateCls = '', icon = '';
+                if (opt.isCorrect && checked) { stateCls = 'correct'; icon = '<i class="icon fa-solid fa-check"></i>'; }
+                else if (opt.isCorrect && !checked) { stateCls = 'correctnotchecked'; icon = '<i class="icon fa-solid fa-check"></i>'; missedAnswers.push({ q: q.question, a: opt.text }); }
+                else if (!opt.isCorrect && checked) { stateCls = 'incorrect'; icon = '<i class="icon fa-solid fa-times"></i>'; }
+                else { stateCls = 'incorrectnotchecked'; }
+                return `
+                    <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'}">
+                        <input type="checkbox" disabled ${checked ? 'checked' : ''}>
+                        <label data-region="answer-label" class="${stateCls}">
+                            <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                            <div class="flex-fill ml-1"><p>${opt.text}</p></div>
+                            ${icon}
+                        </label>
+                    </div>`;
+            }).join('');
 
-    const noteStr = qScore.toFixed(2).replace('.', ',');
+            const noteStr = qScore.toFixed(2).replace('.', ',');
 
-    details.innerHTML += `
-        <div class="que sngmultichoice deferredfeedback ${correctnessClass}">
-            <div class="info">
-                <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
-                <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
-                <div class="grade">Note : ${noteStr} sur 1,00</div>
-            </div>
-            <div class="content">
-                <div class="formulation clearfix">
-                    <div class="qtext">
-                        <p>${q.question}</p>
-                        ${q.image ? `<img src="${q.image}">` : ''}
+            details.innerHTML += `
+                <div class="que sngmultichoice deferredfeedback ${correctnessClass}">
+                    <div class="info">
+                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                        <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
+                        <div class="grade">Note : ${noteStr} sur 1,00</div>
                     </div>
-                    <fieldset class="ablock">
-                        <div class="answer">${optHtml}</div>
-                    </fieldset>
-                </div>
-            </div>
-        </div>`;
-});
+                    <div class="content">
+                        <div class="formulation clearfix">
+                            <div class="qtext">
+                                <p>${q.question}</p>
+                                ${q.image ? `<img src="${q.image}">` : ''}
+                            </div>
+                            <fieldset class="ablock">
+                                <div class="answer">${optHtml}</div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>`;
+        });
 
-document.getElementById('sessionScreen').classList.add('hidden');
-document.getElementById('correctionScreen').classList.remove('hidden');
-const scoreSur20 = (score / currentSession.length * 20).toFixed(2).replace('.', ',');
-document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
-window.scrollTo(0,0);
-
-}
+        document.getElementById('sessionScreen').classList.add('hidden');
+        document.getElementById('correctionScreen').classList.remove('hidden');
+        const scoreSur20 = (score / currentSession.length * 20).toFixed(2).replace('.', ',');
+        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
+        window.scrollTo(0, 0);
+    }
 
     function displaySubjects() {
         const list = document.getElementById('subjectsList');
+        list.innerHTML = '';
         for (let s in data) {
             const item = document.createElement('button');
             item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-            item.innerHTML = `${s} <span class="badge bg-primary rounded-pill">${Object.values(data[s]).reduce((a,b)=>a+b.length,0)}</span>`;
-            item.onclick = () => openSubject(s);
+            item.innerHTML = `${s} <span class="badge bg-primary rounded-pill">${countLeafFiles(data[s])}</span>`;
+            item.onclick = () => openNode([s]);
             list.appendChild(item);
         }
     }
-    function openSubject(s) {
-        currentSubject = s;
+
+    /* Compte le nombre total de fichiers QCM dans un noeud, quel que soit le niveau de profondeur */
+    function countLeafFiles(node) {
+        if (isLeaf(node)) return node.length;
+        return Object.values(node).reduce((acc, child) => acc + countLeafFiles(child), 0);
+    }
+
+    /* Ouvre un noeud : soit un sous-dossier (on affiche la liste), soit une feuille (on lance l'écran QCM) */
+    function openNode(path) {
+        currentPath = path;
+        const node = getNode(path);
+
+        if (isLeaf(node)) {
+            document.getElementById('chapterScreen').classList.add('hidden');
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.remove('hidden');
+            document.getElementById('sessionChapterTitle').textContent = path[path.length - 1];
+            return;
+        }
+
         document.getElementById('homeScreen').classList.add('hidden');
         document.getElementById('chapterScreen').classList.remove('hidden');
-        document.getElementById('currentSubjectTitle').textContent = s;
+        document.getElementById('currentSubjectTitle').textContent = path[path.length - 1];
+
+        renderBreadcrumb(path);
+
         const list = document.getElementById('chaptersList');
         list.innerHTML = '';
-        for (let ch in data[s]) {
+        for (let key in node) {
+            const child = node[key];
             const item = document.createElement('button');
-            item.className = 'list-group-item list-group-item-action';
-            item.textContent = ch;
-            item.onclick = () => openChapter(ch);
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            const badge = isLeaf(child) ? child.length : countLeafFiles(child);
+            item.innerHTML = `${key} <span class="badge bg-secondary rounded-pill">${badge}</span>`;
+            item.onclick = () => openNode([...path, key]);
             list.appendChild(item);
         }
     }
-    function openChapter(ch) { currentChapter = ch; document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); document.getElementById('sessionChapterTitle').textContent = ch; }
-    function backToHome() { document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('homeScreen').classList.remove('hidden'); }
-    function backToChapters() { document.getElementById('qcmScreen').classList.add('hidden'); document.getElementById('chapterScreen').classList.remove('hidden'); }
-    function backToQCMScreen() { document.getElementById('correctionScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); }
-    
+
+    function renderBreadcrumb(path) {
+        const breadcrumb = document.getElementById('breadcrumb');
+        breadcrumb.innerHTML = path.map((part, idx) => {
+            const isLast = idx === path.length - 1;
+            const sep = idx > 0 ? ' / ' : '';
+            if (isLast) return `${sep}${part}`;
+            const subPath = path.slice(0, idx + 1);
+            return `${sep}<span onclick='openNode(${JSON.stringify(subPath)})'>${part}</span>`;
+        }).join('');
+    }
+
+    function backOneLevel() {
+        if (currentPath.length <= 1) {
+            backToHome();
+            return;
+        }
+        openNode(currentPath.slice(0, -1));
+    }
+
+    function backToHome() {
+        currentPath = [];
+        document.getElementById('chapterScreen').classList.add('hidden');
+        document.getElementById('homeScreen').classList.remove('hidden');
+    }
+
+    function backToChapters() {
+        document.getElementById('qcmScreen').classList.add('hidden');
+        openNode(currentPath.slice(0, -1));
+    }
+
+    function backToQCMScreen() {
+        document.getElementById('correctionScreen').classList.add('hidden');
+        document.getElementById('qcmScreen').classList.remove('hidden');
+    }
+
     loadAllQCM();
 </script>
 
