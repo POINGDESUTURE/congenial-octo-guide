@@ -1,33 +1,17 @@
 {
-    "Anatomie": ["AnnalesDig", "ADRecentes", "ALRecentes", "AnnalesLoco"],
-    "Pharmacologie": ["AnnalesS3", "AnnalesS4", "RecentesS4"],
-    "Physiologie": ["AnnalesLoco"],
-    "Semiologie": [
-        "AnnalesG",
-        "S3",
-        "S4",
-        "Gériatrie",
-        "Gynécologie",
-        "Pédiatrie",
-        "Psychiatrie",
-        "Biologie",
-        "Douleur",
-        "Générale",
-        "UroAbdo"
-    ],
-    "Histologie": [
-        "Annales",
-        "Recentes",
-        "Cardiologie",
-        "digestif",
-        "respiratoire",
-        "lymphoides",
-        "reins-urinaires",
-        "appareil-feminin",
-        "oeil-oreille"
-    ],
-    "Immunologie": ["Annales", "Recentes"],
-    "Hémato": ["Annales", "IA", "LAST"],
-    "Génétique": ["CC", "CT", "Recentes"],
-    "SSH": ["Annales", "Recentes"]
+    "Pharmacologie": ["Annales", "Recentes"],
+    "Hormono-Reprod": {
+        "SEMIOLOGIE": ["Annales", "Recentes"],
+        "REPRODUCTION": ["Annales", "Recentes"],
+        "BIOCHIMIE": ["Annales", "Recentes"],
+        "NUTRITION": ["Annales", "Recentes"]
+    },
+    "NeuroSensoriel": {
+        "PHYSIOLOGIE": ["Annales", "Recentes"],
+        "ANATOMIE": ["Annales", "Recentes"],
+        "BIOPHYSIQUE": ["Annales", "Recentes"],
+        "NEUROLOGIE": ["Annales", "Recentes"],
+        "PSYCHIATRIE": ["Annales", "Recentes"],
+        "ORL-CMF-OPHTALMO": ["Annales", "Recentes"]
+    }
 }
