@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Usine à QCM - Concours (V4 GitHub Sync)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .card { background: var(--card); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        label { font-weight: 600; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        button:hover { opacity: 0.9; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-success { background: #16a34a; }
+        .btn-danger { background: #dc2626; }
+        .btn-warning { background: #d97706; }
+        .hidden { display: none; }
+        .qcm-box { border-left: 4px solid var(--primary); padding-left: 15px; margin: 20px 0; }
+        .prop-item { padding: 8px; margin: 4px 0; border-radius: 4px; background: #f1f5f9; }
+        .prop-item.correct { background: #dcfce7; font-weight: bold; color: #15803d; }
+        .alert-security { background: #fef3c7; color: #92400e; padding: 10px 15px; border-radius: 6px; font-size: 0.85em; margin-bottom: 15px; border-left: 4px solid #f59e0b; }
+        .feedback-banner { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 10px; margin-bottom: 15px; font-size: 0.9em; color: #1e40af; }
+        .status-line { font-size: 0.85em; color: #64748b; margin-top: -8px; margin-bottom: 12px; }
+        .status-line.error { color: #dc2626; }
+        .status-line.ok { color: #16a34a; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎯 Usine à QCM (V4 - Sync GitHub)</h1>
+
+    <div class="card" id="api-card">
+        <h3>🔑 Clé API Groq</h3>
+        <div class="alert-security">
+            ⚠️ Usage personnel/local uniquement. Ne partage pas cette page si ta clé y est enregistrée.
+        </div>
+        <input type="password" id="apiKey" placeholder="gsk_..." />
+        <button onclick="saveKey()">Enregistrer la clé</button>
+    </div>
+
+    <div class="card">
+        <h3>📚 Matière (synchronisée avec GitHub)</h3>
+        <div id="configStatus" class="status-line">⏳ Chargement du config.json depuis GitHub...</div>
+
+        <label>Bloc / Matière :</label>
+        <select id="blocSelect" onchange="onBlocChange()"><option value="">-- Choisis --</option></select>
+
+        <div id="sousMatiereWrapper" class="hidden">
+            <label>Sous-matière :</label>
+            <select id="sousMatiereSelect" onchange="onTargetReady()"><option value="">-- Choisis --</option></select>
+        </div>
+
+        <div id="annalesStatus" class="status-line hidden"></div>
+
+        <label>📄 Déposer le PDF du cours du jour :</label>
+        <input type="file" id="pdfFile" accept="application/pdf" />
+        <button onclick="processPDF()">⚡ Charger et Analyser le Cours</button>
+        <p id="pdfStatus" style="font-weight: bold; color: #2563eb;"></p>
+    </div>
+
+    <div class="card hidden" id="qcmCard">
+        <h3>⚡ Studio de Génération (Style Annales)</h3>
+        <button id="genBtn" onclick="generateSingleQCM()">Générer un QCM ciblé sur ce cours</button>
+
+        <div id="qcmDisplay" class="hidden">
+            <div id="activeFeedback" class="feedback-banner hidden"></div>
+            <div class="qcm-box">
+                <h4 id="qcmQuestion"></h4>
+                <div id="qcmProps"></div>
+            </div>
+
+            <p><strong>Ce QCM correspond-il au niveau et au style attendus ?</strong></p>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-success" onclick="userDecision('oui')">✅ Oui (Valider & Ajouter)</button>
+                <button class="btn-danger" onclick="userDecision('non')">❌ Non (Rejeter & Suivant)</button>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <label>Ou rejeter en indiquant ce qu'il faut corriger pour le prochain :</label>
+                <textarea id="critique" rows="2" placeholder="ex : Trop facile, piège plutôt sur la vascularisation..."></textarea>
+                <button class="btn-warning" onclick="userDecision('critique')">💡 Rejeter & Appliquer la remarque au suivant</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📦 Banque de QCM Générés (<span id="countQCM">0</span>)</h3>
+        <button onclick="exportQCM()">📥 Télécharger le fichier (format Annales, $ devant les bonnes réponses)</button>
+        <button style="background: #64748b; margin-left: 10px;" onclick="clearBank()">🗑️ Réinitialiser la Banque</button>
+        <p class="status-line">Le fichier téléchargé est prêt à remplacer/compléter le fichier "IA" correspondant dans ton repo GitHub.</p>
+    </div>
+</div>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    // === Configuration du repo GitHub ===
+    const GH_USER = "poingdesuture";
+    const GH_REPO = "congenial-octo-guide";
+    const GH_BRANCH = "main"; // à corriger en "master" si les fetch échouent en 404
+    const GH_RAW_BASE = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}`;
+
+    let pdfTextContent = "";
+    let currentQCM = null;
+    let validatedQCMList = [];
+    let lastCritique = "";
+    let configData = null;
+    let annalesRawText = ""; // contenu brut du fichier Annales pour la matière/sous-matière sélectionnée
+    let currentTargetPath = ""; // ex: "Pharmacologie" ou "NeuroSensoriel/PHYSIOLOGIE"
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const key = localStorage.getItem("groq_key");
+        if (key) document.getElementById("apiKey").value = key;
+
+        const savedBank = localStorage.getItem("qcm_validated_bank");
+        if (savedBank) {
+            try {
+                validatedQCMList = JSON.parse(savedBank);
+                updateBankCount();
+            } catch (e) {
+                console.error("Erreur de lecture du localStorage", e);
+            }
+        }
+
+        await loadConfig();
+    });
+
+    function saveKey() {
+        const key = document.getElementById("apiKey").value.trim();
+        if (!key) return alert("Veuillez saisir une clé valide.");
+        localStorage.setItem("groq_key", key);
+        alert("Clé enregistrée !");
+    }
+
+    function saveBankToLocalStorage() {
+        localStorage.setItem("qcm_validated_bank", JSON.stringify(validatedQCMList));
+        updateBankCount();
+    }
+
+    function updateBankCount() {
+        document.getElementById("countQCM").innerText = validatedQCMList.length;
+    }
+
+    function clearBank() {
+        if (confirm("Voulez-vous vraiment vider la banque locale de QCMs ?")) {
+            validatedQCMList = [];
+            localStorage.removeItem("qcm_validated_bank");
+            updateBankCount();
+        }
+    }
+
+    // === Chargement du config.json depuis GitHub (GET public, sans auth) ===
+    async function loadConfig() {
+        const statusEl = document.getElementById("configStatus");
+        try {
+            const url = `${GH_RAW_BASE}/QCM/config.json`;
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            configData = await res.json();
+
+            const blocSelect = document.getElementById("blocSelect");
+            blocSelect.innerHTML = '<option value="">-- Choisis --</option>';
+
+            Object.keys(configData).forEach(key => {
+                const opt = document.createElement("option");
+                opt.value = key;
+                opt.innerText = key;
+                blocSelect.appendChild(opt);
+            });
+
+            statusEl.innerText = "✅ Config synchronisée avec GitHub.";
+            statusEl.className = "status-line ok";
+        } catch (err) {
+            statusEl.innerText = `❌ Impossible de charger config.json (${err.message}). Vérifie GH_BRANCH ("main"/"master") en haut du script.`;
+            statusEl.className = "status-line error";
+            console.error(err);
+        }
+    }
+
+    function onBlocChange() {
+        const bloc = document.getElementById("blocSelect").value;
+        const sousWrapper = document.getElementById("sousMatiereWrapper");
+        const sousSelect = document.getElementById("sousMatiereSelect");
+        sousSelect.innerHTML = '<option value="">-- Choisis --</option>';
+
+        if (!bloc) {
+            sousWrapper.classList.add("hidden");
+            return;
+        }
+
+        const value = configData[bloc];
+
+        // Cas matière seule (tableau ["Annales","IA"])
+        if (Array.isArray(value)) {
+            sousWrapper.classList.add("hidden");
+            currentTargetPath = bloc;
+            onTargetReady();
+            return;
+        }
+
+        // Cas bloc avec sous-matières (objet)
+        sousWrapper.classList.remove("hidden");
+        Object.keys(value).forEach(sousKey => {
+            const opt = document.createElement("option");
+            opt.value = sousKey;
+            opt.innerText = sousKey;
+            sousSelect.appendChild(opt);
+        });
+    }
+
+    function onTargetReady() {
+        const bloc = document.getElementById("blocSelect").value;
+        const sousSelect = document.getElementById("sousMatiereSelect");
+        const sousVal = sousSelect ? sousSelect.value : "";
+
+        const value = configData[bloc];
+        if (Array.isArray(value)) {
+            currentTargetPath = bloc;
+        } else {
+            if (!sousVal) return;
+            currentTargetPath = `${bloc}/${sousVal}`;
+        }
+
+        fetchAnnalesForTarget(currentTargetPath);
+    }
+
+    // === GET du fichier Annales brut correspondant à la matière/sous-matière choisie ===
+    async function fetchAnnalesForTarget(targetPath) {
+        const statusEl = document.getElementById("annalesStatus");
+        statusEl.classList.remove("hidden");
+        statusEl.innerText = `⏳ Récupération des annales pour "${targetPath}"...`;
+        statusEl.className = "status-line";
+        annalesRawText = "";
+
+        try {
+            const url = `${GH_RAW_BASE}/QCM/${targetPath}/Annales`;
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            annalesRawText = await res.text();
+            const nbBlocs = annalesRawText.split(/\n\s*\n/).filter(b => b.trim()).length;
+            statusEl.innerText = `✅ Annales chargées (${nbBlocs} QCM détectés) — le style sera imité.`;
+            statusEl.className = "status-line ok";
+        } catch (err) {
+            statusEl.innerText = `⚠️ Impossible de charger les annales (${err.message}). Génération possible mais sans style de référence.`;
+            statusEl.className = "status-line error";
+            console.error(err);
+        }
+    }
+
+    // Tire 2-3 blocs QCM aléatoires du texte brut des annales pour servir d'exemple de style
+    function getRandomAnnalesExamples(rawText, count = 2) {
+        if (!rawText) return "";
+        const blocs = rawText.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+        if (blocs.length === 0) return "";
+        const shuffled = [...blocs].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, count).join("\n\n");
+    }
+
+    async function processPDF() {
+        const fileInput = document.getElementById("pdfFile");
+        const status = document.getElementById("pdfStatus");
+
+        if (!fileInput.files[0]) return alert("Veuillez sélectionner un fichier PDF.");
+        if (!currentTargetPath) return alert("Choisis d'abord une matière / sous-matière.");
+
+        status.innerText = "⏳ Extraction du texte du PDF...";
+        try {
+            const file = fileInput.files[0];
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+            let text = "";
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const content = await page.getTextContent();
+                text += content.items.map(item => item.str).join(" ") + "\n\n";
+            }
+
+            pdfTextContent = text;
+            status.innerText = `✅ PDF chargé (${pdf.numPages} pages) ! Prêt pour la génération.`;
+            document.getElementById("qcmCard").classList.remove("hidden");
+        } catch (err) {
+            status.innerText = "❌ Erreur de lecture du PDF.";
+            console.error(err);
+        }
+    }
+
+    function getSmartChunk(text, targetSize = 2000) {
+        const paragraphs = text.split("\n\n").filter(p => p.trim().length > 0);
+        if (paragraphs.length === 0) return text.substring(0, targetSize);
+
+        const startIndex = Math.floor(Math.random() * paragraphs.length);
+        let selectedText = "";
+
+        for (let i = startIndex; i < paragraphs.length; i++) {
+            if ((selectedText.length + paragraphs[i].length) > targetSize && selectedText.length > 0) {
+                break;
+            }
+            selectedText += paragraphs[i] + "\n\n";
+        }
+
+        return selectedText.trim() || text.substring(0, targetSize);
+    }
+
+    function validateQCMStructure(qcm) {
+        if (!qcm || typeof qcm !== 'object') return false;
+        if (!qcm.question || typeof qcm.question !== 'string') return false;
+        if (!Array.isArray(qcm.propositions) || qcm.propositions.length !== 5) return false;
+        if (!Array.isArray(qcm.reponses_correctes)) return false;
+
+        const numCorrect = qcm.reponses_correctes.length;
+        if (numCorrect < 1 || numCorrect > 4) {
+            console.warn(`Structure invalide : ${numCorrect} bonnes réponses.`);
+            return false;
+        }
+        return true;
+    }
+
+    let genAttempts = 0;
+    const MAX_GEN_ATTEMPTS = 5;
+
+    async function generateSingleQCM() {
+        const apiKey = localStorage.getItem("groq_key");
+        if (!apiKey) return alert("Veuillez d'abord enregistrer votre clé API Groq.");
+        if (!pdfTextContent) return alert("Charge d'abord un PDF de cours.");
+
+        genAttempts = 0;
+        await tryGenerate(apiKey);
+    }
+
+    async function tryGenerate(apiKey) {
+        genAttempts++;
+        if (genAttempts > MAX_GEN_ATTEMPTS) {
+            document.getElementById("qcmQuestion").innerText = "❌ Échec après plusieurs tentatives.";
+            alert("Le modèle n'a pas réussi à produire un QCM valide après plusieurs essais. Réessaie dans un instant.");
+            return;
+        }
+
+        const display = document.getElementById("qcmDisplay");
+        display.classList.remove("hidden");
+        document.getElementById("qcmQuestion").innerText = "⚡ Génération en cours par Llama-3.3-70b...";
+        document.getElementById("qcmProps").innerHTML = "";
+        document.getElementById("genBtn").disabled = true;
+
+        const feedbackBanner = document.getElementById("activeFeedback");
+        if (lastCritique) {
+            feedbackBanner.innerText = `💬 Remarque prise en compte pour ce tirage : "${lastCritique}"`;
+            feedbackBanner.classList.remove("hidden");
+        } else {
+            feedbackBanner.classList.add("hidden");
+        }
+
+        const chunk = getSmartChunk(pdfTextContent, 2000);
+        const annalesExamples = getRandomAnnalesExamples(annalesRawText, 2);
+
+        let critiqueInstruction = "";
+        if (lastCritique) {
+            critiqueInstruction = `\nATTENTION : L'utilisateur a rejeté le précédent QCM avec la remarque suivante : "${lastCritique}". CORRIGE CE DÉFAUT DANS CETTE NOUVELLE PROPOSITION !`;
+        }
+
+        const prompt = `Tu es un professeur expert en rédaction de QCM de concours (Format ABCDE) pour "${currentTargetPath}".
+Génère UN QCM à 5 propositions (A, B, C, D, E) basé STRICTEMENT sur le cours fourni.
+
+RÈGLES STRICTES DE STRUCTURE :
+1. Strictement 5 propositions (A, B, C, D, E).
+2. De 1 à 4 bonnes réponses VRAIES (STRICTEMENT INTERDIT : 0 ou 5 bonnes réponses).
+3. Varie les pièges et la position des bonnes réponses.
+4. Imite EXACTEMENT le niveau de difficulté, la formulation et le style des vraies annales ci-dessous.
+5. Ne génère AUCUNE explication ou justification.
+${critiqueInstruction}
+
+${annalesExamples ? "--- EXEMPLES RÉELS D'ANNALES À IMITER (style et niveau) ---\n" + annalesExamples + "\n" : ""}
+
+--- CONTEXTE DU COURS DU JOUR ---
+${chunk}
+
+Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
+{
+  "question": "Intitulé de la question ?",
+  "propositions": ["A) Prop 1", "B) Prop 2", "C) Prop 3", "D) Prop 4", "E) Prop 5"],
+  "reponses_correctes": ["A", "C"]
+}`;
+
+        try {
+            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    model: "llama-3.3-70b-versatile",
+                    messages: [
+                        { role: "system", content: "Tu réponds uniquement en JSON valide." },
+                        { role: "user", content: prompt }
+                    ],
+                    temperature: 0.7
+                })
+            });
+
+            if (!response.ok) {
+                if (response.status === 429) throw new Error("Rate limit atteint sur Groq. Patiente quelques secondes.");
+                throw new Error(`Erreur API Groq (${response.status})`);
+            }
+
+            const data = await response.json();
+            if (!data?.choices?.[0]?.message?.content) throw new Error("Réponse API malformée.");
+
+            const rawContent = data.choices[0].message.content.replace(/```json|```/g, '').trim();
+            const parsedQCM = JSON.parse(rawContent);
+
+            if (!validateQCMStructure(parsedQCM)) {
+                return tryGenerate(apiKey); // relance bornée par MAX_GEN_ATTEMPTS
+            }
+
+            currentQCM = parsedQCM;
+            renderQCM(currentQCM);
+            document.getElementById("genBtn").disabled = false;
+
+        } catch (err) {
+            document.getElementById("qcmQuestion").innerText = "❌ Erreur de génération.";
+            document.getElementById("genBtn").disabled = false;
+            alert(`Erreur : ${err.message}`);
+            console.error(err);
+        }
+    }
+
+    function renderQCM(qcm) {
+        document.getElementById("qcmQuestion").innerText = qcm.question;
+        const propsDiv = document.getElementById("qcmProps");
+        propsDiv.innerHTML = "";
+
+        const letters = ["A", "B", "C", "D", "E"];
+        const corrects = new Set(qcm.reponses_correctes);
+
+        qcm.propositions.forEach((prop, idx) => {
+            const letter = letters[idx];
+            const isCorrect = corrects.has(letter);
+            const cleanProp = prop.replace(new RegExp(`^${letter}[\\).]\\s*`), '');
+
+            const div = document.createElement("div");
+            div.className = `prop-item ${isCorrect ? 'correct' : ''}`;
+            div.innerText = `${isCorrect ? '$' : ''}${letter}. ${cleanProp}`;
+            propsDiv.appendChild(div);
+        });
+    }
+
+    function userDecision(type) {
+        if (!currentQCM && type !== 'non') return;
+        const apiKey = localStorage.getItem("groq_key");
+
+        if (type === 'oui') {
+            validatedQCMList.push(currentQCM);
+            saveBankToLocalStorage();
+            lastCritique = "";
+        } else if (type === 'critique') {
+            const critiqueInput = document.getElementById("critique");
+            lastCritique = critiqueInput.value.trim();
+            critiqueInput.value = "";
+        } else if (type === 'non') {
+            lastCritique = "";
+        }
+
+        currentQCM = null;
+        genAttempts = 0;
+        tryGenerate(apiKey);
+    }
+
+    // Formatage identique au fichier "Annales" source : question, A-E, $ devant les bonnes réponses, ligne vide entre blocs
+    function formatQCMAsAnnalesText(qcm) {
+        const letters = ["A", "B", "C", "D", "E"];
+        const corrects = new Set(qcm.reponses_correctes);
+        let block = `${qcm.question}\n`;
+
+        qcm.propositions.forEach((prop, idx) => {
+            const letter = letters[idx];
+            const cleanProp = prop.replace(new RegExp(`^${letter}[\\).]\\s*`), '');
+            const prefix = corrects.has(letter) ? "$" : "";
+            block += `${prefix}${letter}. ${cleanProp}\n`;
+        });
+
+        return block.trim();
+    }
+
+    function exportQCM() {
+        if (validatedQCMList.length === 0) return alert("Aucun QCM validé à exporter.");
+
+        const output = validatedQCMList.map(formatQCMAsAnnalesText).join("\n\n");
+
+        const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        const safeTarget = (currentTargetPath || "QCM").replace(/\//g, "_");
+        link.download = `IA_${safeTarget}`; // pas d'extension, cohérent avec le fichier Annales source
+        link.click();
+    }
+</script>
+</body>
+</html>
