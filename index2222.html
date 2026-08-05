@@ -149,7 +149,6 @@
 
     // --- UTILITAIRES DE SÉCURITÉ ET SHUFFLE ---
     
-    // Échappement des caractères HTML pour éviter de casser le DOM (ex: PaO2 < 60 mmHg)
     function escapeHTML(str) {
         if (!str) return '';
         return String(str)
@@ -160,7 +159,7 @@
             .replace(/'/g, "&#039;");
     }
 
-    // Mélange impartial de Fisher-Yates (remplace Math.random()-0.5)
+    // Mélange impartial de Fisher-Yates
     function shuffle(array) {
         const arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
@@ -183,8 +182,24 @@
         return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
     }
 
+    // Mise à jour dynamique de la confiance dans le localStorage
     function setConfidence(qcmId, level) {
         sessionConfidence[qcmId] = level; // 'sure', 'hesitant', ou 'guess'
+        
+        const log = getErrorLog();
+        let updated = false;
+
+        // Met à jour en temps réel les erreurs déjà enregistrées pour ce QCM
+        Object.keys(log).forEach(key => {
+            if (log[key].qcmId === qcmId) {
+                log[key].confidence = level;
+                updated = true;
+            }
+        });
+
+        if (updated) {
+            localStorage.setItem('digital_error_log', JSON.stringify(log));
+        }
     }
 
     function cancelQCM(qcmId) {
@@ -235,8 +250,9 @@
                 p: subjectPath,
                 q: qcmQuestion,
                 i: itemText,
-                fp: 0, // Faux Positif
-                fn: 0, // Faux Négatif
+                qcmId: qcmId, // Identifiant lié au QCM global
+                fp: 0,
+                fn: 0,
                 confidence: sessionConfidence[qcmId] || 'non spécifié'
             };
         }
@@ -380,13 +396,11 @@
         const canceledQCMs = getCanceledQCMs();
         
         const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
-        
         const size = Math.min(parseInt(document.getElementById('sessionSize').value), availableQcms.length);
         
-        // Utilisation de l'algorithme Fisher-Yates à la place de .sort(() => Math.random() - 0.5)
+        // Algorithme de Fisher-Yates
         currentSession = shuffle(availableQcms).slice(0, size);
 
-        // Réinitialisation de la confiance pour la session
         for (let key in sessionConfidence) delete sessionConfidence[key];
 
         document.getElementById('qcmScreen').classList.add('hidden');
@@ -500,7 +514,8 @@
                     stateCls = 'incorrectnotchecked'; 
                 }
 
-                // Utilisation de dataset/listener sécurisé
+                const safeOptId = opt.id.replace(/'/g, "\\'");
+
                 return `
                     <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
                         <input type="checkbox" disabled ${checked ? 'checked' : ''}>
@@ -510,7 +525,7 @@
                             ${icon}
                         </label>
                         ${!isCanceled ? `
-                            <button class="btn btn-outline-warning btn-sm p-1 ms-2" style="font-size:0.75rem;" title="Annuler cet item" onclick="cancelItem('${opt.id.replace(/'/g, "\\'")}')">
+                            <button class="btn btn-outline-warning btn-sm p-1 ms-2" style="font-size:0.75rem;" title="Annuler cet item" onclick="cancelItem('${safeOptId}')">
                                 <i class="fa-solid fa-ban"></i> Annuler item
                             </button>
                         ` : ''}
@@ -518,20 +533,23 @@
             }).join('');
 
             const noteStr = qScore.toFixed(2).replace('.', ',');
+            const safeQcmId = q.id.replace(/'/g, "\\'");
 
-            // Génération du sélecteur de confiance
+            // Sélecteur de confiance déplacé dans la zone .content (largeur complète)
             const confidenceHtml = `
                 <div class="confidence-selector mt-3 pt-2 border-top">
-                    <small class="fw-bold d-block mb-1 text-secondary">Mon niveau de confiance :</small>
-                    <div class="btn-group btn-group-sm w-100" role="group">
-                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'sure')">
-                        <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon niveau de confiance sur ce QCM :</small>
+                        <div class="btn-group btn-group-sm" role="group" style="min-width: 280px;">
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'sure')">
+                            <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
 
-                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'hesitant')">
-                        <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'hesitant')">
+                            <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
 
-                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'guess')">
-                        <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'guess')">
+                            <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
+                        </div>
                     </div>
                 </div>
             `;
@@ -542,8 +560,7 @@
                         <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
                         <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
                         <div class="grade">Note : ${noteStr} sur 1,00</div>
-                        ${confidenceHtml}
-                        <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${q.id.replace(/'/g, "\\'")}')">
+                        <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${safeQcmId}')">
                             <i class="fa-solid fa-ban"></i> Signaler Erratum QCM
                         </button>
                     </div>
@@ -557,6 +574,7 @@
                                 <div class="answer">${optHtml}</div>
                             </fieldset>
                         </div>
+                        ${confidenceHtml}
                     </div>
                 </div>`;
         });
