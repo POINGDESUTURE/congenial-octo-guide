@@ -143,6 +143,32 @@
 <script>
     let data = {};
     let currentPath = [], currentSession = [], missedAnswers = [];
+    
+    // Stockage temporaire du niveau de confiance pour la session en cours
+    const sessionConfidence = {};
+
+    // --- UTILITAIRES DE SÉCURITÉ ET SHUFFLE ---
+    
+    // Échappement des caractères HTML pour éviter de casser le DOM (ex: PaO2 < 60 mmHg)
+    function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    // Mélange impartial de Fisher-Yates (remplace Math.random()-0.5)
+    function shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
 
     // --- PERSISTENCE : ERRATUMS ET CARNET D'ERREURS ---
     function getCanceledQCMs() {
@@ -155,6 +181,10 @@
 
     function getErrorLog() {
         return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+    }
+
+    function setConfidence(qcmId, level) {
+        sessionConfidence[qcmId] = level; // 'sure', 'hesitant', ou 'guess'
     }
 
     function cancelQCM(qcmId) {
@@ -196,20 +226,27 @@
         }
     }
 
-    function logItemResult(subjectPath, qcmQuestion, itemText, status) {
+    function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId) {
         const log = getErrorLog();
         const key = `${subjectPath} > ${qcmQuestion} > ${itemText}`;
+        
         if (!log[key]) {
             log[key] = {
                 p: subjectPath,
                 q: qcmQuestion,
                 i: itemText,
                 fp: 0, // Faux Positif
-                fn: 0  // Faux Négatif
+                fn: 0, // Faux Négatif
+                confidence: sessionConfidence[qcmId] || 'non spécifié'
             };
         }
+        
         if (status === 'false_positive') log[key].fp += 1;
         else if (status === 'false_negative') log[key].fn += 1;
+
+        if (sessionConfidence[qcmId]) {
+            log[key].confidence = sessionConfidence[qcmId];
+        }
 
         localStorage.setItem('digital_error_log', JSON.stringify(log));
     }
@@ -223,26 +260,34 @@
             return;
         }
 
-        let outputText = "PROMPT REVISION IA - CARNET D'ERREURS QCM\n";
-        outputText += "Consigne : Analyse mes erreurs récurrentes ci-dessous et réexplique les notions de cours associées en insistant sur les points de confusion.\n";
-        outputText += "Légende : FP = Faux Positif (coché vrai alors que faux), FN = Faux Négatif (coché faux alors que vrai).\n\n";
-        outputText += "--- HISTORIQUE DES ERREURS ---\n";
+        let outputText = "PROMPT REVISION IA - CARNET D'ERREURS QCM ENRICHI\n";
+        outputText += "CONSIGNE POUR L'IA :\n";
+        outputText += "1. Analyse mes erreurs récurrentes ci-dessous.\n";
+        outputText += "2. Priorise les erreurs marquées comme 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
+        outputText += "3. Pour chaque notion, explique le piège physiologique/clinique et donne un mnémonique ou une règle de décision rapide.\n\n";
+        outputText += "Légende : FP = Faux Positif (coché vrai alors que faux), FN = Faux Négatif (coché faux alors que vrai).\n";
+        outputText += "--- HISTORIQUE DES ERREURS ---\n\n";
 
         items.forEach(item => {
             let errDetails = [];
             if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
             if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
-            outputText += `• [${item.p}] ${item.q} | Item: "${item.i}" -> (${errDetails.join(', ')})\n`;
+            
+            const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
+
+            outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}\n\n`;
         });
 
         const blob = new Blob([outputText], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `carnet_erreurs_${new Date().toISOString().slice(0,10)}.txt`;
+        a.download = `carnet_erreurs_enrichi_${new Date().toISOString().slice(0,10)}.txt`;
         a.click();
         URL.revokeObjectURL(url);
     }
+
+    // --- CHARGEMENT ET PARSING ---
 
     async function loadNode(node, pathParts) {
         if (Array.isArray(node)) {
@@ -328,6 +373,8 @@
         return qcms;
     }
 
+    // --- SESSIONS ET RENDER ---
+
     function startSession() {
         const node = getNode(currentPath);
         const canceledQCMs = getCanceledQCMs();
@@ -335,7 +382,12 @@
         const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
         
         const size = Math.min(parseInt(document.getElementById('sessionSize').value), availableQcms.length);
-        currentSession = [...availableQcms].sort(() => Math.random() - 0.5).slice(0, size);
+        
+        // Utilisation de l'algorithme Fisher-Yates à la place de .sort(() => Math.random() - 0.5)
+        currentSession = shuffle(availableQcms).slice(0, size);
+
+        // Réinitialisation de la confiance pour la session
+        for (let key in sessionConfidence) delete sessionConfidence[key];
 
         document.getElementById('qcmScreen').classList.add('hidden');
         document.getElementById('sessionScreen').classList.remove('hidden');
@@ -354,7 +406,7 @@
                     <div class="formulation clearfix">
                         <h4 class="accesshide">Texte de la question</h4>
                         <div class="qtext">
-                            <p>${q.question}</p>
+                            <p>${escapeHTML(q.question)}</p>
                             ${q.image ? `<img src="${q.image}">` : ''}
                         </div>
                         <fieldset class="ablock">
@@ -367,7 +419,7 @@
                                         <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isCanceled ? 'disabled' : ''}>
                                         <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
                                             <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
-                                            <div class="flex-fill ml-1"><p>${opt.text} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
+                                            <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
                                         </label>
                                     </div>`;
                                 }).join('')}
@@ -407,10 +459,10 @@
 
                 if (opt.isCorrect && !checked) {
                     errors++;
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative');
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative', q.id);
                 } else if (!opt.isCorrect && checked) {
                     errors++;
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive');
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive', q.id);
                 }
             });
 
@@ -448,16 +500,17 @@
                     stateCls = 'incorrectnotchecked'; 
                 }
 
+                // Utilisation de dataset/listener sécurisé
                 return `
                     <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
                         <input type="checkbox" disabled ${checked ? 'checked' : ''}>
                         <label data-region="answer-label" class="${stateCls}">
                             <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
-                            <div class="flex-fill ml-1"><p>${opt.text}</p></div>
+                            <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)}</p></div>
                             ${icon}
                         </label>
                         ${!isCanceled ? `
-                            <button class="btn btn-outline-warning btn-sm p-1 ms-2" style="font-size:0.75rem;" title="Annuler cet item" onclick="cancelItem('${opt.id}')">
+                            <button class="btn btn-outline-warning btn-sm p-1 ms-2" style="font-size:0.75rem;" title="Annuler cet item" onclick="cancelItem('${opt.id.replace(/'/g, "\\'")}')">
                                 <i class="fa-solid fa-ban"></i> Annuler item
                             </button>
                         ` : ''}
@@ -466,20 +519,38 @@
 
             const noteStr = qScore.toFixed(2).replace('.', ',');
 
+            // Génération du sélecteur de confiance
+            const confidenceHtml = `
+                <div class="confidence-selector mt-3 pt-2 border-top">
+                    <small class="fw-bold d-block mb-1 text-secondary">Mon niveau de confiance :</small>
+                    <div class="btn-group btn-group-sm w-100" role="group">
+                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'sure')">
+                        <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
+
+                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'hesitant')">
+                        <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
+
+                        <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'guess')">
+                        <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
+                    </div>
+                </div>
+            `;
+
             details.innerHTML += `
                 <div class="que sngmultichoice deferredfeedback ${correctnessClass}" id="qcm-corr-block-${q.id}">
                     <div class="info">
                         <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
                         <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
                         <div class="grade">Note : ${noteStr} sur 1,00</div>
-                        <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${q.id}')">
+                        ${confidenceHtml}
+                        <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${q.id.replace(/'/g, "\\'")}')">
                             <i class="fa-solid fa-ban"></i> Signaler Erratum QCM
                         </button>
                     </div>
                     <div class="content">
                         <div class="formulation clearfix">
                             <div class="qtext">
-                                <p>${q.question}</p>
+                                <p>${escapeHTML(q.question)}</p>
                                 ${q.image ? `<img src="${q.image}">` : ''}
                             </div>
                             <fieldset class="ablock">
@@ -497,13 +568,15 @@
         window.scrollTo(0, 0);
     }
 
+    // --- NAVIGATION ---
+
     function displaySubjects() {
         const list = document.getElementById('subjectsList');
         list.innerHTML = '';
         for (let s in data) {
             const item = document.createElement('button');
             item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-            item.innerHTML = `${s} <span class="badge bg-primary rounded-pill">${countLeafFiles(data[s])}</span>`;
+            item.innerHTML = `${escapeHTML(s)} <span class="badge bg-primary rounded-pill">${countLeafFiles(data[s])}</span>`;
             item.onclick = () => openNode([s]);
             list.appendChild(item);
         }
@@ -539,7 +612,7 @@
             const item = document.createElement('button');
             item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
             const badge = isLeaf(child) ? child.length : countLeafFiles(child);
-            item.innerHTML = `${key} <span class="badge bg-secondary rounded-pill">${badge}</span>`;
+            item.innerHTML = `${escapeHTML(key)} <span class="badge bg-secondary rounded-pill">${badge}</span>`;
             item.onclick = () => openNode([...path, key]);
             list.appendChild(item);
         }
@@ -550,9 +623,9 @@
         breadcrumb.innerHTML = path.map((part, idx) => {
             const isLast = idx === path.length - 1;
             const sep = idx > 0 ? ' / ' : '';
-            if (isLast) return `${sep}${part}`;
+            if (isLast) return `${sep}${escapeHTML(part)}`;
             const subPath = path.slice(0, idx + 1);
-            return `${sep}<span onclick='openNode(${JSON.stringify(subPath)})'>${part}</span>`;
+            return `${sep}<span onclick='openNode(${JSON.stringify(subPath)})'>${escapeHTML(part)}</span>`;
         }).join('');
     }
 
