@@ -5,278 +5,577 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QCM Médecine - Interface UNESS</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* =========================================
-           STYLE UNESS FIDÈLE
-           ========================================= */
-        body { background-color: #f2f4f7; font-family: 'Roboto', sans-serif; font-size: 0.9375rem; color: #1d2125; padding-top: 20px; }
-        .container { max-width: 1100px; }
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-        .que { background-color: #f8f9fa; border: 1px solid #dee2e6; margin-bottom: 2rem; display: flex; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 1px rgba(0,0,0,.05); }
-        .que .info { width: 160px; background-color: #f8f9fa; border-right: 1px solid #dee2e6; padding: 15px; flex-shrink: 0; }
-        .que .info h3.no { font-size: 1.1rem; margin-top: 0; margin-bottom: 10px; font-weight: 700; color: #495057; }
-        .que .info .state { font-size: 0.8rem; color: #6a737b; }
+<style>
+    body { background-color: #f2f4f7; font-family: 'Roboto', sans-serif; font-size: 0.9375rem; color: #1d2125; padding-top: 20px; }
+    .container { max-width: 1100px; }
 
-        .que .content { flex-grow: 1; padding: 25px; background-color: #fff; }
-        .qtext { font-size: 1.05rem; font-weight: 500; margin-bottom: 20px; line-height: 1.5; }
+    .btn-uness { background-color: #1177d1; color: white; border: none; padding: 12px 24px; border-radius: 4px; text-transform: uppercase; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
+    .btn-uness:hover { background-color: #0d5ea5; color: white; }
 
-        .q-image { max-width: 100%; height: auto; display: block; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 4px; }
+    .hidden { display: none; }
+    .setup-card { background: white; border-radius: 8px; border: 1px solid #dee2e6; padding: 30px; }
 
-        .answer .r0 { display: flex; align-items: flex-start; padding: 8px 12px; background-color: #ffffff; }
-        .answernumber { font-weight: bold; color: #555; margin-right: 10px; min-width: 22px; }
-        input[type="checkbox"] { margin-top: 4px; margin-right: 12px; transform: scale(1.1); }
+    #sessionScreen, #correctionScreen { background-color: #fff; padding: 30px; border-radius: 8px; border: 1px solid #dee2e6; }
 
-        .btn-uness { background-color: #1177d1; color: white; border: none; padding: 12px 24px; border-radius: 4px; text-transform: uppercase; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
-        .btn-uness:hover { background-color: #0d5ea5; color: white; }
+    .que { clear: left; text-align: left; margin: 0 auto 1.8em auto; border-bottom: 2px solid #949494; padding-bottom: 1.5em; }
+    .que::after { content: ""; display: table; clear: both; }
+    .que:last-child { border-bottom: none; }
 
-        .correct-ans { background-color: #ecfdf5 !important; border-left: 5px solid #10b981 !important; }
-        .incorrect-ans { background-color: #fef2f2 !important; border-left: 5px solid #ef4444 !important; }
-        .missed-ans { background-color: #fffbeb !important; border-left: 5px solid #f59e0b !important; }
+    .que .info { float: left; width: 7.5em; padding: .5em; margin-bottom: 1.8em; background-color: #f8f9fa; border: 1px solid #cad0d7; border-radius: 2px; }
+    .que h3.no { margin: 0; font-size: .8em; line-height: 1; }
+    .que span.qno { font-size: 1.5em; font-weight: 700; }
+    .que .info > div { font-size: .8em; margin-top: .7em; }
 
-        .hidden { display: none; }
-        .setup-card { background: white; border-radius: 8px; border: 1px solid #dee2e6; padding: 30px; }
-    </style>
+    .que .content { margin: 0 0 0 8.5em; }
+    .que .content::after { content: ""; display: table; clear: both; }
+
+    .que .formulation { position: relative; padding: 0.5rem 0; margin-bottom: 1rem; color: #1d2125; background-color: #ffffff; }
+    .que .formulation::after { content: ""; display: table; clear: both; }
+
+    .accesshide { display: none !important; }
+
+    .que .qtext { margin-bottom: 1.5em; }
+    .que .qtext p:last-child { margin-bottom: 0; }
+    .que .qtext img { max-width: 100%; border-radius: 4px; margin-top: .5em; }
+
+    .que fieldset.ablock { border: 0; margin: 0; padding: 0; }
+    .que legend.prompt { display: none; }
+
+    .que .answer .r0, .que .answer .r1 { display: flex; margin: .25rem 0; align-items: flex-start; }
+    .que .answer .r0 input[type="checkbox"], .que .answer .r1 input[type="checkbox"] { margin: .3rem .5rem; width: 14px; flex-shrink: 0; }
+    .que .answernumber { min-width: 1.5em; font-weight: 700; }
+
+    .que .answer [data-region="answer-label"] { display: flex; align-items: flex-start; flex: 1; cursor: pointer; }
+    .que .answer [data-region="answer-label"] p { margin: 0; }
+    .que .answer .flex-fill { flex: 1; }
+
+    .que .answer .correct { background-color: #b2edaf; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
+    .que .answer .correctnotchecked { background-color: #cde3cd; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
+    .que .answer .incorrect { background-color: #f4b9b8; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
+    .que .answer .incorrectnotchecked { background-color: #f4b9b8; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
+    .que .answer .item-canceled { background-color: #e2e3e5; color: #6c757d; text-decoration: line-through; padding-bottom: 5px; border-radius: 2px; padding-right: 5px; }
+    .que .answer i.icon { font-size: 16px; margin-left: .4rem; }
+    .que .answer i.icon.fa-check { color: #2f7a3d; }
+    .que .answer i.icon.fa-times { color: #ca3120; }
+
+    .que .outcome { position: relative; padding: .75rem 1.25rem; margin-top: 1rem; border-radius: .5rem; color: #8e662e; background-color: #fcefdc; border: 1px solid #fbe8cd; font-style: italic; font-size: .9em; }
+
+    .que .correctness { display: inline-block; padding: .1em .7em; border-radius: 3px; font-size: .85em; font-weight: 700; }
+    .que .correctness.correct { color: #fff; background-color: #64a44e; }
+    .que .correctness.partiallycorrect { color: #1d2125; background-color: #f0ad4e; }
+    .que .correctness.incorrect, .que .correctness.notanswered { color: #fff; background-color: #ca3120; }
+
+    .que img { max-width: 100%; }
+
+    #sessionScreen .btn-primary, #correctionScreen .btn-primary { background-color: #a463ad; border-color: #a463ad; }
+    #sessionScreen .btn-primary:hover, #correctionScreen .btn-primary:hover { background-color: #905199; border-color: #894c91; }
+
+    .breadcrumb-nav { font-size: 0.85rem; color: #6c757d; margin-bottom: 1rem; }
+    .breadcrumb-nav span { cursor: pointer; }
+    .breadcrumb-nav span:hover { text-decoration: underline; color: #1177d1; }
+</style>
+
 </head>
 <body>
 
-    <div class="container">
-        <div id="homeScreen" class="setup-card shadow-sm">
-            <h2 class="mb-4 text-center">🏥 QCM Médecine</h2>
-            <div id="loadingScreen" class="text-center p-4">
-                <div class="spinner-border text-primary"></div>
-                <p class="mt-2">Chargement...</p>
-            </div>
-            <div id="subjectsList" class="list-group list-group-flush"></div>
+<div class="container">
+    <div id="homeScreen" class="setup-card shadow-sm">
+        <h2 class="mb-4 text-center">🏥 QCM Médecine</h2>
+        <div id="loadingScreen" class="text-center p-4">
+            <div class="spinner-border text-primary"></div>
+            <p class="mt-2">Chargement...</p>
         </div>
-
-        <div id="chapterScreen" class="hidden setup-card shadow-sm">
-            <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToHome()">← Retour</button>
-            <h3 id="currentSubjectTitle" class="mb-4"></h3>
-            <div id="chaptersList" class="list-group list-group-flush"></div>
-        </div>
-
-        <div id="qcmScreen" class="hidden setup-card shadow-sm">
-            <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToChapters()">← Retour</button>
-            <h4 id="sessionChapterTitle" class="text-primary mb-4"></h4>
-            <div class="mb-4" style="max-width: 300px;">
-                <label class="form-label fw-bold">Nombre de questions :</label>
-                <input type="number" id="sessionSize" class="form-control" value="10">
-            </div>
-            <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
-        </div>
-
-        <div id="sessionScreen" class="hidden">
-            <div id="questionsContainer"></div>
-            <div class="text-center mt-4 mb-5">
-                <button class="btn btn-uness px-5" onclick="validateFullSession()">Terminer le test...</button>
-            </div>
-        </div>
-
-        <div id="correctionScreen" class="hidden">
-            <div class="setup-card text-center mb-4">
-                <h2 id="score" class="text-primary"></h2>
-                <button class="btn btn-uness mt-3" onclick="backToQCMScreen()">Nouvelle session</button>
-            </div>
-            <div id="correctionDetails"></div>
+        <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
+        <div class="d-flex justify-content-between border-top pt-3">
+            <button class="btn btn-outline-success btn-sm" onclick="exportErrorLog()">
+                <i class="fa-solid fa-download"></i> Exporter le Carnet d'Erreurs (IA)
+            </button>
+            <button class="btn btn-outline-danger btn-sm" onclick="resetErratums()">
+                <i class="fa-solid fa-trash-can"></i> Réinitialiser les erratums
+            </button>
         </div>
     </div>
 
-    <script>
-        let data = {};
-        let currentSubject = '', currentChapter = '', currentSession = [], missedAnswers = [];
+    <div id="chapterScreen" class="hidden setup-card shadow-sm">
+        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backOneLevel()">← Retour</button>
+        <div id="breadcrumb" class="breadcrumb-nav"></div>
+        <h3 id="currentSubjectTitle" class="mb-4"></h3>
+        <div id="chaptersList" class="list-group list-group-flush"></div>
+    </div>
 
-        async function loadAllQCM() {
-            try {
-                const configResponse = await fetch('QCM/config.json');
-                const subjects = await configResponse.json();
-                for (const subject in subjects) {
-                    data[subject] = {};
-                    for (const file of subjects[subject]) {
-                        try {
-                            const res = await fetch(`QCM/${subject}/${file}`);
-                            const text = await res.text();
-                            const parsed = parseQCMFile(text);
-                            if (parsed.length > 0) {
-                                data[subject][file.replace('.txt','').replace(/_/g,' ')] = parsed;
-                            }
-                        } catch (e) { console.error("Erreur fichier:", file); }
-                    }
-                }
-                document.getElementById('loadingScreen').classList.add('hidden');
-                displaySubjects();
-            } catch (e) { console.error(e); }
+    <div id="qcmScreen" class="hidden setup-card shadow-sm">
+        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToChapters()">← Retour</button>
+        <h4 id="sessionChapterTitle" class="text-primary mb-4"></h4>
+        <div class="mb-4" style="max-width: 300px;">
+            <label class="form-label fw-bold">Nombre de questions :</label>
+            <input type="number" id="sessionSize" class="form-control" value="10">
+        </div>
+        <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
+    </div>
+
+    <div id="sessionScreen" class="hidden">
+        <div id="questionsContainer"></div>
+        <div class="submitbtns text-center mt-4 mb-5">
+            <button class="btn btn-primary px-4" onclick="validateFullSession()">Terminer le test…</button>
+        </div>
+    </div>
+
+    <div id="correctionScreen" class="hidden">
+        <div class="setup-card text-center mb-4">
+            <h2 id="score" class="text-primary"></h2>
+            <div class="mt-3">
+                <button class="btn btn-uness me-2" onclick="backToQCMScreen()">Nouvelle session</button>
+                <button class="btn btn-success" onclick="exportErrorLog()"><i class="fa-solid fa-file-export"></i> Carnet d'erreur pour IA</button>
+            </div>
+        </div>
+        <div id="correctionDetails"></div>
+    </div>
+</div>
+
+<script>
+    let data = {};
+    let currentPath = [], currentSession = [], missedAnswers = [];
+
+    // --- GESTION DE LA PERSISTENCE (ERRATUMS ET CARNET D'ERREURS) ---
+    function getCanceledQCMs() {
+        return JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
+    }
+
+    function getCanceledItems() {
+        return JSON.parse(localStorage.getItem('canceled_items') || '[]');
+    }
+
+    function getErrorLog() {
+        return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+    }
+
+    function cancelQCM(qcmId) {
+        if (confirm("Voulez-vous vraiment annuler ce QCM ? Il ne sera plus proposé.")) {
+            const canceled = getCanceledQCMs();
+            if (!canceled.includes(qcmId)) {
+                canceled.push(qcmId);
+                localStorage.setItem('canceled_qcms', JSON.stringify(canceled));
+            }
+            alert("QCM annulé avec succès.");
+            const el = document.getElementById(`qcm-block-${qcmId}`);
+            if (el) el.remove();
+        }
+    }
+
+    function cancelItem(itemId) {
+        if (confirm("Voulez-vous marquer cet ITEM comme annulé ?")) {
+            const canceled = getCanceledItems();
+            if (!canceled.includes(itemId)) {
+                canceled.push(itemId);
+                localStorage.setItem('canceled_items', JSON.stringify(canceled));
+            }
+            alert("Item annulé ! Il sera neutralisé lors de vos prochaines révisions.");
+            location.reload();
+        }
+    }
+
+    function resetErratums() {
+        if (confirm("Voulez-vous réinitialiser la liste des erratums (QCM et items annulés) ?")) {
+            localStorage.removeItem('canceled_qcms');
+            localStorage.removeItem('canceled_items');
+            alert("Erratums réinitialisés.");
+            location.reload();
+        }
+    }
+
+    function logItemResult(subjectPath, qcmQuestion, itemText, status) {
+        const log = getErrorLog();
+        const key = `${subjectPath} > ${qcmQuestion} > ${itemText}`;
+        if (!log[key]) {
+            log[key] = {
+                path: subjectPath,
+                qcm: qcmQuestion,
+                item: itemText,
+                correct: 0,
+                false_positive: 0, // Coché vrai alors que c'était faux
+                false_negative: 0  // Coché faux alors que c'était vrai
+            };
+        }
+        if (status === 'correct') log[key].correct += 1;
+        else if (status === 'false_positive') log[key].false_positive += 1;
+        else if (status === 'false_negative') log[key].false_negative += 1;
+
+        localStorage.setItem('digital_error_log', JSON.stringify(log));
+    }
+
+    function exportErrorLog() {
+        const log = getErrorLog();
+        const items = Object.values(log);
+
+        if (items.length === 0) {
+            alert("Votre carnet d'erreur est vide pour le moment.");
+            return;
         }
 
-        /* =========================================
-           PARSER CORRIGÉ ET SÉCURISÉ
-           ========================================= */
-        function parseQCMFile(content) {
-            const qcms = [];
-            // On sépare par double saut de ligne pour isoler les blocs
-            const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
-            
-            blocks.forEach(block => {
-                const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
-                
-                // Un QCM valide doit avoir au moins Question + 5 options = 6 lignes
-                if (lines.length < 6) return;
+        const promptHeader = "Voici mon carnet d'erreurs cumulatif sur mes révisions de QCM médical. Peux-tu analyser mes faiblesses, résumer mes erreurs courantes et me faire une révision ciblée de cours basée sur les items où j'ai le plus de fausses réponses (fausses positives ou fausses négatives) ?\n\n";
+        
+        const payload = {
+            instruction: promptHeader,
+            historique_erreurs: items
+        };
 
-                let question = lines[0];
-                
-                // SÉCURITÉ : Si la ligne contient du code CSS ou HTML, on ignore direct
-                if (question.includes('{') || question.includes(';') || question.includes('<')) return;
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `carnet_erreurs_medecine_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
 
-                let imagePath = null;
-                let optionStartIndex = 1;
-
-                // On vérifie la présence d'une image
-                if (lines[1] && lines[1].toUpperCase().startsWith('IMG:')) {
-                    imagePath = lines[1].substring(4).trim();
-                    optionStartIndex = 2;
-                }
-
-                const options = [];
-                // REGEX STRICTE : "A. " ou "A) " uniquement en MAJUSCULES
-                const optionRegex = /^(\$?)([A-E])[\.\)]\s+(.+)$/;
-
-                for (let i = optionStartIndex; i < lines.length; i++) {
-                    const match = lines[i].match(optionRegex);
-                    if (match) {
-                        options.push({ text: match[3], isCorrect: match[1] === '$' });
+    /* Charge récursivement une branche du JSON. */
+    async function loadNode(node, pathParts) {
+        if (Array.isArray(node)) {
+            const chapters = {};
+            for (const file of node) {
+                try {
+                    const res = await fetch(`QCM/${pathParts.join('/')}/${file}`);
+                    const text = await res.text();
+                    const parsed = parseQCMFile(text, pathParts.join(' > '));
+                    if (parsed.length > 0) {
+                        chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
                     }
+                } catch (e) { console.error("Erreur fichier:", file); }
+            }
+            return chapters;
+        } else {
+            const sousDossiers = {};
+            for (const key in node) {
+                sousDossiers[key] = await loadNode(node[key], [...pathParts, key]);
+            }
+            return sousDossiers;
+        }
+    }
+
+    async function loadAllQCM() {
+        try {
+            const configResponse = await fetch('QCM/config.json');
+            const subjects = await configResponse.json();
+            for (const subject in subjects) {
+                data[subject] = await loadNode(subjects[subject], [subject]);
+            }
+            document.getElementById('loadingScreen').classList.add('hidden');
+            displaySubjects();
+        } catch (e) { console.error(e); }
+    }
+
+    function getNode(path) {
+        let node = data;
+        for (const key of path) node = node[key];
+        return node;
+    }
+
+    function isLeaf(node) {
+        return Array.isArray(node);
+    }
+
+    function parseQCMFile(content, currentSubjectPath) {
+        const qcms = [];
+        const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
+
+        blocks.forEach(block => {
+            const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            if (lines.length < 6) return;
+
+            let question = lines[0];
+            if (question.includes('{') || question.includes(';') || question.includes('<')) return;
+
+            let imagePath = null;
+            let optionStartIndex = 1;
+
+            if (lines[1] && lines[1].toUpperCase().startsWith('IMG:')) {
+                imagePath = lines[1].substring(4).trim();
+                optionStartIndex = 2;
+            }
+
+            const options = [];
+            const optionRegex = /^(\$?)([A-E])[\.\)]\s+(.+)$/;
+
+            for (let i = optionStartIndex; i < lines.length; i++) {
+                const match = lines[i].match(optionRegex);
+                if (match) {
+                    const text = match[3];
+                    const itemId = `${currentSubjectPath}_${question}_${text}`.replace(/\s+/g, '_');
+                    options.push({ id: itemId, text: text, isCorrect: match[1] === '$' });
+                }
+            }
+
+            if (options.length === 5) {
+                const qcmId = `${currentSubjectPath}_${question}`.replace(/\s+/g, '_');
+                qcms.push({ id: qcmId, subjectPath: currentSubjectPath, question, image: imagePath, options });
+            }
+        });
+        return qcms;
+    }
+
+    function startSession() {
+        const node = getNode(currentPath);
+        const canceledQCMs = getCanceledQCMs();
+        
+        // Filtre les QCMs annulés
+        const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
+        
+        const size = Math.min(parseInt(document.getElementById('sessionSize').value), availableQcms.length);
+        currentSession = [...availableQcms].sort(() => Math.random() - 0.5).slice(0, size);
+
+        document.getElementById('qcmScreen').classList.add('hidden');
+        document.getElementById('sessionScreen').classList.remove('hidden');
+
+        const canceledItems = getCanceledItems();
+
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = currentSession.map((q, qIdx) => `
+            <div class="que sngmultichoice deferredfeedback notyetanswered" id="qcm-block-${q.id}">
+                <div class="info">
+                    <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                    <div class="state">Pas encore répondu</div>
+                    <div class="grade">Noté sur 1,00</div>
+                    <button class="btn btn-outline-danger btn-sm mt-2 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${q.id}')">
+                        <i class="fa-solid fa-ban"></i> Signaler erratum QCM
+                    </button>
+                </div>
+                <div class="content">
+                    <div class="formulation clearfix">
+                        <h4 class="accesshide">Texte de la question</h4>
+                        <div class="qtext">
+                            <p>${q.question}</p>
+                            ${q.image ? `<img src="${q.image}">` : ''}
+                        </div>
+                        <fieldset class="ablock">
+                            <legend class="prompt">Réponse</legend>
+                            <div class="answer">
+                                ${q.options.map((opt, oIdx) => {
+                                    const isCanceled = canceledItems.includes(opt.id);
+                                    return `
+                                    <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
+                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isCanceled ? 'disabled' : ''}>
+                                        <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
+                                            <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                                            <div class="flex-fill ml-1"><p>${opt.text} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
+                                        </label>
+                                        ${!isCanceled ? `
+                                            <button class="btn btn-link text-muted btn-sm p-0 ms-1" title="Signaler erratum sur cet item" onclick="cancelItem('${opt.id}')">
+                                                <i class="fa-regular fa-flag"></i>
+                                            </button>
+                                        ` : ''}
+                                    </div>`;
+                                }).join('')}
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        window.scrollTo(0, 0);
+    }
+
+    function validateFullSession() {
+        let score = 0;
+        const details = document.getElementById('correctionDetails');
+        details.innerHTML = '';
+        missedAnswers = [];
+        const canceledItems = getCanceledItems();
+
+        currentSession.forEach((q, qIdx) => {
+            const userChoices = [];
+            q.options.forEach((_, oIdx) => {
+                if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
+            });
+
+            let errors = 0;
+            let activeItemsCount = 0;
+
+            q.options.forEach((opt, oIdx) => {
+                const isCanceled = canceledItems.includes(opt.id);
+                const checked = userChoices.includes(oIdx);
+
+                if (isCanceled) {
+                    return; // Neutralisé : pas d'impact sur le score ni le carnet
                 }
 
-                // ON N'ACCEPTE QUE SI ON A TROUVÉ EXACTEMENT 5 OPTIONS
-                if (options.length === 5) {
-                    qcms.push({ question, image: imagePath, options });
+                activeItemsCount++;
+
+                if (opt.isCorrect && checked) {
+                    logItemResult(q.subjectPath, q.question, opt.text, 'correct');
+                } else if (!opt.isCorrect && !checked) {
+                    logItemResult(q.subjectPath, q.question, opt.text, 'correct');
+                } else if (opt.isCorrect && !checked) {
+                    errors++;
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative');
+                } else if (!opt.isCorrect && checked) {
+                    errors++;
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive');
                 }
             });
-            return qcms;
-        }
 
-        function startSession() {
-            const qcms = data[currentSubject][currentChapter];
-            const size = Math.min(parseInt(document.getElementById('sessionSize').value), qcms.length);
-            currentSession = [...qcms].sort(() => Math.random() - 0.5).slice(0, size);
-            
-            document.getElementById('qcmScreen').classList.add('hidden');
-            document.getElementById('sessionScreen').classList.remove('hidden');
-            
-            const container = document.getElementById('questionsContainer');
-            container.innerHTML = currentSession.map((q, qIdx) => `
-                <div class="que">
+            let qScore = 0;
+            if (activeItemsCount > 0) {
+                if (errors === 0) qScore = 1.0;
+                else if (errors === 1) qScore = 0.5;
+                else if (errors === 2) qScore = 0.2;
+            }
+
+            score += qScore;
+
+            let correctnessClass, correctnessLabel;
+            if (errors === 0) { correctnessClass = 'correct'; correctnessLabel = 'Correct'; }
+            else if (userChoices.length === 0) { correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; }
+            else if (qScore > 0) { correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; }
+            else { correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; }
+
+            const optHtml = q.options.map((opt, oIdx) => {
+                const checked = userChoices.includes(oIdx);
+                const isCanceled = canceledItems.includes(opt.id);
+                let stateCls = '', icon = '';
+
+                if (isCanceled) {
+                    stateCls = 'item-canceled';
+                    icon = '<span class="badge bg-secondary ms-2">Annulé</span>';
+                } else if (opt.isCorrect && checked) { 
+                    stateCls = 'correct'; icon = '<i class="icon fa-solid fa-check"></i>'; 
+                } else if (opt.isCorrect && !checked) { 
+                    stateCls = 'correctnotchecked'; icon = '<i class="icon fa-solid fa-check"></i>'; 
+                    missedAnswers.push({ q: q.question, a: opt.text }); 
+                } else if (!opt.isCorrect && checked) { 
+                    stateCls = 'incorrect'; icon = '<i class="icon fa-solid fa-times"></i>'; 
+                } else { 
+                    stateCls = 'incorrectnotchecked'; 
+                }
+
+                return `
+                    <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'}">
+                        <input type="checkbox" disabled ${checked ? 'checked' : ''}>
+                        <label data-region="answer-label" class="${stateCls}">
+                            <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                            <div class="flex-fill ml-1"><p>${opt.text}</p></div>
+                            ${icon}
+                        </label>
+                    </div>`;
+            }).join('');
+
+            const noteStr = qScore.toFixed(2).replace('.', ',');
+
+            details.innerHTML += `
+                <div class="que sngmultichoice deferredfeedback ${correctnessClass}">
                     <div class="info">
-                        <h3 class="no">Question <span>${qIdx + 1}</span></h3>
-                        <div class="state">Pas encore répondu</div>
+                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                        <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
+                        <div class="grade">Note : ${noteStr} sur 1,00</div>
                     </div>
                     <div class="content">
-                        <div class="qtext">${q.question}</div>
-                        ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
-                        <div class="answer">
-                            ${q.options.map((opt, oIdx) => `
-                                <div class="r0">
-                                    <input type="checkbox" id="q${qIdx}_o${oIdx}">
-                                    <span class="answernumber">${String.fromCharCode(97 + oIdx)}.</span>
-                                    <label for="q${qIdx}_o${oIdx}" class="m-0 flex-fill">${opt.text}</label>
-                                </div>
-                            `).join('')}
+                        <div class="formulation clearfix">
+                            <div class="qtext">
+                                <p>${q.question}</p>
+                                ${q.image ? `<img src="${q.image}">` : ''}
+                            </div>
+                            <fieldset class="ablock">
+                                <div class="answer">${optHtml}</div>
+                            </fieldset>
                         </div>
                     </div>
-                </div>
-            `).join('');
-            window.scrollTo(0,0);
-        }
-
-        function validateFullSession() {
-    let score = 0;
-    const details = document.getElementById('correctionDetails');
-    details.innerHTML = '';
-    missedAnswers = [];
-
-    currentSession.forEach((q, qIdx) => {
-        const userChoices = [];
-        q.options.forEach((_, oIdx) => {
-            if (document.getElementById(`q${qIdx}_o${oIdx}`).checked) userChoices.push(oIdx);
+                </div>`;
         });
 
-        // Comptage des erreurs
-        let errors = 0;
-        q.options.forEach((opt, oIdx) => {
-            const checked = userChoices.includes(oIdx);
-            if (opt.isCorrect && !checked) errors++;   // oubli
-            if (!opt.isCorrect && checked) errors++;   // coché en trop
-        });
+        document.getElementById('sessionScreen').classList.add('hidden');
+        document.getElementById('correctionScreen').classList.remove('hidden');
+        const scoreSur20 = (score / currentSession.length * 20).toFixed(2).replace('.', ',');
+        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
+        window.scrollTo(0, 0);
+    }
 
-        // Barème médecine
-        let qScore = 0;
-        if (errors === 0) qScore = 1.0;
-        else if (errors === 1) qScore = 0.5;
-        else if (errors === 2) qScore = 0.2;
-        // sinon 0
-
-        score += qScore;
-
-        const isCorrect = errors === 0;
-        const optHtml = q.options.map((opt, oIdx) => {
-            const checked = userChoices.includes(oIdx);
-            let cls = 'r0';
-            if (opt.isCorrect && checked) cls += ' correct-ans';
-            else if (opt.isCorrect && !checked) { cls += ' missed-ans'; missedAnswers.push({q: q.question, a: opt.text}); }
-            else if (!opt.isCorrect && checked) cls += ' incorrect-ans';
-            return `<div class="${cls}"><span class="answernumber">${String.fromCharCode(97 + oIdx)}.</span><div class="flex-fill">${opt.text} ${opt.isCorrect ? '✓' : ''}</div></div>`;
-        }).join('');
-
-        details.innerHTML += `
-            <div class="que">
-                <div class="info"><h3 class="no">Question ${qIdx + 1}</h3><div class="state">${qScore.toFixed(1)}/1</div></div>
-                <div class="content">
-                    <div class="qtext">${q.question}</div>
-                    ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
-                    <div class="answer">${optHtml}</div>
-                </div>
-            </div>`;
-    });
-
-    document.getElementById('sessionScreen').classList.add('hidden');
-    document.getElementById('correctionScreen').classList.remove('hidden');
-    const scoreSur20 = (score / currentSession.length * 20).toFixed(2);
-document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
-    window.scrollTo(0,0);
-}
-
-        function displaySubjects() {
-            const list = document.getElementById('subjectsList');
-            for (let s in data) {
-                const item = document.createElement('button');
-                item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-                item.innerHTML = `${s} <span class="badge bg-primary rounded-pill">${Object.values(data[s]).reduce((a,b)=>a+b.length,0)}</span>`;
-                item.onclick = () => openSubject(s);
-                list.appendChild(item);
-            }
+    function displaySubjects() {
+        const list = document.getElementById('subjectsList');
+        list.innerHTML = '';
+        for (let s in data) {
+            const item = document.createElement('button');
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            item.innerHTML = `${s} <span class="badge bg-primary rounded-pill">${countLeafFiles(data[s])}</span>`;
+            item.onclick = () => openNode([s]);
+            list.appendChild(item);
         }
-        function openSubject(s) {
-            currentSubject = s;
+    }
+
+    function countLeafFiles(node) {
+        if (isLeaf(node)) return node.length;
+        return Object.values(node).reduce((acc, child) => acc + countLeafFiles(child), 0);
+    }
+
+    function openNode(path) {
+        currentPath = path;
+        const node = getNode(path);
+
+        if (isLeaf(node)) {
+            document.getElementById('chapterScreen').classList.add('hidden');
             document.getElementById('homeScreen').classList.add('hidden');
-            document.getElementById('chapterScreen').classList.remove('hidden');
-            document.getElementById('currentSubjectTitle').textContent = s;
-            const list = document.getElementById('chaptersList');
-            list.innerHTML = '';
-            for (let ch in data[s]) {
-                const item = document.createElement('button');
-                item.className = 'list-group-item list-group-item-action';
-                item.textContent = ch;
-                item.onclick = () => openChapter(ch);
-                list.appendChild(item);
-            }
+            document.getElementById('qcmScreen').classList.remove('hidden');
+            document.getElementById('sessionChapterTitle').textContent = path[path.length - 1];
+            return;
         }
-        function openChapter(ch) { currentChapter = ch; document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); document.getElementById('sessionChapterTitle').textContent = ch; }
-        function backToHome() { document.getElementById('chapterScreen').classList.add('hidden'); document.getElementById('homeScreen').classList.remove('hidden'); }
-        function backToChapters() { document.getElementById('qcmScreen').classList.add('hidden'); document.getElementById('chapterScreen').classList.remove('hidden'); }
-        function backToQCMScreen() { document.getElementById('correctionScreen').classList.add('hidden'); document.getElementById('qcmScreen').classList.remove('hidden'); }
-        
-        loadAllQCM();
-    </script>
+
+        document.getElementById('homeScreen').classList.add('hidden');
+        document.getElementById('chapterScreen').classList.remove('hidden');
+        document.getElementById('currentSubjectTitle').textContent = path[path.length - 1];
+
+        renderBreadcrumb(path);
+
+        const list = document.getElementById('chaptersList');
+        list.innerHTML = '';
+        for (let key in node) {
+            const child = node[key];
+            const item = document.createElement('button');
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            const badge = isLeaf(child) ? child.length : countLeafFiles(child);
+            item.innerHTML = `${key} <span class="badge bg-secondary rounded-pill">${badge}</span>`;
+            item.onclick = () => openNode([...path, key]);
+            list.appendChild(item);
+        }
+    }
+
+    function renderBreadcrumb(path) {
+        const breadcrumb = document.getElementById('breadcrumb');
+        breadcrumb.innerHTML = path.map((part, idx) => {
+            const isLast = idx === path.length - 1;
+            const sep = idx > 0 ? ' / ' : '';
+            if (isLast) return `${sep}${part}`;
+            const subPath = path.slice(0, idx + 1);
+            return `${sep}<span onclick='openNode(${JSON.stringify(subPath)})'>${part}</span>`;
+        }).join('');
+    }
+
+    function backOneLevel() {
+        if (currentPath.length <= 1) {
+            backToHome();
+            return;
+        }
+        openNode(currentPath.slice(0, -1));
+    }
+
+    function backToHome() {
+        currentPath = [];
+        document.getElementById('chapterScreen').classList.add('hidden');
+        document.getElementById('homeScreen').classList.remove('hidden');
+    }
+
+    function backToChapters() {
+        document.getElementById('qcmScreen').classList.add('hidden');
+        openNode(currentPath.slice(0, -1));
+    }
+
+    function backToQCMScreen() {
+        document.getElementById('correctionScreen').classList.add('hidden');
+        document.getElementById('qcmScreen').classList.remove('hidden');
+    }
+
+    loadAllQCM();
+</script>
+
 </body>
 </html>
