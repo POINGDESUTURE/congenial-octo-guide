@@ -89,13 +89,18 @@
             <p class="mt-2">Chargement...</p>
         </div>
         <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
-        <div class="d-flex justify-content-between border-top pt-3">
+        <div class="d-flex justify-content-between border-top pt-3 flex-wrap gap-2">
             <button class="btn btn-outline-success btn-sm" onclick="exportErrorLog()">
                 <i class="fa-solid fa-download"></i> Exporter le Carnet d'Erreurs (.txt compact)
             </button>
-            <button class="btn btn-outline-danger btn-sm" onclick="resetErratums()">
-                <i class="fa-solid fa-trash-can"></i> Réinitialiser les erratums
-            </button>
+            <div>
+                <button class="btn btn-outline-warning btn-sm me-1" onclick="resetErrorLog()">
+                    <i class="fa-solid fa-eraser"></i> Vider carnet d'erreurs
+                </button>
+                <button class="btn btn-outline-danger btn-sm" onclick="resetErratums()">
+                    <i class="fa-solid fa-trash-can"></i> Réinitialiser erratums
+                </button>
+            </div>
         </div>
     </div>
 
@@ -176,11 +181,18 @@
     }
 
     function resetErratums() {
-        if (confirm("Voulez-vous réinitialiser tous les erratums enregistrés ?")) {
+        if (confirm("Voulez-vous réinitialiser tous les erratums enregistrés (QCM et Items annulés) ?")) {
             localStorage.removeItem('canceled_qcms');
             localStorage.removeItem('canceled_items');
             alert("Erratums réinitialisés.");
             location.reload();
+        }
+    }
+
+    function resetErrorLog() {
+        if (confirm("Voulez-vous vraiment vider tout votre carnet d'erreurs ? Les données cumulées seront définitivement effacées.")) {
+            localStorage.removeItem('digital_error_log');
+            alert("Carnet d'erreurs réinitialisé !");
         }
     }
 
@@ -192,8 +204,8 @@
                 p: subjectPath,
                 q: qcmQuestion,
                 i: itemText,
-                fp: 0, // Faux Positif (coché Vrai au lieu de Faux)
-                fn: 0  // Faux Négatif (coché Faux au lieu de Vrai)
+                fp: 0, // Faux Positif
+                fn: 0  // Faux Négatif
             };
         }
         if (status === 'false_positive') log[key].fp += 1;
