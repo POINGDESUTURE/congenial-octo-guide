@@ -143,11 +143,12 @@
 <script>
     let data = {};
     let currentPath = [], currentSession = [], missedAnswers = [];
+    let sessionValidated = false;
     
-    // Stockage temporaire du niveau de confiance pour la session en cours
+    // Stockage temporaire pour la session en cours
     const sessionConfidence = {};
 
-    // --- UTILITAIRES DE SÉCURITÉ ET SHUFFLE ---
+    // --- UTILITAIRES DE SÉCURITÉ ET ALGORITHMES ---
     
     function escapeHTML(str) {
         if (!str) return '';
@@ -169,7 +170,13 @@
         return arr;
     }
 
-    // --- PERSISTENCE : ERRATUMS ET CARNET D'ERREURS ---
+    // Génération d'ID stable basé sur une chaîne normalisée
+    function generateCleanId(str) {
+        return str.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').slice(0, 100);
+    }
+
+    // --- PERSISTENCE : ERRATUMS ET CARNET D'ERREURS ENRICHI ---
+    
     function getCanceledQCMs() {
         return JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
     }
@@ -182,14 +189,13 @@
         return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
     }
 
-    // Mise à jour dynamique de la confiance dans le localStorage
     function setConfidence(qcmId, level) {
-        sessionConfidence[qcmId] = level; // 'sure', 'hesitant', ou 'guess'
+        sessionConfidence[qcmId] = level;
         
         const log = getErrorLog();
         let updated = false;
 
-        // Met à jour en temps réel les erreurs déjà enregistrées pour ce QCM
+        // Met à jour les éléments existants
         Object.keys(log).forEach(key => {
             if (log[key].qcmId === qcmId) {
                 log[key].confidence = level;
@@ -197,13 +203,34 @@
             }
         });
 
+        // Enregistre également les bonnes réponses si marquées "au hasard"
+        const targetQcm = currentSession.find(q => q.id === qcmId);
+        if (targetQcm && (level === 'guess' || level === 'hesitant')) {
+            targetQcm.options.forEach(opt => {
+                const key = `${targetQcm.subjectPath} > ${targetQcm.question} > ${opt.text}`;
+                if (!log[key]) {
+                    log[key] = {
+                        p: targetQcm.subjectPath,
+                        q: targetQcm.question,
+                        i: opt.text,
+                        qcmId: qcmId,
+                        fp: 0,
+                        fn: 0,
+                        successCount: 1,
+                        confidence: level
+                    };
+                    updated = true;
+                }
+            });
+        }
+
         if (updated) {
             localStorage.setItem('digital_error_log', JSON.stringify(log));
         }
     }
 
     function cancelQCM(qcmId) {
-        if (confirm("Voulez-vous annuler ce QCM ? Il ne sera plus jamais proposé.")) {
+        if (confirm("Voulez-vous annuler ce QCM ? Il ne sera plus proposé.")) {
             const canceled = getCanceledQCMs();
             if (!canceled.includes(qcmId)) {
                 canceled.push(qcmId);
@@ -221,12 +248,12 @@
                 canceled.push(itemId);
                 localStorage.setItem('canceled_items', JSON.stringify(canceled));
             }
-            alert("Item enregistré comme annulé pour le futur.");
+            alert("Item neutralisé pour les futures sessions.");
         }
     }
 
     function resetErratums() {
-        if (confirm("Voulez-vous réinitialiser tous les erratums enregistrés (QCM et Items annulés) ?")) {
+        if (confirm("Réinitialiser tous les erratums enregistrés ?")) {
             localStorage.removeItem('canceled_qcms');
             localStorage.removeItem('canceled_items');
             alert("Erratums réinitialisés.");
@@ -235,7 +262,7 @@
     }
 
     function resetErrorLog() {
-        if (confirm("Voulez-vous vraiment vider tout votre carnet d'erreurs ? Les données cumulées seront définitivement effacées.")) {
+        if (confirm("Voulez-vous vraiment vider tout votre carnet d'erreurs ?")) {
             localStorage.removeItem('digital_error_log');
             alert("Carnet d'erreurs réinitialisé !");
         }
@@ -250,7 +277,7 @@
                 p: subjectPath,
                 q: qcmQuestion,
                 i: itemText,
-                qcmId: qcmId, // Identifiant lié au QCM global
+                qcmId: qcmId,
                 fp: 0,
                 fn: 0,
                 confidence: sessionConfidence[qcmId] || 'non spécifié'
@@ -269,30 +296,40 @@
 
     function exportErrorLog() {
         const log = getErrorLog();
-        const items = Object.values(log).filter(item => item.fp > 0 || item.fn > 0);
+        const allEntries = Object.values(log);
 
-        if (items.length === 0) {
-            alert("Aucune erreur enregistrée dans le carnet pour le moment.");
+        const errorItems = allEntries.filter(item => item.fp > 0 || item.fn > 0);
+        const luckyGuesses = allEntries.filter(item => (item.fp === 0 && item.fn === 0) && (item.confidence === 'guess' || item.confidence === 'hesitant'));
+
+        if (errorItems.length === 0 && luckyGuesses.length === 0) {
+            alert("Aucune donnée enregistrée dans le carnet pour le moment.");
             return;
         }
 
-        let outputText = "PROMPT REVISION IA - CARNET D'ERREURS QCM ENRICHI\n";
+        let outputText = "PROMPT REVISION IA - CARNET D'ERREURS ET LACUNES ENRICHI\n";
         outputText += "CONSIGNE POUR L'IA :\n";
-        outputText += "1. Analyse mes erreurs récurrentes ci-dessous.\n";
-        outputText += "2. Priorise les erreurs marquées comme 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
-        outputText += "3. Pour chaque notion, explique le piège physiologique/clinique et donne un mnémonique ou une règle de décision rapide.\n\n";
-        outputText += "Légende : FP = Faux Positif (coché vrai alors que faux), FN = Faux Négatif (coché faux alors que vrai).\n";
-        outputText += "--- HISTORIQUE DES ERREURS ---\n\n";
+        outputText += "1. Analyse mes erreurs récurrentes et mes bonnes réponses 'Au hasard' ci-dessous.\n";
+        outputText += "2. Priorise les erreurs marquées 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
+        outputText += "3. Pour chaque notion, explique le piège physiologique/clinique et donne une règle de décision rapide.\n\n";
+        outputText += "Légende : FP = Faux Positif, FN = Faux Négatif.\n\n";
 
-        items.forEach(item => {
-            let errDetails = [];
-            if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
-            if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
-            
-            const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
+        if (errorItems.length > 0) {
+            outputText += "--- HISTORIQUE DES ERREURS ---\n\n";
+            errorItems.forEach(item => {
+                let errDetails = [];
+                if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
+                if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
+                const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
+                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}\n\n`;
+            });
+        }
 
-            outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}\n\n`;
-        });
+        if (luckyGuesses.length > 0) {
+            outputText += "--- ⚠️ BONNES RÉPONSES AU HASARD / HÉSITATIONS (À REVOIR) ---\n\n";
+            luckyGuesses.forEach(item => {
+                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" | Ressenti: [${item.confidence.toUpperCase()}]\n\n`;
+            });
+        }
 
         const blob = new Blob([outputText], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
@@ -303,7 +340,7 @@
         URL.revokeObjectURL(url);
     }
 
-    // --- CHARGEMENT ET PARSING ---
+    // --- CHARGEMENT ET PARSING SÉCURISÉ ---
 
     async function loadNode(node, pathParts) {
         if (Array.isArray(node)) {
@@ -311,12 +348,15 @@
             for (const file of node) {
                 try {
                     const res = await fetch(`QCM/${pathParts.join('/')}/${file}`);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const text = await res.text();
-                    const parsed = parseQCMFile(text, pathParts.join(' > '));
+                    const parsed = parseQCMFile(text, pathParts.join(' > '), file);
                     if (parsed.length > 0) {
                         chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
                     }
-                } catch (e) { console.error("Erreur fichier:", file); }
+                } catch (e) { 
+                    console.error(`Erreur de chargement du fichier: QCM/${pathParts.join('/')}/${file}`, e);
+                }
             }
             return chapters;
         } else {
@@ -329,15 +369,29 @@
     }
 
     async function loadAllQCM() {
+        const loadingEl = document.getElementById('loadingScreen');
         try {
             const configResponse = await fetch('QCM/config.json');
+            if (!configResponse.ok) throw new Error("Impossible de trouver config.json");
+            
             const subjects = await configResponse.json();
             for (const subject in subjects) {
                 data[subject] = await loadNode(subjects[subject], [subject]);
             }
-            document.getElementById('loadingScreen').classList.add('hidden');
+            loadingEl.classList.add('hidden');
             displaySubjects();
-        } catch (e) { console.error(e); }
+        } catch (e) { 
+            console.error("Erreur critique d'initialisation :", e);
+            if (loadingEl) {
+                loadingEl.innerHTML = `
+                    <div class="alert alert-danger role="alert">
+                        <h4 class="alert-heading"><i class="fa-solid fa-triangle-exclamation"></i> Erreur de chargement</h4>
+                        <p>Impossible de charger la base de QCM. Vérifiez que votre serveur local fonctionne et que <code>QCM/config.json</code> est présent.</p>
+                        <hr>
+                        <p class="mb-0 text-muted" style="font-size: 0.85rem;">Détail : ${escapeHTML(e.message)}</p>
+                    </div>`;
+            }
+        }
     }
 
     function getNode(path) {
@@ -350,11 +404,11 @@
         return Array.isArray(node);
     }
 
-    function parseQCMFile(content, currentSubjectPath) {
+    function parseQCMFile(content, currentSubjectPath, filename) {
         const qcms = [];
         const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
 
-        blocks.forEach(block => {
+        blocks.forEach((block, index) => {
             const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
             if (lines.length < 6) return;
 
@@ -370,20 +424,23 @@
             }
 
             const options = [];
-            const optionRegex = /^(\$?)([A-E])[\.\)]\s+(.+)$/;
+            // Regex insensible à la casse ([A-Ea-e])
+            const optionRegex = /^(\$?)([A-Ea-e])[\.\)]\s+(.+)$/;
 
             for (let i = optionStartIndex; i < lines.length; i++) {
                 const match = lines[i].match(optionRegex);
                 if (match) {
                     const text = match[3];
-                    const itemId = `${currentSubjectPath}_${question}_${text}`.replace(/\s+/g, '_');
+                    const itemId = generateCleanId(`${currentSubjectPath}_${question}_${text}`);
                     options.push({ id: itemId, text: text, isCorrect: match[1] === '$' });
                 }
             }
 
             if (options.length === 5) {
-                const qcmId = `${currentSubjectPath}_${question}`.replace(/\s+/g, '_');
+                const qcmId = generateCleanId(`${currentSubjectPath}_${question}`);
                 qcms.push({ id: qcmId, subjectPath: currentSubjectPath, question, image: imagePath, options });
+            } else {
+                console.warn(`[QCM Ignoré] Fichier: ${filename} | Bloc #${index + 1} | Raison: ${options.length}/5 options détectées.`);
             }
         });
         return qcms;
@@ -392,11 +449,21 @@
     // --- SESSIONS ET RENDER ---
 
     function startSession() {
+        sessionValidated = false;
         const node = getNode(currentPath);
         const canceledQCMs = getCanceledQCMs();
         
         const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
-        const size = Math.min(parseInt(document.getElementById('sessionSize').value), availableQcms.length);
+
+        if (availableQcms.length === 0) {
+            alert("Aucune question disponible dans ce chapitre (toutes les questions sont annulées ou le chapitre est vide).");
+            return;
+        }
+
+        // Validation stricte du champ sessionSize (évite NaN et 0)
+        const sizeInput = parseInt(document.getElementById('sessionSize').value, 10);
+        let requestedSize = isNaN(sizeInput) || sizeInput < 1 ? 10 : sizeInput;
+        const size = Math.min(requestedSize, availableQcms.length);
         
         // Algorithme de Fisher-Yates
         currentSession = shuffle(availableQcms).slice(0, size);
@@ -407,8 +474,8 @@
         document.getElementById('sessionScreen').classList.remove('hidden');
 
         const canceledItems = getCanceledItems();
-
         const container = document.getElementById('questionsContainer');
+
         container.innerHTML = currentSession.map((q, qIdx) => `
             <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}">
                 <div class="info">
@@ -421,7 +488,7 @@
                         <h4 class="accesshide">Texte de la question</h4>
                         <div class="qtext">
                             <p>${escapeHTML(q.question)}</p>
-                            ${q.image ? `<img src="${q.image}">` : ''}
+                            ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
                         </div>
                         <fieldset class="ablock">
                             <legend class="prompt">Réponse</legend>
@@ -430,7 +497,7 @@
                                     const isCanceled = canceledItems.includes(opt.id);
                                     return `
                                     <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
-                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isCanceled ? 'disabled' : ''}>
+                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isCanceled ? 'disabled' : ''} onchange="saveSessionState()">
                                         <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
                                             <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
                                             <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
@@ -443,11 +510,47 @@
                 </div>
             </div>
         `).join('');
+        
+        saveSessionState();
         window.scrollTo(0, 0);
     }
 
+    // --- REPRISE APRES RAFRAÎCHISSEMENT (sessionStorage) ---
+
+    function saveSessionState() {
+        if (currentSession.length === 0 || sessionValidated) return;
+        
+        const state = {
+            currentPath,
+            currentSession,
+            userAnswers: {}
+        };
+
+        currentSession.forEach((q, qIdx) => {
+            state.userAnswers[qIdx] = [];
+            q.options.forEach((_, oIdx) => {
+                const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                if (cb && cb.checked) state.userAnswers[qIdx].push(oIdx);
+            });
+        });
+
+        sessionStorage.setItem('active_qcm_session', JSON.stringify(state));
+    }
+
+    function clearSessionState() {
+        sessionStorage.removeItem('active_qcm_session');
+    }
+
+    // --- CORRECTION ET BARÈME ---
+
     function validateFullSession() {
+        // Protection contre la double soumission
+        if (sessionValidated) return;
+        sessionValidated = true;
+
         let score = 0;
+        let validQcmCount = 0; // Exclut du dénominateur les QCMs dont tous les items sont annulés
+
         const details = document.getElementById('correctionDetails');
         details.innerHTML = '';
         missedAnswers = [];
@@ -482,6 +585,7 @@
 
             let qScore = 0;
             if (activeItemsCount > 0) {
+                validQcmCount++; // Ce QCM a des items valides, il compte dans la note finale
                 if (errors === 0) qScore = 1.0;
                 else if (errors === 1) qScore = 0.5;
                 else if (errors === 2) qScore = 0.2;
@@ -490,10 +594,18 @@
             score += qScore;
 
             let correctnessClass, correctnessLabel;
-            if (errors === 0) { correctnessClass = 'correct'; correctnessLabel = 'Correct'; }
-            else if (userChoices.length === 0) { correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; }
-            else if (qScore > 0) { correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; }
-            else { correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; }
+            if (activeItemsCount === 0) {
+                correctnessClass = 'notanswered'; 
+                correctnessLabel = 'Question neutralisée (100% annulée)';
+            } else if (errors === 0) { 
+                correctnessClass = 'correct'; correctnessLabel = 'Correct'; 
+            } else if (userChoices.length === 0) { 
+                correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; 
+            } else if (qScore > 0) { 
+                correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; 
+            } else { 
+                correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; 
+            }
 
             const optHtml = q.options.map((opt, oIdx) => {
                 const checked = userChoices.includes(oIdx);
@@ -535,7 +647,6 @@
             const noteStr = qScore.toFixed(2).replace('.', ',');
             const safeQcmId = q.id.replace(/'/g, "\\'");
 
-            // Sélecteur de confiance déplacé dans la zone .content (largeur complète)
             const confidenceHtml = `
                 <div class="confidence-selector mt-3 pt-2 border-top">
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -568,7 +679,7 @@
                         <div class="formulation clearfix">
                             <div class="qtext">
                                 <p>${escapeHTML(q.question)}</p>
-                                ${q.image ? `<img src="${q.image}">` : ''}
+                                ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
                             </div>
                             <fieldset class="ablock">
                                 <div class="answer">${optHtml}</div>
@@ -581,8 +692,13 @@
 
         document.getElementById('sessionScreen').classList.add('hidden');
         document.getElementById('correctionScreen').classList.remove('hidden');
-        const scoreSur20 = (score / currentSession.length * 20).toFixed(2).replace('.', ',');
-        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20`;
+        
+        // Calcul sécurisé du score final
+        const finalDenominator = validQcmCount > 0 ? validQcmCount : 1;
+        const scoreSur20 = (score / finalDenominator * 20).toFixed(2).replace('.', ',');
+        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20 ${validQcmCount < currentSession.length ? `(${currentSession.length - validQcmCount} QCM neutralisé)` : ''}`;
+        
+        clearSessionState();
         window.scrollTo(0, 0);
     }
 
@@ -636,15 +752,28 @@
         }
     }
 
+    // Dynamic breadcrumb délégué (sécurisé contre les guillemets/apostrophes)
     function renderBreadcrumb(path) {
         const breadcrumb = document.getElementById('breadcrumb');
-        breadcrumb.innerHTML = path.map((part, idx) => {
-            const isLast = idx === path.length - 1;
-            const sep = idx > 0 ? ' / ' : '';
-            if (isLast) return `${sep}${escapeHTML(part)}`;
-            const subPath = path.slice(0, idx + 1);
-            return `${sep}<span onclick='openNode(${JSON.stringify(subPath)})'>${escapeHTML(part)}</span>`;
-        }).join('');
+        breadcrumb.innerHTML = '';
+        
+        path.forEach((part, idx) => {
+            if (idx > 0) {
+                breadcrumb.appendChild(document.createTextNode(' / '));
+            }
+            if (idx === path.length - 1) {
+                const span = document.createElement('span');
+                span.textContent = part;
+                breadcrumb.appendChild(span);
+            } else {
+                const btn = document.createElement('span');
+                btn.className = 'text-primary style-pointer';
+                btn.style.cursor = 'pointer';
+                btn.textContent = part;
+                btn.onclick = () => openNode(path.slice(0, idx + 1));
+                breadcrumb.appendChild(btn);
+            }
+        });
     }
 
     function backOneLevel() {
@@ -671,6 +800,7 @@
         document.getElementById('qcmScreen').classList.remove('hidden');
     }
 
+    // Démarrage de l'application
     loadAllQCM();
 </script>
 
