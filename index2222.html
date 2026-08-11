@@ -88,6 +88,12 @@
             <div class="spinner-border text-primary"></div>
             <p class="mt-2">Chargement...</p>
         </div>
+        <div id="homeStats" class="mb-4"></div>
+        <div class="mb-3">
+            <button class="btn btn-outline-primary w-100" onclick="startErrorReviewSession()">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Réviser mes erreurs
+            </button>
+        </div>
         <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
         <div class="d-flex justify-content-between border-top pt-3 flex-wrap gap-2">
             <button class="btn btn-outline-success btn-sm" onclick="exportErrorLog()">
@@ -142,6 +148,7 @@
 
 <script>
     let data = {};
+    let allQcmsIndex = {}; // id -> objet QCM, tous chapitres confondus (utilisé pour la révision ciblée)
     let currentPath = [], currentSession = [], missedAnswers = [];
     let sessionValidated = false;
     
@@ -187,6 +194,65 @@
 
     function getErrorLog() {
         return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+    }
+
+    // Journal d'attempts horodaté : un enregistrement par QCM répondu, conservé dans le temps
+    // (contrairement à digital_error_log qui agrège par item, ceci garde l'historique complet)
+    const MAX_ATTEMPTS_LOG = 5000;
+
+    function getAttemptsLog() {
+        return JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
+    }
+
+    function saveAttempt(record) {
+        const log = getAttemptsLog();
+        log.push(record);
+        // Evite une croissance infinie du localStorage sur le long terme
+        if (log.length > MAX_ATTEMPTS_LOG) log.splice(0, log.length - MAX_ATTEMPTS_LOG);
+        localStorage.setItem('qcm_attempts_log', JSON.stringify(log));
+    }
+
+    // Statut d'un QCM basé sur son historique d'attempts
+    function getQcmStats(qcmId) {
+        const attempts = getAttemptsLog().filter(a => a.qcmId === qcmId);
+        if (attempts.length === 0) return { label: 'Jamais vu', cls: 'secondary' };
+
+        const lastTwo = attempts.slice(-2);
+        const masteredRecently = lastTwo.length >= 2 && lastTwo.every(a => a.correct);
+        const errorCount = attempts.filter(a => !a.correct).length;
+
+        if (masteredRecently) return { label: 'Maîtrisé', cls: 'success' };
+        if (errorCount >= 2) return { label: 'Erreur récurrente', cls: 'danger' };
+        return { label: `Vu ${attempts.length}×`, cls: 'info' };
+    }
+
+    // Stats globales pour le tableau de bord de l'accueil
+    function computeGlobalStats() {
+        const log = getAttemptsLog();
+        const total = log.length;
+        if (total === 0) return null;
+
+        const successCount = log.filter(a => a.correct).length;
+        const successRate = (successCount / total * 100).toFixed(1);
+
+        const byConf = { sure: [], hesitant: [], guess: [] };
+        log.forEach(a => {
+            if (a.confidence && byConf[a.confidence]) byConf[a.confidence].push(a.correct);
+        });
+        const rateOf = key => {
+            const arr = byConf[key];
+            if (arr.length === 0) return null;
+            return (arr.filter(Boolean).length / arr.length * 100).toFixed(0);
+        };
+
+        return {
+            total,
+            successRate,
+            sureRate: rateOf('sure'),
+            hesitantRate: rateOf('hesitant'),
+            guessRate: rateOf('guess'),
+            falseCertaintyCount: byConf.sure.filter(c => !c).length
+        };
     }
 
     function setConfidence(qcmId, level) {
@@ -378,13 +444,19 @@
             for (const subject in subjects) {
                 data[subject] = await loadNode(subjects[subject], [subject]);
             }
+            buildFlatIndex(data);
             loadingEl.classList.add('hidden');
-            displaySubjects();
+
+            // Si une session était en cours au moment d'un refresh, on la reprend directement
+            if (!restoreSessionState()) {
+                displaySubjects();
+                renderHomeStats();
+            }
         } catch (e) { 
             console.error("Erreur critique d'initialisation :", e);
             if (loadingEl) {
                 loadingEl.innerHTML = `
-                    <div class="alert alert-danger role="alert">
+                    <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading"><i class="fa-solid fa-triangle-exclamation"></i> Erreur de chargement</h4>
                         <p>Impossible de charger la base de QCM. Vérifiez que votre serveur local fonctionne et que <code>QCM/config.json</code> est présent.</p>
                         <hr>
@@ -402,6 +474,14 @@
 
     function isLeaf(node) {
         return Array.isArray(node);
+    }
+
+    function buildFlatIndex(node) {
+        if (Array.isArray(node)) {
+            node.forEach(q => { allQcmsIndex[q.id] = q; });
+        } else {
+            Object.values(node).forEach(child => buildFlatIndex(child));
+        }
     }
 
     function parseQCMFile(content, currentSubjectPath, filename) {
@@ -448,8 +528,9 @@
 
     // --- SESSIONS ET RENDER ---
 
+    let sessionStartTime = null;
+
     function startSession() {
-        sessionValidated = false;
         const node = getNode(currentPath);
         const canceledQCMs = getCanceledQCMs();
         
@@ -464,24 +545,59 @@
         const sizeInput = parseInt(document.getElementById('sessionSize').value, 10);
         let requestedSize = isNaN(sizeInput) || sizeInput < 1 ? 10 : sizeInput;
         const size = Math.min(requestedSize, availableQcms.length);
-        
-        // Algorithme de Fisher-Yates
-        currentSession = shuffle(availableQcms).slice(0, size);
+
+        document.getElementById('qcmScreen').classList.add('hidden');
+        launchSession(shuffle(availableQcms).slice(0, size));
+    }
+
+    // Session ciblée sur les QCM ayant déjà généré une erreur, tous chapitres confondus
+    function startErrorReviewSession() {
+        const errorLog = getErrorLog();
+        const errorIds = [...new Set(Object.values(errorLog).filter(e => e.fp > 0 || e.fn > 0).map(e => e.qcmId))];
+        const canceledQCMs = getCanceledQCMs();
+
+        const qcms = errorIds
+            .map(id => allQcmsIndex[id])
+            .filter(q => q && !canceledQCMs.includes(q.id));
+
+        if (qcms.length === 0) {
+            alert("Aucune erreur enregistrée pour le moment, rien à réviser !");
+            return;
+        }
+
+        document.getElementById('homeScreen').classList.add('hidden');
+        launchSession(shuffle(qcms));
+    }
+
+    // Point d'entrée commun : démarre une session à partir d'une liste de QCM déjà déterminée
+    function launchSession(qcms) {
+        sessionValidated = false;
+        currentSession = qcms;
+        sessionStartTime = Date.now();
 
         for (let key in sessionConfidence) delete sessionConfidence[key];
 
-        document.getElementById('qcmScreen').classList.add('hidden');
         document.getElementById('sessionScreen').classList.remove('hidden');
+        renderSessionScreen();
+        saveSessionState();
+        window.scrollTo(0, 0);
+    }
 
+    // Rendu de l'écran de session, réutilisé au lancement et à la restauration après refresh.
+    // restoreAnswers (optionnel) : { qIdx: [oIdx, ...] } pour recocher les réponses déjà données.
+    function renderSessionScreen(restoreAnswers) {
         const canceledItems = getCanceledItems();
         const container = document.getElementById('questionsContainer');
 
-        container.innerHTML = currentSession.map((q, qIdx) => `
+        container.innerHTML = currentSession.map((q, qIdx) => {
+            const stats = getQcmStats(q.id);
+            return `
             <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}">
                 <div class="info">
                     <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
                     <div class="state">Pas encore répondu</div>
                     <div class="grade">Noté sur 1,00</div>
+                    <div><span class="badge bg-${stats.cls}">${stats.label}</span></div>
                 </div>
                 <div class="content">
                     <div class="formulation clearfix">
@@ -507,12 +623,39 @@
                             </div>
                         </fieldset>
                     </div>
+                    <div class="confidence-selector mt-3 pt-2 border-top">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon ressenti avant validation :</small>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'sure')">
+                                <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
+
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'hesitant')">
+                                <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
+
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'guess')">
+                                <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        `).join('');
-        
-        saveSessionState();
-        window.scrollTo(0, 0);
+            </div>`;
+        }).join('');
+
+        // Restaure les cases cochées et le ressenti après un refresh
+        if (restoreAnswers) {
+            currentSession.forEach((q, qIdx) => {
+                (restoreAnswers[qIdx] || []).forEach(oIdx => {
+                    const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                    if (cb) cb.checked = true;
+                });
+                const conf = sessionConfidence[q.id];
+                if (conf) {
+                    const radio = document.getElementById(`conf_${conf === 'sure' ? 'high' : conf === 'hesitant' ? 'mid' : 'low'}_${qIdx}`);
+                    if (radio) radio.checked = true;
+                }
+            });
+        }
     }
 
     // --- REPRISE APRES RAFRAÎCHISSEMENT (sessionStorage) ---
@@ -523,6 +666,8 @@
         const state = {
             currentPath,
             currentSession,
+            startTime: sessionStartTime,
+            confidence: { ...sessionConfidence },
             userAnswers: {}
         };
 
@@ -541,6 +686,36 @@
         sessionStorage.removeItem('active_qcm_session');
     }
 
+    // Restaure une session en cours après un rafraîchissement de page. Renvoie true si une session a été reprise.
+    function restoreSessionState() {
+        const raw = sessionStorage.getItem('active_qcm_session');
+        if (!raw) return false;
+
+        try {
+            const state = JSON.parse(raw);
+            if (!state.currentSession || state.currentSession.length === 0) return false;
+
+            currentPath = state.currentPath || [];
+            currentSession = state.currentSession;
+            sessionStartTime = state.startTime || Date.now();
+            sessionValidated = false;
+
+            for (let key in sessionConfidence) delete sessionConfidence[key];
+            Object.assign(sessionConfidence, state.confidence || {});
+
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('chapterScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.add('hidden');
+            document.getElementById('sessionScreen').classList.remove('hidden');
+
+            renderSessionScreen(state.userAnswers || {});
+            return true;
+        } catch (e) {
+            console.error("Erreur lors de la restauration de la session :", e);
+            return false;
+        }
+    }
+
     // --- CORRECTION ET BARÈME ---
 
     function validateFullSession() {
@@ -555,6 +730,11 @@
         details.innerHTML = '';
         missedAnswers = [];
         const canceledItems = getCanceledItems();
+
+        // Durée approximative par question, répartie sur toute la session
+        const sessionDurationSeconds = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : null;
+        const perQuestionDuration = sessionDurationSeconds ? Math.round(sessionDurationSeconds / currentSession.length) : null;
+        const attemptDate = new Date().toISOString();
 
         currentSession.forEach((q, qIdx) => {
             const userChoices = [];
@@ -592,6 +772,18 @@
             }
 
             score += qScore;
+
+            if (activeItemsCount > 0) {
+                saveAttempt({
+                    date: attemptDate,
+                    qcmId: q.id,
+                    subjectPath: q.subjectPath,
+                    correct: errors === 0,
+                    score: qScore,
+                    confidence: sessionConfidence[q.id] || null,
+                    durationSeconds: perQuestionDuration
+                });
+            }
 
             let correctnessClass, correctnessLabel;
             if (activeItemsCount === 0) {
@@ -646,22 +838,13 @@
 
             const noteStr = qScore.toFixed(2).replace('.', ',');
             const safeQcmId = q.id.replace(/'/g, "\\'");
+            const stats = getQcmStats(q.id);
 
+            const confLabels = { sure: '🎯 Sûr', hesitant: '🤔 Hésitant', guess: '🎲 Au hasard' };
+            const chosenConf = sessionConfidence[q.id];
             const confidenceHtml = `
                 <div class="confidence-selector mt-3 pt-2 border-top">
-                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                        <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon niveau de confiance sur ce QCM :</small>
-                        <div class="btn-group btn-group-sm" role="group" style="min-width: 280px;">
-                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'sure')">
-                            <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
-
-                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'hesitant')">
-                            <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
-
-                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${safeQcmId}', 'guess')">
-                            <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
-                        </div>
-                    </div>
+                    <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Ressenti donné avant validation : ${chosenConf ? confLabels[chosenConf] : 'non renseigné'}</small>
                 </div>
             `;
 
@@ -671,6 +854,7 @@
                         <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
                         <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
                         <div class="grade">Note : ${noteStr} sur 1,00</div>
+                        <div><span class="badge bg-${stats.cls}">${stats.label}</span></div>
                         <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${safeQcmId}')">
                             <i class="fa-solid fa-ban"></i> Signaler Erratum QCM
                         </button>
@@ -703,6 +887,40 @@
     }
 
     // --- NAVIGATION ---
+
+    function renderHomeStats() {
+        const el = document.getElementById('homeStats');
+        const stats = computeGlobalStats();
+        if (!stats) { el.innerHTML = ''; return; }
+
+        const confLine = (label, rate) => rate !== null
+            ? `<div>Réussite quand <strong>${label}</strong> : ${rate}%</div>`
+            : '';
+
+        el.innerHTML = `
+            <div class="border rounded p-3 bg-light">
+                <div class="row text-center g-2">
+                    <div class="col-4">
+                        <div class="fs-4 fw-bold">${stats.total}</div>
+                        <div class="small text-muted">QCM répondus</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fs-4 fw-bold">${stats.successRate}%</div>
+                        <div class="small text-muted">Taux de réussite</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fs-4 fw-bold text-danger">${stats.falseCertaintyCount}</div>
+                        <div class="small text-muted">Fausses certitudes</div>
+                    </div>
+                </div>
+                <div class="small text-muted mt-2 text-center">
+                    ${confLine('sûr', stats.sureRate)}
+                    ${confLine('hésitant', stats.hesitantRate)}
+                    ${confLine('au hasard', stats.guessRate)}
+                </div>
+            </div>
+        `;
+    }
 
     function displaySubjects() {
         const list = document.getElementById('subjectsList');
@@ -788,6 +1006,7 @@
         currentPath = [];
         document.getElementById('chapterScreen').classList.add('hidden');
         document.getElementById('homeScreen').classList.remove('hidden');
+        renderHomeStats();
     }
 
     function backToChapters() {
