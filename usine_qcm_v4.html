@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Usine à QCM - Concours (V4 GitHub Sync)</title>
+    <title>Usine à QCM - Concours (V6 GitHub Sync)</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <style>
         :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
@@ -18,6 +18,7 @@
         .btn-success { background: #16a34a; }
         .btn-danger { background: #dc2626; }
         .btn-warning { background: #d97706; }
+        .btn-small { padding: 4px 10px; font-size: 0.8em; }
         .hidden { display: none; }
         .qcm-box { border-left: 4px solid var(--primary); padding-left: 15px; margin: 20px 0; }
         .prop-item { padding: 8px; margin: 4px 0; border-radius: 4px; background: #f1f5f9; }
@@ -27,17 +28,22 @@
         .status-line { font-size: 0.85em; color: #64748b; margin-top: -8px; margin-bottom: 12px; }
         .status-line.error { color: #dc2626; }
         .status-line.ok { color: #16a34a; }
+        .bank-list { max-height: 240px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .bank-item { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 0.85em; }
+        .bank-item:last-child { border-bottom: none; }
+        .bank-item span { flex: 1; }
+        .bank-empty { padding: 12px; color: #64748b; font-size: 0.85em; text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🎯 Usine à QCM (V4 - Sync GitHub)</h1>
+    <h1>🎯 Usine à QCM (V6 - Sync GitHub)</h1>
 
     <div class="card" id="api-card">
         <h3>🔑 Clé API Groq</h3>
         <div class="alert-security">
-            ⚠️ Usage personnel/local uniquement. Ne partage pas cette page si ta clé y est enregistrée.
+            ⚠️ La clé est stockée uniquement dans le localStorage de ton navigateur, elle n'est jamais envoyée ailleurs qu'à l'API Groq. Sur une page publique (GitHub Pages), chaque visiteur doit entrer sa propre clé, mais ne partage jamais un lien contenant ta clé en paramètre d'URL.
         </div>
         <input type="password" id="apiKey" placeholder="gsk_..." />
         <button onclick="saveKey()">Enregistrer la clé</button>
@@ -65,6 +71,12 @@
 
     <div class="card hidden" id="qcmCard">
         <h3>⚡ Studio de Génération (Style Annales)</h3>
+
+        <label>Modèle Groq :</label>
+        <select id="modelSelect"></select>
+        <p id="modelUsageInfo" class="status-line"></p>
+        <p class="status-line">💡 GPT-OSS-120B et Qwen3.6-27B offrent 2x plus de budget que Llama-3.3-70B pour une qualité comparable. Llama-3.1-8B a le plus gros budget (500k) mais un niveau plus faible, à réserver en dépannage.</p>
+
         <button id="genBtn" onclick="generateSingleQCM()">Générer un QCM ciblé sur ce cours</button>
 
         <div id="qcmDisplay" class="hidden">
@@ -90,6 +102,7 @@
 
     <div class="card">
         <h3>📦 Banque de QCM Générés (<span id="countQCM">0</span>)</h3>
+        <div id="bankList" class="bank-list"></div>
         <button onclick="exportQCM()">📥 Télécharger le fichier (format Annales, $ devant les bonnes réponses)</button>
         <button style="background: #64748b; margin-left: 10px;" onclick="clearBank()">🗑️ Réinitialiser la Banque</button>
         <p class="status-line">Le fichier téléchargé est prêt à remplacer/compléter le fichier "IA" correspondant dans ton repo GitHub.</p>
@@ -102,8 +115,18 @@
     // === Configuration du repo GitHub ===
     const GH_USER = "poingdesuture";
     const GH_REPO = "congenial-octo-guide";
-    const GH_BRANCH = "main"; // à corriger en "master" si les fetch échouent en 404
-    const GH_RAW_BASE = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}`;
+    let GH_BRANCH = "main"; // tentative par défaut, repli automatique sur "master" en cas de 404
+
+    // === Catalogue des modèles Groq (limites gratuites officielles) ===
+    const MODEL_CATALOG = [
+        { id: "openai/gpt-oss-120b", label: "GPT-OSS 120B", tpd: 200000 },
+        { id: "qwen/qwen3.6-27b", label: "Qwen3.6 27B", tpd: 200000 },
+        { id: "openai/gpt-oss-20b", label: "GPT-OSS 20B", tpd: 200000 },
+        { id: "llama-3.3-70b-versatile", label: "Llama 3.3 70B", tpd: 100000 },
+        { id: "llama-3.1-8b-instant", label: "Llama 3.1 8B (dépannage)", tpd: 500000 }
+    ];
+
+    let currentModel = localStorage.getItem("selected_model") || MODEL_CATALOG[0].id;
 
     let pdfTextContent = "";
     let currentQCM = null;
@@ -112,6 +135,11 @@
     let configData = null;
     let annalesRawText = ""; // contenu brut du fichier Annales pour la matière/sous-matière sélectionnée
     let currentTargetPath = ""; // ex: "Pharmacologie" ou "NeuroSensoriel/PHYSIOLOGIE"
+
+    // Contexte figé pour la question en cours : ne change PAS pendant les retries automatiques
+    // (structure invalide), pour profiter du cache de prompt Groq et ne pas re-consommer le quota.
+    let currentChunk = "";
+    let currentAnnalesExamples = "";
 
     document.addEventListener("DOMContentLoaded", async () => {
         const key = localStorage.getItem("groq_key");
@@ -125,7 +153,18 @@
             } catch (e) {
                 console.error("Erreur de lecture du localStorage", e);
             }
+        } else {
+            renderBankList();
         }
+
+        populateModelSelect();
+        const modelSelect = document.getElementById("modelSelect");
+        modelSelect.value = currentModel;
+        modelSelect.addEventListener("change", (e) => {
+            currentModel = e.target.value;
+            localStorage.setItem("selected_model", currentModel);
+            updateModelUsageDisplay();
+        });
 
         await loadConfig();
     });
@@ -144,6 +183,7 @@
 
     function updateBankCount() {
         document.getElementById("countQCM").innerText = validatedQCMList.length;
+        renderBankList();
     }
 
     function clearBank() {
@@ -154,12 +194,148 @@
         }
     }
 
+    // Affiche la liste des QCM validés avec un bouton de retrait individuel
+    function renderBankList() {
+        const container = document.getElementById("bankList");
+        if (!container) return;
+
+        if (validatedQCMList.length === 0) {
+            container.innerHTML = '<p class="bank-empty">Aucun QCM dans la banque pour l\'instant.</p>';
+            return;
+        }
+
+        container.innerHTML = "";
+        validatedQCMList.forEach((qcm, idx) => {
+            const row = document.createElement("div");
+            row.className = "bank-item";
+
+            const span = document.createElement("span");
+            span.innerText = `${idx + 1}. ${qcm.question}`;
+
+            const delBtn = document.createElement("button");
+            delBtn.className = "btn-danger btn-small";
+            delBtn.innerText = "Retirer";
+            delBtn.onclick = () => removeFromBank(idx);
+
+            row.appendChild(span);
+            row.appendChild(delBtn);
+            container.appendChild(row);
+        });
+    }
+
+    function removeFromBank(index) {
+        validatedQCMList.splice(index, 1);
+        saveBankToLocalStorage();
+    }
+
+    // Normalise un texte pour comparaison anti-doublon (accents, casse, ponctuation, espaces)
+    function normalizeQuestion(text) {
+        return text
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, " ") // remplace par un espace pour ne pas fusionner "l'hémostase" en "lhemostase"
+            .replace(/\s+/g, " ")
+            .trim();
+    }
+
+    function isDuplicateInBank(qcm) {
+        const norm = normalizeQuestion(qcm.question);
+        return validatedQCMList.some(item => normalizeQuestion(item.question) === norm);
+    }
+
+    // === Suivi local (estimation) de la consommation de tokens par modèle et par jour ===
+    function todayKeyUTC() {
+        return new Date().toISOString().slice(0, 10); // AAAA-MM-JJ en UTC
+    }
+
+    function usageKey(modelId) {
+        return `usage_${modelId}_${todayKeyUTC()}`;
+    }
+
+    function exhaustedKey(modelId) {
+        return `exhausted_${modelId}_${todayKeyUTC()}`;
+    }
+
+    function getTokensUsedToday(modelId) {
+        return parseInt(localStorage.getItem(usageKey(modelId)) || "0", 10);
+    }
+
+    function addTokensUsed(modelId, n) {
+        if (!n) return;
+        const total = getTokensUsedToday(modelId) + n;
+        localStorage.setItem(usageKey(modelId), String(total));
+        populateModelSelect();
+    }
+
+    function markExhausted(modelId) {
+        localStorage.setItem(exhaustedKey(modelId), "1");
+    }
+
+    function isExhausted(modelId) {
+        return localStorage.getItem(exhaustedKey(modelId)) === "1";
+    }
+
+    function formatWait(seconds) {
+        const s = parseFloat(seconds);
+        if (isNaN(s) || s <= 0) return "quelques instants";
+        if (s < 60) return `${Math.ceil(s)} secondes`;
+        if (s < 3600) return `${Math.ceil(s / 60)} minutes`;
+        return `${Math.ceil(s / 3600)} heures`;
+    }
+
+    // Reconstruit le sélecteur de modèle avec la conso estimée et grise les modèles épuisés
+    function populateModelSelect() {
+        const select = document.getElementById("modelSelect");
+        if (!select) return;
+
+        select.innerHTML = "";
+        MODEL_CATALOG.forEach(m => {
+            const used = getTokensUsedToday(m.id);
+            const exhausted = isExhausted(m.id) || used >= m.tpd;
+            const opt = document.createElement("option");
+            opt.value = m.id;
+            opt.innerText = `${exhausted ? "⛔ " : ""}${m.label} (~${used.toLocaleString("fr-FR")}/${m.tpd.toLocaleString("fr-FR")} tok/j)`;
+            if (exhausted) opt.disabled = true;
+            select.appendChild(opt);
+        });
+
+        select.value = currentModel;
+        updateModelUsageDisplay();
+    }
+
+    function updateModelUsageDisplay() {
+        const info = document.getElementById("modelUsageInfo");
+        const model = MODEL_CATALOG.find(m => m.id === currentModel);
+        if (!info || !model) return;
+
+        const used = getTokensUsedToday(currentModel);
+        const pct = Math.min(100, Math.round((used / model.tpd) * 100));
+        info.innerText = `≈ ${used.toLocaleString("fr-FR")} / ${model.tpd.toLocaleString("fr-FR")} tokens utilisés aujourd'hui sur ${model.label} (estimation locale, réinitialisée à minuit UTC).`;
+        info.className = pct >= 90 ? "status-line error" : (pct >= 60 ? "status-line" : "status-line ok");
+    }
+
+    // === Requête GitHub avec repli automatique main/master ===
+    async function fetchFromRepo(pathAfterBranch) {
+        const primaryUrl = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}${pathAfterBranch}`;
+        let res = await fetch(primaryUrl);
+        if (res.ok) return res;
+
+        const fallbackBranch = GH_BRANCH === "main" ? "master" : "main";
+        const fallbackUrl = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${fallbackBranch}${pathAfterBranch}`;
+        const fallbackRes = await fetch(fallbackUrl);
+        if (fallbackRes.ok) {
+            GH_BRANCH = fallbackBranch; // on mémorise la branche qui fonctionne pour la suite
+            return fallbackRes;
+        }
+
+        return res; // on renvoie la réponse d'origine pour garder son status HTTP dans le message d'erreur
+    }
+
     // === Chargement du config.json depuis GitHub (GET public, sans auth) ===
     async function loadConfig() {
         const statusEl = document.getElementById("configStatus");
         try {
-            const url = `${GH_RAW_BASE}/QCM/config.json`;
-            const res = await fetch(url);
+            const res = await fetchFromRepo("/QCM/config.json");
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             configData = await res.json();
 
@@ -173,10 +349,10 @@
                 blocSelect.appendChild(opt);
             });
 
-            statusEl.innerText = "✅ Config synchronisée avec GitHub.";
+            statusEl.innerText = `✅ Config synchronisée avec GitHub (branche "${GH_BRANCH}").`;
             statusEl.className = "status-line ok";
         } catch (err) {
-            statusEl.innerText = `❌ Impossible de charger config.json (${err.message}). Vérifie GH_BRANCH ("main"/"master") en haut du script.`;
+            statusEl.innerText = `❌ Impossible de charger config.json (${err.message}). Vérifie que le repo "${GH_REPO}" est public et que le chemin "QCM/config.json" existe.`;
             statusEl.className = "status-line error";
             console.error(err);
         }
@@ -238,12 +414,11 @@
         annalesRawText = "";
 
         try {
-            const url = `${GH_RAW_BASE}/QCM/${targetPath}/Annales`;
-            const res = await fetch(url);
+            const res = await fetchFromRepo(`/QCM/${targetPath}/Annales`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             annalesRawText = await res.text();
             const nbBlocs = annalesRawText.split(/\n\s*\n/).filter(b => b.trim()).length;
-            statusEl.innerText = `✅ Annales chargées (${nbBlocs} QCM détectés) — le style sera imité.`;
+            statusEl.innerText = `✅ Annales chargées (${nbBlocs} QCM détectés), le style sera imité.`;
             statusEl.className = "status-line ok";
         } catch (err) {
             statusEl.innerText = `⚠️ Impossible de charger les annales (${err.message}). Génération possible mais sans style de référence.`;
@@ -307,6 +482,13 @@
         return selectedText.trim() || text.substring(0, targetSize);
     }
 
+    // Repioche le chunk de cours et les exemples d'annales : appelé UNE FOIS par nouvelle question,
+    // jamais pendant les retries automatiques (structure invalide), pour profiter du cache de prompt Groq.
+    function prepareNewAttemptContext() {
+        currentChunk = getSmartChunk(pdfTextContent, 2000);
+        currentAnnalesExamples = getRandomAnnalesExamples(annalesRawText, 2);
+    }
+
     function validateQCMStructure(qcm) {
         if (!qcm || typeof qcm !== 'object') return false;
         if (!qcm.question || typeof qcm.question !== 'string') return false;
@@ -318,6 +500,20 @@
             console.warn(`Structure invalide : ${numCorrect} bonnes réponses.`);
             return false;
         }
+
+        const uniqueCorrects = new Set(qcm.reponses_correctes);
+        if (uniqueCorrects.size !== qcm.reponses_correctes.length) {
+            console.warn(`Doublon dans reponses_correctes : ${qcm.reponses_correctes}`);
+            return false;
+        }
+
+        const validLetters = ["A", "B", "C", "D", "E"];
+        const hasInvalidLetter = qcm.reponses_correctes.some(l => !validLetters.includes(l));
+        if (hasInvalidLetter) {
+            console.warn(`Lettre hors A-E détectée : ${qcm.reponses_correctes}`);
+            return false;
+        }
+
         return true;
     }
 
@@ -329,6 +525,7 @@
         if (!apiKey) return alert("Veuillez d'abord enregistrer votre clé API Groq.");
         if (!pdfTextContent) return alert("Charge d'abord un PDF de cours.");
 
+        prepareNewAttemptContext();
         genAttempts = 0;
         await tryGenerate(apiKey);
     }
@@ -343,7 +540,8 @@
 
         const display = document.getElementById("qcmDisplay");
         display.classList.remove("hidden");
-        document.getElementById("qcmQuestion").innerText = "⚡ Génération en cours par Llama-3.3-70b...";
+        const modelLabel = MODEL_CATALOG.find(m => m.id === currentModel)?.label || currentModel;
+        document.getElementById("qcmQuestion").innerText = `⚡ Génération en cours par ${modelLabel}...`;
         document.getElementById("qcmProps").innerHTML = "";
         document.getElementById("genBtn").disabled = true;
 
@@ -355,9 +553,6 @@
             feedbackBanner.classList.add("hidden");
         }
 
-        const chunk = getSmartChunk(pdfTextContent, 2000);
-        const annalesExamples = getRandomAnnalesExamples(annalesRawText, 2);
-
         let critiqueInstruction = "";
         if (lastCritique) {
             critiqueInstruction = `\nATTENTION : L'utilisateur a rejeté le précédent QCM avec la remarque suivante : "${lastCritique}". CORRIGE CE DÉFAUT DANS CETTE NOUVELLE PROPOSITION !`;
@@ -368,16 +563,17 @@ Génère UN QCM à 5 propositions (A, B, C, D, E) basé STRICTEMENT sur le cours
 
 RÈGLES STRICTES DE STRUCTURE :
 1. Strictement 5 propositions (A, B, C, D, E).
-2. De 1 à 4 bonnes réponses VRAIES (STRICTEMENT INTERDIT : 0 ou 5 bonnes réponses).
-3. Varie les pièges et la position des bonnes réponses.
-4. Imite EXACTEMENT le niveau de difficulté, la formulation et le style des vraies annales ci-dessous.
-5. Ne génère AUCUNE explication ou justification.
+2. De 1 à 4 bonnes réponses VRAIES, chacune listée UNE SEULE FOIS (STRICTEMENT INTERDIT : 0 ou 5 bonnes réponses, ou une lettre répétée).
+3. Les lettres dans "reponses_correctes" doivent être uniquement parmi A, B, C, D, E.
+4. Varie les pièges et la position des bonnes réponses.
+5. Imite EXACTEMENT le niveau de difficulté, la formulation et le style des vraies annales ci-dessous.
+6. Ne génère AUCUNE explication ou justification.
 ${critiqueInstruction}
 
-${annalesExamples ? "--- EXEMPLES RÉELS D'ANNALES À IMITER (style et niveau) ---\n" + annalesExamples + "\n" : ""}
+${currentAnnalesExamples ? "--- EXEMPLES RÉELS D'ANNALES À IMITER (style et niveau) ---\n" + currentAnnalesExamples + "\n" : ""}
 
 --- CONTEXTE DU COURS DU JOUR ---
-${chunk}
+${currentChunk}
 
 Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
 {
@@ -394,7 +590,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
+                    model: currentModel,
                     messages: [
                         { role: "system", content: "Tu réponds uniquement en JSON valide." },
                         { role: "user", content: prompt }
@@ -404,18 +600,30 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
             });
 
             if (!response.ok) {
-                if (response.status === 429) throw new Error("Rate limit atteint sur Groq. Patiente quelques secondes.");
+                if (response.status === 429) {
+                    const retryAfter = parseFloat(response.headers.get("retry-after")) || 0;
+                    const rateErr = new Error(`Rate limit atteint sur "${modelLabel}" (Groq). Réessaie dans ${formatWait(retryAfter)}.`);
+                    rateErr.isRateLimit = true;
+                    rateErr.retryAfter = retryAfter;
+                    throw rateErr;
+                }
                 throw new Error(`Erreur API Groq (${response.status})`);
             }
 
             const data = await response.json();
+
+            // Suivi de conso (estimation locale) quel que soit le résultat, l'appel est déjà facturé côté Groq
+            if (data?.usage?.total_tokens) {
+                addTokensUsed(currentModel, data.usage.total_tokens);
+            }
+
             if (!data?.choices?.[0]?.message?.content) throw new Error("Réponse API malformée.");
 
             const rawContent = data.choices[0].message.content.replace(/```json|```/g, '').trim();
             const parsedQCM = JSON.parse(rawContent);
 
             if (!validateQCMStructure(parsedQCM)) {
-                return tryGenerate(apiKey); // relance bornée par MAX_GEN_ATTEMPTS
+                return tryGenerate(apiKey); // relance bornée par MAX_GEN_ATTEMPTS, même chunk/exemples (cache-friendly)
             }
 
             currentQCM = parsedQCM;
@@ -425,9 +633,25 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
         } catch (err) {
             document.getElementById("qcmQuestion").innerText = "❌ Erreur de génération.";
             document.getElementById("genBtn").disabled = false;
-            alert(`Erreur : ${err.message}`);
+
+            if (err.isRateLimit) {
+                if (err.retryAfter > 3600) {
+                    markExhausted(currentModel);
+                    populateModelSelect();
+                    alert(`${err.message}\n\nCe modèle a l'air épuisé pour la journée, il est marqué "⛔" dans le sélecteur. Choisis-en un autre au-dessus du bouton Générer pour continuer.`);
+                } else {
+                    alert(err.message);
+                }
+            } else {
+                alert(`Erreur : ${err.message}`);
+            }
             console.error(err);
         }
+    }
+
+    // Nettoie le préfixe de lettre en tolérant plusieurs séparateurs : "A)", "A.", "A -", "A:"
+    function stripLetterPrefix(prop, letter) {
+        return prop.replace(new RegExp(`^${letter}\\s*[).:-]?\\s*`), '');
     }
 
     function renderQCM(qcm) {
@@ -441,7 +665,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
         qcm.propositions.forEach((prop, idx) => {
             const letter = letters[idx];
             const isCorrect = corrects.has(letter);
-            const cleanProp = prop.replace(new RegExp(`^${letter}[\\).]\\s*`), '');
+            const cleanProp = stripLetterPrefix(prop, letter);
 
             const div = document.createElement("div");
             div.className = `prop-item ${isCorrect ? 'correct' : ''}`;
@@ -455,8 +679,12 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
         const apiKey = localStorage.getItem("groq_key");
 
         if (type === 'oui') {
-            validatedQCMList.push(currentQCM);
-            saveBankToLocalStorage();
+            if (isDuplicateInBank(currentQCM)) {
+                alert("Ce QCM (question quasi identique) est déjà présent dans la banque. Il n'a pas été ajouté en double.");
+            } else {
+                validatedQCMList.push(currentQCM);
+                saveBankToLocalStorage();
+            }
             lastCritique = "";
         } else if (type === 'critique') {
             const critiqueInput = document.getElementById("critique");
@@ -467,6 +695,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
         }
 
         currentQCM = null;
+        prepareNewAttemptContext();
         genAttempts = 0;
         tryGenerate(apiKey);
     }
@@ -479,7 +708,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict :
 
         qcm.propositions.forEach((prop, idx) => {
             const letter = letters[idx];
-            const cleanProp = prop.replace(new RegExp(`^${letter}[\\).]\\s*`), '');
+            const cleanProp = stripLetterPrefix(prop, letter);
             const prefix = corrects.has(letter) ? "$" : "";
             block += `${prefix}${letter}. ${cleanProp}\n`;
         });
