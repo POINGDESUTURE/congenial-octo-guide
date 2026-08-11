@@ -76,6 +76,8 @@
     .breadcrumb-nav { font-size: 0.85rem; color: #6c757d; margin-bottom: 1rem; }
     .breadcrumb-nav span { cursor: pointer; }
     .breadcrumb-nav span:hover { text-decoration: underline; color: #1177d1; }
+
+    #examTimerBar { position: sticky; top: 10px; z-index: 50; }
 </style>
 
 </head>
@@ -110,6 +112,12 @@
         </div>
     </div>
 
+    <div id="statsScreen" class="hidden setup-card shadow-sm">
+        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="closeStatsScreen()">← Retour</button>
+        <h3 class="mb-4">📊 Statistiques détaillées</h3>
+        <div id="statsContent"></div>
+    </div>
+
     <div id="chapterScreen" class="hidden setup-card shadow-sm">
         <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backOneLevel()">← Retour</button>
         <div id="breadcrumb" class="breadcrumb-nav"></div>
@@ -124,10 +132,28 @@
             <label class="form-label fw-bold">Nombre de questions :</label>
             <input type="number" id="sessionSize" class="form-control" value="10">
         </div>
+
+        <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="examModeToggle" onchange="toggleExamDurationInput()">
+            <label class="form-check-label" for="examModeToggle">Mode examen (chrono, aucun indice, correction uniquement à la fin)</label>
+        </div>
+        <div class="mb-3 hidden" id="examDurationWrapper" style="max-width: 300px;">
+            <label class="form-label fw-bold">Durée du chrono (minutes) :</label>
+            <input type="number" id="examDurationInput" class="form-control" value="30">
+        </div>
+        <div class="form-check form-switch mb-4">
+            <input class="form-check-input" type="checkbox" id="dpModeToggle">
+            <label class="form-check-label" for="dpModeToggle">Mode DP, Dossier Progressif (validation séquentielle et définitive de chaque question)</label>
+        </div>
+
         <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
     </div>
 
     <div id="sessionScreen" class="hidden">
+        <div id="examTimerBar" class="hidden alert alert-warning d-flex justify-content-between align-items-center mb-3">
+            <div><i class="fa-solid fa-hourglass-half"></i> Mode examen, correction uniquement à la fin du chrono.</div>
+            <div class="fs-4 fw-bold" id="examTimerDisplay">00:00</div>
+        </div>
         <div id="questionsContainer"></div>
         <div class="submitbtns text-center mt-4 mb-5">
             <button class="btn btn-primary px-4" onclick="validateFullSession()">Terminer le test…</button>
@@ -151,12 +177,19 @@
     let allQcmsIndex = {}; // id -> objet QCM, tous chapitres confondus (utilisé pour la révision ciblée)
     let currentPath = [], currentSession = [], missedAnswers = [];
     let sessionValidated = false;
-    
+
+    // Etat du mode de session en cours
+    let examMode = false;
+    let dpMode = false;
+    let examEndTime = null;
+    let examTimerInterval = null;
+    let dpValidated = [];
+
     // Stockage temporaire pour la session en cours
     const sessionConfidence = {};
 
     // --- UTILITAIRES DE SÉCURITÉ ET ALGORITHMES ---
-    
+
     function escapeHTML(str) {
         if (!str) return '';
         return String(str)
@@ -183,7 +216,7 @@
     }
 
     // --- PERSISTENCE : ERRATUMS ET CARNET D'ERREURS ENRICHI ---
-    
+
     function getCanceledQCMs() {
         return JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
     }
@@ -255,9 +288,82 @@
         };
     }
 
+    // Statistiques détaillées pour la page /stats : par mode, par matière, par chapitre, progression
+    function computeDetailedStats() {
+        const log = getAttemptsLog();
+        if (log.length === 0) return null;
+
+        const byMode = { training: [], exam: [], dp: [] };
+        log.forEach(a => {
+            if (a.examMode) byMode.exam.push(a);
+            else if (a.dpMode) byMode.dp.push(a);
+            else byMode.training.push(a);
+        });
+        const modeRate = arr => arr.length ? (arr.filter(a => a.correct).length / arr.length * 100).toFixed(0) : null;
+
+        const bySubject = {};
+        log.forEach(a => {
+            const subject = (a.subjectPath || '').split(' > ')[0] || 'Autre';
+            if (!bySubject[subject]) bySubject[subject] = [];
+            bySubject[subject].push(a);
+        });
+        const subjectStats = Object.entries(bySubject).map(([name, arr]) => {
+            const durations = arr.filter(a => a.durationSeconds).map(a => a.durationSeconds);
+            const avgDuration = durations.length ? Math.round(durations.reduce((s, d) => s + d, 0) / durations.length) : null;
+            return {
+                name,
+                total: arr.length,
+                successRate: (arr.filter(a => a.correct).length / arr.length * 100).toFixed(0),
+                avgDuration
+            };
+        }).sort((a, b) => a.successRate - b.successRate);
+
+        const byChapter = {};
+        log.forEach(a => {
+            const chap = a.subjectPath || 'Autre';
+            if (!byChapter[chap]) byChapter[chap] = [];
+            byChapter[chap].push(a);
+        });
+        const chapterStats = Object.entries(byChapter)
+            .filter(([_, arr]) => arr.length >= 3)
+            .map(([name, arr]) => ({
+                name,
+                total: arr.length,
+                successRate: (arr.filter(a => a.correct).length / arr.length * 100).toFixed(0)
+            }))
+            .sort((a, b) => a.successRate - b.successRate)
+            .slice(0, 10);
+
+        const byDay = {};
+        log.forEach(a => {
+            const day = (a.date || '').slice(0, 10);
+            if (!day) return;
+            if (!byDay[day]) byDay[day] = [];
+            byDay[day].push(a);
+        });
+        const days = Object.keys(byDay).sort().slice(-14);
+        const progression = days.map(day => ({
+            day,
+            total: byDay[day].length,
+            successRate: Math.round(byDay[day].filter(a => a.correct).length / byDay[day].length * 100)
+        }));
+
+        return {
+            global: computeGlobalStats(),
+            modeStats: {
+                training: { count: byMode.training.length, rate: modeRate(byMode.training) },
+                exam: { count: byMode.exam.length, rate: modeRate(byMode.exam) },
+                dp: { count: byMode.dp.length, rate: modeRate(byMode.dp) }
+            },
+            subjectStats,
+            chapterStats,
+            progression
+        };
+    }
+
     function setConfidence(qcmId, level) {
         sessionConfidence[qcmId] = level;
-        
+
         const log = getErrorLog();
         let updated = false;
 
@@ -282,6 +388,7 @@
                         qcmId: qcmId,
                         fp: 0,
                         fn: 0,
+                        examErrorCount: 0,
                         successCount: 1,
                         confidence: level
                     };
@@ -334,10 +441,10 @@
         }
     }
 
-    function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId) {
+    function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId, isExam) {
         const log = getErrorLog();
         const key = `${subjectPath} > ${qcmQuestion} > ${itemText}`;
-        
+
         if (!log[key]) {
             log[key] = {
                 p: subjectPath,
@@ -346,12 +453,18 @@
                 qcmId: qcmId,
                 fp: 0,
                 fn: 0,
+                examErrorCount: 0,
                 confidence: sessionConfidence[qcmId] || 'non spécifié'
             };
         }
-        
-        if (status === 'false_positive') log[key].fp += 1;
-        else if (status === 'false_negative') log[key].fn += 1;
+
+        if (status === 'false_positive') {
+            log[key].fp += 1;
+            if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
+        } else if (status === 'false_negative') {
+            log[key].fn += 1;
+            if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
+        }
 
         if (sessionConfidence[qcmId]) {
             log[key].confidence = sessionConfidence[qcmId];
@@ -372,11 +485,15 @@
             return;
         }
 
+        // Priorité aux erreurs commises en conditions d'examen
+        errorItems.sort((a, b) => (b.examErrorCount || 0) - (a.examErrorCount || 0));
+
         let outputText = "PROMPT REVISION IA - CARNET D'ERREURS ET LACUNES ENRICHI\n";
         outputText += "CONSIGNE POUR L'IA :\n";
         outputText += "1. Analyse mes erreurs récurrentes et mes bonnes réponses 'Au hasard' ci-dessous.\n";
         outputText += "2. Priorise les erreurs marquées 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
-        outputText += "3. Pour chaque notion, explique le piège physiologique/clinique et donne une règle de décision rapide.\n\n";
+        outputText += "3. Priorise en priorité absolue les erreurs marquées 'REALISE EN MODE EXAMEN', elles pèsent le plus lourd car commises en conditions réelles.\n";
+        outputText += "4. Pour chaque notion, explique le piège physiologique/clinique et donne une règle de décision rapide.\n\n";
         outputText += "Légende : FP = Faux Positif, FN = Faux Négatif.\n\n";
 
         if (errorItems.length > 0) {
@@ -386,7 +503,8 @@
                 if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
                 if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
                 const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
-                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}\n\n`;
+                const examFlag = item.examErrorCount > 0 ? ` | ⚠️ REALISE EN MODE EXAMEN x${item.examErrorCount} (PRIORITAIRE)` : '';
+                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}${examFlag}\n\n`;
             });
         }
 
@@ -420,7 +538,7 @@
                     if (parsed.length > 0) {
                         chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
                     }
-                } catch (e) { 
+                } catch (e) {
                     console.error(`Erreur de chargement du fichier: QCM/${pathParts.join('/')}/${file}`, e);
                 }
             }
@@ -439,7 +557,7 @@
         try {
             const configResponse = await fetch('QCM/config.json');
             if (!configResponse.ok) throw new Error("Impossible de trouver config.json");
-            
+
             const subjects = await configResponse.json();
             for (const subject in subjects) {
                 data[subject] = await loadNode(subjects[subject], [subject]);
@@ -452,7 +570,7 @@
                 displaySubjects();
                 renderHomeStats();
             }
-        } catch (e) { 
+        } catch (e) {
             console.error("Erreur critique d'initialisation :", e);
             if (loadingEl) {
                 loadingEl.innerHTML = `
@@ -530,10 +648,15 @@
 
     let sessionStartTime = null;
 
+    function toggleExamDurationInput() {
+        const checked = document.getElementById('examModeToggle').checked;
+        document.getElementById('examDurationWrapper').classList.toggle('hidden', !checked);
+    }
+
     function startSession() {
         const node = getNode(currentPath);
         const canceledQCMs = getCanceledQCMs();
-        
+
         const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
 
         if (availableQcms.length === 0) {
@@ -546,8 +669,20 @@
         let requestedSize = isNaN(sizeInput) || sizeInput < 1 ? 10 : sizeInput;
         const size = Math.min(requestedSize, availableQcms.length);
 
+        const examModeChecked = document.getElementById('examModeToggle').checked;
+        const dpModeChecked = document.getElementById('dpModeToggle').checked;
+        let examDuration = null;
+        if (examModeChecked) {
+            const durInput = parseInt(document.getElementById('examDurationInput').value, 10);
+            examDuration = isNaN(durInput) || durInput < 1 ? 30 : durInput;
+        }
+
         document.getElementById('qcmScreen').classList.add('hidden');
-        launchSession(shuffle(availableQcms).slice(0, size));
+        launchSession(shuffle(availableQcms).slice(0, size), {
+            examMode: examModeChecked,
+            dpMode: dpModeChecked,
+            examDuration
+        });
     }
 
     // Session ciblée sur les QCM ayant déjà généré une erreur, tous chapitres confondus
@@ -570,17 +705,100 @@
     }
 
     // Point d'entrée commun : démarre une session à partir d'une liste de QCM déjà déterminée
-    function launchSession(qcms) {
+    // opts : { examMode, dpMode, examDuration (en minutes) }
+    function launchSession(qcms, opts = {}) {
+        clearExamTimer();
+
+        examMode = !!opts.examMode;
+        dpMode = !!opts.dpMode;
+
         sessionValidated = false;
-        currentSession = qcms;
+        // Clone les QCM et mélange les items de chacun pour ne pas altérer allQcmsIndex (référence partagée)
+        currentSession = qcms.map(q => ({ ...q, options: shuffle(q.options) }));
+        dpValidated = new Array(currentSession.length).fill(false);
         sessionStartTime = Date.now();
 
         for (let key in sessionConfidence) delete sessionConfidence[key];
 
         document.getElementById('sessionScreen').classList.remove('hidden');
         renderSessionScreen();
+
+        if (examMode && opts.examDuration) {
+            startExamTimer(Date.now() + opts.examDuration * 60000);
+        } else {
+            document.getElementById('examTimerBar').classList.add('hidden');
+        }
+
         saveSessionState();
         window.scrollTo(0, 0);
+    }
+
+    // --- CHRONO DU MODE EXAMEN ---
+
+    function startExamTimer(endTime) {
+        examEndTime = endTime;
+        const bar = document.getElementById('examTimerBar');
+        bar.classList.remove('hidden');
+        updateExamTimerDisplay();
+        if (examTimerInterval) clearInterval(examTimerInterval);
+        examTimerInterval = setInterval(() => {
+            const remaining = examEndTime - Date.now();
+            if (remaining <= 0) {
+                clearInterval(examTimerInterval);
+                examTimerInterval = null;
+                document.getElementById('examTimerDisplay').textContent = "00:00";
+                alert("Temps écoulé, le test va être validé automatiquement.");
+                validateFullSession();
+                return;
+            }
+            updateExamTimerDisplay();
+        }, 1000);
+    }
+
+    function updateExamTimerDisplay() {
+        const remaining = Math.max(0, examEndTime - Date.now());
+        const m = Math.floor(remaining / 60000);
+        const s = Math.floor((remaining % 60000) / 1000);
+        const el = document.getElementById('examTimerDisplay');
+        if (el) el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function clearExamTimer() {
+        if (examTimerInterval) clearInterval(examTimerInterval);
+        examTimerInterval = null;
+        examEndTime = null;
+    }
+
+    // Récupère l'état actuel des cases cochées, tous questions confondues
+    function collectCurrentAnswers() {
+        const answers = {};
+        currentSession.forEach((q, qIdx) => {
+            answers[qIdx] = [];
+            q.options.forEach((_, oIdx) => {
+                const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                if (cb && cb.checked) answers[qIdx].push(oIdx);
+            });
+        });
+        return answers;
+    }
+
+    // Verrouille définitivement une question en mode DP et débloque la suivante
+    function validateQuestionDP(qIdx) {
+        const q = currentSession[qIdx];
+        const hasAnswer = q.options.some((_, oIdx) => {
+            const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+            return cb && cb.checked;
+        });
+        if (!hasAnswer) {
+            alert("Vous devez cocher au moins une réponse avant de valider cette question.");
+            return;
+        }
+        if (!confirm("Valider cette question ? Vous ne pourrez plus modifier votre réponse ensuite.")) return;
+
+        const snapshot = collectCurrentAnswers();
+        dpValidated[qIdx] = true;
+        renderSessionScreen(snapshot);
+        saveSessionState();
     }
 
     // Rendu de l'écran de session, réutilisé au lancement et à la restauration après refresh.
@@ -590,14 +808,33 @@
         const container = document.getElementById('questionsContainer');
 
         container.innerHTML = currentSession.map((q, qIdx) => {
+            const isDpLocked = dpMode && qIdx > 0 && !dpValidated[qIdx - 1];
+            const isDpValidatedThis = dpMode && dpValidated[qIdx];
+
+            if (isDpLocked) {
+                return `
+                <div class="que sngmultichoice notyetanswered" id="question-${qIdx}">
+                    <div class="info">
+                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                        <div class="state">Verrouillée</div>
+                    </div>
+                    <div class="content">
+                        <div class="alert alert-secondary mb-0">
+                            <i class="fa-solid fa-lock"></i> Cette question ne peut pas être tentée avant que la question précédente ait reçu une réponse.
+                        </div>
+                    </div>
+                </div>`;
+            }
+
             const stats = getQcmStats(q.id);
+
             return `
             <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}">
                 <div class="info">
                     <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
-                    <div class="state">Pas encore répondu</div>
+                    <div class="state">${isDpValidatedThis ? 'Validée' : 'Pas encore répondu'}</div>
                     <div class="grade">Noté sur 1,00</div>
-                    <div><span class="badge bg-${stats.cls}">${stats.label}</span></div>
+                    ${!examMode ? `<div><span class="badge bg-${stats.cls}">${stats.label}</span></div>` : ''}
                 </div>
                 <div class="content">
                     <div class="formulation clearfix">
@@ -611,9 +848,10 @@
                             <div class="answer">
                                 ${q.options.map((opt, oIdx) => {
                                     const isCanceled = canceledItems.includes(opt.id);
+                                    const isDisabled = isCanceled || isDpValidatedThis;
                                     return `
                                     <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
-                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isCanceled ? 'disabled' : ''} onchange="saveSessionState()">
+                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isDisabled ? 'disabled' : ''} onchange="saveSessionState()">
                                         <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
                                             <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
                                             <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
@@ -623,21 +861,30 @@
                             </div>
                         </fieldset>
                     </div>
+                    ${!examMode ? `
                     <div class="confidence-selector mt-3 pt-2 border-top">
                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                             <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon ressenti avant validation :</small>
                             <div class="btn-group btn-group-sm" role="group">
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'sure')">
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'sure')">
                                 <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
 
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'hesitant')">
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'hesitant')">
                                 <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
 
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" onchange="setConfidence('${q.id}', 'guess')">
+                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'guess')">
                                 <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
                             </div>
                         </div>
-                    </div>
+                    </div>` : ''}
+                    ${dpMode && !isDpValidatedThis ? `
+                    <div class="mt-3 pt-2 border-top text-end">
+                        <button class="btn btn-uness btn-sm" onclick="validateQuestionDP(${qIdx})">Valider cette question</button>
+                    </div>` : ''}
+                    ${dpMode && isDpValidatedThis ? `
+                    <div class="mt-3 pt-2 border-top">
+                        <span class="badge bg-success"><i class="fa-solid fa-check"></i> Question validée, réponse verrouillée</span>
+                    </div>` : ''}
                 </div>
             </div>`;
         }).join('');
@@ -649,10 +896,12 @@
                     const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
                     if (cb) cb.checked = true;
                 });
-                const conf = sessionConfidence[q.id];
-                if (conf) {
-                    const radio = document.getElementById(`conf_${conf === 'sure' ? 'high' : conf === 'hesitant' ? 'mid' : 'low'}_${qIdx}`);
-                    if (radio) radio.checked = true;
+                if (!examMode) {
+                    const conf = sessionConfidence[q.id];
+                    if (conf) {
+                        const radio = document.getElementById(`conf_${conf === 'sure' ? 'high' : conf === 'hesitant' ? 'mid' : 'low'}_${qIdx}`);
+                        if (radio) radio.checked = true;
+                    }
                 }
             });
         }
@@ -662,22 +911,18 @@
 
     function saveSessionState() {
         if (currentSession.length === 0 || sessionValidated) return;
-        
+
         const state = {
             currentPath,
             currentSession,
             startTime: sessionStartTime,
             confidence: { ...sessionConfidence },
-            userAnswers: {}
+            userAnswers: collectCurrentAnswers(),
+            examMode,
+            dpMode,
+            examEndTime,
+            dpValidated: [...dpValidated]
         };
-
-        currentSession.forEach((q, qIdx) => {
-            state.userAnswers[qIdx] = [];
-            q.options.forEach((_, oIdx) => {
-                const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
-                if (cb && cb.checked) state.userAnswers[qIdx].push(oIdx);
-            });
-        });
 
         sessionStorage.setItem('active_qcm_session', JSON.stringify(state));
     }
@@ -699,6 +944,8 @@
             currentSession = state.currentSession;
             sessionStartTime = state.startTime || Date.now();
             sessionValidated = false;
+            dpMode = !!state.dpMode;
+            dpValidated = state.dpValidated || new Array(currentSession.length).fill(false);
 
             for (let key in sessionConfidence) delete sessionConfidence[key];
             Object.assign(sessionConfidence, state.confidence || {});
@@ -707,6 +954,21 @@
             document.getElementById('chapterScreen').classList.add('hidden');
             document.getElementById('qcmScreen').classList.add('hidden');
             document.getElementById('sessionScreen').classList.remove('hidden');
+
+            if (state.examMode && state.examEndTime) {
+                examMode = true;
+                if (state.examEndTime <= Date.now()) {
+                    // Le temps était déjà écoulé pendant que la page était fermée
+                    renderSessionScreen(state.userAnswers || {});
+                    document.getElementById('examTimerBar').classList.add('hidden');
+                    setTimeout(() => validateFullSession(), 300);
+                    return true;
+                }
+                startExamTimer(state.examEndTime);
+            } else {
+                examMode = false;
+                document.getElementById('examTimerBar').classList.add('hidden');
+            }
 
             renderSessionScreen(state.userAnswers || {});
             return true;
@@ -722,6 +984,9 @@
         // Protection contre la double soumission
         if (sessionValidated) return;
         sessionValidated = true;
+
+        clearExamTimer();
+        document.getElementById('examTimerBar').classList.add('hidden');
 
         let score = 0;
         let validQcmCount = 0; // Exclut du dénominateur les QCMs dont tous les items sont annulés
@@ -756,10 +1021,10 @@
 
                 if (opt.isCorrect && !checked) {
                     errors++;
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative', q.id);
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative', q.id, examMode);
                 } else if (!opt.isCorrect && checked) {
                     errors++;
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive', q.id);
+                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive', q.id, examMode);
                 }
             });
 
@@ -781,22 +1046,24 @@
                     correct: errors === 0,
                     score: qScore,
                     confidence: sessionConfidence[q.id] || null,
-                    durationSeconds: perQuestionDuration
+                    durationSeconds: perQuestionDuration,
+                    examMode: examMode,
+                    dpMode: dpMode
                 });
             }
 
             let correctnessClass, correctnessLabel;
             if (activeItemsCount === 0) {
-                correctnessClass = 'notanswered'; 
+                correctnessClass = 'notanswered';
                 correctnessLabel = 'Question neutralisée (100% annulée)';
-            } else if (errors === 0) { 
-                correctnessClass = 'correct'; correctnessLabel = 'Correct'; 
-            } else if (userChoices.length === 0) { 
-                correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse'; 
-            } else if (qScore > 0) { 
-                correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct'; 
-            } else { 
-                correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect'; 
+            } else if (errors === 0) {
+                correctnessClass = 'correct'; correctnessLabel = 'Correct';
+            } else if (userChoices.length === 0) {
+                correctnessClass = 'notanswered'; correctnessLabel = 'Pas de réponse';
+            } else if (qScore > 0) {
+                correctnessClass = 'partiallycorrect'; correctnessLabel = 'Partiellement correct';
+            } else {
+                correctnessClass = 'incorrect'; correctnessLabel = 'Incorrect';
             }
 
             const optHtml = q.options.map((opt, oIdx) => {
@@ -807,15 +1074,15 @@
                 if (isCanceled) {
                     stateCls = 'item-canceled';
                     icon = '<span class="badge bg-secondary ms-2">Item annulé</span>';
-                } else if (opt.isCorrect && checked) { 
-                    stateCls = 'correct'; icon = '<i class="icon fa-solid fa-check"></i>'; 
-                } else if (opt.isCorrect && !checked) { 
-                    stateCls = 'correctnotchecked'; icon = '<i class="icon fa-solid fa-check"></i>'; 
-                    missedAnswers.push({ q: q.question, a: opt.text }); 
-                } else if (!opt.isCorrect && checked) { 
-                    stateCls = 'incorrect'; icon = '<i class="icon fa-solid fa-times"></i>'; 
-                } else { 
-                    stateCls = 'incorrectnotchecked'; 
+                } else if (opt.isCorrect && checked) {
+                    stateCls = 'correct'; icon = '<i class="icon fa-solid fa-check"></i>';
+                } else if (opt.isCorrect && !checked) {
+                    stateCls = 'correctnotchecked'; icon = '<i class="icon fa-solid fa-check"></i>';
+                    missedAnswers.push({ q: q.question, a: opt.text });
+                } else if (!opt.isCorrect && checked) {
+                    stateCls = 'incorrect'; icon = '<i class="icon fa-solid fa-times"></i>';
+                } else {
+                    stateCls = 'incorrectnotchecked';
                 }
 
                 const safeOptId = opt.id.replace(/'/g, "\\'");
@@ -842,7 +1109,7 @@
 
             const confLabels = { sure: '🎯 Sûr', hesitant: '🤔 Hésitant', guess: '🎲 Au hasard' };
             const chosenConf = sessionConfidence[q.id];
-            const confidenceHtml = `
+            const confidenceHtml = examMode ? '' : `
                 <div class="confidence-selector mt-3 pt-2 border-top">
                     <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Ressenti donné avant validation : ${chosenConf ? confLabels[chosenConf] : 'non renseigné'}</small>
                 </div>
@@ -854,7 +1121,7 @@
                         <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
                         <div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div>
                         <div class="grade">Note : ${noteStr} sur 1,00</div>
-                        <div><span class="badge bg-${stats.cls}">${stats.label}</span></div>
+                        ${!examMode ? `<div><span class="badge bg-${stats.cls}">${stats.label}</span></div>` : ''}
                         <button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:0.7rem;" onclick="cancelQCM('${safeQcmId}')">
                             <i class="fa-solid fa-ban"></i> Signaler Erratum QCM
                         </button>
@@ -876,12 +1143,13 @@
 
         document.getElementById('sessionScreen').classList.add('hidden');
         document.getElementById('correctionScreen').classList.remove('hidden');
-        
+
         // Calcul sécurisé du score final
         const finalDenominator = validQcmCount > 0 ? validQcmCount : 1;
         const scoreSur20 = (score / finalDenominator * 20).toFixed(2).replace('.', ',');
-        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20 ${validQcmCount < currentSession.length ? `(${currentSession.length - validQcmCount} QCM neutralisé)` : ''}`;
-        
+        const modeTag = `${examMode ? ' 🎓 Mode Examen' : ''}${dpMode ? ' 📋 Mode DP' : ''}`;
+        document.getElementById('score').textContent = `Résultat : ${scoreSur20} / 20 ${validQcmCount < currentSession.length ? `(${currentSession.length - validQcmCount} QCM neutralisé)` : ''}${modeTag}`;
+
         clearSessionState();
         window.scrollTo(0, 0);
     }
@@ -893,33 +1161,91 @@
         const stats = computeGlobalStats();
         if (!stats) { el.innerHTML = ''; return; }
 
-        const confLine = (label, rate) => rate !== null
-            ? `<div>Réussite quand <strong>${label}</strong> : ${rate}%</div>`
-            : '';
-
         el.innerHTML = `
-            <div class="border rounded p-3 bg-light">
-                <div class="row text-center g-2">
-                    <div class="col-4">
-                        <div class="fs-4 fw-bold">${stats.total}</div>
-                        <div class="small text-muted">QCM répondus</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="fs-4 fw-bold">${stats.successRate}%</div>
-                        <div class="small text-muted">Taux de réussite</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="fs-4 fw-bold text-danger">${stats.falseCertaintyCount}</div>
-                        <div class="small text-muted">Fausses certitudes</div>
-                    </div>
-                </div>
-                <div class="small text-muted mt-2 text-center">
-                    ${confLine('sûr', stats.sureRate)}
-                    ${confLine('hésitant', stats.hesitantRate)}
-                    ${confLine('au hasard', stats.guessRate)}
-                </div>
+            <div class="d-flex justify-content-between align-items-center border rounded p-3 bg-light flex-wrap gap-2">
+                <div><strong>${stats.total}</strong> QCM répondus, <strong>${stats.successRate}%</strong> de réussite</div>
+                <button class="btn btn-outline-primary btn-sm" onclick="openStatsScreen()">
+                    <i class="fa-solid fa-chart-line"></i> Voir mes statistiques
+                </button>
             </div>
         `;
+    }
+
+    function openStatsScreen() {
+        document.getElementById('homeScreen').classList.add('hidden');
+        document.getElementById('statsScreen').classList.remove('hidden');
+        renderStatsScreen();
+        window.scrollTo(0, 0);
+    }
+
+    function closeStatsScreen() {
+        document.getElementById('statsScreen').classList.add('hidden');
+        document.getElementById('homeScreen').classList.remove('hidden');
+        renderHomeStats();
+    }
+
+    function renderStatsScreen() {
+        const container = document.getElementById('statsContent');
+        const s = computeDetailedStats();
+
+        if (!s) {
+            container.innerHTML = '<p class="text-muted">Pas encore de données, faites quelques QCM d abord.</p>';
+            return;
+        }
+
+        let html = '';
+
+        html += `
+            <div class="border rounded p-3 bg-light mb-4">
+                <h5 class="mb-3">Vue globale</h5>
+                <div class="row text-center g-2">
+                    <div class="col-3"><div class="fs-4 fw-bold">${s.global.total}</div><div class="small text-muted">QCM répondus</div></div>
+                    <div class="col-3"><div class="fs-4 fw-bold">${s.global.successRate}%</div><div class="small text-muted">Réussite</div></div>
+                    <div class="col-3"><div class="fs-4 fw-bold text-danger">${s.global.falseCertaintyCount}</div><div class="small text-muted">Fausses certitudes</div></div>
+                    <div class="col-3"><div class="fs-4 fw-bold">${s.global.guessRate !== null ? s.global.guessRate + '%' : '-'}</div><div class="small text-muted">Réussite au hasard</div></div>
+                </div>
+            </div>`;
+
+        html += `
+            <div class="border rounded p-3 mb-4">
+                <h5 class="mb-3">Par mode</h5>
+                <div class="row text-center g-2">
+                    <div class="col-4"><div class="fw-bold">Entraînement</div><div>${s.modeStats.training.count} QCM${s.modeStats.training.rate !== null ? ` · ${s.modeStats.training.rate}%` : ''}</div></div>
+                    <div class="col-4"><div class="fw-bold">Examen</div><div>${s.modeStats.exam.count} QCM${s.modeStats.exam.rate !== null ? ` · ${s.modeStats.exam.rate}%` : ''}</div></div>
+                    <div class="col-4"><div class="fw-bold">DP</div><div>${s.modeStats.dp.count} QCM${s.modeStats.dp.rate !== null ? ` · ${s.modeStats.dp.rate}%` : ''}</div></div>
+                </div>
+            </div>`;
+
+        html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Par matière</h5><table class="table table-sm mb-0"><thead><tr><th>Matière</th><th>QCM</th><th>Réussite</th><th>Temps moyen</th></tr></thead><tbody>`;
+        s.subjectStats.forEach(sub => {
+            html += `<tr><td>${escapeHTML(sub.name)}</td><td>${sub.total}</td><td>${sub.successRate}%</td><td>${sub.avgDuration ? sub.avgDuration + 's' : '-'}</td></tr>`;
+        });
+        html += `</tbody></table></div>`;
+
+        if (s.chapterStats.length > 0) {
+            html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Chapitres à travailler en priorité</h5><table class="table table-sm mb-0"><thead><tr><th>Chapitre</th><th>QCM</th><th>Réussite</th></tr></thead><tbody>`;
+            s.chapterStats.forEach(c => {
+                html += `<tr><td>${escapeHTML(c.name)}</td><td>${c.total}</td><td>${c.successRate}%</td></tr>`;
+            });
+            html += `</tbody></table></div>`;
+        }
+
+        if (s.progression.length > 0) {
+            html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Progression (14 derniers jours d activité)</h5>`;
+            s.progression.forEach(p => {
+                html += `
+                    <div class="d-flex align-items-center mb-1">
+                        <div style="width: 90px;" class="small text-muted">${p.day.slice(5)}</div>
+                        <div class="flex-fill bg-light rounded" style="height: 18px;">
+                            <div class="bg-primary rounded" style="height: 18px; width: ${p.successRate}%;"></div>
+                        </div>
+                        <div style="width: 70px;" class="small text-end">${p.successRate}% (${p.total})</div>
+                    </div>`;
+            });
+            html += `</div>`;
+        }
+
+        container.innerHTML = html;
     }
 
     function displaySubjects() {
@@ -948,6 +1274,9 @@
             document.getElementById('homeScreen').classList.add('hidden');
             document.getElementById('qcmScreen').classList.remove('hidden');
             document.getElementById('sessionChapterTitle').textContent = path[path.length - 1];
+            document.getElementById('examModeToggle').checked = false;
+            document.getElementById('examDurationWrapper').classList.add('hidden');
+            document.getElementById('dpModeToggle').checked = false;
             return;
         }
 
@@ -974,7 +1303,7 @@
     function renderBreadcrumb(path) {
         const breadcrumb = document.getElementById('breadcrumb');
         breadcrumb.innerHTML = '';
-        
+
         path.forEach((part, idx) => {
             if (idx > 0) {
                 breadcrumb.appendChild(document.createTextNode(' / '));
