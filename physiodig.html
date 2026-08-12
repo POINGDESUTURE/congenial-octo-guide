@@ -1,1917 +1,644 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏥 QCM Physiologie Digestive</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #8b5cf6;
-            --success: #10b981;
-            --danger: #ef4444;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-600: #4b5563;
-            --gray-800: #1f2937;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .header {
-            background: var(--primary);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .content {
-            padding: 2rem;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 3rem 1rem;
-            font-size: 1.25rem;
-            color: var(--gray-600);
-        }
-
-        .config-screen, .question-screen, .results-screen {
-            display: none;
-        }
-
-        .config-screen.active, .question-screen.active, .results-screen.active {
-            display: block;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gray-100);
-            border: 1px solid var(--gray-300);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.875rem;
-            color: var(--gray-800);
-            margin-bottom: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .back-btn:hover {
-            background: var(--gray-200);
-        }
-
-        .config-group {
-            margin-bottom: 2rem;
-        }
-
-        .config-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--gray-800);
-            text-transform: uppercase;
-            letter-spacing: 0.025em;
-        }
-
-        .number-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border: 2px solid var(--gray-300);
-            border-radius: 8px;
-            transition: border-color 0.2s;
-        }
-
-        .number-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .mode-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .mode-option {
-            padding: 1.5rem;
-            border: 2px solid var(--gray-300);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: white;
-        }
-
-        .mode-option:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-        }
-
-        .mode-option.selected {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-
-        .mode-option h3 {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .mode-option p {
-            font-size: 0.875rem;
-            opacity: 0.8;
-            line-height: 1.5;
-        }
-
-        .start-btn {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .start-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--gray-200);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .question-counter {
-            text-align: center;
-            font-size: 0.875rem;
-            color: var(--gray-600);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .question-card {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .question-text {
-            font-size: 1.125rem;
-            color: var(--gray-800);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .answers {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .answer-option {
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--gray-300);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: white;
-            font-size: 1rem;
-            text-align: left;
-        }
-
-        .answer-option:hover {
-            border-color: var(--primary);
-            background: var(--gray-50);
-        }
-
-        .answer-option.selected {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .nav-btn {
-            padding: 0.75rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .prev-btn {
-            background: var(--gray-200);
-            color: var(--gray-800);
-        }
-
-        .prev-btn:hover:not(:disabled) {
-            background: var(--gray-300);
-        }
-
-        .next-btn, .finish-btn {
-            background: var(--primary);
-            color: white;
-        }
-
-        .next-btn:hover:not(:disabled), .finish-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Styles pour les résultats - gardés beaux */
-        .results-card {
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
-            border-radius: 16px;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .results-card h2 {
-            font-size: 2rem;
-            color: var(--gray-800);
-            margin-bottom: 1rem;
-        }
-
-        .score-display {
-            font-size: 4em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-        }
-
-        .score-details {
-            font-size: 1.3em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .restart-btn {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .restart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .question-list {
-            margin-top: 30px;
-            text-align: left;
-        }
-
-        .question-list h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            color: var(--gray-800);
-        }
-
-        .question-item {
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            background: white;
-            border-left: 4px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .question-item.correct {
-            border-left-color: var(--success);
-            background: #f0fdf4;
-        }
-
-        .question-item.incorrect {
-            border-left-color: var(--danger);
-            background: #fef2f2;
-        }
-
-        .question-item-header {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .question-item-text {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 0.75rem;
-            line-height: 1.5;
-        }
-
-        .question-item-answer {
-            font-size: 0.9em;
-        }
-
-        .answer-correct {
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        .answer-incorrect {
-            color: var(--danger);
-            font-weight: 600;
-        }
-
-        /* Mode continu */
-        .continuous-mode .question-card {
-            margin-bottom: 2rem;
-        }
-
-        .continuous-mode .question-number {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .content {
-                padding: 1.5rem;
-            }
-
-            .mode-options {
-                grid-template-columns: 1fr;
-            }
-
-            .navigation-buttons {
-                flex-direction: column;
-            }
-
-            .nav-btn {
-                width: 100%;
-            }
-
-            .score-display {
-                font-size: 3em;
-            }
-        }
-
-        .results-card {
-            background: #f8f9ff;
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .score-display {
-            font-size: 4em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-        }
-
-        .score-details {
-            font-size: 1.3em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .restart-btn {
-            width: 100%;
-            padding: 18px;
-            font-size: 1.3em;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .restart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .question-list {
-            margin-top: 30px;
-            text-align: left;
-        }
-
-        .question-item {
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            background: white;
-            border-left: 4px solid #ddd;
-        }
-
-        .question-item.correct {
-            border-left-color: #10b981;
-            background: #f0fdf4;
-        }
-
-        .question-item.incorrect {
-            border-left-color: #ef4444;
-            background: #fef2f2;
-        }
-
-        .question-item-header {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .question-item-text {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 8px;
-        }
-
-        .question-item-answer {
-            font-size: 0.9em;
-        }
-
-        .answer-correct {
-            color: #10b981;
-        }
-
-        .answer-incorrect {
-            color: #ef4444;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .content {
-                padding: 20px;
-            }
-
-            .mode-options, .answers {
-                flex-direction: column;
-            }
-
-            .mode-option, .answer-option {
-                min-width: 100%;
-            }
-
-            .navigation-buttons {
-                flex-direction: column;
-            }
-
-            .nav-btn {
-                width: 100%;
-            }
-        }
-
-        /* Mode continu - afficher toutes les questions */
-        .continuous-mode .all-questions {
-            display: block;
-        }
-
-        .continuous-mode .question-card {
-            margin-bottom: 40px;
-            border: 2px solid #e0e0e0;
-        }
-
-        .continuous-mode .question-number {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCM Médecine — Interface UNESS</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+body{background:#f2f4f7;font-family:Roboto,sans-serif;font-size:.9375rem;color:#1d2125;padding-top:20px;padding-bottom:40px}
+.container{max-width:1100px}.hidden{display:none!important}
+.setup-card,#sessionScreen,#correctionScreen{background:#fff;border-radius:8px;border:1px solid #dee2e6}
+.setup-card{padding:30px}.btn-uness{background:#1177d1;color:#fff;border:none;padding:12px 24px;border-radius:4px;text-transform:uppercase;font-weight:600;font-size:.85rem;letter-spacing:.5px}.btn-uness:hover{background:#0d5ea5;color:#fff}
+.breadcrumb-nav{font-size:.85rem;color:#6c757d;margin-bottom:1rem}.breadcrumb-nav span{cursor:pointer}.breadcrumb-nav span:hover{text-decoration:underline;color:#1177d1}
+#sessionScreen,#correctionScreen{padding:30px}
+.exam-header{position:sticky;top:0;z-index:100;background:#fff;border:1px solid #dee2e6;border-radius:8px;padding:12px 16px;margin-bottom:18px;box-shadow:0 2px 8px #00000010}
+.exam-badge{font-weight:700;letter-spacing:.04em}.timer{font-variant-numeric:tabular-nums;font-size:1.45rem;font-weight:700}.timer.warning{color:#d97706}.timer.danger{color:#c62828}
+.que{clear:both;text-align:left;margin:0 auto 1.8em;border-bottom:2px solid #949494;padding-bottom:1.5em}.que:last-child{border-bottom:none}
+.que .info{float:left;width:7.5em;padding:.5em;margin-bottom:1.8em;background:#f8f9fa;border:1px solid #cad0d7;border-radius:2px}.que h3.no{margin:0;font-size:.8em;line-height:1}.que span.qno{font-size:1.5em;font-weight:700}.que .info>div{font-size:.8em;margin-top:.7em}.que .content{margin:0 0 0 8.5em}.que .formulation{position:relative;padding:.5rem 0;margin-bottom:1rem;color:#1d2125;background:#fff}.accesshide{display:none!important}.que .qtext{margin-bottom:1.5em}.que .qtext p:last-child{margin-bottom:0}.que .qtext img{max-width:100%;border-radius:4px;margin-top:.5em}
+.que fieldset.ablock{border:0;margin:0;padding:0}.que legend.prompt{display:none}.que .answer .r0,.que .answer .r1{display:flex;margin:.25rem 0;align-items:flex-start}.que .answer input[type=checkbox]{margin:.3rem .5rem;width:14px;flex-shrink:0}.que .answernumber{min-width:1.5em;font-weight:700}.que .answer [data-region=answer-label]{display:flex;align-items:flex-start;flex:1;cursor:pointer}.que .answer [data-region=answer-label] p{margin:0}.flex-fill{flex:1}
+.que .answer .correct{background:#b2edaf;padding-bottom:5px;border-radius:2px;padding-right:5px}.que .answer .correctnotchecked{background:#cde3cd;padding-bottom:5px;border-radius:2px;padding-right:5px}.que .answer .incorrect{background:#f4b9b8;padding-bottom:5px;border-radius:2px;padding-right:5px}.que .answer .incorrectnotchecked{background:#f4b9b8;padding-bottom:5px;border-radius:2px;padding-right:5px}.que .answer .item-canceled{background:#e2e3e5;color:#6c757d;text-decoration:line-through;padding-bottom:5px;border-radius:2px;padding-right:5px}.que .answer i.icon{font-size:16px;margin-left:.4rem}.que .answer i.icon.fa-check{color:#2f7a3d}.que .answer i.icon.fa-times{color:#ca3120}
+.que .correctness{display:inline-block;padding:.1em .7em;border-radius:3px;font-size:.85em;font-weight:700}.que .correctness.correct{color:#fff;background:#64a44e}.que .correctness.partiallycorrect{color:#1d2125;background:#f0ad4e}.que .correctness.incorrect,.que .correctness.notanswered{color:#fff;background:#ca3120}
+.item-canceled{background:#e2e3e5;color:#6c757d;text-decoration:line-through}.dp-locked{border:1px dashed #adb5bd;background:#f8f9fa;border-radius:8px;padding:24px;text-align:center;color:#6c757d}.dp-progress{display:flex;gap:6px;flex-wrap:wrap}.dp-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;border:1px solid #ced4da;background:#fff}.dp-dot.done{background:#198754;color:#fff;border-color:#198754}.dp-dot.current{background:#1177d1;color:#fff;border-color:#1177d1}.dp-dot.locked{background:#e9ecef;color:#6c757d}
+.stats-card{background:#fff;border:1px solid #dee2e6;border-radius:8px;padding:20px;height:100%}.metric{font-size:1.55rem;font-weight:700}.metric-label{font-size:.78rem;color:#6c757d}.bar{height:9px;background:#e9ecef;border-radius:10px;overflow:hidden}.bar>span{display:block;height:100%;background:#1177d1}.mini-table{font-size:.88rem}.trend-svg{width:100%;height:180px;background:#f8f9fa;border-radius:6px}
+.mode-chip{font-size:.72rem}.session-options{border:1px solid #dee2e6;border-radius:8px;padding:18px;background:#fafbfc}
+@media(max-width:768px){.que .info{float:none;width:100%;margin-bottom:1rem}.que .content{margin-left:0}.container{padding:0 10px}#sessionScreen,#correctionScreen,.setup-card{padding:18px}.exam-header{top:0}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏥 QCM Physiologie Digestive</h1>
-            <p>Format Vrai / Faux</p>
-        </div>
+<div class="container">
 
-        <div class="content">
-            <!-- Écran de chargement -->
-            <div class="loading" id="loadingScreen">
-                Chargement des questions...
-            </div>
-
-            <!-- Écran de configuration -->
-            <div class="config-screen" id="configScreen">
-                <button class="back-btn" onclick="location.reload()">
-                    ← Retour
-                </button>
-
-                <div class="config-group">
-                    <label for="questionCount">Nombre de questions :</label>
-                    <input type="number" id="questionCount" class="number-input" min="1" value="10">
-                </div>
-
-                <div class="config-group">
-                    <label>Mode de passage :</label>
-                    <div class="mode-options">
-                        <div class="mode-option selected" onclick="selectMode('dp')">
-                            <input type="radio" name="mode" value="dp" checked>
-                            <h3>📋 Mode DP</h3>
-                            <p>Dossier Progressif : passage automatique après chaque réponse, pas de retour en arrière</p>
-                        </div>
-                        <div class="mode-option" onclick="selectMode('continuous')">
-                            <input type="radio" name="mode" value="continuous">
-                            <h3>📝 Mode Continu</h3>
-                            <p>Toutes les questions visibles en même temps, navigation libre</p>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="start-btn" onclick="startQuiz()">Démarrer la série</button>
-            </div>
-
-            <!-- Écran des questions (Mode DP) -->
-            <div class="question-screen" id="questionScreen">
-                <button class="back-btn" onclick="backToConfig()">
-                    ← Retour
-                </button>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-
-                <div class="question-counter" id="questionCounter"></div>
-
-                <div class="question-card">
-                    <div class="question-text" id="questionText"></div>
-                    <div class="answers" id="answersContainer"></div>
-                </div>
-
-                <div class="navigation-buttons" id="navigationButtons">
-                    <button class="nav-btn prev-btn" id="prevBtn" onclick="previousQuestion()">Précédent</button>
-                    <button class="nav-btn next-btn" id="nextBtn" onclick="nextQuestion()">Suivant</button>
-                    <button class="nav-btn finish-btn" id="finishBtn" onclick="finishQuiz()" style="display: none;">Terminer le test</button>
-                </div>
-            </div>
-
-            <!-- Écran des résultats -->
-            <div class="results-screen" id="resultsScreen">
-                <div class="results-card">
-                    <h2>🎯 Résultats</h2>
-                    <div class="score-display" id="scoreDisplay"></div>
-                    <div class="score-details" id="scoreDetails"></div>
-                    <button class="restart-btn" onclick="location.reload()">Nouvelle session</button>
-                    
-                    <div class="question-list" id="questionList"></div>
-                </div>
-            </div>
+<div id="homeScreen" class="setup-card shadow-sm">
+    <h2 class="mb-4 text-center">🏥 QCM Médecine</h2>
+    <div id="loadingScreen" class="text-center p-4"><div class="spinner-border text-primary"></div><p class="mt-2">Chargement...</p></div>
+    <div class="mb-3">
+        <button class="btn btn-outline-primary w-100" onclick="startErrorReviewSession()"><i class="fa-solid fa-arrow-rotate-left"></i> Réviser mes erreurs</button>
+    </div>
+    <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
+    <div class="text-center border-top pt-3 mb-3">
+        <button class="btn btn-primary px-4" onclick="openStats()"><i class="fa-solid fa-chart-line"></i> Voir mes statistiques</button>
+    </div>
+    <div class="d-flex justify-content-between border-top pt-3 flex-wrap gap-2">
+        <button class="btn btn-outline-success btn-sm" onclick="exportErrorLog()"><i class="fa-solid fa-download"></i> Exporter le Carnet d'Erreurs</button>
+        <div>
+            <button class="btn btn-outline-warning btn-sm me-1" onclick="resetErrorLog()"><i class="fa-solid fa-eraser"></i> Vider carnet</button>
+            <button class="btn btn-outline-danger btn-sm" onclick="resetErratums()"><i class="fa-solid fa-trash-can"></i> Réinitialiser erratums</button>
         </div>
     </div>
+</div>
 
-    <script>
-        // Base de données des questions au format texte simple
-        // $ devant une affirmation = VRAI, sinon = FAUX
-        const questionsText = `
-En période interprandiale, l'essentiel du volume salivaire provient de la sécrétion des glandes accessoires.
-La sécrétion acide de l'estomac active la sécrétion de sécrétine qui va inhiber la sécrétion de pepsinogène au sein de la cellule principale.
-Le sphincter supérieur de l'œsophage correspond à un épaississement de la couche musculaire circulaire lisse du tube digestif.
-Le volume quotidien de sécrétion gastrique est d'environ 500 ml.
-$La sécrétion gastrique basale (en dehors des repas) est plus importante le soir que le matin.
-$L'aldostérone peut modifier la composition électrolytique de la salive en induisant une réabsorption de sodium et une sécrétion de potassium.
-L'amylase salivaire hydrolyse la majeure partie de l'amidon du bol alimentaire.
-Les plexus myentérique et sous-muqueux modulent l'initiation des potentiels d'action dans la paroi du tube digestif.
-$Lorsque le débit salivaire augmente, la concentration salivaire de chlore augmente du fait d'une moindre réabsorption.
-La mise en jeu du système nerveux orthosympathique exerce un effet plutôt évacuateur sur le tube digestif.
-L'arrivée des lipides dans le duodénum augmente la motilité de l'estomac ce qui améliore la vidange gastrique.
-La gastrine inhibe la sécrétion acide de l'estomac par un mécanisme paracrine sur les cellules pariétales.
-La salive secondaire est un transsudat dont la composition est proche de celle du plasma.
-$L'innervation parasympathique stimule la sécrétion acide de l'estomac, en agissant directement sur les cellules pariétales.
-La muqueuse fundique de l'estomac contient entre autres des cellules G sécrétrices de gastrine.
-Après un repas, le volume sécrétoire gastrique augmentant, la composition du liquide gastrique s'enrichit d'ions sodium et chlore.
-$L'activation des cellules de la couche circulaire interne joue un rôle essentiel dans le phénomène de brassage au niveau de l'intestin.
-$La sécrétion de protons à la surface apicale de la cellule pariétale se fait contre un gradient de concentration de protons.
-$La muqueuse fundique et la muqueuse antrale de l'estomac contiennent toutes les deux des cellules D sécrétrices de somatostatine.
-Le passage d'acides gras dans le duodénum active la sécrétion gastrique d'acide via la cholécystokinine.
-$Le péristaltisme œsophagien primaire est initié lors de la déglutition buccale et pharyngée alors que le péristaltisme œsophagien secondaire est initié par la distension de l'œsophage.
-Après une gastrectomie, la sécrétion du facteur intrinsèque est restaurée par une sécrétion d'origine duodénale.
-$La composition en électrolytes de la salive varie selon le débit de sécrétion salivaire.
-$L'intensification des contractions de la région antro-pylorique entraîne le brassage des aliments.
-$Au temps pharyngé de la déglutition, l'ascension de la glotte et l'abaissement de l'épiglotte permet d'obturer les voies aériennes supérieures.
-$L'aldostérone agit sur la sécrétion salivaire en modifiant sa composition en électrolytes, sans modifier le débit salivaire.
-$L'arrivée des aliments dans l'estomac augmente le pH du contenu gastrique, ce qui stimule la sécrétion de gastrine.
-$La sécrétine inhibe la motilité intestinale.
-La bradykinine est un facteur paracrine dans les sécrétions salivaires qui est issue de l'hydrolyse du kininogène par la kallicréine sécrétée dans la salive.
-$Lors de la phase intestinale, la sécrétion gastrique d'acide est inhibée par les entérogastrones dont le GIP (Gastro Intestinal Peptides).
-$La composition en électrolytes de la salive varie selon le débit de sécrétion salivaire.
-Chaque onde lente de potentiel déclenche obligatoirement une contraction musculaire maximale.
-Chaque onde lente de potentiel déclenche systématiquement un potentiel d'action musculaire.
-Chaque onde lente de potentiel génère obligatoirement un potentiel d'action musculaire.
-Chaque onde lente génère obligatoirement une contraction musculaire.
-Contrairement à la carte conceptuelle, la mind map permet de résoudre des problèmes cliniques complexes.
-En période de repos, l'essentiel du débit salivaire provient des glandes parotides.
-L'acide chlorhydrique est un produit de sécrétion des cellules principales.
-L'activité électrique intestinale est interrompue définitivement par la vagotomie.
-L'acétylcholine est le principal médiateur chimique responsable de la relaxation du SIO.
-L'acétylcholine inhibe la libération de pepsinogène par les cellules principales.
-L'acétylcholine libérée par le système parasympathique diminue la probabilité de survenue des potentiels d'action sur les ondes lentes.
-L'aldostérone a une action antagoniste au système nerveux autonome.
-L'aldostérone agit sur le pôle apical des cellules acineuses.
-L'aldostérone augmente la concentration de chlore dans la salive.
-L'aldostérone augmente la concentration de sodium dans la salive secondaire en bloquant sa réabsorption.
-L'aldostérone diminue la concentration de potassium dans la salive secondaire.
-L'aldostérone déclenche systématiquement le complexe moteur migrant.
-L'aldostérone est activée par le pH acide duodénal.
-L'aldostérone est inhibée par la somatostatine.
-L'aldostérone est le principal médiateur de la sécrétion salivaire aqueuse.
-L'aldostérone est produite par les cellules acineuses pancréatiques.
-L'aldostérone est responsable de la marée alcaline post-prandiale.
-L'aldostérone est stockée dans les cellules de Cajal.
-L'aldostérone est sécrétée en réponse à la distension du fundus gastrique.
-L'aldostérone est sécrétée par le pancréas exocrine.
-L'aldostérone est sécrétée par les cellules D de l'estomac.
-L'aldostérone est sécrétée par les cellules G de l'antre gastrique.
-L'aldostérone est sécrétée par les glandes salivaires accessoires.
-L'aldostérone est un agent vasodilatateur comme la bradykinine.
-L'aldostérone est une entérogastrone.
-L'aldostérone est une enzyme sécrétée par les glandes salivaires parotides.
-L'aldostérone est une hormone digestive indispensable à l'initiation de la salive.
-L'aldostérone est une hormone peptidique duodénale comme la CCK.
-L'aldostérone est une protéine intrinsèque de la salive.
-L'aldostérone favorise la réabsorption du sodium par les canaux striés salivaires.
-L'aldostérone inhibe la libération de gastrine.
-L'aldostérone inhibe la pompe à protons H+/K+ ATPase.
-L'aldostérone n'a aucun effet sur la composition de la salive.
-L'aldostérone provoque l'ouverture du sphincter supérieur de l'œsophage.
-L'aldostérone stimule la sécrétion d'acide chlorhydrique par les cellules pariétales.
-L'aldostérone stimule la sécrétion de bicarbonates par les cellules canalaires pancréatiques.
-L'aldostérone stimule la sécrétion de mucus par les cellules à mucus.
-L'aldostérone stimule la vidange gastrique des lipides.
-L'amylase et la lipase pancréatiques sont sécrétées sous forme de précurseurs inactifs.
-L'amylase salivaire hydrolyse les protéines en acides aminés dès la cavité buccale.
-L'amylase salivaire reste active dans l'estomac malgré l'acidité.
-L'amylase salivaire reste active indéfiniment dans l'estomac quel que soit le pH.
-L'augmentation de la pression abdominale lors de la toux déclenche une relaxation réflexe du sphincter externe.
-L'entérokinase est une enzyme gastrique qui active le trypsinogène.
-L'entérokinase est une enzyme pancréatique qui active le trypsinogène.
-L'entérokinase est une enzyme pancréatique.
-L'histamine stimule la pompe H+/K+ ATPase en augmentant directement le calcium intracellulaire des cellules pariétales.
-L'hyponatrémie est impossible après un vomissement car le sodium est réabsorbé par l'œsophage.
-L'hyponatrémie est une conséquence physiologique normale des vomissements.
-L'iléus paralytique correspond à une hyperactivité motrice suite à une chirurgie.
-L'ingestion de lipides et de triglycérides raccourcit considérablement la durée des cycles du complexe moteur migrant.
-L'ingestion de protéines diminue le pH gastrique immédiat par un effet acide direct.
-L'innervation intrinsèque par les plexus nerveux est totalement absente de la couche musculaire longitudinale externe.
-L'insuline est l'hormone indispensable à l'initiation de la sécrétion d'eau par les acini.
-L'insuline est le principal médiateur impliqué dans l'activation du centre du vomissement.
-L'orthosympathique stimule le péristaltisme en relâchant les sphincters.
-L'osmolalité de la salive finale diminue lorsque le débit salivaire augmente.
-L'ouverture du SSO est un phénomène purement passif provoqué par le poids des aliments.
-L'épiglotte s'élève pour boucher le nasopharynx lors du passage des aliments.
-L'érosion dentaire est due à l'action de la pepsine alcaline sur l'émail.
-L'œsophage abdominal reste fixe dans l'abdomen durant tout le processus.
-L'œsophage thoracique présente une pression de repos supérieure à la pression atmosphérique.
-La bile est produite par le pancréas exocrine.
-La bradykinine est un peptide qui provoque une vasoconstriction des glandes salivaires.
-La CCK stimule la vidange gastrique pour accélérer la digestion.
-La cholécystokinine (CCK) est principalement produite dans le fundus de l'estomac.
-La concentration de potassium dans la salive finale augmente parallèlement à l'augmentation du débit.
-La conduction électrique et le couplage énergétique entre les cellules sont plus efficaces dans l'iléon que dans le duodénum.
-La couche longitudinale externe s'épaissit considérablement dans la partie distale du côlon.
-La couche longitudinale interne assure le brassage des aliments en période prandiale.
-La couche musculaire circulaire est absente au niveau du côlon.
-La couche musculaire longitudinale externe est plus épaisse dans la partie distale du tube digestif.
-La couche musculaire longitudinale externe est responsable des mouvements de segmentation.
-La couche musculaire longitudinale externe est responsable du brassage rythmique et dispersé.
-La couche oblique de l'estomac est située entre la couche circulaire et la séreuse.
-La CTZ est protégée par la barrière hémato-encéphalique et ne détecte pas les toxines circulantes.
-La digestion des lipides par la lipase salivaire est quantitativement plus importante que celle du pancréas.
-La digestion est le passage des nutriments vers le foie pour être redistribués.
-La distension du fundus lors d'un repas provoque une augmentation brutale de la pression gastrique.
-La défécation chez l'homme spinal (paraplégique) est impossible car elle dépend uniquement du cortex.
-La défécation chez le nouveau-né est un acte volontaire parfaitement contrôlé.
-La défécation est un phénomène purement involontaire chez l'adulte sain.
-La dépolarisation se propage uniquement via des messages du système nerveux central sans aucun contact direct entre les fibres musculaires.
-La fréquence de l'onde lente intestinale est minimale au niveau du bulbe duodénal.
-La fréquence des ondes lentes augmente du duodénum vers l'iléon.
-La fréquence des ondes lentes augmente à mesure que l'on progresse vers l'iléon.
-La fréquence des ondes lentes de potentiel est rigoureusement identique dans tous les segments du tube digestif.
-La fréquence des ondes lentes gastriques est de 12 cycles par minute.
-La fréquence des ondes lentes gastriques initiées par les cellules de Cajal est d'environ 12 cycles par minute.
-La fréquence des ondes lentes intestinales est minimale dans le duodénum.
-La gastrine diminue le tonus du sphincter inférieur de l'œsophage.
-La gastrine est principalement sécrétée par la muqueuse du duodénum.
-La gastrine est produite par les cellules G situées principalement dans le fundus de l'estomac.
-La gastrine est produite uniquement par les cellules pariétales du corps gastrique.
-La gastrine est sécrétée par les cellules G situées uniquement dans le fundus.
-La gastrine est une hormone produite exclusivement dans le fundus gastrique.
-La gastrine stimule la production d'une salive aqueuse par les glandes submandibulaires.
-La glande sublinguale est la plus volumineuse des six glandes salivaires majeures.
-La lipase gastrique est l'enzyme principale de la digestion des lipides chez l'adulte sain.
-La marée alcaline correspond à une baisse brutale du pH sanguin lors de la phase gastrique.
-La marée alcaline correspond à une baisse du pH sanguin lors de la digestion.
-La mastication est un acte exclusivement volontaire.
-La mastication est un acte indépendant qui n'exerce aucune influence sur la déglutition.
-La motiline est une hormone qui inhibe la propagation de l'activité électrique du complexe moteur migrant.
-La motiline est une hormone qui inhibe le déclenchement du cycle moteur migrant.
-La motiline inhibe la motilité intestinale en période de jeûne.
-La motiline inhibe la survenue des ondes lentes.
-La motiline inhibe le déclenchement du CMM.
-La motilité digestive a pour seul but la progression aborale du chyme.
-La motilité gastrique est assurée exclusivement par des fibres nerveuses du système nerveux central.
-La muqueuse digestive a un rôle uniquement protecteur.
-La musculature du pharynx et de la langue est de type lisse viscéral.
-La nicotine renforce la tenue du SIO chez les sujets fumeurs.
-La pepsine nécessite un pH alcalin supérieur à 7 pour être activée.
-$Au pôle basal de la cellule pariétale, un échangeur permet l'expulsion de bicarbonates vers le sang en échange d'ions chlore.
-$Contrairement à d'autres organes, les systèmes nerveux sympathique et parasympathique exercent une action synergique stimulante sur la sécrétion salivaire.
-$Dans le duodénum, la vitamine B12 est libérée des protéines R par les protéases pancréatiques.
-$Des vomissements répétés peuvent entraîner une alcalose métabolique hypochlorémique et une hypokaliémie.
-$En période de stimulation, la sécrétion salivaire devient majoritairement d'origine parotidienne.
-$En période de sécrétion basale, la glande submandibulaire est responsable de la majorité du volume salivaire quotidien.
-$En période interdigestive, le sphincter d'Oddi est fermé, ce qui permet le stockage et la concentration de la bile dans la vésicule biliaire.
-$En période interprandiale, le complexe moteur migrant (CMM) débute au niveau du pacemaker gastrique situé sur la grande courbure.
-$En période interprandiale, le liquide gastrique basal contient majoritairement du sodium et du chlore.
-$Environ 8 litres de liquide sont réabsorbés quotidiennement par l'intestin grêle.
-$L'absorption du fer se fait principalement dans le duodénum et le jéjunum proximal.
-$L'acide chlorhydrique permet la stérilisation du bol alimentaire en éliminant une grande partie des bactéries.
-$L'acidité gastrique favorise l'absorption du fer en facilitant sa réduction en fer ferreux (Fe2+).
-$L'acidité luminale gastrique exerce un rétrocontrôle négatif sur la gastrine en stimulant les cellules D.
-$L'activité contractile de la couche musculaire circulaire interne (CMCI) assure principalement la segmentation et le brassage du chyme.
-$L'acétylcholine libérée par le nerf vague active la cellule pariétale en augmentant la concentration de calcium cytosolique.
-$L'aldostérone modifie la composition électrolytique de la salive en favorisant la réabsorption de sodium vers le secteur plasmatique.
-$L'aldostérone modifie la composition électrolytique de la salive sans en modifier le débit.
-$L'aldostérone peut stimuler la réabsorption de sodium et la sécrétion de potassium au niveau de la muqueuse colique.
-$L'amylase salivaire est inactivée lors de son passage dans l'estomac par l'acidité du pH gastrique.
-$L'amylase salivaire initie la digestion des polysaccharides en hydrolysant les liaisons alpha 1-4 de l'amidon.
-$L'amylase salivaire possède une action de courte durée car elle est inactivée par le pH acide de l'estomac.
-$L'anhydrase carbonique intracellulaire permet la synthèse de protons et de bicarbonates à partir du gaz carbonique et de l'eau.
-$L'arrivée de lipides dans l'iléon terminal déclenche le "frein iléal", ralentissant la vidange gastrique.
-$L'arrivée de lipides ou d'un chyme hyperosmolaire dans le duodénum ralentit la vidange gastrique via la libération d'entérogastrones.
-$L'arrivée de protons dans le duodénum stimule les cellules S qui sécrètent la sécrétine.
-$L'eau est absorbée dans l'intestin grêle de façon passive en suivant le gradient osmotique créé par les solutés.
-$L'effet tampon des protéines alimentaires induit une levée de l'inhibition de la gastrine par la somatostatine.
-$L'entérokinase duodénale active le trypsinogène en trypsine, laquelle peut ensuite activer les autres proenzymes pancréatiques.
-$L'expérience du repas fictif de Pavlov a permis de mettre en évidence l'existence de la phase céphalique.
-$L'histamine stimule la sécrétion acide en augmentant la concentration intracellulaire d'AMP cyclique dans la cellule pariétale.
-$L'histamine, libérée par les cellules ECL, stimule la pompe H+/K+ ATPase via une augmentation de l'AMPc.
-$L'hyperosmolarité du chyme arrivant dans le duodénum inhibe la sécrétion acide gastrique par voie réflexe.
-$L'hyperosmolarité du chyme duodénal inhibe la vidange gastrique par voie réflexe et hormonale.
-$L'innervation parasympathique de la glande parotide est assurée par des fibres efférentes issues du nerf glosso-pharyngien (IX).
-$L'innervation vagale stimule la sécrétion de pepsinogène par les cellules principales.
-$L'oméprazole inactive la pompe H+/K+ ATPase par une liaison covalente irréversible.
-$La bradykinine, issue de l'action de la kallicréine sur le kininogène, exerce un effet vasodilatateur nécessaire au maintien du débit salivaire maximal.
-$La CCK est sécrétée par les cellules I duodénales en réponse à la présence d'acides gras et de peptides.
-$La cellule pariétale est capable de concentrer les ions H+ plus d'un million de fois par rapport au pH plasmatique.
-$La cholécystokinine (CCK) est sécrétée par le duodénum principalement en réponse à la présence de lipides et de peptides.
-$La concentration salivaire en bicarbonates augmente paradoxalement avec le débit de sécrétion.
-$La digestion salivaire des glucides est physiologiquement interrompue lors de l'arrivée du bol alimentaire dans l'estomac du fait de l'acidité gastrique.
-$La distension des parois de l'estomac par le bol alimentaire constitue un stimulus mécanique direct pour la sécrétion de gastrine.
-$La fréquence des ondes lentes du pacemaker gastrique diminue progressivement du duodénum vers l'iléon.
-$La gastrine est la seule hormone digestive majeure produite au niveau de la muqueuse de l'estomac.
-$La gastrine stimule la libération d'histamine par les cellules ECL du fundus.
-$La gastrite chronique atrophique fundique peut être responsable d'une anémie macrocytaire.
-$La liaison de la vitamine B12 (cobalamine) au facteur intrinsèque est indispensable à son absorption au niveau de l'iléon terminal.
-$La mise en jeu du système nerveux parasympathique induit la formation d'une salive abondante, fluide et aqueuse.
-$La modification de la salive dans les canaux striés implique une réabsorption active de sodium couplée à une sécrétion de potassium.
-$La muqueuse fundique, qui sécrète l'acide, recouvre environ 80 % de la surface totale de l'estomac.
-$La papille duodénale majeure, située dans le deuxième duodénum, reçoit l'abouchement de l'ampoule de Vater.
-$La phase céphalique de la sécrétion acide est déclenchée par des stimuli sensoriels via le centre sécrétoire parasympathique.
-$La phase céphalique de la sécrétion gastrique correspond à une anticipation de la digestion médiée par le système nerveux parasympathique.
-$La phase gastrique est initiée par la distension de la paroi et la stimulation chimique par les produits de digestion protéique.
-$La phase I du CMM correspond à une période de quiescence sans contractions ni potentiels d'action.
-$La phase III du CMM consiste en une bouffée de contractions régulières et propagées permettant le balayage des résidus vers le côlon.
-$La phase intestinale ne représente qu'environ 5 % de la réponse acide totale à un repas.
-$La pompe H+/K+ ATPase, ou pompe à protons, est située exclusivement au niveau du pôle apical de la cellule pariétale.
-$La pompe Na+/K+ ATPase au pôle basal de la cellule pariétale maintient le gradient ionique nécessaire à la sécrétion.
-$La pression au niveau du corps de l'œsophage est légèrement négative car elle reflète la pression intra-thoracique.
-$La prise d'AINS favorise la survenue d'ulcères gastriques en diminuant les mécanismes de défense épithéliaux.
-$La prostaglandine E2 favorise la synthèse de mucus et réduit le taux d'AMP cyclique dans la cellule pariétale.
-$La présence d'acides aminés et de peptides dans l'antre stimule directement la cellule G.
-$La présence d'un bol alimentaire sur la langue induit un réflexe d'inhibition de la contraction des muscles masticateurs.
-$La relaxation du sphincter inférieur de l'œsophage lors de l'arrivée du bol alimentaire est médiée par le monoxyde d'azote (NO).
-$La relaxation réceptive du fundus permet à l'estomac de passer d'un volume de 50 ml à 1 litre avec une faible augmentation de pression.
-$La réabsorption des sels biliaires par le transporteur ASBT a lieu exclusivement dans l'iléon terminal.
-$La salive finale est hypotonique au plasma du fait de l'imperméabilité à l'eau de l'épithélium des canaux striés.
-$La salive primaire élaborée au niveau des acini est un transsudat plasmatique isotonique au plasma.
-$La segmentation est assurée par la couche musculaire circulaire interne et permet le brassage du chyme.
-$La somatostatine est le principal agent freinateur de la sécrétion acide en diminuant le taux d'AMP cyclique intracellulaire.
-$La somatostatine, sécrétée par les cellules D, exerce un effet inhibiteur paracrine sur la cellule pariétale et la cellule G.
-$La stimulation sympathique bêta-adrénergique favorise la sécrétion d'une salive épaisse et riche en matériel muco-protéique via l'AMPc.
-$La sécrétine est une hormone duodénale qui inhibe la sécrétion acide gastrique en réponse à l'arrivée de protons.
-$La sécrétine est une hormone duodénale qui inhibe la sécrétion gastrique acide tout en stimulant la sécrétion pancréatique de bicarbonates.
-$La sécrétine stimule la sécrétion ductulaire de bicarbonates par les cholangiocytes et les cellules pancréatiques.
-$La sécrétine, sécrétée par les cellules S du duodénum en réponse à l'acidité, stimule la sécrétion ductulaire de bicarbonates par les cholangiocytes.
-$La sécrétion de la glande parotide s'écoule dans la cavité buccale par l'intermédiaire du canal de Sténon.
-$La sécrétion de protons et la sécrétion de chlore dans la lumière gastrique sont équimolaires.
-$La sécrétion gastrique basale représente environ 10 à 15 % de la réponse sécrétoire maximale.
-$La transformation du pepsinogène en pepsine est un processus autocatalytique.
-$La trypsine est l'enzyme clé qui active les autres proenzymes pancréatiques dans la lumière duodénale.
-$La vagotomie chirurgicale vise à supprimer la phase céphalique et les réflexes vago-vagaux de la sécrétion acide.
-$La valvule iléo-caecale prévient le reflux du contenu colique vers l'iléon.
-$La vitamine B12 se lie au facteur intrinsèque dans le duodénum après dégradation de l'haptocorrine par les protéases.
-$La vitamine B12 se lie aux protéines R (haptocorrines) dans l'estomac pour être protégée de l'acidité.
-$Le "frein iléal" est un mécanisme réflexe où la détection de nutriments dans l'iléon terminal ralentit la vidange gastrique.
-$Le calcium est absorbé par voie transcellulaire via le canal TRPV6, un processus régulé par la vitamine D3.
-$Le complexe vitamine B12-facteur intrinsèque est absorbé spécifiquement au niveau de l'iléon terminal.
-$Le duodénum mesure environ 25 cm et se divise anatomiquement en quatre portions.
-$Le facteur intrinsèque est la seule sécrétion de la muqueuse gastrique indispensable à la vie.
-$Le facteur intrinsèque est la seule sécrétion gastrique indispensable à la survie du fait de son rôle dans l'absorption de la vitamine B12.
-$Le facteur intrinsèque est une glycoprotéine sécrétée par les cellules pariétales de l'estomac.
-$Le gastrinome est une tumeur sécrétant de la gastrine responsable d'ulcères duodénaux multiples.
-$Le GIP (Gastric Inhibitory Peptide) est une entérogastrone sécrétée par l'intestin qui freine la sécrétion acide.
-$Le jéjunum constitue la partie proximale de l'intestin grêle mobile et se situe préférentiellement dans la partie supéro-gauche de l'abdomen.
-$Le jéjunum est le principal site d'absorption des glucides, des acides aminés et des lipides.
-$Le passage de lipides dans le duodénum déclenche la libération de CCK qui inhibe la motilité gastrique.
-$Le pepsinogène est une proenzyme dont l'activation en pepsine nécessite un pH acide.
-$Le plexus de Meissner, ou sous-muqueux, possède un rôle principalement sensitif et pro-sécrétoire.
-$Le plexus myentérique d'Auerbach est situé entre les deux couches musculaires et exerce un rôle essentiellement moteur.
-$Le plexus sous-muqueux de Meissner possède un rôle principalement sensitif et régule les sécrétions glandulaires.
-$Le péristaltisme œsophagien primaire est initié par les phases buccale et pharyngée de la déglutition.
-$Le réflexe gastro-colique entraîne une augmentation de la motilité colique environ 15 à 60 minutes après la prise d'un repas.
-$Le réflexe intestino-intestinal est un réflexe inhibiteur déclenché par une distension excessive d'un segment grêlique.
-$Le réflexe vago-vagal intervient dans la phase gastrique de la sécrétion pancréatique lors de la distension de l'estomac.
-$Le réflexe vago-vagal permet la relaxation réceptrice du fundus lors de l'arrivée du bol alimentaire.
-$Le sodium pénètre dans l'entérocyte au pôle apical via des cotransporteurs ou des échangeurs Na+/H+.
-$Le syndrome de Mallory-Weiss correspond à une dissection du sphincter inférieur de l'œsophage liée à des vomissements violents.
-$Le syndrome de Zollinger-Ellison (gastrinome) peut provoquer des ulcères duodénaux par hypersécrétion acide.
-$Le système nerveux parasympathique, via le nerf vague, stimule la motricité intestinale et provoque le relâchement des sphincters.
-$Le système parasympathique renforce les contractions péristaltiques et favorise la progression aborale du bol alimentaire.
-$Le transporteur GLUT2 permet la sortie des monosaccharides au pôle basolatéral vers le sang portal.
-$Le transporteur PEPT1 est responsable de l'entrée des di- et tripeptides dans l'entérocyte.
-$Le transporteur SGLT1 permet l'absorption active du glucose et du galactose au pôle apical de l'entérocyte.
-$Le vomissement est une réponse de survie absente chez certains mammifères comme les rats et les lapins.
-$Les cellules canalaires du pancréas sécrètent un suc riche en bicarbonates sous l'influence de la sécrétine.
-$Les cellules D sécrétrices de somatostatine sont distribuées sur toute la hauteur du tube digestif, du cardia au rectum.
-$Les cellules de Cajal génèrent des ondes lentes de potentiel qui déterminent le rythme électrique de base du muscle lisse.
-$Les cellules de Cajal, situées au niveau de la grande courbure, agissent comme le pacemaker de l'activité contractile gastrique.
-$Les cellules muqueuses de surface sécrètent un mucus alcalin riche en bicarbonates.
-$Les cellules pariétales de la muqueuse fundique sont responsables de la sécrétion de l'acide chlorhydrique et du facteur intrinsèque.
-$Les chylomicrons sont formés dans l'entérocyte et rejoignent la circulation générale via les vaisseaux lymphatiques.
-$Les glandes de Brunner sont situées dans la sous-muqueuse du duodénum proximal et sécrètent un liquide alcalin.
-$Les haut-le-cœur sont initiés par une vague de péristaltisme inverse débutant dans l'intestin grêle moyen.
-$Les lipides alimentaires sont émulsifiés par le brassage gastrique avant de former des micelles avec les sels biliaires.
-$Les plaques de Peyer sont des agrégats lymphoïdes caractéristiques de la muqueuse de l'iléon terminal.
-$Lors d'une stimulation réflexe, la sécrétion salivaire devient majoritairement d'origine parotidienne.
-$Lors de la phase pharyngée, l'ascension de la glotte et l'abaissement de l'épiglotte permettent d'obstruer la trachée.
-$Lorsque le débit salivaire augmente, la concentration en ions sodium et chlore de la salive finale s'élève.
-$Un traitement prolongé par inhibiteurs de la pompe à protons peut entraîner une hypergastrinémie réactionnelle.
-$Une injection pharmacologique de motiline est capable d'induire un cycle du complexe moteur migrant.
-$Une insuffisance pancréatique exocrine peut entraîner une malabsorption des graisses et des vitamines liposolubles.
-En phase III du complexe moteur migrant (CMM), on observe environ 12 contractions par minute dans le duodénum.
-L'absorption des acides aminés libres est indépendante du gradient de sodium.
-L'absorption des nutriments se déroule de façon équilibrée entre le duodénum, le jéjunum et l'iléon.
-L'acétylcholine stimule la sécrétion d'acide uniquement par une action indirecte sur les cellules ECL.
-L'aldostérone augmente la réabsorption de sodium au niveau du jéjunum mais n'agit pas sur le côlon.
-L'amylase et la lipase pancréatiques sont sécrétées sous forme de zymogènes inactifs pour éviter l'autodigestion du pancréas.
-L'anémie de Biermer résulte d'une malabsorption de la vitamine B12 due à une destruction des cellules épithéliales de l'iléon.
-L'entérokinase est une enzyme pancréatique qui active le trypsinogène en trypsine.
-L'estomac proximal (fundus) assure principalement une fonction de brassage et de concassage des aliments.
-L'iléon possède une vascularisation caractérisée par des vasa recta plus longs que ceux du jéjunum.
-L'iléus paralytique est une accélération pathologique du transit consécutive à une chirurgie abdominale.
-L'ingestion d'un repas renforce l'activité cyclique du CMM pour accélérer la digestion.
-L'ingestion d'un repas riche en triglycérides inhibe le CMM pendant une durée plus courte que celle induite par un repas glucidique.
-L'innervation orthosympathique stimule la motricité intestinale via la libération de noradrénaline.
-L'innervation parasympathique exerce un effet inhibiteur sur la sécrétion enzymatique du pancréas acinaire.
-L'innervation parasympathique par le nerf vague stimule directement la libération de somatostatine par les cellules D.
-La "marée alcaline" correspond à une acidification temporaire du sang veineux gastrique lors de la phase digestive.
-La calbindine est une protéine membranaire qui transporte le calcium à travers la bordure en brosse.
-La CCK favorise la vidange gastrique rapide pour accélérer le passage des graisses dans l'intestin grêle.
-La CCK provoque la relaxation de la vésicule biliaire et la contraction du sphincter d'Oddi.
-La cholécystokinine (CCK) est le principal stimulant de la sécrétion pancréatique hydro-électrolytique.
-La cholécystokinine (CCK) est une hormone intestinale qui accélère puissamment la vidange gastrique.
-La couche musculaire longitudinale externe (CMLE) est responsable du diamètre du tube digestif mais ne participe pas au péristaltisme.
-La distension gastrique inhibe la sécrétion de gastrine par l'intermédiaire de réflexes nerveux courts.
-La gastrine stimule la pompe à protons via une voie de signalisation dépendante de l'AMP cyclique.
-La gastrine stimule la sécrétion acide en diminuant la concentration intracellulaire d'AMPc dans la cellule pariétale.
-La lipase gastrique est une enzyme lipolytique qui est totalement inactivée par l'environnement acide de l'estomac.
-La lipase gastrique nécessite un pH alcalin pour assurer l'hydrolyse des triglycérides alimentaires.
-La lipase salivaire assure la majeure partie de l'hydrolyse des triglycérides alimentaires avant leur arrivée dans le duodénum.
-La longueur totale de l'intestin grêle chez l'adulte est d'environ 2 mètres.
-La maladie cœliaque entraîne une hypertrophie des villosités intestinales augmentant les capacités d'absorption.
-La mastication est un processus exclusivement volontaire régulé par le cortex cérébral.
-La motiline est une hormone sécrétée par l'estomac qui inhibe le déclenchement du CMM.
-La motricité du côlon est caractérisée par une activité contractile maximale durant la phase de sommeil profond.
-La pepsine est sécrétée sous sa forme active par les cellules principales du corps gastrique.
-La phase céphalique de la sécrétion est déclenchée uniquement par l'arrivée des aliments au contact de la muqueuse gastrique.
-La phase céphalique de la sécrétion gastrique est déclenchée uniquement par l'arrivée des aliments dans l'estomac.
-La phase céphalique est responsable de plus de 50 % de la réponse acide totale consécutive à un repas.
-La phase d'évacuation du vomissement se produit lorsque la pression abdominale devient inférieure à la pression thoracique.
-La phase I du CMM est caractérisée par une activité électromécanique intense avec de nombreuses salves de potentiels d'action.
-La phase intestinale de la sécrétion gastrique possède une action majoritairement stimulante sur la cellule pariétale.
-La phase pharyngée de la déglutition est une phase volontaire d'une durée supérieure à 5 secondes.
-La ranitidine est un médicament de la classe des inhibiteurs de la pompe à protons.
-La régulation de la sécrétion salivaire est sous la dépendance prépondérante d'un contrôle hormonal par la gastrine et la CCK.
-La salive est une sécrétion dont le rôle se limite strictement à la lubrification du bol alimentaire.
-La salive est une sécrétion visqueuse composée de 10 % de protéines intrinsèques et 90 % d'eau.
-La salive finale devient hypertonique au plasma en raison de l'activité métabolique intense des canaux striés.
-La salive finale devient hypertonique au plasma suite à la réabsorption active de potassium dans les canaux striés.
-La somatostatine est une hormone produite uniquement par le pancréas qui stimule le CMM.
-La stimulation sympathique diminue systématiquement la sécrétion salivaire par vasoconstriction réflexe.
-La sécrétine est l'hormone principale responsable de l'augmentation de la concentration en bicarbonates dans la salive finale.
-La sécrétine est une hormone gastrique qui stimule la vidange de l'estomac en période prandiale.
-La sécrétine exerce un effet inhibiteur direct sur la sécrétion de pepsinogène.
-La sécrétine stimule puissamment la motilité de l'estomac pour accélérer la vidange.
-La sécrétion acide basale est physiologiquement plus importante le matin au réveil que le soir en période interprandiale.
-La sécrétion de gastrine par les cellules de l'antre est stimulée par une baisse du pH intragastrique.
-La sécrétion de potassium dans le suc gastrique est totalement indépendante du débit sécrétoire.
-La sécrétion de protons stomacaux s'effectue selon un gradient de concentration passif ne consommant pas d'énergie.
-La vidange gastrique des liquides est beaucoup plus lente que celle des aliments solides.
-Le canal de Wharton constitue le conduit excréteur majeur de la glande sublinguale.
-Le chlore est sécrété activement dans la lumière intestinale par les canaux CFTR au niveau des villosités.
-Le chyme est propulsé dans l'intestin grêle à une vitesse constante de 10 cm par minute.
-Le duodénum est une structure mobile sur toute sa longueur afin de faciliter le brassage du chyme.
-Le facteur intrinsèque se lie à la cobalamine dès son arrivée dans la cavité buccale.
-Le fer ferrique (Fe3+) est la forme la plus facilement absorbable par les entérocytes.
-Le film de mucus protecteur recouvrant la muqueuse gastrique possède une épaisseur d'environ 5 millimètres.
-Le fructose est absorbé au pôle apical via un transport actif secondaire dépendant du sodium.
-Le GIP (Gastric Inhibitory Peptide) est une hormone iléale qui stimule la sécrétion acide gastrique.
-Le plexus myentérique d'Auerbach est le principal responsable du contrôle des sécrétions glandulaires gastriques.
-Le péristaltisme intestinal est une onde de contraction qui se propage exclusivement dans la couche longitudinale externe.
-Le péristaltisme œsophagien secondaire nécessite l'activation des centres bulbaires de la déglutition pour se mettre en place.
-Le sphincter anal interne est un muscle strié squelettique dont la contraction dépend entièrement de la volonté.
-Le sphincter supérieur de l'œsophage est constitué de fibres musculaires lisses à activité myogène.
-Le système nerveux orthosympathique augmente l'activité péristaltique et favorise le transit intestinal.
-Le système nerveux sympathique inhibe systématiquement la sécrétion salivaire pour économiser l'eau en période de stress.
-Le système orthosympathique stimule la motilité et l'évacuation gastrique en cas de stress.
-Le tonus basal du sphincter inférieur de l'œsophage est renforcé par la nicotine et les bétamimétiques.
-Le transporteur NKCC1 est situé au pôle luminal de la cellule acineuse pour permettre la sortie du chlore vers la lumière de la glande.
-Les anti-inflammatoires non stéroïdiens (AINS) protègent la muqueuse gastrique en augmentant la synthèse de prostaglandines.
-Les cellules G sécrétrices de gastrine sont localisées de façon prédominante dans le fundus gastrique.
-Les cellules pariétales de la muqueuse fundique sécrètent le pepsinogène et la lipase gastrique.
-Les glandes parotides sont des glandes mixtes sécrétant majoritairement du mucus en période basale.
-Les inhibiteurs de la pompe à protons agissent uniquement sur la phase gastrique de la sécrétion acide.
-Les inhibiteurs de la pompe à protons sont moins puissants que les anti-H2 pour réduire l'acidité gastrique.
-Les ions chlore sont activement réabsorbés au pôle apical de la cellule pariétale lors de la stimulation digestive.
-Les micelles lipidiques sont absorbées intactes par endocytose au niveau de l'iléon.
-Les microvillosités de la bordure en brosse multiplient par 10 la surface d'absorption intestinale.
-Les triglycérides à chaînes moyennes nécessitent obligatoirement la formation de micelles pour être absorbés.
-Les valvules conniventes sont des replis de la muqueuse exclusivement présents dans le bulbe duodénal.
-Une résection de l'iléon terminal n'a aucune conséquence sur la digestion des graisses grâce à la compensation jéjunale.
-La phase céphalique de la sécrétion gastrique est uniquement sous contrôle hormonal.
-La phase céphalique de la sécrétion gastrique représente 80% de la réponse acide totale d'un repas.
-La phase céphalique de la sécrétion gastrique représente environ 80 % de la réponse acide totale d'un repas.
-La phase gastrique débute uniquement lorsque les nutriments sont absorbés dans le sang.
-La phase I du CMM comporte de nombreux potentiels d'action.
-La phase I du CMM dure environ 5 minutes et comporte de nombreux potentiels d'action.
-La phase I du complexe moteur migrant est caractérisée par une salve intense et ininterrompue de potentiels d'action.
-La phase intestinale de la sécrétion gastrique est majoritairement stimulatrice.
-La phase intestinale de la sécrétion gastrique est une phase essentiellement stimulatrice via la sécrétine.
-La phase intestinale est la phase stimulatrice la plus importante de la sécrétion gastrique.
-La phase intestinale est responsable de 80 % de la sécrétion gastrique totale.
-La phase oesophagienne est la seule étape de la déglutition soumise au contrôle de la volonté.
-La phase orale de la déglutition est un acte exclusivement involontaire et réflexe.
-La phase orale de la déglutition est un acte exclusivement involontaire.
-La phase orale de la déglutition est un processus purement involontaire et réflexe.
-La phase pharyngée dure en moyenne 10 secondes.
-La phase pharyngée permet de maintenir les voies respiratoires ouvertes pour faciliter l'oxygénation.
-La pompe à protons située au pôle apical des cellules pariétales est une ATPase Na+/K+.
-La pression au repos dans le corps de l'oesophage est normalement de 60 mmHg.
-La pression du sphincter supérieur de l'œsophage est normalement de 10 mmHg au repos.
-La prise d'un repas de 1000 kcal renforce et régularise la structure cyclique en trois phases du CMM.
-La ptyaline est une enzyme lipolytique capable de résister à une acidité de pH 1.
-La relaxation circulaire en amont du bol alimentaire permet d'éviter les reflux lors du péristaltisme.
-La rupture œsophagienne est une complication fréquente et bénigne du vomissement.
-La régulation des glandes salivaires est sous la dépendance prépondérante du système endocrinien.
-La salive est composée à 90 % d'eau.
-La salive finale est toujours hypertonique par rapport au plasma.
-La salive n'exerce aucune fonction de protection thermique ou chimique pour la muqueuse.
-La salive ne contient aucune immunoglobuline ni facteur de croissance.
-La salive primaire produite dans les acini est fortement hypotonique par rapport au plasma.
-La salive primaire présente une concentration en sodium très faible par rapport au plasma.
-La salive secondaire est hypertonique par rapport au plasma.
-La salive secondaire est toujours hypertonique par rapport au plasma.
-La section des fibres vagales (vagotomie) augmente la réponse acide de la phase céphalique.
-La segmentation est un mouvement propulsif qui assure la progression rapide du chyme vers l'anus.
-La segmentation est un mouvement propulsif qui fait progresser le chyme vers l'anus.
-La somatostatine agit comme un puissant stimulant de la sécrétion d'acide chlorhydrique.
-La somatostatine est exclusivement sécrétée par l'estomac.
-La somatostatine est une hormone qui stimule la sécrétion acide gastrique.
-La sous-muqueuse est une couche de tissu musculaire responsable du péristaltisme.
-La sécrétine et la cholécystokinine (CCK) sont les hormones clés déclenchant la sécrétion salivaire.
-La sécrétine inhibe la sécrétion de bicarbonates par le pancréas.
-La sécrétine produite par le duodénum est le principal stimulant de la gastrine gastrique.
-La sécrétion basale d'acide chlorhydrique est constante tout au long de la journée et de la nuit.
-La sécrétion de HCl est un processus passif ne consommant pas d'énergie.
-La sécrétion de protons par la cellule pariétale est un transport passif ne nécessitant pas d'ATP.
-La sécrétion gastrique basale au repos est principalement composée d'acide chlorhydrique pur.
-La séreuse est la couche musculaire responsable du brassage mécanique des aliments.
-La trypsine est sécrétée sous forme active directement dans les granules de zymogène du pancréas.
-La vagotomie augmente la force de l'expulsion lors du vomissement.
-La veine porte apporte au foie 30% du sang nécessaire à son oxygénation.
-La veine porte draine le sang oxygéné vers les organes digestifs.
-La vidange gastrique des lipides est plus rapide que celle des glucides.
-La vidange gastrique des solides est plus rapide que celle des liquides.
-La vitesse de conduction électrique augmente dans l'iléon terminal.
-La vitesse de l'onde lente augmente dans la partie terminale de l'iléon pour compenser l'épaisseur croissante du chyme.
-La vitesse de progression du bol dans l'oesophage est de 40 centimètres par seconde.
-La vitesse de transit augmente dans l'iléon car le chyme devient de plus en plus liquide.
-La vitesse de transit intestinal augmente à mesure que le chyme progresse vers l'iléon.
-La zone pacemaker gastrique génère environ 10 ondes lentes par minute.
-Le bol alimentaire est normalement propulsé vers le nasopharynx par les muscles constricteurs.
-Le caecum possède une dépolarisation rythmique spontanée très active coordonnant le transit colique initial.
-Le canal de Wharton est le conduit excréteur principal de la glande parotide.
-Le centre de la déglutition est localisé dans le cervelet.
-Le centre de la déglutition est localisé dans le cortex moteur primaire.
-Le chyme progresse dans le tube digestif grâce à la contraction isolée de la muqueuse.
-Le CMM se propage de l'estomac jusqu'au canal anal.
-Le CMM traverse la valvule iléo-caecale pour se propager dans le côlon.
-Le CMM traverse systématiquement la valvule iléo-caecale pour vidanger le côlon.
-Le Complexe Moteur Migrant (CMM) est une activité motrice continue après le repas.
-Le Complexe Moteur Migrant (CMM) est une activité motrice qui persiste durant la période prandiale.
-Le contrôle endocrine joue un rôle majeur et prédominant dans la motricité colique.
-Le couplage électrique entre les cellules nécessite l'intervention de l'amylase salivaire.
-Le côlon ascendant est le principal site de digestion enzymatique des glucides.
-Le côlon est le siège d'une activité motrice intense durant le sommeil profond.
-Le côlon est électriquement couplé à l'intestin grêle, permettant la propagation directe du complexe moteur migrant jusqu'au rectum.
-Le côlon possède un pacemaker initiant des ondes 12 fois par minute.
-Le diamètre des fibres musculaires lisses du tube digestif est d'environ 1 millimètre.
-Le débit salivaire est rigoureusement constant tout au long de la journée sans influence des repas.
-Le débit salivaire moyen augmente de façon significative durant la période de sommeil.
-Le débit sanguin splanchnique diminue de 50 % immédiatement après la prise d'un repas.
-Le débit sanguin splanchnique diminue systématiquement après la prise d'un repas.
-Le facteur intrinsèque est nécessaire à l'absorption de la vitamine C.
-Le facteur intrinsèque est une enzyme produite par les cellules ECL pour digérer les protéines.
-Le foie reçoit 90% de son sang oxygéné par l'artère hépatique.
-Le foie reçoit la majorité de son apport sanguin par l'artère hépatique.
-Le foie reçoit la totalité de son apport en oxygène par la veine porte.
-Le foie reçoit la totalité de son oxygène par la veine porte.
-Le foie, le pancréas et les glandes salivaires ne font pas partie de l'appareil digestif.
-Le frein iléal accélère la vidange gastrique pour libérer de la place dans l'intestin.
-Le GIP est une hormone sécrétée par l'estomac en réponse à la distension.
-Le haut-le-cœur (retching) s'accompagne toujours d'une expulsion immédiate du contenu gastrique.
-Le mouvement de l'eau vers la lumière de l'acinus se fait par transport actif primaire consommant de l'ATP.
-Le muscle lisse viscéral est principalement localisé au niveau de la langue et du pharynx.
-Le nasopharynx s'ouvre volontairement pour laisser passer le bol alimentaire vers les fosses nasales.
-Le noyau ambigu du bulbe gère exclusivement l'innervation des fibres musculaires lisses du TD.
-Le pacemaker colique est situé dans le caecum.
-Le pacemaker gastrique est situé dans l'antre pylorique.
-Le pancréas exocrine sécrète de l'insuline.
-Le pepsinogène est activé en pepsine par un pH alcalin.
-Le pH de la salive reste fixe à 5,3 indépendamment du débit de sécrétion.
-Le phosphate inorganique de la salive favorise la déminéralisation de l'émail dentaire.
-Le plexus d'Auerbach est situé dans la muqueuse et contrôle principalement les sécrétions.
-Le plexus de Meissner est situé entre les deux couches de muscles lisses.
-Le plexus de Meissner est un plexus moteur situé entre les deux couches de muscles lisses.
-Le plexus myentérique d'Auerbach est situé dans la muqueuse et contrôle les sécrétions glandulaires.
-Le plexus myentérique d'Auerbach est situé dans la sous-muqueuse.
-Le plexus sous-muqueux de Meissner est le principal coordonnateur moteur des contractions péristaltiques.
-Le plexus sous-muqueux de Meissner est le principal responsable de la coordination motrice du péristaltisme.
-Le potentiel de membrane des cellules musculaires lisses reste en état de dépolarisation permanente après le passage d'un potentiel d'action.
-Le potentiel de membrane reste stable à -70 mV en l'absence de repas.
-Le péristaltisme dépend exclusivement de la couche musculaire interne.
-Le péristaltisme est un mouvement de va-et-vient qui n'assure aucune progression.
-Le péristaltisme ne nécessite aucune coordination entre les couches musculaires.
-Le péristaltisme ne nécessite que la contraction de la couche longitudinale externe.
-Le péristaltisme primaire est déclenché par une distension accidentelle de la paroi oesophagienne.
-Le péristaltisme secondaire est un mouvement volontaire permettant de vider l'oesophage.
-Le péristaltisme secondaire nécessite systématiquement une commande volontaire du cortex cérébral.
-Le péristaltisme œsophagien primaire est déclenché par une distension accidentelle de la paroi.
-Le rythme électrique de base colique est imposé et synchronisé par le pacemaker gastrique via le nerf vague.
-Le rythme électrique de base colique est synchronisé avec celui de l'iléon.
-Le réseau des cellules de Cajal est localisé dans la séreuse.
-Le seuil de potentiel est atteint systématiquement lors de chaque cycle pacemaker.
-Le SIO est composé de muscles striés squelettiques soumis à l'action de la conscience.
-Le SIO est localisé au niveau de la paroi postérieure du pharynx.
-Le sphincter anal externe est constitué de muscle lisse viscéral incontrôlable.
-Le sphincter anal interne est composé de muscle strié soumis à la volonté.
-Le sphincter anal interne est constitué de fibres musculaires striées volontaires.
-Le sphincter anal interne est contrôlé par des décharges électriques provenant de motoneurones somatiques volontaires.
-Le sphincter anal interne est sous contrôle volontaire.
-Le sphincter anal interne est un muscle strié soumis à l'action de la conscience.
-Le sphincter inférieur de l'œsophage (SIO) est une structure anatomique isolée très épaisse.
-Le sphincter inférieur de l'œsophage est une structure anatomique isolée et très épaisse.
-Le sphincter inférieur de l'œsophage est une structure anatomique isolée très épaisse.
-Le sphincter supérieur de l'oesophage est régulé par les cellules de Cajal.
-Le sphincter supérieur de l'oesophage reste ouvert de manière prolongée durant toute la phase de mastication.
-Le sphincter supérieur de l'œsophage (SSO) est constitué uniquement de fibres musculaires lisses.
-Le sphincter supérieur de l'œsophage (SSO) reste contracté pour protéger les voies aériennes durant l'expulsion..
-Le sphincter supérieur de l'œsophage est constitué exclusivement de muscles lisses viscéraux.
-Le SSO est composé majoritairement de fibres musculaires lisses viscérales.
-Le syncytium électrique est formé par des neurones cholinergiques.
-Le système nerveux autonome est l'initiateur obligatoire de chaque onde lente de potentiel générée dans le tube digestif.
-Le système nerveux central n'intervient jamais dans l'initiation du réflexe vomitif.
-Le système nerveux orthosympathique augmente l'activité péristaltique lors d'un stress aigu.
-Le système nerveux parasympathique est l'unique générateur de l'activité électrique de base du tube digestif.
-Le système nerveux parasympathique est l'unique initiateur des ondes lentes.
-Le système nerveux parasympathique ralentit globalement le transit intestinal.
-Le système nerveux parasympathique ralentit le transit et ferme les sphincters.
-Le système nerveux sympathique est le principal médiateur de la sécrétion salivaire aqueuse abondante.
-Le système nerveux sympathique stimule le péristaltisme en relaxant les sphincters.
-Le système orthosympathique accélère le transit intestinal et relaxe les sphincters.
-Le système orthosympathique accélère le transit intestinal.
-Le système parasympathique et le système sympathique exercent des effets strictement antagonistes sur la sécrétion.
-Le système sympathique et le système parasympathique ont des effets antagonistes sur la sécrétion salivaire.
-Le système sympathique stimule la sécrétion pancréatique par vasodilatation.
-Le temps de transit colique maximal est identique chez l'homme et la femme.
-Le temps de transit colique maximal est plus court chez la femme que chez l'homme.
-Le transit des liquides dans l'oesophage dure systématiquement 10 secondes.
-Le transit œsophagien des liquides dure environ 10 secondes.
-Le transit œsophagien des solides est plus rapide que celui des liquides.
-Le tube digestif est un système clos dont les échanges se font uniquement par la muqueuse.
-Le tube digestif est une structure en forme de tuyau ouverte aux deux extrémités, débutant par la cavité buccale.
-Le vomissement (emesis) est une expulsion passive du contenu gastrique sans effort musculaire.
-Le vomissement de suc gastrique acide provoque une acidose métabolique par perte de protons..
-Le vomissement est initié par un péristaltisme direct très rapide.
-Le vomissement est provoqué par une onde péristaltique descendante exceptionnellement forte.
-Le vomissement est provoqué par une onde péristaltique gastrique descendante normale.
-Le vomissement s'accompagne systématiquement d'une sécheresse buccale intense.
-Les acini sont les sites principaux de la réabsorption active du sodium et du chlore.
-Les anti-inflammatoires non stéroïdiens (AINS) favorisent la protection muqueuse en stimulant les prostaglandines.
-Les anti-inflammatoires non stéroïdiens (AINS) protègent la muqueuse en augmentant la synthèse de prostaglandines.
-Les anti-inflammatoires non stéroïdiens (AINS) protègent la muqueuse gastrique.
-Les canaux intercalaires et striés n'ont qu'un rôle de conduction sans modifier la composition ionique.
-Les cellules APUD sont regroupées en glandes volumineuses bien individualisées dans la paroi gastrique.
-Les cellules canalaires sécrètent une solution riche en acide chlorhydrique.
-Les cellules de Cajal assurent la contraction du sphincter anal externe.
-Les cellules de Cajal sont absentes de la zone pacemaker gastrique.
-Les cellules de Cajal sont des fibres musculaires striées soumises à la volonté.
-Les cellules de Cajal sont des neurones appartenant au plexus de Meissner.
-Les cellules de Cajal sont localisées exclusivement dans la couche muqueuse superficielle du tube digestif.
-Les cellules de Cajal sécrètent de la motiline pour déclencher le complexe moteur migrant.
-Les cellules ECL sécrètent de l'histamine directement dans la lumière de l'estomac pour digérer les protéines.
-Les cellules interstitielles de Cajal sont des cellules exocrines sécrétant du HCl.
-Les cellules musculaires lisses du tube digestif mesurent généralement 10 centimètres de long.
-Les cellules musculaires lisses du tube digestif sont des fibres striées squelettiques soumises au contrôle de la volonté.
-Les cellules musculaires lisses fonctionnent de manière isolée sans aucun contact de fibre à fibre.
-Les cellules musculaires lisses fonctionnent de manière isolée sans communication entre elles.
-Les cellules pariétales non stimulées possèdent des microvillosités apicales déjà pleinement développées.
-Les cellules pariétales sécrètent du pepsinogène.
-Les cellules principales de la muqueuse fundique sécrètent de l'acide chlorhydrique.
-Les cellules principales sont localisées uniquement dans l'antre gastrique.
-Les cellules à mucus sont absentes de la muqueuse fundique.
-Les fibres sympathiques utilisent l'acétylcholine pour stimuler les récepteurs bêta-adrénergiques.
-Les fluctuations cycliques du potentiel de membrane sont appelées phases de repos.
-Les gaz accumulés dans l'angle colique gauche peuvent stimuler des nocicepteurs et figer le transit.
-Les glandes accessoires sont multi-lobulaires et drainées par des canaux collecteurs uniques.
-Les glandes fundiques sont principalement composées de cellules G sécrétrices de gastrine.
-Les glandes parotides sont des glandes de type muqueux sécrétant une salive très épaisse.
-Les glucides sont les stimulants les plus puissants de la sécrétion de gastrine.
-Les haustrations sont des contractions caractéristiques de la muqueuse de l'œsophage.
-Les haustrations sont des contractions circulaires caractéristiques de la muqueuse de l'œsophage.
-Les hormones jouent un rôle prédominant dans la régulation de la motricité du côlon.
-Les jonctions communicantes empêchent la diffusion du signal électrique.
-Les lagomorphes, comme les lapins, sont capables de vomir en cas d'ingestion de toxines.
-Les mucines sont exclusivement sécrétées par les acini séreux de la glande parotide.
-Les muridés et les lapins possèdent un réflexe vomitif très efficace.
-Les muscles striés sont présents sur toute la longueur de l'intestin grêle.
-Les ondes de type I dans le côlon sont des dépolarisations de forte amplitude assurant une propulsion massive du chyme.
-Les ondes lentes de potentiel disparaissent totalement et définitivement durant la période post-prandiale.
-Les ondes lentes de potentiel génèrent systématiquement un potentiel d'action musculaire.
-Les ondes lentes de potentiel sont des potentiels d'action de faible amplitude circulant en permanence.
-Les ondes lentes ont une fréquence de 50 cycles par seconde.
-Les ondes lentes se propagent de l'anus vers la bouche en période de jeûne.
-Les ondes lentes sont des potentiels d'action géants circulant à travers la muqueuse.
-Les ondes lentes sont déclenchées par la libération massive de noradrénaline.
-Les potentiels d'action musculaires apparaissent sous forme d'ondes sinusoïdales continues et parfaitement régulières.
-Les potentiels d'action musculaires sont déclenchés par une baisse brutale de la concentration en calcium intracellulaire.
-Les potentiels d'action se propagent uniquement par voie hormonale.
-Les triglycérides inhibent le CMM pendant une durée plus courte que les glucides.
-Lors de la déglutition, la glotte descend pour ouvrir les voies respiratoires.
-Lors du haut-le-cœur, la glotte reste ouverte pour faciliter le passage de l'air.
-Lorsque le débit salivaire augmente, la salive devient de plus en plus hypotonique.
-Toutes les protéines présentes dans la salive proviennent de la circulation sanguine par transsudation.
-Un vomissement unique entraîne systématiquement une déshydratation sévère.
-Une onde lente déclenche systématiquement un potentiel d'action musculaire.
-Une vagotomie chronique supprime immédiatement et définitivement toute activité électrique et motrice intestinale chez l'humain.
-$Chez l'adulte, l'inhibition corticale permet de différer la défécation même en cas de sensation rectale.
-$Chez les mammifères, le vomissement est une réponse de survie pour éviter l'empoisonnement.
-$Dans la mucoviscidose, l'anomalie du canal CFTR rend la sécrétion pancréatique trop visqueuse et protéique.
-$Dans le côlon, la fréquence de l'onde lente augmente dans la direction proximale-distale.
-$Dans le côlon, la fréquence des ondes lentes de dépolarisation augmente avec la distance vers la partie distale.
-$Dans le péristaltisme, le segment propulseur présente une contraction de la couche circulaire interne.
-$Des salivations profuses, des sueurs et une tachycardie accompagnent souvent le réflexe.
-$Des signaux périphériques vagaux proviennent du tractus digestif et de l'arbre bronchique.
-$Des vomissements persistants provoquent une perte d'eau et d'électrolytes.
-$Elles constituent le système pacemaker interne générant le rythme électrique de base.
-$En période de digestion, la concentration de chlore gastrique est égale à la somme des concentrations de Na+, K+ et H+.
-$En période prandiale, le CMM est interrompu au profit d'une activité motrice continue et irrégulière.
-$Entre deux contractions abdominales, le bol alimentaire peut refluer de l'intestin vers l'estomac.
-$L'abondance des glandes salivaires favorise le glissement du bol alimentaire vers l'oesophage.
-$L'absence de sécrétion de facteur intrinsèque peut conduire à une anémie par défaut d'absorption de la vitamine B12.
-$L'absorption des nutriments se déroule principalement au niveau de l'intestin grêle.
-$L'acidité du chyme duodénal stimule la sécrétion de sécrétine et de CCK.
-$L'activité des cellules pacemakers est à l'origine de l'activité myogène inhérente du muscle lisse.
-$L'activité électrique de l'estomac est quasiment négligeable à jeun, en dehors du déclenchement périodique d'un CMM.
-$L'activité électrique de l'intestin grêle en période prandiale est irrégulière mais continue, ressemblant à la phase II du CMM.
-$L'activité électrique se propage de cellule en cellule par des jonctions communicantes ou nexus.
-$L'alcalose métabolique est une conséquence fréquente des vomissements répétés.
-$L'aldostérone agit sur les canaux striés des glandes salivaires majeures.
-$L'aldostérone est capable de modifier la composition électrolytique de la salive finale.
-$L'aldostérone est impliquée dans les mécanismes de réabsorption canalaire.
-$L'aldostérone est un régulateur hormonal des électrolytes salivaires.
-$L'aldostérone est une hormone dont l'action est considérée comme faible sur la sécrétion salivaire globale.
-$L'aldostérone est une hormone dont la sécrétion n'est pas stimulée par la CCK.
-$L'aldostérone favorise l'hypotonicité de la salive en réabsorbant plus de Na+ que de K+ sécrété.
-$L'aldostérone favorise la conservation du sodium par l'organisme au niveau salivaire.
-$L'aldostérone induit une augmentation de la concentration de potassium salivaire.
-$L'aldostérone induit une réabsorption de sodium et une sécrétion de potassium dans les canaux striés.
-$L'aldostérone induit une sécrétion de potassium dans la salive.
-$L'aldostérone intervient dans la régulation hydro-électrolytique au niveau des conduits excréteurs.
-$L'aldostérone modifie les propriétés de la salive finale au niveau des canaux intralobulaires.
-$L'aldostérone n'est pas une hormone digestive indispensable.
-$L'aldostérone ne joue aucun rôle dans l'initiation de la sécrétion salivaire.
-$L'aldostérone participe à la modification de la composition de la salive secondaire.
-$L'aldostérone participe à la transformation de la salive primaire isotonique.
-$L'aldostérone permet la récupération du sodium à partir de la salive primaire.
-$L'aldostérone peut atteindre des taux de 340 ng/L lors d'une prise de diurétiques.
-$L'aldostérone peut voir sa concentration plasmatique augmenter lors de la prise de diurétiques.
-$L'aldostérone stimule la réabsorption de sodium vers le secteur plasmatique.
-$L'amylase salivaire (ptyaline) représente environ 30% de la masse protéique de la salive.
-$L'amylase salivaire commence la digestion des glucides mais est inactivée par le pH acide de l'estomac.
-$L'amylase salivaire est rapidement inactivée par le pH acide de l'estomac.
-$L'amylase salivaire représente environ 30 % de la masse protéique de la salive.
-$L'anhydrase carbonique est nécessaire à la formation des ions H+ dans la cellule pariétale.
-$L'anhydrase carbonique permet la formation d'ions H+ à partir de CO2 et d'eau au sein de la cellule pariétale.
-$L'anhydrase carbonique permet la production de protons à partir de $CO_2$ et d'eau dans la cellule pariétale.
-$L'appareil recto-anal est la zone clé de la continence fécale.
-$L'appareil recto-anal est une zone clé de la continence fécale reposant sur une coordination neuro-musculaire.
-$L'ascension de la glotte et l'abaissement de l'épiglotte ferment la trachée pendant la phase pharyngée.
-$L'atteinte du seuil de potentiel pour déclencher un potentiel d'action est conditionnelle et influencée par des facteurs mécaniques, chimiques ou hormonaux.
-$L'augmentation de l'hormone antidiurétique (ADH) après les vomissements favorise la rétention d'eau.
-$L'effet tampon des protéines lors d'un repas lève l'inhibition de la gastrine par la somatostatine.
-$L'estomac assure des fonctions de stockage, de brassage et de vidange progressive du chyme.
-$L'estomac possède une couche musculaire supplémentaire de type oblique.
-$L'estomac présente environ trois ondes lentes par minute en période de digestion.
-$L'expulsion du contenu gastrique lors du vomissement nécessite une pression thoracique supérieure à 100 mmHg.
-$L'expulsion du contenu gastrique nécessite une pression thoracique supérieure à 100 mmHg.
-$L'histamine et l'acétylcholine participent à la transmission des signaux du réflexe de vomissement.
-$L'histamine stimule la cellule pariétale en se fixant sur les récepteurs H2 et en augmentant l'AMPc intracellulaire.
-$L'histamine, sécrétée par les cellules ECL, est un puissant stimulant de la sécrétion acide.
-$L'histamine, sécrétée par les cellules ECL, stimule la sécrétion acide via l'AMPc.
-$L'hypochlorémie et l'hypokaliémie résultent de la perte du contenu gastrique.
-$L'ingestion comprend le broyage des aliments par la mastication et leur transfert par la déglutition.
-$L'ingestion comprend à la fois le broyage mécanique par la mastication et la déglutition.
-$L'ingestion de protéines alcalinise temporairement le pH gastrique, levant l'inhibition de la gastrine par l'acidité.
-$L'initiation débute par une vague de péristaltisme inverse née dans l'intestin grêle.
-$L'innervation parasympathique du tube digestif est essentiellement cholinergique.
-$L'innervation parasympathique est majoritairement cholinergique et stimule le transit.
-$L'insuffisance pancréatique exocrine est à l'origine d'une malabsorption.
-$L'oméprazole est un inhibiteur de la pompe à protons $H^+/K^+$ ATPase.
-$L'oméprazole est un inhibiteur de la pompe à protons H+/K+ ATPase.
-$L'oméprazole est un inhibiteur spécifique de la pompe à protons H+/K+ ATPase située au pôle apical.
-$L'oméprazole est un médicament qui inhibe spécifiquement la pompe à protons H+/K+ ATPase.
-$L'ouverture du SSO lors de la déglutition est immédiatement suivie d'un pic de pression protecteur.
-$L'épiglotte s'abaisse pour fermer la trachée et protéger les conduits aériens lors du passage du bol.
-$L'épithélium des canaux striés est caractérisé par une faible perméabilité à l'eau.
-$L'évaluation des cartes conceptuelles prend en compte la validité des liens transversaux et de la hiérarchie.
-$La bradykinine est un agent vasodilatateur qui participe à l'augmentation du débit salivaire.
-$La bradykinine, formée grâce à la kallicréine, induit une vasodilatation des glandes salivaires.
-$La carte conceptuelle est un outil graphique permettant de représenter les liens de causalité entre des connaissances.
-$La CCK est le principal stimulant de la sécrétion enzymatique pancréatique.
-$La CCK stimule l'exocytose des enzymes par les cellules acineuses pancréatiques.
-$La cholécystokinine (CCK) est le stimulus majeur de la sécrétion enzymatique par les cellules acineuses pancréatiques.
-$La cholécystokinine (CCK) est sécrétée par l'intestin grêle en réponse aux graisses et aux protéines.
-$La circulation splanchnique reçoit 20 à 25 % du débit cardiaque au repos.
-$La circulation splanchnique reçoit entre 20 et 25 % du débit cardiaque au repos.
-$La circulation splanchnique reçoit environ 20% à 25% du débit cardiaque au repos.
-$La commande nerveuse de la déglutition et du péristaltisme oesophagien est de nature vagale.
-$La concentration en bicarbonates augmente paradoxalement avec l'élévation du débit salivaire.
-$La conduction électrotonique permet la propagation des ondes lentes au sein du réseau interconnecté des cellules de Cajal.
-$La conduction électrotonique permet la propagation des ondes lentes dans le réseau des cellules de Cajal.
-$La continence fécale au repos repose principalement sur le tonus du sphincter anal interne.
-$La couche circulaire interne assure la segmentation, favorisant le contact du chyme avec la muqueuse.
-$La couche circulaire interne de l'estomac présente une épaisseur croissante vers le duodénum.
-$La couche musculaire circulaire interne assure les mouvements de segmentation.
-$La couche musculaire circulaire interne est responsable de la variation du diamètre de la lumière du tube digestif.
-$La couche musculaire circulaire interne est responsable des mouvements de segmentation.
-$La couche musculaire circulaire interne permet de faire varier le diamètre de la lumière digestive.
-$La couche musculaire circulaire interne permet de faire varier le diamètre du tube digestif.
-$La digestion des triglycérides inhibe le CMM plus longtemps que celle des glucides.
-$La digestion transforme les aliments complexes en nutriments comme les acides aminés.
-$La distension de la paroi intestinale par le chyme est un stimulus capable de favoriser la survenue de salves de potentiels d'action.
-$La distension de la paroi stomacale déclenche des réflexes courts et longs (vago-vagaux) stimulant la sécrétion.
-$La distension gastrique active des réflexes vago-vagaux stimulant la sécrétion.
-$La distension gastrique est un stimulus majeur pour la sécrétion de gastrine.
-$La défécation nécessite le relâchement de la sangle puborectale pour supprimer l'angulation recto-anale.
-$La défécation volontaire nécessite l'abaissement du plancher pelvien et le relâchement de la sangle puborectale.
-$La déglutition est un processus coordonné comprenant les phases orale, pharyngée et œsophagienne.
-$La déglutition est un processus coordonné comprenant trois phases : orale, pharyngée et oesophagienne.
-$La dépolarisation se propage par contact de fibre à fibre.
-$La fréquence de l'onde de progression contractile diminue du duodénum vers l'iléon.
-$La fréquence de l'onde lente de progression contractile diminue progressivement du duodénum vers l'iléon.
-$La fréquence des ondes lentes augmente dans le sens proximal-distal au niveau du côlon.
-$La gastrine augmente le tonus contractile du sphincter inférieur de l'oesophage.
-$La gastrine est stimulée par la distension gastrique et la présence de peptides.
-$La gastrine est sécrétée par les cellules de l'antre gastrique et du duodénum.
-$La gastrine stimule la sécrétion acide en augmentant la concentration de calcium intracellulaire dans la cellule pariétale.
-$La gastrine, l'histamine et l'acétylcholine stimulent directement ou indirectement la cellule pariétale.
-$La haute pression du SSO réduit l'entrée d'air vers l'estomac et prévient le reflux vers la cavité buccale.
-$La kallicréine permet la formation de bradykinine, un agent vasodilatateur indispensable au haut débit.
-$La lipase gastrique est active en milieu acide.
-$La lipase gastrique est une enzyme active en milieu acide, contrairement à la lipase pancréatique.
-$La lipase salivaire est sécrétée par les glandes sublinguales et linguales.
-$La marée alcaline correspond à l'alcalinisation du sang basal suite à l'extraction de bicarbonates par la cellule pariétale.
-$La mastication combine des phases volontaires et des réflexes d'occlusion dentaire.
-$La mastication est un acte moteur combinant des phases volontaires et des réflexes involontaires.
-$La mastication facilite l'exposition du bol alimentaire aux enzymes salivaires.
-$La mastication facilite la déglutition en réduisant le volume du bol et en augmentant sa fluidité.
-$La mastication réduit la taille du bol alimentaire et augmente la surface d'échange pour les enzymes.
-$La modification de la salive implique une réabsorption de Na+ et Cl- supérieure à la sécrétion de K+.
-$La modification de la salive primaire en salive secondaire se fait par réabsorption de sodium et de chlore.
-$La motiline est une hormone capable d'induire un cycle du CMM à dose pharmacologique.
-$La motiline stimule la motilité gastrique et intestinale.
-$La motricité colique est pratiquement silencieuse durant la période nocturne.
-$La motricité colique est quasi silencieuse pendant la nuit.
-$La motricité de l'intestin grêle mélange le chyme avec les sécrétions biliaires et pancréatiques.
-$La mucoviscidose entraîne un défaut de sécrétion de bicarbonates par anomalie du canal CFTR.
-$La muqueuse est la couche la plus interne du tube digestif, assurant protection et absorption.
-$La muqueuse fundique, qui recouvre 80 % de l'estomac, contient les glandes responsables de la sécrétion d'acide chlorhydrique.
-$La musculature striée aux extrémités du tube digestif permet un contrôle volontaire.
-$La méthode de la classe inversée privilégie la résolution de problèmes en groupe plutôt que le cours magistral passif.
-$La nausée est une perception subjective déplaisante de malaise pouvant précéder le vomissement.
-$La nicotine, la sécrétine et la CCK contribuent à diminuer la pression du SIO.
-$La partie haute de l'estomac peut glisser dans le hiatus diaphragmatique vers le thorax.
-$La pepsine active est capable d'auto-catalyser la transformation du pepsinogène en pepsine supplémentaire.
-$La pepsine est capable de s'auto-catalyser en milieu acide.
-$La pepsine est initialement sécrétée sous forme de proenzyme inactive appelée pepsinogène.
-$La pepsine est une enzyme qui s'auto-catalyse en milieu acide.
-$La perte duodénale de bicarbonates est une conséquence rare du vomissement.
-$La phase céphalique de la sécrétion gastrique représente environ 30% de la réponse acide totale.
-$La phase d'évacuation nécessite une pression thoracique supérieure à 100 mmHg.
-$La phase I du CMM correspond à une période de quiescence sans potentiels d'action.
-$La phase III du CMM dure environ 5 à 10 minutes et assure la vidange des résidus intestinaux.
-$La phase III du CMM est la phase la plus active, caractérisée par des salves de potentiels d'actions sur chaque onde.
-$La phase III du CMM est la plus active et assure la vidange des résidus intestinaux.
-$La phase III du CMM est la plus active et dure 5 à 10 minutes.
-$La phase III du CMM présente des potentiels d'action d'amplitude maximale sur chaque onde lente.
-$La phase III du complexe moteur migrant correspond à une activité régulière où chaque onde lente porte un potentiel d'action d'amplitude maximale.
-$La phase intestinale possède une composante inhibitrice via la libération d'entérogastrones comme la CCK ou la sécrétine.
-$La phase intestinale représente 80% de la sécrétion pancréatique totale.
-$La phase orale est la phase de la déglutition qui permet le contrôle volontaire du bol alimentaire.
-$La phase orale et la phase pharyngée durent ensemble moins d'une seconde.
-$La phase pharyngée de la déglutition est de nature réflexe.
-$La phase pharyngée est une étape de nature réflexe.
-$La phase pharyngée est une étape réflexe durant moins d'une seconde.
-$La pression de repos du SSO est élevée, se situant entre 35 et 100 mmHg, pour prévenir l'entrée d'air et le reflux.
-$La pression thoracique élevée force l'ouverture du SSO, permettant l'évacuation finale.
-$La progression du bol alimentaire dans l'oesophage s'effectue par un péristaltisme aboral.
-$La progression du bol alimentaire dans l'œsophage se fait à une vitesse de 2 à 6 cm par seconde.
-$La relaxation du SIO est médiée par des neurones NANC libérant du monoxyde d'azote (NO).
-$La relaxation du SIO fait intervenir des neurones NANC libérant du monoxyde d'azote (NO).
-$La relaxation du sphincter inférieur de l'œsophage fait intervenir des neurones NANC libérant du monoxyde d'azote.
-$La relaxation fonctionnelle du SIO est une étape critique pour prévenir le reflux gastro-oesophagien.
-$La relaxation réceptive du fundus est un réflexe vago-vagal permettant le stockage de 1000 mL de nourriture.
-$La relaxation réceptive du fundus gastrique est un réflexe vaso-vagal associé à chaque déglutition.
-$La relaxation réceptive du fundus permet à l'estomac d'augmenter son volume sans forte hausse de pression.
-$La relaxation réceptive du fundus permet à l'estomac de passer d'un volume de 50 mL à 1000 mL.
-$La régulation de la sécrétion salivaire est principalement d'origine nerveuse.
-$La régulation salivaire est principalement d'origine nerveuse, contrairement au reste du tube digestif.
-$La salive finale est toujours hypotonique par rapport au plasma.
-$La salive permet la reminéralisation de l'émail grâce à sa teneur en calcium et en phosphate.
-$La salive primaire est isotonique au plasma.
-$La salive primaire est un transsudat plasmatique isotonique produit au niveau des acini.
-$La salive primaire produite dans l'acinus est isotonique au plasma.
-$La sangle puborectale doit se relâcher pour supprimer l'angulation recto-anale lors de la défécation.
-$La segmentation assure le brassage du chyme sans provoquer de progression aborale.
-$La segmentation est assurée par la contraction de la couche musculaire circulaire interne.
-$La segmentation favorise le brassage du chyme et son renouvellement au contact de la muqueuse.
-$La segmentation favorise le mélange du chyme et son contact avec la muqueuse.
-$La somatostatine inhibe la sécrétion d'acide par une action paracrine et endocrine.
-$La somatostatine inhibe la sécrétion de protons en diminuant la quantité d'AMPc intracellulaire dans la cellule pariétale.
-$La somatostatine, sécrétée par les cellules D, inhibe la sécrétion d'acide chlorhydrique par action paracrine.
-$La sortie de chlore vers la lumière crée un potentiel négatif qui favorise le passage paracellulaire du sodium.
-$La sous-muqueuse est une couche de tissu conjonctif richement vascularisée et innervée.
-$La stimulation du nerf vague déclenche ou augmente l'activité motrice intestinale .
-$La stimulation parasympathique produit une salive aqueuse et fluide via l'acétylcholine.
-$La sécrétine est libérée lorsque le pH duodénal descend en dessous de 4,5.
-$La sécrétine est sécrétée par le duodénum en réponse à l'acidité du chyme.
-$La sécrétine et la CCK, produites par le duodénum, inhibent la sécrétion acide gastrique.
-$La sécrétine stimule la motilité gastrique pour accélérer la vidange.
-$La sécrétine stimule la sécrétion d'eau et de bicarbonates par les cellules canalaires du pancréas.
-$La sécrétine stimule la sécrétion d'eau et de bicarbonates par les cellules canalaires.
-$La sécrétion salivaire est principalement régulée par le système nerveux autonome.
-$La sérotonine (5-HT) et la dopamine sont des médiateurs chimiques du vomissement.
-$La toux ou le rire activent une contraction réflexe du sphincter anal externe pour maintenir la continence.
-$La trypsine est l'activateur commun des zymogènes pancréatiques dans le duodénum.
-$La trypsine est l'enzyme qui active la plupart des autres proenzymes pancréatiques.
-$La valvule iléo-caecale est un véritable sphincter formé par la superposition de couches musculaires.
-$La vascularisation splanchnique reçoit entre 20 et 25% du débit cardiaque au repos.
-$La vascularisation splanchnique reçoit environ 20 à 25% du débit cardiaque au repos.
-$La veine porte draine 70 % du débit sanguin hépatique à partir du tube digestif.
-$La veine porte draine 70% du débit sanguin hépatique à partir des organes digestifs.
-$La veine porte draine le sang veineux issu des organes digestifs vers le foie.
-$La vidange des liquides est nettement plus rapide que celle des solides.
-$La vidange des solides est plus lente que celle des liquides.
-$La vitesse du péristaltisme oesophagien est normalement comprise entre 2 et 6 cm/sec.
-$La zone gâchette chémoréceptrice (CTZ) est située dans l'aera postrema.
-$La zone pacemaker gastrique, d'où naissent les ondes lentes de trois cycles par minute, se situe au niveau de la grande courbure.
-$Le brassage gastrique dépend de la zone pacemaker située dans la grande courbure de l'estomac.
-$Le centre de la déglutition est localisé dans le bulbe rachidien.
-$Le centre de la déglutition se situe dans le bulbe rachidien.
-$Le centre du vomissement peut être activé par la peur, le stress psychologique ou la douleur.
-$Le CMM se propage de l'estomac jusqu'à l'iléon mais ne franchit pas la valvule iléo-caecale.
-$Le CMM se propage en direction aborale jusqu'à l'iléon mais s'éteint avant de franchir la valvule iléo-caecale.
-$Le co-transporteur NKCC1 permet l'entrée active de chlore dans la cellule acineuse.
-$Le Complexe Moteur Migrant (CMM) est une activité cyclique de jeûne se propageant de l'estomac à l'iléon.
-$Le Complexe Moteur Migrant (CMM) est une activité cyclique survenant en période de jeûne.
-$Le Complexe Moteur Migrant (CMM) est une activité cyclique survenant exclusivement à jeun.
-$Le Complexe Moteur Migrant (CMM) est une onde de dépolarisation et de contraction naissant dans la zone pacemaker de l'estomac en période de jeûne.
-$Le Complexe Moteur Migrant (CMM) naît dans la zone pacemaker de l'estomac.
-$Le contenu stomacal est propulsé à travers un sphincter inférieur de l'œsophage (SIO) relaxé.
-$Le corps de l'oesophage présente une légère dépression au repos car il se situe dans la zone thoracique.
-$Le couplage mécanique entre les fibres musculaires lisses est assuré par des points de contact étroits.
-$Le couplage électrique et mécanique entre les cellules permet un raccourcissement coordonné pouvant atteindre 75% de leur longueur initiale.
-$Le côlon ascendant est un site de stockage où la progression du contenu est très lente.
-$Le côlon est le site principal de réabsorption de l'eau et des électrolytes restants.
-$Le côlon est pratiquement silencieux durant la nuit.
-$Le déclenchement d'un potentiel d'action sur une onde lente est conditionnel et non systématique.
-$Le facteur intrinsèque est indispensable à l'absorption de la vitamine B12 au niveau de l'iléon.
-$Le facteur intrinsèque est indispensable à l'absorption de la vitamine B12.
-$Le facteur intrinsèque, indispensable à l'absorption de la vitamine B12, est sécrété par les cellules pariétales.
-$Le film de mucus alcalin protège la muqueuse gastrique contre l'agression chimique de la pepsine et de l'acide.
-$Le foie reçoit 70 % de son débit sanguin de la veine porte.
-$Le frein iléal est activé par la détection de nutriments non absorbés dans l'iléon terminal.
-$Le frein iléal est un mécanisme réflexe ralentissant la vidange gastrique en réponse aux nutriments dans l'iléon distal.
-$Le frein iléal ralentit la vidange gastrique en cas de détection de nutriments dans l'iléon terminal.
-$Le fundus gastrique se déplisse lors du remplissage capacitif grâce à la relaxation des couches musculaires.
-$Le gradient de pression entre l'abdomen et le thorax peut dépasser 200 mmHg lors des efforts.
-$Le haut-le-cœur consiste en des contractions périodiques des muscles respiratoires à glotte fermée.
-$Le lysozyme possède un pouvoir antiseptique en lysant la paroi de certaines bactéries.
-$Le mouvement du palais mou sépare l'oropharynx du nasopharynx pour éviter une fausse route.
-$Le muscle cricopharyngé est un muscle strié formant le sphincter supérieur de l'œsophage.
-$Le muscle cricopharyngé se relâche durant la phase pharyngée pour permettre l'entrée du bol alimentaire dans l'œsophage.
-$Le muscle lisse du tube digestif est de type unitaire, fonctionnant comme un syncytium grâce à son activité myogène inhérente.
-$Le muscle lisse du tube digestif est qualifié d'unitaire en raison de son activité myogène inhérente.
-$Le muscle lisse du tube digestif fonctionne comme un syncytium électrique.
-$Le muscle lisse du tube digestif possède une propriété d'auto-excitation intrinsèque.
-$Le muscle strié squelettique est présent aux deux extrémités du tube digestif, permettant un contrôle volontaire.
-$Le nerf vague (X) assure la commande motrice de la déglutition via le bulbe rachidien.
-$Le nerf vague (X) joue un rôle prédominant dans la phase céphalique en stimulant les cellules pariétales, G et ECL.
-$Le nerf vague stimule directement la cellule pariétale par la libération d'acétylcholine lors de la phase céphalique.
-$Le nerf vague stimule directement les cellules pariétales gastriques.
-$Le noyau ambigu assure l'innervation des fibres musculaires striées impliquées dans la déglutition.
-$Le pacemaker gastrique se situe au niveau de la grande courbure dans la partie haute du corps.
-$Le pepsinogène est une proenzyme inactive sécrétée par les cellules principales du corps gastrique.
-$Le pH de la salive augmente généralement avec le débit salivaire.
-$Le pH du suc pancréatique est alcalin.
-$Le pH gastrique à jeun est très acide, se situant généralement autour de 1.
-$Le pharynx est constitué de muscles striés dont la commande dépend du système nerveux central.
-$Le plexus myentérique d'Auerbach coordonne l'activité électrique et motrice entre les couches musculaires circulaire et longitudinale.
-$Le plexus myentérique d'Auerbach coordonne principalement la motricité.
-$Le plexus myentérique d'Auerbach est situé entre les couches musculaires circulaire et longitudinale.
-$Le plexus myentérique d'Auerbach est situé entre les deux couches musculaires et coordonne la motricité.
-$Le plexus myentérique d'Auerbach, situé entre les couches musculaires, coordonne principalement la motricité.
-$Le plexus sous-muqueux de Meissner a un rôle principalement sensitif et pro-sécrétoire.
-$Le plexus sous-muqueux de Meissner contrôle principalement les fonctions de sécrétion et de détection sensorielle.
-$Le plexus sous-muqueux de Meissner contrôle principalement les fonctions sensitives et sécrétoires.
-$Le plexus sous-muqueux de Meissner joue un rôle prédominant dans le contrôle des fonctions sécrétoires.
-$Le péristaltisme nécessite la contraction de la couche musculaire longitudinale externe pour propulser le bol alimentaire.
-$Le péristaltisme oesophagien primaire est directement initié par les phases buccale et pharyngée de la déglutition.
-$Le péristaltisme oesophagien secondaire est initié par la distension locale de l'oesophage.
-$Le péristaltisme secondaire est déclenché par la distension de la paroi œsophagienne, par exemple en cas de reflux.
-$Le péristaltisme œsophagien primaire est directement initié par les phases buccale et pharyngée de la déglutition.
-$Le péristaltisme œsophagien secondaire est déclenché par la distension de la paroi œsophagienne.
-$Le reflux gastro-oesophagien peut initier un péristaltisme secondaire parfois ressenti comme désagréable.
-$Le relâchement de la sangle puborectale permet de supprimer l'angulation recto-anale lors de la défécation.
-$Le rythme électrique de base détermine la fréquence maximale des contractions.
-$Le réflexe gastro-colique augmente la motricité colique après la prise d'un repas.
-$Le réflexe gastro-colique déclenche une augmentation de la motricité colique après un repas.
-$Le réflexe gastro-colique est responsable de l'envie de déféquer après un repas.
-$Le réflexe recto-anal inhibiteur permet le relâchement du sphincter interne lors de l'arrivée des selles dans le rectum.
-$Le réflexe recto-anal inhibiteur permet le relâchement du sphincter interne lors de la distension rectale.
-$Le réflexe recto-anal inhibiteur provoque le relâchement du sphincter interne lors de la distension rectale.
-$Le réflexe salivaire conditionné (réponse à la vue ou l'odeur) nécessite un apprentissage préalable.
-$Le réflexe vago-vagal de la phase gastrique est activé par la distension de la paroi stomacale.
-$Le segment propulseur du péristaltisme associe une contraction circulaire et une relaxation longitudinale.
-$Le sphincter anal externe permet un contrôle conscient de la défécation chez l'adulte.
-$Le sphincter anal interne est constitué de muscle lisse et dépend d'une commande involontaire.
-$Le sphincter anal interne possède une commande intrinsèque malgré l'absence de pacemaker colique.
-$Le sphincter inférieur de l'oesophage (SIO) ne constitue pas une structure anatomique isolée.
-$Le sphincter inférieur de l'œsophage se relâche lors du passage des aliments.
-$Le sphincter supérieur de l'oesophage (SSO) est une zone de haute pression allant de 35 à 100 mmHg.
-$Le sphincter supérieur de l'œsophage est composé de fibres musculaires striées.
-$Le stimulus mécanique d'un corps étranger dans les voies digestives peut induire le vomissement.
-$Le stress peut provoquer une diarrhée via une réponse parasympathique secondaire à l'activation orthosympathique.
-$Le suc gastrique arrivant dans la bouche est très acide et agresse les tissus dentaires.
-$Le syndrome de Mallory-Weiss correspond à une dissection du SIO due aux efforts d'expulsion.
-$Le système nerveux autonome module l'activité digestive sans être indispensable à sa motricité de base.
-$Le système nerveux parasympathique favorise la sécrétion acide en inhibant l'action des cellules D.
-$Le système orthosympathique augmente le tonus des sphincters et ralentit le péristaltisme.
-$Le système parasympathique est globalement activateur de la motricité digestive.
-$Le système parasympathique stimule la formation d'une salive aqueuse et fluide.
-$Le système sympathique favorise une sécrétion de salive épaisse et riche en matériel muco-protéique.
-$Le système vagal est activé durant le processus, entraînant des signes neurovégétatifs.
-$Le temps de transit colique maximal est plus long chez la femme que chez l'homme.
-$Le terme "aboral" définit un mouvement s'éloignant de la cavité buccale vers la partie distale du tube digestif.
-$Le tonus basal du sphincter inférieur de l'oesophage est essentiellement d'origine myogène.
-$Le tonus contractile des fibres musculaires lisses assure un diamètre et une longueur normaux au tube digestif.
-$Le tonus contractile permanent des muscles lisses assure le maintien d'un diamètre et d'une longueur normaux au tube digestif.
-$Le tonus du sphincter anal interne assure la continence fécale au repos.
-$Le trajet oesophagien des liquides est beaucoup plus rapide que celui des aliments solides.
-$Le vomissement est défini comme l'expulsion forcée du contenu intestinal et gastrique à travers la bouche.
-$Le vomissement est un réflexe protecteur coordonné par un centre situé dans le bulbe rachidien.
-$Les AINS peuvent favoriser les ulcères en inhibant la synthèse des prostaglandines protectrices.
-$Les cellules acineuses pancréatiques sécrètent les enzymes sous forme de proenzymes dans des granules de zymogène.
-$Les cellules APUD sont des cellules endocrines isolées réparties tout au long de l'épithélium digestif.
-$Les cellules canalaires pancréatiques sécrètent de l'eau et des bicarbonates.
-$Les cellules D exercent un contrôle inhibiteur paracrine sur les cellules G et les cellules pariétales via la somatostatine.
-$Les cellules de Cajal agissent comme des pacemakers en générant le rythme électrique de base.
-$Les cellules de Cajal assurent la mise en cohérence du flux électrique pour permettre l'alternance des phénomènes de contraction et de relaxation.
-$Les cellules de Cajal génèrent des ondes lentes de potentiel qui servent de rythme électrique de base.
-$Les cellules de Cajal sont les cellules pacemakers générant le rythme électrique de base.
-$Les cellules de Cajal sont les pacemakers générant les ondes lentes de potentiel.
-$Les cellules de Cajal sont localisées entre les couches musculaires circulaire et longitudinale.
-$Les cellules de Cajal sont à l'origine du rythme électrique de base gastrique.
-$Les cellules G de la muqueuse pylorique sécrètent la gastrine en réponse à la présence de peptides ou à la distension.
-$Les cellules glandulaires de la muqueuse pylorique sont organisées en tubules courts et ramifiés.
-$Les cellules interstitielles de Cajal constituent le système pacemaker interne générant le rythme électrique de base ou ondes lentes.
-$Les cellules musculaires lisses du tube digestif sont couplées électriquement par des jonctions communicantes (nexus), fonctionnant comme un syncytium.
-$Les cellules musculaires lisses peuvent se raccourcir jusqu'à 75 % de leur longueur initiale.
-$Les cellules musculaires lisses sont couplées électriquement par des jonctions communicantes.
-$Les cellules myoépithéliales facilitent l'excrétion de la salive en se contractant autour des acini.
-$Les cellules pariétales possèdent de nombreuses mitochondries car la sécrétion de protons contre un gradient est très coûteuse en énergie.
-$Les cellules pariétales possèdent une activité métabolique intense nécessitant de nombreuses mitochondries pour la sécrétion de protons.
-$Les cellules pariétales sécrètent l'acide chlorhydrique (HCl) et le facteur intrinsèque.
-$Les cellules principales sécrètent le pepsinogène, une proenzyme inactive.
-$Les deux couches musculaires du tube digestif travaillent de façon coordonnée pour assurer la motricité.
-$Les facteurs mécaniques et hormonaux modulent la survenue des potentiels d'action.
-$Les fibres musculaires lisses sont couplées électriquement par des jonctions communicantes de type nexus.
-$Les fibres musculaires striées du muscle cricopharyngé constituent la structure du SSO.
-$Les glandes parotides deviennent les principaux contributeurs lors de la sécrétion stimulée.
-$Les glandes parotides sont des glandes exclusivement séreuses.
-$Les glandes salivaires accessoires assurent l'humidification continue de la bouche par une sécrétion peu abondante.
-$Les glandes submandibulaires assurent environ 60 % du débit salivaire de repos.
-$Les jonctions communicantes permettent la diffusion du signal électrique par contact direct de fibre à fibre.
-$Les modifications locales et les facteurs métaboliques modulent la durée et l'amplitude des ondes lentes de potentiel.
-$Les muridés (souris, rats) possèdent un réflexe vomitif très efficace pour se protéger.
-$Les muridés et les lagomorphes sont dépourvus de réflexe vomitif.
-$Les noyaux vestibulaires transmettent des signaux en cas de perception de mobilité anormale.
-$Les ondes lentes de potentiel oscillent de manière cyclique sans atteindre systématiquement le seuil d'excitation.
-$Les ondes lentes de potentiel sont des fluctuations cycliques du potentiel de membrane.
-$Les ondes lentes de potentiel sont transmises aux cellules musculaires par les cellules de Cajal.
-$Les ondes lentes déterminent ponctuellement des salves de dépolarisation.
-$Les plexus nerveux intrinsèques assurent une régulation loco-régionale autonome du tube digestif.
-$Les points de contact étroits assurent le couplage mécanique entre les fibres musculaires.
-$Les potentiels d'action se présentent souvent sous forme de salves de dépolarisation.
-$Les premiers haut-le-cœur apparaissent quand la vague inverse atteint le duodénum.
-$Les six grandes fonctions du tube digestif incluent l'ingestion, la motilité, la sécrétion, la digestion, l'absorption et l'excrétion.
-$Les triglycérides inhibent le CMM plus longtemps que les glucides ou les peptides.
-$Les vomissements répétés, notamment dans les troubles alimentaires, provoquent une érosion dentaire.
-$Lors du péristaltisme, le segment propulseur combine une contraction circulaire et une relaxation longitudinale.
-$Pendant la phase orale, la langue remonte contre le palais dur pour propulser le bol alimentaire vers l'arrière.
-$Quatre types d'afférences principales peuvent activer le réflexe de vomissement.
-$Seule la sécrétion du facteur intrinsèque est considérée comme indispensable à la survie parmi les produits gastriques.
-$Un dommage tissulaire ou une inflammation sévère peut provoquer un iléus paralytique par inhibition réflexe.
-$Une carte conceptuelle structurée "en chaîne" reflète un raisonnement séquentiel et causal.
-$Une forte contraction abdominale à glotte fermée augmente la pression intrathoracique.
-$Une perfusion trop hypotonique après des vomissements peut aggraver l'hyponatrémie via l'ADH.
-$Une vidange oesophagienne incomplète après une contraction primaire déclenche un péristaltisme secondaire.
-`;
+<div id="statsScreen" class="hidden setup-card shadow-sm">
+    <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToHome()">← Accueil</button>
+    <h3 class="mb-4"><i class="fa-solid fa-chart-line"></i> Statistiques</h3>
+    <div id="statsContent"></div>
+</div>
 
-        // Variables globales
-        let questionsDB = [];
-        let selectedQuestions = [];
-        let currentQuestionIndex = 0;
-        let userAnswers = [];
-        let selectedMode = 'dp';
+<div id="chapterScreen" class="hidden setup-card shadow-sm">
+    <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backOneLevel()">← Retour</button>
+    <div id="breadcrumb" class="breadcrumb-nav"></div>
+    <h3 id="currentSubjectTitle" class="mb-4"></h3>
+    <div id="chaptersList" class="list-group list-group-flush"></div>
+</div>
 
-        // Fonction pour parser le texte et extraire les questions
-        function parseQuestions(text) {
-            const questions = [];
-            const lines = text.trim().split('\n').filter(l => l.trim());
-            
-            lines.forEach(line => {
-                const trimmedLine = line.trim();
-                if (!trimmedLine) return;
-                
-                const isTrue = trimmedLine.startsWith('$');
-                const questionText = isTrue ? trimmedLine.substring(1) : trimmedLine;
-                
-                questions.push({
-                    question: questionText,
-                    answer: isTrue
-                });
-            });
-            
-            return questions;
+<div id="qcmScreen" class="hidden setup-card shadow-sm">
+    <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToChapters()">← Retour</button>
+    <h4 id="sessionChapterTitle" class="text-primary mb-4"></h4>
+    <div class="session-options">
+        <h5 class="mb-3">Configuration de la session</h5>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Mode</label>
+            <div class="d-flex gap-2 flex-wrap">
+                <input class="btn-check" type="radio" name="sessionMode" id="modeTraining" value="training" checked onchange="updateSessionOptions()">
+                <label class="btn btn-outline-primary" for="modeTraining"><i class="fa-solid fa-graduation-cap"></i> Entraînement</label>
+                <input class="btn-check" type="radio" name="sessionMode" id="modeExam" value="exam" onchange="updateSessionOptions()">
+                <label class="btn btn-outline-danger" for="modeExam"><i class="fa-solid fa-stopwatch"></i> Mode examen</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Nombre de questions</label>
+            <input type="number" id="sessionSize" class="form-control" value="10" min="1" style="max-width:300px">
+        </div>
+
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="enableDP" onchange="updateSessionOptions()">
+            <label class="form-check-label fw-bold" for="enableDP">Mode DP — validation séquentielle</label>
+        </div>
+
+        <div id="timerOptions" class="border rounded p-3 mb-3 hidden">
+            <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="enableTimer" checked>
+                <label class="form-check-label fw-bold" for="enableTimer">Activer le chronomètre</label>
+            </div>
+            <div>
+                <label class="form-label mb-1">Durée de l'examen (minutes)</label>
+                <input type="number" id="examDuration" class="form-control" value="30" min="1" max="600" style="max-width:200px">
+            </div>
+        </div>
+
+        <div id="modeDescription" class="small text-muted mb-3"></div>
+        <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
+    </div>
+</div>
+
+<div id="sessionScreen" class="hidden">
+    <div id="examHeader" class="exam-header hidden"></div>
+    <div id="dpProgress" class="mb-3 hidden"></div>
+    <div id="questionsContainer"></div>
+    <div class="submitbtns text-center mt-4 mb-5" id="sessionActions"></div>
+</div>
+
+<div id="correctionScreen" class="hidden">
+    <div class="setup-card text-center mb-4">
+        <h2 id="score" class="text-primary"></h2>
+        <div id="resultMeta" class="small text-muted mt-2"></div>
+        <div class="mt-3">
+            <button class="btn btn-uness me-2" onclick="backToQCMScreen()">Nouvelle session</button>
+            <button class="btn btn-success" onclick="exportErrorLog()"><i class="fa-solid fa-file-export"></i> Exporter Carnet d'Erreurs</button>
+        </div>
+    </div>
+    <div id="correctionDetails"></div>
+</div>
+
+</div>
+
+<script>
+"use strict";
+
+let data = {};
+let allQcmsIndex = {};
+let currentPath = [], currentSession = [], missedAnswers = [];
+let sessionValidated = false;
+let sessionStartTime = null;
+let timerEndTime = null;
+let timerInterval = null;
+let currentSessionMode = "training";
+let currentSessionDP = false;
+let currentSessionTimed = false;
+let currentSessionDuration = null;
+let currentDPIndex = 0;
+let dpAnswered = {};
+let dpAnswers = {};
+const sessionConfidence = {};
+const MAX_ATTEMPTS_LOG = 5000;
+
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+function generateCleanId(str) {
+    return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"_").replace(/_+/g,"_").slice(0,100);
+}
+function getCanceledQCMs(){return JSON.parse(localStorage.getItem("canceled_qcms")||"[]")}
+function getCanceledItems(){return JSON.parse(localStorage.getItem("canceled_items")||"[]")}
+function getErrorLog(){return JSON.parse(localStorage.getItem("digital_error_log")||"{}")}
+function getAttemptsLog(){return JSON.parse(localStorage.getItem("qcm_attempts_log")||"[]")}
+function saveAttempt(record){
+    const log=getAttemptsLog(); log.push(record);
+    if(log.length>MAX_ATTEMPTS_LOG) log.splice(0,log.length-MAX_ATTEMPTS_LOG);
+    localStorage.setItem("qcm_attempts_log",JSON.stringify(log));
+}
+function getQcmStats(qcmId){
+    const attempts=getAttemptsLog().filter(a=>a.qcmId===qcmId);
+    if(!attempts.length)return{label:"Jamais vu",cls:"secondary"};
+    const lastTwo=attempts.slice(-2), mastered=lastTwo.length>=2&&lastTwo.every(a=>a.correct), errors=attempts.filter(a=>!a.correct).length;
+    if(mastered)return{label:"Maîtrisé",cls:"success"};
+    if(errors>=2)return{label:"Erreur récurrente",cls:"danger"};
+    return{label:`Vu ${attempts.length}×`,cls:"info"};
+}
+
+function setConfidence(qcmId,level){
+    sessionConfidence[qcmId]=level;
+    saveSessionState();
+}
+function logItemResult(subjectPath,qcmQuestion,itemText,status,qcmId,mode,dp){
+    const log=getErrorLog(), key=`${subjectPath} > ${qcmQuestion} > ${itemText}`;
+    if(!log[key]) log[key]={p:subjectPath,q:qcmQuestion,i:itemText,qcmId,fp:0,fn:0,confidence:"non spécifié",attempts:[]};
+    if(status==="false_positive")log[key].fp++;
+    if(status==="false_negative")log[key].fn++;
+    log[key].lastMode=mode;
+    log[key].lastDP=!!dp;
+    if(mode==="training" && sessionConfidence[qcmId]) log[key].confidence=sessionConfidence[qcmId];
+    localStorage.setItem("digital_error_log",JSON.stringify(log));
+}
+function recordAttemptOnItem(key,attempt){
+    const log=getErrorLog();
+    if(!log[key])return;
+    if(!Array.isArray(log[key].attempts))log[key].attempts=[];
+    log[key].attempts.push(attempt);
+    if(log[key].attempts.length>30)log[key].attempts=log[key].attempts.slice(-30);
+    localStorage.setItem("digital_error_log",JSON.stringify(log));
+}
+function cancelQCM(qcmId){
+    if(!confirm("Voulez-vous annuler ce QCM ? Il ne sera plus proposé."))return;
+    const c=getCanceledQCMs(); if(!c.includes(qcmId)){c.push(qcmId);localStorage.setItem("canceled_qcms",JSON.stringify(c))}
+    const el=document.getElementById(`qcm-corr-block-${qcmId}`); if(el)el.remove();
+}
+function cancelItem(itemId){
+    if(!confirm("Annuler cet ITEM ? Il sera neutralisé lors des prochaines sessions."))return;
+    const c=getCanceledItems(); if(!c.includes(itemId)){c.push(itemId);localStorage.setItem("canceled_items",JSON.stringify(c))}
+    alert("Item neutralisé pour les futures sessions.");
+}
+function resetErratums(){
+    if(confirm("Réinitialiser tous les erratums enregistrés ?")){
+        localStorage.removeItem("canceled_qcms");localStorage.removeItem("canceled_items");location.reload();
+    }
+}
+function resetErrorLog(){
+    if(confirm("Vider le carnet d'erreurs ET l'historique statistique ?")){
+        localStorage.removeItem("digital_error_log");localStorage.removeItem("qcm_attempts_log");location.reload();
+    }
+}
+
+function exportErrorLog(){
+    const log=getErrorLog(), entries=Object.values(log);
+    const errors=entries.filter(x=>x.fp>0||x.fn>0);
+    const uncertain=entries.filter(x=>x.fp===0&&x.fn===0&&(x.confidence==="guess"||x.confidence==="hesitant"));
+    if(!errors.length&&!uncertain.length){alert("Aucune donnée enregistrée dans le carnet pour le moment.");return}
+    let out="PROMPT REVISION IA - CARNET D'ERREURS ET LACUNES ENRICHI\n\n";
+    out+="CONSIGNE POUR L'IA :\n";
+    out+="1. Priorise les erreurs commises en MODE EXAMEN.\n";
+    out+="2. Identifie les erreurs récurrentes et les fausses certitudes.\n";
+    out+="3. Distingue erreur de connaissance, piège de raisonnement et erreur de métacognition.\n";
+    out+="4. Pour chaque notion, donne une règle de décision clinique/physiologique rapide.\n\n";
+    if(errors.length){
+        out+="--- ERREURS ---\n\n";
+        errors.forEach(x=>{
+            const exam=x.attempts?x.attempts.filter(a=>a.mode==="exam").length:0;
+            out+=`• [${x.p}] ${x.q}\n  └─ Item: "${x.i}" → FP:x${x.fp}, FN:x${x.fn} | Ressenti: [${String(x.confidence||"").toUpperCase()}] | Examens: ${exam}\n\n`;
+        });
+    }
+    if(uncertain.length){
+        out+="--- BONNES REPONSES HESITANTES / AU HASARD ---\n\n";
+        uncertain.forEach(x=>out+=`• [${x.p}] ${x.q}\n  └─ Item: "${x.i}" | Ressenti: [${String(x.confidence).toUpperCase()}]\n\n`);
+    }
+    const blob=new Blob([out],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download=`carnet_erreurs_enrichi_${new Date().toISOString().slice(0,10)}.txt`;a.click();URL.revokeObjectURL(url);
+}
+
+async function loadNode(node,pathParts){
+    if(Array.isArray(node)){
+        const chapters={};
+        for(const file of node){
+            try{
+                const res=await fetch(`QCM/${pathParts.join("/")}/${file}`);
+                if(!res.ok)throw new Error(`HTTP ${res.status}`);
+                const text=await res.text();
+                const parsed=parseQCMFile(text,pathParts.join(" > "),file);
+                if(parsed.length)chapters[file.replace(".txt","").replace(/_/g," ")]=parsed;
+            }catch(e){console.error(`Erreur QCM/${pathParts.join("/")}/${file}`,e)}
         }
-
-        // Initialisation
-        window.onload = function() {
-            questionsDB = parseQuestions(questionsText);
-            console.log(`${questionsDB.length} questions chargées`);
-            
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.display = 'none';
-                document.getElementById('configScreen').classList.add('active');
-                document.getElementById('questionCount').max = questionsDB.length;
-                document.getElementById('questionCount').value = Math.min(10, questionsDB.length);
-            }, 500);
-        };
-
-        // Sélection du mode
-        function selectMode(mode) {
-            selectedMode = mode;
-            document.querySelectorAll('.mode-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.currentTarget.classList.add('selected');
-        }
-
-        // Démarrer le quiz
-        function startQuiz() {
-            const count = parseInt(document.getElementById('questionCount').value);
-            
-            if (count < 1 || count > questionsDB.length) {
-                alert(`Veuillez choisir entre 1 et ${questionsDB.length} questions.`);
-                return;
-            }
-
-            // Sélectionner aléatoirement les questions
-            selectedQuestions = shuffleArray([...questionsDB]).slice(0, count);
-            userAnswers = new Array(selectedQuestions.length).fill(null);
-            currentQuestionIndex = 0;
-
-            document.getElementById('configScreen').classList.remove('active');
-
-            if (selectedMode === 'dp') {
-                showDPMode();
-            } else {
-                showContinuousMode();
+        return chapters;
+    }
+    const sub={};
+    for(const key in node)sub[key]=await loadNode(node[key],[...pathParts,key]);
+    return sub;
+}
+async function loadAllQCM(){
+    const loading=document.getElementById("loadingScreen");
+    try{
+        const r=await fetch("QCM/config.json");if(!r.ok)throw new Error("Impossible de trouver config.json");
+        const subjects=await r.json();
+        for(const subject in subjects)data[subject]=await loadNode(subjects[subject],[subject]);
+        buildFlatIndex(data);loading.classList.add("hidden");
+        if(!restoreSessionState()){displaySubjects()}
+    }catch(e){
+        loading.innerHTML=`<div class="alert alert-danger"><h4><i class="fa-solid fa-triangle-exclamation"></i> Erreur de chargement</h4><p>Impossible de charger la base de QCM. Vérifiez votre serveur local et QCM/config.json.</p><hr><small>${escapeHTML(e.message)}</small></div>`;
+    }
+}
+function getNode(path){let node=data;for(const key of path)node=node[key];return node}
+function isLeaf(node){return Array.isArray(node)}
+function buildFlatIndex(node){
+    if(Array.isArray(node))node.forEach(q=>allQcmsIndex[q.id]=q);
+    else Object.values(node).forEach(buildFlatIndex);
+}
+function parseQCMFile(content,currentSubjectPath,filename){
+    const qcms=[],blocks=content.replace(/\r/g,"").split(/\n\s*\*\n+/).filter(b=>b.trim());
+    blocks.forEach((block,index)=>{
+        const lines=block.trim().split("\n").map(l=>l.trim()).filter(Boolean);if(lines.length<6)return;
+        let question=lines[0];if(question.includes("{")||question.includes(";")||question.includes("<"))return;
+        let imagePath=null,start=1;
+        if(lines[1]&&lines[1].toUpperCase().startsWith("IMG:")){imagePath=lines[1].substring(4).trim();start=2}
+        const options=[],regex=/^(\$?)([A-Ea-e])[\.\)]\s+(.+)$/;
+        for(let i=start;i<lines.length;i++){
+            const m=lines[i].match(regex);
+            if(m){
+                const text=m[3],id=generateCleanId(`${currentSubjectPath}_${question}_${text}`);
+                options.push({id,text,isCorrect:m[1]==="$"});
             }
         }
+        if(options.length===5){
+            qcms.push({id:generateCleanId(`${currentSubjectPath}_${question}`),subjectPath:currentSubjectPath,question,image:imagePath,options});
+        }else console.warn(`[QCM ignoré] ${filename} bloc ${index+1}: ${options.length}/5 options`);
+    });
+    return qcms;
+}
 
-        // Mode DP
-        function showDPMode() {
-            document.getElementById('questionScreen').classList.add('active');
-            displayQuestion();
-        }
+function updateSessionOptions(){
+    const exam=document.getElementById("modeExam").checked;
+    document.getElementById("timerOptions").classList.toggle("hidden",!exam);
+    document.getElementById("modeDescription").textContent=exam
+        ?"Mode examen : aucune indication de confiance ni statut historique. Les réponses restent modifiables jusqu'à la fin. Le chrono peut soumettre automatiquement la session."
+        :"Entraînement : ressenti et historique visibles. Le mode DP peut être activé indépendamment.";
+}
 
-        // Afficher une question (Mode DP)
-        function displayQuestion() {
-            const question = selectedQuestions[currentQuestionIndex];
-            
-            document.getElementById('questionCounter').textContent = 
-                `Question ${currentQuestionIndex + 1} sur ${selectedQuestions.length}`;
-            
-            document.getElementById('questionText').textContent = question.question;
-            
-            const progress = ((currentQuestionIndex + 1) / selectedQuestions.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            
-            // Afficher les réponses Vrai/Faux
-            const answersContainer = document.getElementById('answersContainer');
-            answersContainer.innerHTML = '';
-            
-            const vraiDiv = document.createElement('div');
-            vraiDiv.className = 'answer-option' + (userAnswers[currentQuestionIndex] === true ? ' selected' : '');
-            vraiDiv.textContent = '✓ Vrai';
-            vraiDiv.onclick = () => selectAnswer(true);
-            
-            const fauxDiv = document.createElement('div');
-            fauxDiv.className = 'answer-option' + (userAnswers[currentQuestionIndex] === false ? ' selected' : '');
-            fauxDiv.textContent = '✗ Faux';
-            fauxDiv.onclick = () => selectAnswer(false);
-            
-            answersContainer.appendChild(vraiDiv);
-            answersContainer.appendChild(fauxDiv);
+function startSession(){
+    const node=getNode(currentPath),canceled=getCanceledQCMs();
+    const available=node.filter(q=>!canceled.includes(q.id));
+    if(!available.length){alert("Aucune question disponible dans ce chapitre.");return}
+    const n=parseInt(document.getElementById("sessionSize").value,10),size=Math.min(Number.isFinite(n)&&n>0?n:10,available.length);
+    currentSessionMode=document.getElementById("modeExam").checked?"exam":"training";
+    currentSessionDP=document.getElementById("enableDP").checked;
+    currentSessionTimed=currentSessionMode==="exam"&&document.getElementById("enableTimer").checked;
+    currentSessionDuration=currentSessionTimed?Math.max(1,parseInt(document.getElementById("examDuration").value,10)||30)*60:null;
 
-            // Gestion des boutons de navigation
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const finishBtn = document.getElementById('finishBtn');
+    // Shuffle des QCM ET des items. L'ordre des items est sauvegardé dans sessionStorage.
+    const chosen=shuffle(available).slice(0,size).map(q=>({...q,options:shuffle(q.options)}));
+    document.getElementById("qcmScreen").classList.add("hidden");
+    launchSession(chosen);
+}
+function startErrorReviewSession(){
+    const log=getErrorLog(),ids=[...new Set(Object.values(log).filter(e=>e.fp>0||e.fn>0).map(e=>e.qcmId))],canceled=getCanceledQCMs();
+    const qcms=ids.map(id=>allQcmsIndex[id]).filter(q=>q&&!canceled.includes(q.id)).map(q=>({...q,options:shuffle(q.options)}));
+    if(!qcms.length){alert("Aucune erreur enregistrée pour le moment, rien à réviser !");return}
+    currentSessionMode="training";currentSessionDP=false;currentSessionTimed=false;currentSessionDuration=null;
+    document.getElementById("homeScreen").classList.add("hidden");launchSession(shuffle(qcms));
+}
+function launchSession(qcms){
+    stopTimer();sessionValidated=false;currentSession=qcms;sessionStartTime=Date.now();timerEndTime=currentSessionTimed?Date.now()+currentSessionDuration*1000:null;currentDPIndex=0;dpAnswered={};dpAnswers={};
+    Object.keys(sessionConfidence).forEach(k=>delete sessionConfidence[k]);
+    document.getElementById("sessionScreen").classList.remove("hidden");
+    renderSessionScreen();saveSessionState();window.scrollTo(0,0);
+    if(currentSessionTimed)startTimer();
+}
 
-            if (selectedMode === 'dp') {
-                prevBtn.style.display = 'none';
-            } else {
-                prevBtn.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
-            }
+function getSelectedAnswers(qIdx){
+    const q=currentSession[qIdx],selected=[];
+    if(!q)return selected;
+    q.options.forEach((_,oIdx)=>{const cb=document.getElementById(`q${qIdx}_o${oIdx}`);if(cb&&cb.checked)selected.push(oIdx)});
+    return selected;
+}
+function renderDPProgress(){
+    const el=document.getElementById("dpProgress");
+    if(!currentSessionDP){el.classList.add("hidden");return}
+    el.classList.remove("hidden");
+    el.innerHTML=`<div class="small fw-bold mb-2">Progression DP — question ${currentDPIndex+1}/${currentSession.length}</div><div class="dp-progress">${currentSession.map((_,i)=>`<span class="dp-dot ${dpAnswered[i]?"done":i===currentDPIndex?"current":"locked"}">${i+1}</span>`).join("")}</div>`;
+}
+function renderSessionHeader(){
+    const h=document.getElementById("examHeader");
+    if(currentSessionMode!=="exam"){h.classList.add("hidden");return}
+    h.classList.remove("hidden");
+    h.innerHTML=`<div class="d-flex justify-content-between align-items-center gap-3 flex-wrap"><div><span class="badge bg-danger exam-badge">MODE EXAMEN</span>${currentSessionDP?'<span class="badge bg-secondary ms-2">DP</span>':''}<div class="small text-muted mt-1">${currentSession.length} question${currentSession.length>1?"s":""}</div></div><div id="timerDisplay" class="${currentSessionTimed?"":"hidden"}"></div></div>`;
+}
+function renderSessionScreen(restoreAnswers){
+    renderSessionHeader();renderDPProgress();
+    const canceled=getCanceledItems(),container=document.getElementById("questionsContainer");
+    const indices=currentSessionDP?[currentDPIndex]:currentSession.map((_,i)=>i);
 
-            if (currentQuestionIndex === selectedQuestions.length - 1) {
-                nextBtn.style.display = 'none';
-                finishBtn.style.display = 'inline-block';
-            } else {
-                nextBtn.style.display = 'inline-block';
-                finishBtn.style.display = 'none';
-            }
-        }
-
-        // Sélectionner une réponse
-        function selectAnswer(answer) {
-            userAnswers[currentQuestionIndex] = answer;
-            
-            // En mode DP, passer automatiquement à la question suivante
-            if (selectedMode === 'dp') {
-                setTimeout(() => {
-                    if (currentQuestionIndex < selectedQuestions.length - 1) {
-                        nextQuestion();
-                    } else {
-                        finishQuiz();
-                    }
-                }, 300);
-            } else {
-                displayQuestion();
-            }
-        }
-
-        // Question suivante
-        function nextQuestion() {
-            if (currentQuestionIndex < selectedQuestions.length - 1) {
-                currentQuestionIndex++;
-                displayQuestion();
-            }
-        }
-
-        // Question précédente
-        function previousQuestion() {
-            if (currentQuestionIndex > 0 && selectedMode !== 'dp') {
-                currentQuestionIndex--;
-                displayQuestion();
-            }
-        }
-
-        // Mode Continu
-        function showContinuousMode() {
-            const questionScreen = document.getElementById('questionScreen');
-            questionScreen.classList.add('active', 'continuous-mode');
-            
-            document.querySelector('.progress-bar').style.display = 'none';
-            document.querySelector('.question-counter').style.display = 'none';
-            document.getElementById('navigationButtons').style.display = 'none';
-            
-            let questionsHTML = '<div class="all-questions">';
-            
-            selectedQuestions.forEach((q, qIndex) => {
-                questionsHTML += `
-                    <div class="question-card">
-                        <div class="question-number">Question ${qIndex + 1}</div>
-                        <div class="question-text">${q.question}</div>
-                        <div class="answers" id="answers-${qIndex}">
-                            <div class="answer-option ${userAnswers[qIndex] === true ? 'selected' : ''}" 
-                                 onclick="selectAnswerContinuous(${qIndex}, true)">
-                                ✓ Vrai
-                            </div>
-                            <div class="answer-option ${userAnswers[qIndex] === false ? 'selected' : ''}" 
-                                 onclick="selectAnswerContinuous(${qIndex}, false)">
-                                ✗ Faux
-                            </div>
+    container.innerHTML=indices.map(qIdx=>{
+        const q=currentSession[qIdx],stats=getQcmStats(q.id),showMeta=currentSessionMode==="training";
+        return `<div class="que sngmultichoice" id="question-${qIdx}">
+            <div class="info">
+                <h3 class="no">Question <span class="qno">${qIdx+1}</span></h3>
+                <div class="state">${currentSessionDP?"Question active":"Pas encore répondu"}</div>
+                <div class="grade">Noté sur 1,00</div>
+                ${showMeta?`<div><span class="badge bg-${stats.cls}">${stats.label}</span></div>`:""}
+            </div>
+            <div class="content">
+                <div class="formulation">
+                    <h4 class="accesshide">Texte de la question</h4>
+                    <div class="qtext"><p>${escapeHTML(q.question)}</p>${q.image?`<img src="${escapeHTML(q.image)}">`:""}</div>
+                    <fieldset class="ablock"><legend class="prompt">Réponse</legend><div class="answer">
+                    ${q.options.map((opt,oIdx)=>{
+                        const canceled=canceled.includes(opt.id);
+                        return `<div class="${oIdx%2===0?"r0":"r1"} align-items-center">
+                            <input type="checkbox" id="q${qIdx}_o${oIdx}" ${canceled?"disabled":""} onchange="saveSessionState()">
+                            <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${canceled?"item-canceled":""}">
+                                <span class="answernumber">${String.fromCharCode(97+oIdx)}. </span>
+                                <div class="flex-fill"><p>${escapeHTML(opt.text)} ${canceled?'<strong class="text-danger">(ANNULÉ)</strong>':""}</p></div>
+                            </label>
+                        </div>`;
+                    }).join("")}</div></fieldset>
+                </div>
+                ${showMeta?`<div class="confidence-selector mt-3 pt-2 border-top">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon ressenti avant validation :</small>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" onchange="setConfidence('${q.id}','sure')"><label class="btn btn-outline-success" for="conf_high_${qIdx}">Sûr</label>
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" onchange="setConfidence('${q.id}','hesitant')"><label class="btn btn-outline-warning" for="conf_mid_${qIdx}">Hésitant</label>
+                            <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" onchange="setConfidence('${q.id}','guess')"><label class="btn btn-outline-danger" for="conf_low_${qIdx}">Au hasard</label>
                         </div>
                     </div>
-                `;
-            });
-            
-            questionsHTML += '</div>';
-            questionsHTML += '<button class="nav-btn finish-btn" onclick="finishQuiz()" style="display: block; margin: 2rem auto; width: auto; padding: 1rem 3rem;">Terminer le test</button>';
-            
-            questionScreen.querySelector('.question-card').outerHTML = questionsHTML;
-        }
+                </div>`:""}
+            </div>
+        </div>`;
+    }).join("");
 
-        // Sélectionner une réponse en mode continu
-        function selectAnswerContinuous(questionIndex, answer) {
-            userAnswers[questionIndex] = answer;
-            
-            const answersContainer = document.getElementById(`answers-${questionIndex}`);
-            const options = answersContainer.querySelectorAll('.answer-option');
-            
-            options.forEach((option, index) => {
-                if ((index === 0 && answer === true) || (index === 1 && answer === false)) {
-                    option.classList.add('selected');
-                } else {
-                    option.classList.remove('selected');
-                }
-            });
-        }
-
-        // Terminer le quiz
-        function finishQuiz() {
-            // Vérifier que toutes les questions ont une réponse
-            if (userAnswers.includes(null)) {
-                alert('Veuillez répondre à toutes les questions avant de terminer.');
-                return;
+    if(restoreAnswers){
+        currentSession.forEach((q,qIdx)=>{
+            (restoreAnswers.userAnswers?.[qIdx]||[]).forEach(oIdx=>{const cb=document.getElementById(`q${qIdx}_o${oIdx}`);if(cb)cb.checked=true});
+            const conf=sessionConfidence[q.id];
+            if(conf){
+                const id=conf==="sure"?"high":conf==="hesitant"?"mid":"low";
+                const radio=document.getElementById(`conf_${id}_${qIdx}`);if(radio)radio.checked=true;
             }
+        });
+    }
+    renderSessionActions();
+}
+function renderSessionActions(){
+    const a=document.getElementById("sessionActions");
+    if(currentSessionDP){
+        const isLast=currentDPIndex===currentSession.length-1;
+        a.innerHTML=`<button class="btn btn-primary px-4" onclick="validateDPQuestion()">${isLast?"Terminer et corriger":"Valider la question et continuer"} <i class="fa-solid fa-arrow-right"></i></button>`;
+    }else{
+        a.innerHTML=`<button class="btn btn-primary px-4" onclick="validateFullSession(false)">Terminer le test</button>`;
+    }
+}
+function validateDPQuestion(){
+    if(sessionValidated)return;
+    const answers=getSelectedAnswers(currentDPIndex);
+    if(answers.length===0&&!confirm("Aucune réponse sélectionnée. Valider quand même cette question ?"))return;
+    dpAnswers[currentDPIndex]=answers;
+    dpAnswered[currentDPIndex]=true;
+    saveSessionState();
+    if(currentDPIndex<currentSession.length-1){currentDPIndex++;renderSessionScreen();saveSessionState();window.scrollTo(0,0)}
+    else validateFullSession(false);
+}
 
-            // Calculer le score
-            let correctAnswers = 0;
-            selectedQuestions.forEach((question, index) => {
-                if (userAnswers[index] === question.answer) {
-                    correctAnswers++;
-                }
-            });
+function startTimer(){
+    stopTimer();updateTimer();
+    timerInterval=setInterval(updateTimer,250);
+}
+function stopTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null}}
+function updateTimer(){
+    if(!currentSessionTimed||sessionValidated)return;
+    const remaining=Math.max(0,timerEndTime-Date.now()),seconds=Math.ceil(remaining/1000);
+    const m=Math.floor(seconds/60),s=seconds%60,el=document.getElementById("timerDisplay");
+    if(el){el.textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;el.className=`timer ${seconds<=60?"danger":seconds<=300?"warning":""}`}
+    if(remaining<=0){stopTimer();validateFullSession(true)}
+}
 
-            const scoreOn20 = (correctAnswers / selectedQuestions.length) * 20;
-
-            // Afficher les résultats
-            document.getElementById('questionScreen').classList.remove('active', 'continuous-mode');
-            document.getElementById('resultsScreen').classList.add('active');
-
-            document.getElementById('scoreDisplay').textContent = scoreOn20.toFixed(1) + ' / 20';
-            document.getElementById('scoreDetails').textContent = 
-                `${correctAnswers} bonne(s) réponse(s) sur ${selectedQuestions.length}`;
-
-            // Afficher le détail des réponses
-            let questionListHTML = '<h3>Détail des réponses :</h3>';
-            selectedQuestions.forEach((question, index) => {
-                const isCorrect = userAnswers[index] === question.answer;
-                
-                questionListHTML += `
-                    <div class="question-item ${isCorrect ? 'correct' : 'incorrect'}">
-                        <div class="question-item-header">
-                            ${isCorrect ? '✓' : '✗'} Question ${index + 1}
-                        </div>
-                        <div class="question-item-text">${question.question}</div>
-                        <div class="question-item-answer">
-                            Votre réponse : <strong>${userAnswers[index] ? 'Vrai' : 'Faux'}</strong><br>
-                            Bonne réponse : <strong class="answer-correct">${question.answer ? 'Vrai' : 'Faux'}</strong>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('questionList').innerHTML = questionListHTML;
+function saveSessionState(){
+    if(!currentSession.length||sessionValidated)return;
+    const userAnswers={};
+    currentSession.forEach((q,qIdx)=>{
+        if(currentSessionDP && Object.prototype.hasOwnProperty.call(dpAnswers,qIdx)){
+            userAnswers[qIdx]=dpAnswers[qIdx];
+        }else{
+            userAnswers[qIdx]=getSelectedAnswers(qIdx);
         }
+    });
+    const state={
+        currentPath,currentSession,startTime:sessionStartTime,mode:currentSessionMode,
+        dp:currentSessionDP,timed:currentSessionTimed,duration:currentSessionDuration,
+        endTime:timerEndTime,currentDPIndex,dpAnswered,dpAnswers,
+        confidence:{...sessionConfidence},userAnswers
+    };
+    sessionStorage.setItem("active_qcm_session",JSON.stringify(state));
+}
+function clearSessionState(){sessionStorage.removeItem("active_qcm_session")}
+function restoreSessionState(){
+    const raw=sessionStorage.getItem("active_qcm_session");if(!raw)return false;
+    try{
+        const state=JSON.parse(raw);if(!state.currentSession?.length)return false;
+        currentPath=state.currentPath||[];currentSession=state.currentSession;sessionStartTime=state.startTime||Date.now();
+        currentSessionMode=state.mode||"training";currentSessionDP=!!state.dp;currentSessionTimed=!!state.timed;currentSessionDuration=state.duration||null;timerEndTime=state.endTime||null;currentDPIndex=state.currentDPIndex||0;dpAnswered=state.dpAnswered||{};dpAnswers=state.dpAnswers||state.userAnswers||{};
+        Object.keys(sessionConfidence).forEach(k=>delete sessionConfidence[k]);Object.assign(sessionConfidence,state.confidence||{});
+        ["homeScreen","chapterScreen","qcmScreen","statsScreen"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+        document.getElementById("sessionScreen").classList.remove("hidden");
+        renderSessionScreen(state);
+        if(currentSessionTimed){if(Date.now()>=timerEndTime)validateFullSession(true);else startTimer()}
+        return true;
+    }catch(e){console.error(e);clearSessionState();return false}
+}
 
-        // Retour à la configuration
-        function backToConfig() {
-            if (confirm('Êtes-vous sûr de vouloir abandonner cette série ?')) {
-                document.getElementById('questionScreen').classList.remove('active', 'continuous-mode');
-                document.getElementById('configScreen').classList.add('active');
-                currentQuestionIndex = 0;
-                userAnswers = [];
-            }
+function validateFullSession(autoSubmitted){
+    if(sessionValidated)return;
+    sessionValidated=true;stopTimer();
+    let score=0,validCount=0;missedAnswers=[];
+    const details=document.getElementById("correctionDetails"),canceled=getCanceledItems(),attemptDate=new Date().toISOString();
+    details.innerHTML="";
+    const duration=sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):null;
+    currentSession.forEach((q,qIdx)=>{
+        const userChoices=currentSessionDP&&dpAnswered[qIdx]?getSavedAnswersFromState(qIdx):getSelectedAnswers(qIdx);
+        let errors=0,active=0;
+        q.options.forEach((opt,oIdx)=>{
+            if(canceled.includes(opt.id))return;
+            active++;
+            const checked=userChoices.includes(oIdx);
+            if(opt.isCorrect&&!checked){errors++;logItemResult(q.subjectPath,q.question,opt.text,"false_negative",q.id,currentSessionMode,currentSessionDP)}
+            else if(!opt.isCorrect&&checked){errors++;logItemResult(q.subjectPath,q.question,opt.text,"false_positive",q.id,currentSessionMode,currentSessionDP)}
+        });
+        let qScore=0;
+        if(active){validCount++;if(errors===0)qScore=1;else if(errors===1)qScore=.5;else if(errors===2)qScore=.2}
+        score+=qScore;
+        if(active){
+            saveAttempt({date:attemptDate,qcmId:q.id,subjectPath:q.subjectPath,correct:errors===0,score:qScore,confidence:currentSessionMode==="training"?(sessionConfidence[q.id]||null):null,durationSeconds:duration?Math.round(duration/currentSession.length):null,mode:currentSessionMode,dp:currentSessionDP,timed:currentSessionTimed,examDurationSeconds:currentSessionDuration,autoSubmitted:!!autoSubmitted});
         }
+        const correctnessClass=active===0?"notanswered":errors===0?"correct":userChoices.length===0?"notanswered":qScore>0?"partiallycorrect":"incorrect";
+        const correctnessLabel=active===0?"Question neutralisée (100% annulée)":errors===0?"Correct":userChoices.length===0?"Pas de réponse":qScore>0?"Partiellement correct":"Incorrect";
+        const optHtml=q.options.map((opt,oIdx)=>{
+            const checked=userChoices.includes(oIdx),isCanceled=canceled.includes(opt.id);let cls="",icon="";
+            if(isCanceled){cls="item-canceled";icon='<span class="badge bg-secondary ms-2">Item annulé</span>'}
+            else if(opt.isCorrect&&checked){cls="correct";icon='<i class="icon fa-solid fa-check"></i>'}
+            else if(opt.isCorrect&&!checked){cls="correctnotchecked";icon='<i class="icon fa-solid fa-check"></i>';missedAnswers.push({q:q.question,a:opt.text})}
+            else if(!opt.isCorrect&&checked){cls="incorrect";icon='<i class="icon fa-solid fa-times"></i>'}
+            else cls="incorrectnotchecked";
+            return `<div class="${oIdx%2===0?"r0":"r1"} align-items-center">
+                <input type="checkbox" disabled ${checked?"checked":""}>
+                <label data-region="answer-label" class="${cls}"><span class="answernumber">${String.fromCharCode(97+oIdx)}. </span><div class="flex-fill"><p>${escapeHTML(opt.text)}</p></div>${icon}</label>
+                ${!isCanceled?`<button class="btn btn-outline-warning btn-sm p-1 ms-2" style="font-size:.75rem" onclick="cancelItem('${opt.id.replace(/'/g,"\\'")}')"><i class="fa-solid fa-ban"></i> Annuler item</button>`:""}
+            </div>`;
+        }).join("");
+        const stats=getQcmStats(q.id),note=qScore.toFixed(2).replace(".",","),modeLabel=currentSessionMode==="exam"?"MODE EXAMEN":"ENTRAÎNEMENT";
+        details.innerHTML+=`<div class="que ${correctnessClass}" id="qcm-corr-block-${q.id}">
+            <div class="info"><h3 class="no">Question <span class="qno">${qIdx+1}</span></h3><div class="state"><span class="correctness ${correctnessClass}">${correctnessLabel}</span></div><div class="grade">Note : ${note} / 1,00</div><div><span class="badge bg-${stats.cls}">${stats.label}</span></div><div><span class="badge ${currentSessionMode==="exam"?"bg-danger":"bg-primary"} mode-chip">${modeLabel}</span>${currentSessionDP?'<span class="badge bg-secondary mode-chip ms-1">DP</span>':""}</div><button class="btn btn-outline-danger btn-sm mt-3 w-100" style="font-size:.7rem" onclick="cancelQCM('${q.id.replace(/'/g,"\\'")}')"><i class="fa-solid fa-ban"></i> Signaler Erratum QCM</button></div>
+            <div class="content"><div class="formulation"><div class="qtext"><p>${escapeHTML(q.question)}</p>${q.image?`<img src="${escapeHTML(q.image)}">`:""}</div><fieldset class="ablock"><div class="answer">${optHtml}</div></fieldset></div>
+            ${currentSessionMode==="exam"?'<div class="alert alert-danger py-2"><strong>Réalisé en mode examen.</strong> Toute erreur commise dans ce contexte est conservée comme erreur d’examen.</div>':""}
+            ${currentSessionMode==="training"?`<div class="small text-muted border-top pt-2">Ressenti : ${({sure:"Sûr",hesitant:"Hésitant",guess:"Au hasard"}[sessionConfidence[q.id]]||"non renseigné")}</div>`:""}
+            </div></div>`;
+        q.options.forEach(opt=>{
+            const key=`${q.subjectPath} > ${q.question} > ${opt.text}`;
+            if(getErrorLog()[key])recordAttemptOnItem(key,{date:attemptDate,mode:currentSessionMode,dp:currentSessionDP,correct:errors===0});
+        });
+    });
+    document.getElementById("sessionScreen").classList.add("hidden");document.getElementById("correctionScreen").classList.remove("hidden");
+    const denom=validCount||1,score20=(score/denom*20).toFixed(2).replace(".",",");
+    document.getElementById("score").textContent=`Résultat : ${score20} / 20 ${validCount<currentSession.length?`(${currentSession.length-validCount} QCM neutralisé)`:""}`;
+    document.getElementById("resultMeta").textContent=`${currentSessionMode==="exam"?"Mode examen":"Entraînement"}${currentSessionDP?" • DP":""}${autoSubmitted?" • Soumission automatique à l'expiration du chrono":""}`;
+    clearSessionState();window.scrollTo(0,0);
+}
+function getSavedAnswersFromState(qIdx){
+    try{const s=JSON.parse(sessionStorage.getItem("active_qcm_session")||"{}");return s.userAnswers?.[qIdx]||[]}catch{return []}
+}
 
-        // Fonction utilitaire pour mélanger un tableau
-        function shuffleArray(array) {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        }
-    </script>
+function renderHome(){["statsScreen","chapterScreen","qcmScreen","sessionScreen","correctionScreen"].forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById("homeScreen").classList.remove("hidden")}
+function displaySubjects(){
+    const list=document.getElementById("subjectsList");list.innerHTML="";
+    for(const s in data){
+        const item=document.createElement("button");item.className="list-group-item list-group-item-action d-flex justify-content-between align-items-center";
+        item.innerHTML=`${escapeHTML(s)} <span class="badge bg-primary rounded-pill">${countLeafFiles(data[s])}</span>`;item.onclick=()=>openNode([s]);list.appendChild(item);
+    }
+}
+function countLeafFiles(node){if(isLeaf(node))return node.length;return Object.values(node).reduce((a,c)=>a+countLeafFiles(c),0)}
+function openNode(path){
+    currentPath=path;const node=getNode(path);
+    if(isLeaf(node)){document.getElementById("chapterScreen").classList.add("hidden");document.getElementById("homeScreen").classList.add("hidden");document.getElementById("qcmScreen").classList.remove("hidden");document.getElementById("sessionChapterTitle").textContent=path[path.length-1];updateSessionOptions();return}
+    document.getElementById("homeScreen").classList.add("hidden");document.getElementById("chapterScreen").classList.remove("hidden");document.getElementById("currentSubjectTitle").textContent=path[path.length-1];renderBreadcrumb(path);
+    const list=document.getElementById("chaptersList");list.innerHTML="";
+    for(const key in node){const child=node[key],item=document.createElement("button");item.className="list-group-item list-group-item-action d-flex justify-content-between align-items-center";item.innerHTML=`${escapeHTML(key)} <span class="badge bg-secondary rounded-pill">${isLeaf(child)?child.length:countLeafFiles(child)}</span>`;item.onclick=()=>openNode([...path,key]);list.appendChild(item)}
+}
+function renderBreadcrumb(path){
+    const b=document.getElementById("breadcrumb");b.innerHTML="";
+    path.forEach((p,i)=>{if(i)b.appendChild(document.createTextNode(" / "));const el=document.createElement("span");el.textContent=p;if(i<path.length-1){el.className="text-primary";el.onclick=()=>openNode(path.slice(0,i+1))}b.appendChild(el)})
+}
+function backOneLevel(){if(currentPath.length<=1){backToHome();return}openNode(currentPath.slice(0,-1))}
+function backToHome(){stopTimer();renderHome();displaySubjects()}
+function backToChapters(){document.getElementById("qcmScreen").classList.add("hidden");openNode(currentPath.slice(0,-1))}
+function backToQCMScreen(){document.getElementById("correctionScreen").classList.add("hidden");document.getElementById("qcmScreen").classList.remove("hidden");updateSessionOptions()}
+
+/* ---------------- STATISTIQUES ---------------- */
+
+function computeStats(){
+    const attempts=getAttemptsLog(),now=Date.now();
+    const total=attempts.length,correct=attempts.filter(a=>a.correct).length;
+    const exam=attempts.filter(a=>a.mode==="exam"),training=attempts.filter(a=>a.mode!=="exam"),dp=attempts.filter(a=>a.dp);
+    const avg=arr=>arr.length?arr.reduce((s,a)=>s+(Number(a.score)||0),0)/arr.length:null;
+    const avgTime=arr=>{const x=arr.map(a=>a.durationSeconds).filter(Number.isFinite);return x.length?x.reduce((s,v)=>s+v,0)/x.length:null};
+    const byMode=(arr)=>({n:arr.length,rate:arr.length?arr.filter(a=>a.correct).length/arr.length*100:null,score:avg(arr),time:avgTime(arr)});
+    const bySubject={};
+    attempts.forEach(a=>{const subject=(a.subjectPath||"Inconnu").split(" > ")[0];(bySubject[subject]??=[]).push(a)});
+    const byChapter={};
+    attempts.forEach(a=>{const subject=a.subjectPath||"Inconnu";(byChapter[subject]??=[]).push(a)});
+    const errors=Object.values(getErrorLog()).filter(e=>e.fp>0||e.fn>0);
+    const falseCertainty=attempts.filter(a=>a.confidence==="sure"&&!a.correct).length;
+    const conf={sure:attempts.filter(a=>a.confidence==="sure"),hesitant:attempts.filter(a=>a.confidence==="hesitant"),guess:attempts.filter(a=>a.confidence==="guess")};
+    const timeBuckets={"< 20 s":[],"20–40 s":[],"40–60 s":[],"60–90 s":[ ],"> 90 s":[]};
+    attempts.forEach(a=>{const t=a.durationSeconds;if(!Number.isFinite(t))return;if(t<20)timeBuckets["< 20 s"].push(a);else if(t<40)timeBuckets["20–40 s"].push(a);else if(t<60)timeBuckets["40–60 s"].push(a);else if(t<90)timeBuckets["60–90 s"].push(a);else timeBuckets["> 90 s"].push(a)});
+    const last30=attempts.slice(-30);
+    return {attempts,total,correct,rate:total?correct/total*100:0,exam:byMode(exam),training:byMode(training),dp:byMode(dp),bySubject,byChapter,errors,falseCertainty,conf,timeBuckets,last30,now};
+}
+function pct(n){return n==null?"—":`${n.toFixed(1)} %`}
+function fmtSec(n){return n==null?"—":`${Math.round(n)} s`}
+function statRow(name,arr){
+    const n=arr.length,r=n?arr.filter(a=>a.correct).length/n*100:0,score=n?arr.reduce((s,a)=>s+a.score,0)/n:0;
+    return `<tr><td>${escapeHTML(name)}</td><td>${n}</td><td>${pct(r)}</td><td>${score.toFixed(2)}/1</td><td>${fmtSec(arr.map(a=>a.durationSeconds).filter(Number.isFinite).reduce((a,b)=>a+b,0)/(arr.filter(a=>Number.isFinite(a.durationSeconds)).length||1))}</td></tr>`;
+}
+function renderTrend(arr){
+    if(arr.length<2)return `<div class="text-muted small p-3">Pas encore assez de données pour afficher une évolution.</div>`;
+    const vals=arr.map(a=>(a.score||0)*20),w=700,h=170,p=18,max=20,min=0;
+    const pts=vals.map((v,i)=>`${p+i*(w-2*p)/(vals.length-1)},${h-p-(v-min)/(max-min)*(h-2*p)}`).join(" ");
+    return `<svg class="trend-svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="#1177d1" stroke-width="3"/><line x1="${p}" y1="${h-p}" x2="${w-p}" y2="${h-p}" stroke="#ced4da"/><line x1="${p}" y1="${p}" x2="${p}" y2="${h-p}" stroke="#ced4da"/></svg>`;
+}
+function openStats(){
+    document.getElementById("homeScreen").classList.add("hidden");document.getElementById("statsScreen").classList.remove("hidden");renderStats();window.scrollTo(0,0);
+}
+function renderStats(){
+    const s=computeStats(),el=document.getElementById("statsContent");
+    if(!s.total){el.innerHTML=`<div class="alert alert-info">Aucune tentative enregistrée. Commence une série pour alimenter les statistiques.</div>`;return}
+    const subjectRows=Object.entries(s.bySubject).sort((a,b)=>b[1].length-a[1].length).map(([k,v])=>statRow(k,v)).join("");
+    const errorRows=s.errors.sort((a,b)=>(b.fp+b.fn)-(a.fp+a.fn)).slice(0,10).map(e=>`<tr><td>${escapeHTML(e.p)}</td><td>${escapeHTML(e.i)}</td><td>${e.fp+e.fn}</td><td>${e.attempts?.filter(a=>a.mode==="exam").length||0}</td></tr>`).join("");
+    const confRows=["sure","hesitant","guess"].map(k=>{const a=s.conf[k],r=a.length?a.filter(x=>x.correct).length/a.length*100:null;return `<tr><td>${k==="sure"?"Sûr":k==="hesitant"?"Hésitant":"Au hasard"}</td><td>${a.length}</td><td>${pct(r)}</td></tr>`}).join("");
+    const timeRows=Object.entries(s.timeBuckets).map(([k,v])=>`<tr><td>${k}</td><td>${v.length}</td><td>${pct(v.length?v.filter(a=>a.correct).length/v.length*100:null)}</td></tr>`).join("");
+    el.innerHTML=`
+    <div class="row g-3 mb-3">
+        <div class="col-6 col-lg-3"><div class="stats-card"><div class="metric">${s.total}</div><div class="metric-label">QCM réalisés</div></div></div>
+        <div class="col-6 col-lg-3"><div class="stats-card"><div class="metric">${pct(s.rate)}</div><div class="metric-label">Taux de réussite</div></div></div>
+        <div class="col-6 col-lg-3"><div class="stats-card"><div class="metric">${s.falseCertainty}</div><div class="metric-label">Fausses certitudes</div></div></div>
+        <div class="col-6 col-lg-3"><div class="stats-card"><div class="metric">${s.errors.length}</div><div class="metric-label">Notions avec erreurs</div></div></div>
+    </div>
+    <div class="stats-card mb-3"><h5>Performance par mode</h5><div class="table-responsive"><table class="table table-sm mini-table"><thead><tr><th>Mode</th><th>QCM</th><th>Réussite</th><th>Score moyen</th><th>Temps moyen</th></tr></thead><tbody>
+        ${statRow("Entraînement",s.training.n?attemptsForMode(s.attempts,"training"):[])}
+        ${statRow("Examen",s.exam.n?attemptsForMode(s.attempts,"exam"):[])}
+        ${statRow("DP",s.attempts.filter(a=>a.dp))}
+    </tbody></table></div></div>
+    <div class="row g-3 mb-3">
+        <div class="col-lg-6"><div class="stats-card"><h5>Métacognition</h5><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Ressenti</th><th>N</th><th>Réussite</th></tr></thead><tbody>${confRows}</tbody></table></div></div></div>
+        <div class="col-lg-6"><div class="stats-card"><h5>Temps de réponse</h5><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Temps</th><th>N</th><th>Réussite</th></tr></thead><tbody>${timeRows}</tbody></table></div></div></div>
+    </div>
+    <div class="stats-card mb-3"><h5>Performance par matière</h5><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Matière</th><th>QCM</th><th>Réussite</th><th>Score</th><th>Temps</th></tr></thead><tbody>${subjectRows}</tbody></table></div></div>
+    <div class="stats-card mb-3"><h5>Évolution récente du score</h5>${renderTrend(s.last30)}</div>
+    <div class="row g-3">
+        <div class="col-lg-8"><div class="stats-card"><h5>Top erreurs récurrentes</h5><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Matière</th><th>Item</th><th>Erreurs</th><th>Examens</th></tr></thead><tbody>${errorRows||'<tr><td colspan="4" class="text-muted">Aucune erreur enregistrée.</td></tr>'}</tbody></table></div></div></div>
+        <div class="col-lg-4"><div class="stats-card"><h5>Répartition</h5><p class="mb-1">Examen</p><div class="bar mb-3"><span style="width:${s.total?s.exam.n/s.total*100:0}%"></span></div><p class="mb-1">DP</p><div class="bar mb-3"><span style="width:${s.total?s.dp.n/s.total*100:0}%"></span></div><p class="small text-muted mb-0">Les erreurs commises en examen sont conservées avec leur contexte pour être prioritaires dans le carnet.</p></div></div>
+    </div>`;
+}
+function attemptsForMode(attempts,mode){return attempts.filter(a=>mode==="training"?a.mode!=="exam":a.mode===mode)}
+
+loadAllQCM();
+updateSessionOptions();
+</script>
 </body>
 </html>
