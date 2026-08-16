@@ -77,7 +77,33 @@
     .breadcrumb-nav span { cursor: pointer; }
     .breadcrumb-nav span:hover { text-decoration: underline; color: #1177d1; }
 
-    #examTimerBar { position: sticky; top: 10px; z-index: 50; }
+    #examTimerWidget {
+        position: fixed; top: 16px; right: 16px; z-index: 1050;
+        display: flex; align-items: center; gap: 8px;
+        background: #fff; border: 1px solid #dee2e6; border-radius: 20px;
+        padding: 6px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        font-size: 0.85rem;
+    }
+    #examTimerWidget .badge-mode { color: #a463ad; font-weight: 600; }
+    #examTimerWidget #examTimerDisplay { font-weight: 700; font-variant-numeric: tabular-nums; }
+    #examTimerWidget #examTimerDisplay.low-time { color: #ca3120; }
+    #examTimerWidget .timer-toggle-btn {
+        background: none; border: none; color: #6c757d; padding: 0 2px; line-height: 1; cursor: pointer;
+    }
+    #examTimerWidget .timer-toggle-btn:hover { color: #1d2125; }
+    #examTimerWidget.collapsed .timer-collapsible { display: none; }
+    #examTimerWidget.collapsed { padding: 6px 10px; }
+    @media (max-width: 576px) {
+        #examTimerWidget { top: 8px; right: 8px; padding: 5px 10px; font-size: 0.8rem; }
+    }
+
+    .heatmap-wrapper { overflow-x: auto; }
+    .heatmap-months { display: flex; gap: 3px; margin-bottom: 4px; padding-left: 2px; }
+    .heatmap-months span { flex: 1; font-size: 0.7rem; color: #6c757d; min-width: 14px; text-transform: capitalize; }
+    .heatmap-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); gap: 3px; min-width: 560px; }
+    .heatmap-cell { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+    .heatmap-legend { display: flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 0.75rem; color: #6c757d; }
+    .heatmap-legend .heatmap-cell { width: 12px; height: 12px; }
 </style>
 
 </head>
@@ -113,7 +139,12 @@
     </div>
 
     <div id="statsScreen" class="hidden setup-card shadow-sm">
-        <button class="btn btn-sm btn-outline-secondary mb-3" onclick="closeStatsScreen()">← Retour</button>
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <button class="btn btn-sm btn-outline-secondary" onclick="closeStatsScreen()">← Retour</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="resetStats()">
+                <i class="fa-solid fa-trash-can"></i> Réinitialiser les statistiques
+            </button>
+        </div>
         <h3 class="mb-4">📊 Statistiques détaillées</h3>
         <div id="statsContent"></div>
     </div>
@@ -149,11 +180,15 @@
         <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
     </div>
 
+    <div id="examTimerWidget" class="hidden">
+        <button class="timer-toggle-btn" onclick="toggleExamTimerCollapse()" title="Masquer/afficher le chrono">
+            <i class="fa-solid fa-hourglass-half"></i>
+        </button>
+        <span class="timer-collapsible badge-mode">Examen</span>
+        <span class="timer-collapsible" id="examTimerDisplay">00:00</span>
+    </div>
+
     <div id="sessionScreen" class="hidden">
-        <div id="examTimerBar" class="hidden alert alert-warning d-flex justify-content-between align-items-center mb-3">
-            <div><i class="fa-solid fa-hourglass-half"></i> Mode examen, correction uniquement à la fin du chrono.</div>
-            <div class="fs-4 fw-bold" id="examTimerDisplay">00:00</div>
-        </div>
         <div id="questionsContainer"></div>
         <div class="submitbtns text-center mt-4 mb-5">
             <button class="btn btn-primary px-4" onclick="validateFullSession()">Terminer le test…</button>
@@ -299,7 +334,48 @@
             else if (a.dpMode) byMode.dp.push(a);
             else byMode.training.push(a);
         });
-        const modeRate = arr => arr.length ? (arr.filter(a => a.correct).length / arr.length * 100).toFixed(0) : null;
+        const modeRate = arr => arr.length ? (arr.filter(a => a.correct).length / arr.length * 100).toFixed(1) : null;
+        const avgOf = (arr, field) => {
+            const vals = arr.filter(a => a[field] !== null && a[field] !== undefined).map(a => a[field]);
+            return vals.length ? vals.reduce((s, v) => s + v, 0) / vals.length : null;
+        };
+        const modeStatsFull = key => {
+            const arr = byMode[key];
+            return {
+                count: arr.length,
+                rate: modeRate(arr),
+                avgScore: avgOf(arr, 'score'),
+                avgDuration: avgOf(arr, 'durationSeconds')
+            };
+        };
+
+        // Métacognition : ressenti déclaré (sûr / hésitant / au hasard) vs réussite réelle
+        const byConfidence = { sure: [], hesitant: [], guess: [] };
+        log.forEach(a => {
+            if (a.confidence && byConfidence[a.confidence]) byConfidence[a.confidence].push(a);
+        });
+        const metaStats = Object.entries(byConfidence).map(([key, arr]) => ({
+            key,
+            label: key === 'sure' ? 'Sûr' : key === 'hesitant' ? 'Hésitant' : 'Au hasard',
+            count: arr.length,
+            rate: arr.length ? (arr.filter(a => a.correct).length / arr.length * 100).toFixed(1) : null
+        }));
+
+        // Temps de réponse : réussite par tranche de durée
+        const durationBuckets = [
+            { label: '< 20 s', min: 0, max: 20 },
+            { label: '20-40 s', min: 20, max: 40 },
+            { label: '40-60 s', min: 40, max: 60 },
+            { label: '60-90 s', min: 60, max: 90 },
+            { label: '> 90 s', min: 90, max: Infinity }
+        ].map(b => {
+            const arr = log.filter(a => a.durationSeconds !== null && a.durationSeconds !== undefined && a.durationSeconds >= b.min && a.durationSeconds < b.max);
+            return {
+                label: b.label,
+                count: arr.length,
+                rate: arr.length ? (arr.filter(a => a.correct).length / arr.length * 100).toFixed(1) : null
+            };
+        });
 
         const bySubject = {};
         log.forEach(a => {
@@ -310,10 +386,12 @@
         const subjectStats = Object.entries(bySubject).map(([name, arr]) => {
             const durations = arr.filter(a => a.durationSeconds).map(a => a.durationSeconds);
             const avgDuration = durations.length ? Math.round(durations.reduce((s, d) => s + d, 0) / durations.length) : null;
+            const avgScore = avgOf(arr, 'score');
             return {
                 name,
                 total: arr.length,
-                successRate: (arr.filter(a => a.correct).length / arr.length * 100).toFixed(0),
+                successRate: (arr.filter(a => a.correct).length / arr.length * 100).toFixed(1),
+                avgScore,
                 avgDuration
             };
         }).sort((a, b) => a.successRate - b.successRate);
@@ -351,13 +429,16 @@
         return {
             global: computeGlobalStats(),
             modeStats: {
-                training: { count: byMode.training.length, rate: modeRate(byMode.training) },
-                exam: { count: byMode.exam.length, rate: modeRate(byMode.exam) },
-                dp: { count: byMode.dp.length, rate: modeRate(byMode.dp) }
+                training: modeStatsFull('training'),
+                exam: modeStatsFull('exam'),
+                dp: modeStatsFull('dp')
             },
+            metaStats,
+            durationBuckets,
             subjectStats,
             chapterStats,
-            progression
+            progression,
+            rawLog: log
         };
     }
 
@@ -439,6 +520,15 @@
             localStorage.removeItem('digital_error_log');
             alert("Carnet d'erreurs réinitialisé !");
         }
+    }
+
+    function resetStats() {
+        if (!confirm("Réinitialiser toutes les statistiques (historique des QCM répondus, scores, temps) ? Cette action est irréversible.")) return;
+        if (!confirm("Confirmer une dernière fois : toutes vos statistiques seront définitivement effacées.")) return;
+        localStorage.removeItem('qcm_attempts_log');
+        alert("Statistiques réinitialisées.");
+        renderStatsScreen();
+        renderHomeStats();
     }
 
     function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId, isExam) {
@@ -726,7 +816,7 @@
         if (examMode && opts.examDuration) {
             startExamTimer(Date.now() + opts.examDuration * 60000);
         } else {
-            document.getElementById('examTimerBar').classList.add('hidden');
+            hideExamTimerWidget();
         }
 
         saveSessionState();
@@ -736,9 +826,13 @@
     // --- CHRONO DU MODE EXAMEN ---
 
     function startExamTimer(endTime) {
+        // Ne doit jamais s'afficher hors mode examen
+        if (!examMode) { hideExamTimerWidget(); return; }
+
         examEndTime = endTime;
-        const bar = document.getElementById('examTimerBar');
-        bar.classList.remove('hidden');
+        const widget = document.getElementById('examTimerWidget');
+        widget.classList.remove('hidden');
+        if (localStorage.getItem('examTimerCollapsed') === '1') widget.classList.add('collapsed');
         updateExamTimerDisplay();
         if (examTimerInterval) clearInterval(examTimerInterval);
         examTimerInterval = setInterval(() => {
@@ -760,13 +854,28 @@
         const m = Math.floor(remaining / 60000);
         const s = Math.floor((remaining % 60000) / 1000);
         const el = document.getElementById('examTimerDisplay');
-        if (el) el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        if (el) {
+            el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            el.classList.toggle('low-time', remaining > 0 && remaining < 60000);
+        }
     }
 
     function clearExamTimer() {
         if (examTimerInterval) clearInterval(examTimerInterval);
         examTimerInterval = null;
         examEndTime = null;
+        hideExamTimerWidget();
+    }
+
+    function hideExamTimerWidget() {
+        const widget = document.getElementById('examTimerWidget');
+        if (widget) widget.classList.add('hidden');
+    }
+
+    function toggleExamTimerCollapse() {
+        const widget = document.getElementById('examTimerWidget');
+        const collapsed = widget.classList.toggle('collapsed');
+        localStorage.setItem('examTimerCollapsed', collapsed ? '1' : '0');
     }
 
     // Récupère l'état actuel des cases cochées, tous questions confondues
@@ -960,14 +1069,14 @@
                 if (state.examEndTime <= Date.now()) {
                     // Le temps était déjà écoulé pendant que la page était fermée
                     renderSessionScreen(state.userAnswers || {});
-                    document.getElementById('examTimerBar').classList.add('hidden');
+                    hideExamTimerWidget();
                     setTimeout(() => validateFullSession(), 300);
                     return true;
                 }
                 startExamTimer(state.examEndTime);
             } else {
                 examMode = false;
-                document.getElementById('examTimerBar').classList.add('hidden');
+                hideExamTimerWidget();
             }
 
             renderSessionScreen(state.userAnswers || {});
@@ -986,7 +1095,7 @@
         sessionValidated = true;
 
         clearExamTimer();
-        document.getElementById('examTimerBar').classList.add('hidden');
+        hideExamTimerWidget();
 
         let score = 0;
         let validQcmCount = 0; // Exclut du dénominateur les QCMs dont tous les items sont annulés
@@ -1206,19 +1315,48 @@
                 </div>
             </div>`;
 
+        const fmtScore = v => v === null ? '-' : `${v.toFixed(2)}/1`;
+        const fmtDuration = v => v === null ? '-' : `${Math.round(v)} s`;
+        const fmtRate = v => v === null ? '-' : `${v}%`;
+
         html += `
             <div class="border rounded p-3 mb-4">
-                <h5 class="mb-3">Par mode</h5>
-                <div class="row text-center g-2">
-                    <div class="col-4"><div class="fw-bold">Entraînement</div><div>${s.modeStats.training.count} QCM${s.modeStats.training.rate !== null ? ` · ${s.modeStats.training.rate}%` : ''}</div></div>
-                    <div class="col-4"><div class="fw-bold">Examen</div><div>${s.modeStats.exam.count} QCM${s.modeStats.exam.rate !== null ? ` · ${s.modeStats.exam.rate}%` : ''}</div></div>
-                    <div class="col-4"><div class="fw-bold">DP</div><div>${s.modeStats.dp.count} QCM${s.modeStats.dp.rate !== null ? ` · ${s.modeStats.dp.rate}%` : ''}</div></div>
-                </div>
+                <h5 class="mb-3">Performance par mode</h5>
+                <table class="table table-sm mb-0 text-center">
+                    <thead><tr><th class="text-start">Mode</th><th>QCM</th><th>Réussite</th><th>Score moyen</th><th>Temps moyen</th></tr></thead>
+                    <tbody>
+                        <tr><td class="text-start">Entraînement</td><td>${s.modeStats.training.count}</td><td>${fmtRate(s.modeStats.training.rate)}</td><td>${fmtScore(s.modeStats.training.avgScore)}</td><td>${fmtDuration(s.modeStats.training.avgDuration)}</td></tr>
+                        <tr><td class="text-start">Examen</td><td>${s.modeStats.exam.count}</td><td>${fmtRate(s.modeStats.exam.rate)}</td><td>${fmtScore(s.modeStats.exam.avgScore)}</td><td>${fmtDuration(s.modeStats.exam.avgDuration)}</td></tr>
+                        <tr><td class="text-start">DP</td><td>${s.modeStats.dp.count}</td><td>${fmtRate(s.modeStats.dp.rate)}</td><td>${fmtScore(s.modeStats.dp.avgScore)}</td><td>${fmtDuration(s.modeStats.dp.avgDuration)}</td></tr>
+                    </tbody>
+                </table>
             </div>`;
 
-        html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Par matière</h5><table class="table table-sm mb-0"><thead><tr><th>Matière</th><th>QCM</th><th>Réussite</th><th>Temps moyen</th></tr></thead><tbody>`;
+        html += `
+            <div class="border rounded p-3 mb-4">
+                <h5 class="mb-3">Métacognition</h5>
+                <table class="table table-sm mb-0 text-center">
+                    <thead><tr><th class="text-start">Ressenti</th><th>N</th><th>Réussite</th></tr></thead>
+                    <tbody>
+                        ${s.metaStats.map(m => `<tr><td class="text-start">${m.label}</td><td>${m.count}</td><td>${fmtRate(m.rate)}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+
+        html += `
+            <div class="border rounded p-3 mb-4">
+                <h5 class="mb-3">Temps de réponse</h5>
+                <table class="table table-sm mb-0 text-center">
+                    <thead><tr><th class="text-start">Temps</th><th>N</th><th>Réussite</th></tr></thead>
+                    <tbody>
+                        ${s.durationBuckets.map(b => `<tr><td class="text-start">${b.label}</td><td>${b.count}</td><td>${fmtRate(b.rate)}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+
+        html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Performance par matière</h5><table class="table table-sm mb-0 text-center"><thead><tr><th class="text-start">Matière</th><th>QCM</th><th>Réussite</th><th>Score</th><th>Temps</th></tr></thead><tbody>`;
         s.subjectStats.forEach(sub => {
-            html += `<tr><td>${escapeHTML(sub.name)}</td><td>${sub.total}</td><td>${sub.successRate}%</td><td>${sub.avgDuration ? sub.avgDuration + 's' : '-'}</td></tr>`;
+            html += `<tr><td class="text-start">${escapeHTML(sub.name)}</td><td>${sub.total}</td><td>${sub.successRate}%</td><td>${fmtScore(sub.avgScore)}</td><td>${fmtDuration(sub.avgDuration)}</td></tr>`;
         });
         html += `</tbody></table></div>`;
 
@@ -1230,22 +1368,80 @@
             html += `</tbody></table></div>`;
         }
 
-        if (s.progression.length > 0) {
-            html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Progression (14 derniers jours d activité)</h5>`;
-            s.progression.forEach(p => {
-                html += `
-                    <div class="d-flex align-items-center mb-1">
-                        <div style="width: 90px;" class="small text-muted">${p.day.slice(5)}</div>
-                        <div class="flex-fill bg-light rounded" style="height: 18px;">
-                            <div class="bg-primary rounded" style="height: 18px; width: ${p.successRate}%;"></div>
-                        </div>
-                        <div style="width: 70px;" class="small text-end">${p.successRate}% (${p.total})</div>
-                    </div>`;
-            });
-            html += `</div>`;
-        }
+        html += `<div class="border rounded p-3 mb-4"><h5 class="mb-3">Évolution récente du score</h5>${buildScoreHeatmap(s.rawLog)}</div>`;
 
         container.innerHTML = html;
+    }
+
+    // --- HEATMAP DE PROGRESSION (score moyen par jour, style "calendrier de contributions") ---
+
+    function buildScoreHeatmap(log, weeks = 14) {
+        const byDay = {};
+        log.forEach(a => {
+            const day = (a.date || '').slice(0, 10);
+            if (!day) return;
+            if (!byDay[day]) byDay[day] = [];
+            byDay[day].push(a.score);
+        });
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dayOfWeek = (today.getDay() + 6) % 7; // 0 = lundi
+        const end = new Date(today);
+        end.setDate(end.getDate() + (6 - dayOfWeek)); // fin sur le dimanche de la semaine en cours
+        const totalDays = weeks * 7;
+        const start = new Date(end);
+        start.setDate(start.getDate() - totalDays + 1);
+
+        const cells = [];
+        for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+            const iso = d.toISOString().slice(0, 10);
+            const scores = byDay[iso];
+            const avg = scores && scores.length ? scores.reduce((s, v) => s + v, 0) / scores.length : null;
+            cells.push({ date: iso, count: scores ? scores.length : 0, avg, isFuture: new Date(iso) > today });
+        }
+
+        const heatColor = (avg, count, isFuture) => {
+            if (isFuture) return 'transparent';
+            if (!count || avg === null) return '#ebedf0';
+            if (avg < 0.25) return '#e57373';
+            if (avg < 0.5) return '#ffb74d';
+            if (avg < 0.75) return '#aed581';
+            return '#4caf50';
+        };
+
+        const monthLabels = [];
+        let lastMonth = null;
+        for (let w = 0; w < weeks; w++) {
+            const cellDate = new Date(cells[w * 7].date);
+            const monthName = cellDate.toLocaleDateString('fr-FR', { month: 'short' });
+            monthLabels.push(monthName !== lastMonth ? monthName : '');
+            lastMonth = monthName;
+        }
+
+        let html = `<div class="heatmap-wrapper">`;
+        html += `<div class="heatmap-months">` + monthLabels.map(m => `<span>${m}</span>`).join('') + `</div>`;
+        html += `<div class="heatmap-grid" style="grid-template-columns: repeat(${weeks}, 1fr);">`;
+        cells.forEach(c => {
+            const color = heatColor(c.avg, c.count, c.isFuture);
+            const title = c.isFuture ? '' : c.count > 0
+                ? `${c.date} : ${c.count} QCM, score moyen ${c.avg.toFixed(2)}/1`
+                : `${c.date} : aucune activité`;
+            html += `<div class="heatmap-cell" style="background:${color};" title="${title}"></div>`;
+        });
+        html += `</div>`;
+        html += `<div class="heatmap-legend">
+            <span>Score faible</span>
+            <span class="heatmap-cell" style="background:#e57373;"></span>
+            <span class="heatmap-cell" style="background:#ffb74d;"></span>
+            <span class="heatmap-cell" style="background:#aed581;"></span>
+            <span class="heatmap-cell" style="background:#4caf50;"></span>
+            <span>Score élevé</span>
+            <span class="ms-2 heatmap-cell" style="background:#ebedf0;"></span>
+            <span>Aucune activité</span>
+        </div>`;
+        html += `</div>`;
+        return html;
     }
 
     function displaySubjects() {
