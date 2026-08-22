@@ -358,18 +358,25 @@
     merge: true  // ← CI EST LA CLÉ ! Empêche le verrouillage
   });
 
-  // Variables globales
-  let currentUser = null;
-  auth.onAuthStateChanged((user) => {
-    currentUser = user;
-    if (user) {
-      console.log("✅ Utilisateur connecté :", user.uid, user.email);
-      syncLocalToCloud();
-      loadCloudData();
-    } else {
-      console.log("❌ Aucun utilisateur connecté");
-    }
-  });
+// =============================================
+// VARIABLES GLOBALES (À DÉCLARER EN PREMIER !)
+// =============================================
+let data = {};                     // Base de données des QCM
+let allQcmsIndex = {};            // Index des QCM (id -> QCM)
+let currentPath = [];             // Chemin actuel dans l'arborescence
+let currentSession = [];          // Session de QCM en cours
+let missedAnswers = [];           // Réponses manquées
+let sessionValidated = false;     // État de validation de la session
+let examMode = false;              // Mode examen activé ?
+let dpMode = false;                // Mode DP activé ?
+let examEndTime = null;            // Heure de fin du chrono examen
+let examTimerInterval = null;     // Intervalle du chrono
+let dpValidated = [];              // Questions validées en mode DP
+let currentUser = null;           // Utilisateur Firebase connecté
+const sessionConfidence = {};     // Niveaux de confiance pour la session
+let sessionStartTime = null;      // Heure de début de la session
+let questionStartTimes = {};     // Temps de départ par question
+let currentQuestionIndex = null;  // Index de la question actuelle
 
     // =============================================
     // FONCTIONS D'AUTHENTIFICATION (définies ici pour éviter "not defined")
