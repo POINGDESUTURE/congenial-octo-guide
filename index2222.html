@@ -347,29 +347,29 @@
             appId: "1:653914992834:web:88bc3797fe83ef7c6d4b5b"
         };
 
-            // Initialise Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+             // Initialise Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth(app);
+  const db = firebase.firestore(app);
 
-    // Désactive le cache pour éviter les conflits
-    db.settings({ cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED });
+  // ⚠️ Applique les paramètres AVANT toute autre opération !
+  db.settings({
+    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
+    merge: true  // ← CI EST LA CLÉ ! Empêche le verrouillage
+  });
 
-    // Variables globales
-    let data = {};
-    let allQcmsIndex = {};
-    let currentPath = [], currentSession = [], missedAnswers = [];
-    let sessionValidated = false;
-    let examMode = false;
-    let dpMode = false;
-    let examEndTime = null;
-    let examTimerInterval = null;
-    let dpValidated = [];
-    let currentUser = null;
-    const sessionConfidence = {};
-    let sessionStartTime = null;
-    let questionStartTimes = {};
-    let currentQuestionIndex = null;
+  // Variables globales
+  let currentUser = null;
+  auth.onAuthStateChanged((user) => {
+    currentUser = user;
+    if (user) {
+      console.log("✅ Utilisateur connecté :", user.uid, user.email);
+      syncLocalToCloud();
+      loadCloudData();
+    } else {
+      console.log("❌ Aucun utilisateur connecté");
+    }
+  });
 
     // =============================================
     // FONCTIONS D'AUTHENTIFICATION (définies ici pour éviter "not defined")
