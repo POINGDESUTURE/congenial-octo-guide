@@ -608,7 +608,7 @@
         let examTimerInterval = null;
         let dpValidated = [];
         let currentUser = null;
-        const sessionConfidence = {};
+        let sessionConfidence = {};
         let sessionStartTime = null;
         let questionStartTimes = {};
         let currentQuestionIndex = null;
@@ -1228,7 +1228,7 @@
             }
 
             afterUserAction();
-            renderStatsScreen();
+            if (typeof loadStatistics === 'function') loadStatistics();
             renderHomeStats();
         }
 
@@ -2010,57 +2010,11 @@
         function openStatsScreen() {
             document.getElementById('homeScreen').classList.add('hidden');
             document.getElementById('statsScreen').classList.remove('hidden');
-            renderStatsScreen();
+            if (typeof loadStatistics === 'function') loadStatistics();
         }
 
         function closeStatsScreen() {
             showHomeScreen();
-        }
-
-        function renderStatsScreen() {
-            const stats = computeGlobalStats();
-            const content = document.getElementById('statsContent');
-            if (!stats) {
-                content.innerHTML = `<div class="alert alert-info">Aucune statistique enregistrée.</div>`;
-                return;
-            }
-
-            content.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fa-solid fa-percentage"></i> Taux de réussite global</h5>
-                                <h2 class="text-primary">${stats.successRate}%</h2>
-                                <p class="card-text">
-                                    <small>${stats.total} QCMs terminés • ${stats.falseCertaintyCount} erreurs avec certitude ("sûr")</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fa-solid fa-chart-bar"></i> Par certitude</h5>
-                                <div class="row text-center">
-                                    <div class="col-4">
-                                        <h6>Sûr</h6>
-                                        <h4 class="text-success">${stats.sureRate || 'N/A'}%</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <h6>Hésitant</h6>
-                                        <h4 class="text-warning">${stats.hesitantRate || 'N/A'}%</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <h6>Au hasard</h6>
-                                        <h4 class="text-danger">${stats.guessRate || 'N/A'}%</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
         }
 
         // =============================================
@@ -2071,7 +2025,7 @@
 
 <script>
 // ===== CODE POUR LA PAGE STATISTIQUES UNIQUEMENT =====
-if (document.getElementById('statsContent')) {
+if (document.getElementById('statsScreen')) {
 // ===== VARIABLES GLOBALES =====
 let allQCMData = [];
 let charts = {};
