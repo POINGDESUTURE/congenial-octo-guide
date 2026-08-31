@@ -6,11 +6,8 @@
     <title>QCM Médecine - Interface UNESS (avec Cloud Sync)</title>
 
     <!-- ===== DÉPENDANCES EXTERNES ===== -->
-    <!-- Bootstrap 5 (pour le design) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome (pour les icônes) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts (Roboto) -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- ===== FIREBASE SDK ===== -->
@@ -18,26 +15,25 @@
     <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
 	
-	<script>
-  // Définitions précoces pour éviter "not defined"
-  function showLoginModal() {
-    const modal = new bootstrap.Modal(document.getElementById('loginModal'));
-    modal.show();
-    document.getElementById('loginError')?.classList.add('hidden');
-  }
-  function showSignupModal() {
-    const modal = new bootstrap.Modal(document.getElementById('signupModal'));
-    modal.show();
-    document.getElementById('signupError')?.classList.add('hidden');
-  }
-  function logout() {
-    if (confirm("Voulez-vous vous déconnecter ?")) {
-      if (typeof auth !== 'undefined') auth.signOut().catch(console.error);
-    }
-  }
-</script>
+    <script>
+      function showLoginModal() {
+        const modal = new bootstrap.Modal(document.getElementById('loginModal'));
+        modal.show();
+        document.getElementById('loginError')?.classList.add('hidden');
+      }
+      function showSignupModal() {
+        const modal = new bootstrap.Modal(document.getElementById('signupModal'));
+        modal.show();
+        document.getElementById('signupError')?.classList.add('hidden');
+      }
+      function logout() {
+        if (confirm("Voulez-vous vous déconnecter ?")) {
+          if (typeof auth !== 'undefined') auth.signOut().catch(console.error);
+        }
+      }
+    </script>
 
-    <!-- ===== STYLES PERSONNALISÉS (ton CSS existant) ===== -->
+    <!-- ===== STYLES PERSONNALISÉS ===== -->
     <style>
         body { background-color: #f2f4f7; font-family: 'Roboto', sans-serif; font-size: 0.9375rem; color: #1d2125; padding-top: 20px; }
         .container { max-width: 1100px; }
@@ -157,7 +153,6 @@
     <div class="container">
         <!-- ===== ÉCRAN D'ACCUEIL ===== -->
         <div id="homeScreen" class="setup-card shadow-sm">
-            <!-- Seule chose visible en plus des matières : une icône discrète vers le compte/les outils -->
             <button type="button" class="corner-menu-btn" data-bs-toggle="modal" data-bs-target="#toolsModal" title="Compte et outils">
                 <i class="fa-solid fa-gear"></i>
             </button>
@@ -168,11 +163,10 @@
                 <p class="mt-2">Chargement...</p>
             </div>
 
-            <!-- ===== Écran d'accueil : on va droit au but, uniquement la liste des matières ===== -->
             <div id="subjectsList" class="list-group list-group-flush"></div>
         </div>
 
-        <!-- Modal Compte & outils : tout ce qui n'est pas "choisir une matière" vit ici -->
+        <!-- Modal Compte & outils -->
         <div class="modal fade" id="toolsModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -230,7 +224,6 @@
             </div>
         </div>
 
-        <!-- ===== AUTRES ÉCRANS (inchangés) ===== -->
         <div id="statsScreen" class="hidden setup-card shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                 <button class="btn btn-sm btn-outline-secondary" onclick="closeStatsScreen()">← Retour</button>
@@ -304,8 +297,7 @@
             <div id="correctionDetails"></div>
         </div>
 
-        <!-- ===== MODALS DE CONNEXION/INSCRIPTION (NOUVEAU) ===== -->
-        <!-- Modal de connexion -->
+        <!-- MODALS -->
         <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -336,7 +328,6 @@
             </div>
         </div>
 
-        <!-- Modal d'inscription -->
         <div class="modal fade" id="signupModal" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -368,15 +359,12 @@
         </div>
     </div>
 
-    <!-- ===== SCRIPTS BOOTSTRAP (pour les modals) ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ===== SCRIPT PRINCIPAL (ton code + Firebase) ===== -->
     <script>
         // =============================================
-        // CONFIGURATION FIREBASE (À PERSONNALISER !)
+        // CONFIGURATION FIREBASE
         // =============================================
-        // Remplace ces valeurs par celles de TON projet Firebase (voir Firebase Console)
         const firebaseConfig = {
             apiKey: "AIzaSyAGN9ncsAXA6zOQF9euLL69YTX0yKjADV4",
             authDomain: "medicomed.firebaseapp.com",
@@ -386,1619 +374,1474 @@
             appId: "1:653914992834:web:88bc3797fe83ef7c6d4b5b"
         };
 
-             // Initialise Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth(app);
-  const db = firebase.firestore(app);
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth(app);
+        const db = firebase.firestore(app);
 
-  // ⚠️ Applique les paramètres AVANT toute autre opération !
-  db.settings({
-    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
-    merge: true  // ← CI EST LA CLÉ ! Empêche le verrouillage
-  });
+        db.settings({
+            cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
+            merge: true
+        });
 
-// =============================================
-// VARIABLES GLOBALES (À DÉCLARER EN PREMIER !)
-// =============================================
-let data = {};                     // Base de données des QCM
-let allQcmsIndex = {};            // Index des QCM (id -> QCM)
-let currentPath = [];             // Chemin actuel dans l'arborescence
-let currentSession = [];          // Session de QCM en cours
-let missedAnswers = [];           // Réponses manquées
-let sessionValidated = false;     // État de validation de la session
-let examMode = false;              // Mode examen activé ?
-let dpMode = false;                // Mode DP activé ?
-let examEndTime = null;            // Heure de fin du chrono examen
-let examTimerInterval = null;     // Intervalle du chrono
-let dpValidated = [];              // Questions validées en mode DP
-let currentUser = null;           // Utilisateur Firebase connecté
-const sessionConfidence = {};     // Niveaux de confiance pour la session
-let sessionStartTime = null;      // Heure de début de la session
-let questionStartTimes = {};     // Temps de départ par question
-let currentQuestionIndex = null;  // Index de la question actuelle
+        // =============================================
+        // VARIABLES GLOBALES
+        // =============================================
+        let data = {};
+        let allQcmsIndex = {};
+        let currentPath = [];
+        let currentSession = [];
+        let missedAnswers = [];
+        let sessionValidated = false;
+        let examMode = false;
+        let dpMode = false;
+        let examEndTime = null;
+        let examTimerInterval = null;
+        let dpValidated = [];
+        let currentUser = null;
+        const sessionConfidence = {};
+        let sessionStartTime = null;
+        let questionStartTimes = {};
+        let currentQuestionIndex = null;
 
-    // =============================================
-    // FONCTIONS D'AUTHENTIFICATION (définies ici pour éviter "not defined")
-    // =============================================
-    function showLoginModal() {
-        const modalEl = document.getElementById('loginModal');
-        if (modalEl) {
-            const modal = new bootstrap.Modal(modalEl);
-            modal.show();
-            const errorEl = document.getElementById('loginError');
-            if (errorEl) errorEl.classList.add('hidden');
-        }
-    }
+        // =============================================
+        // FONCTION BARÈME EDN DE NOTATION
+        // =============================================
+        function calculateEDNPoints(userAnswers, qcmOptions) {
+            const canceledItems = getCanceledItems();
+            let errors = 0;
 
-    function showSignupModal() {
-        const modalEl = document.getElementById('signupModal');
-        if (modalEl) {
-            const modal = new bootstrap.Modal(modalEl);
-            modal.show();
-            const errorEl = document.getElementById('signupError');
-            if (errorEl) errorEl.classList.add('hidden');
-        }
-    }
-
-    async function loginWithModal() {
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        const errorContainer = document.getElementById('loginError');
-
-        if (!email || !password) {
-            errorContainer.textContent = "Veuillez remplir tous les champs.";
-            errorContainer.classList.remove('hidden');
-            return;
-        }
-
-        try {
-            await auth.signInWithEmailAndPassword(email, password);
-            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
-            document.getElementById('loginForm').reset();
-        } catch (error) {
-            console.error("Erreur de connexion :", error);
-            errorContainer.textContent = getFirebaseAuthErrorMessage(error.code);
-            errorContainer.classList.remove('hidden');
-        }
-    }
-
-    async function signupWithModal() {
-        const email = document.getElementById('signupEmail').value;
-        const password = document.getElementById('signupPassword').value;
-        const errorContainer = document.getElementById('signupError');
-
-        if (!email || !password) {
-            errorContainer.textContent = "Veuillez remplir tous les champs.";
-            errorContainer.classList.remove('hidden');
-            return;
-        }
-
-        if (password.length < 6) {
-            errorContainer.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
-            errorContainer.classList.remove('hidden');
-            return;
-        }
-
-        try {
-            await auth.createUserWithEmailAndPassword(email, password);
-            bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
-            document.getElementById('signupForm').reset();
-            alert("Compte créé avec succès ! Bienvenue sur QCM Médecine.");
-        } catch (error) {
-            console.error("Erreur d'inscription :", error);
-            errorContainer.textContent = getFirebaseAuthErrorMessage(error.code);
-            errorContainer.classList.remove('hidden');
-        }
-    }
-
-    function logout() {
-        if (confirm("Voulez-vous vous déconnecter ? Vos données locales seront conservées.")) {
-            auth.signOut().catch(error => {
-                console.error("Erreur de déconnexion :", error);
+            qcmOptions.forEach((opt, idx) => {
+                if (canceledItems.includes(opt.id)) return; // Ne pas compter les items annulés
+                
+                const isUserChecked = userAnswers.includes(idx);
+                const isCorrect = opt.isCorrect;
+                
+                if (isUserChecked !== isCorrect) {
+                    errors++;
+                }
             });
+
+            if (errors === 0) return 1.0;
+            if (errors === 1) return 0.5;
+            if (errors === 2) return 0.2;
+            return 0.0;
         }
-    }
 
-    function getFirebaseAuthErrorMessage(errorCode) {
-        const messages = {
-            'auth/user-not-found': 'Aucun compte trouvé avec cet email.',
-            'auth/wrong-password': 'Mot de passe incorrect.',
-            'auth/email-already-in-use': 'Un compte existe déjà avec cet email.',
-            'auth/invalid-email': 'Email invalide.',
-            'auth/weak-password': 'Le mot de passe doit contenir au moins 6 caractères.',
-            'auth/network-request-failed': 'Erreur de connexion. Vérifiez votre connexion internet.',
-            'auth/internal-error': 'Erreur interne. Veuillez réessayer.'
-        };
-        return messages[errorCode] || "Une erreur est survenue. Veuillez réessayer.";
-    }
-
-    // Met à jour l'UI en fonction de l'utilisateur connecté
-    function updateAuthUI() {
-        const loggedOutButtons = document.getElementById('loggedOutButtons');
-        const loggedInButtons = document.getElementById('loggedInButtons');
-        const userEmailElement = document.getElementById('userEmail');
-        const migrationButton = document.getElementById('migrationButtonContainer');
-
-        if (currentUser) {
-            loggedOutButtons.classList.add('hidden');
-            loggedInButtons.classList.remove('hidden');
-            userEmailElement.textContent = currentUser.email;
-            migrationButton.style.display = (localStorage.getItem('qcm_attempts_log') || localStorage.getItem('digital_error_log')) ? 'block' : 'none';
-        } else {
-            loggedOutButtons.classList.remove('hidden');
-            loggedInButtons.classList.add('hidden');
-            userEmailElement.textContent = '';
-            migrationButton.style.display = 'none';
+        // =============================================
+        // FONCTIONS D'AUTHENTIFICATION
+        // =============================================
+        function showLoginModal() {
+            const modalEl = document.getElementById('loginModal');
+            if (modalEl) {
+                const modal = new bootstrap.Modal(modalEl);
+                modal.show();
+                const errorEl = document.getElementById('loginError');
+                if (errorEl) errorEl.classList.add('hidden');
+            }
         }
-    }
 
-    // Écoute les changements d'état de connexion
-    auth.onAuthStateChanged((user) => {
-        currentUser = user;
-        updateAuthUI();
-        if (user) {
-            console.log("✅ Utilisateur connecté :", user.uid, user.email);
-            syncLocalToCloud();
-            loadCloudData();
-        } else {
-            console.log("❌ Aucun utilisateur connecté");
+        function showSignupModal() {
+            const modalEl = document.getElementById('signupModal');
+            if (modalEl) {
+                const modal = new bootstrap.Modal(modalEl);
+                modal.show();
+                const errorEl = document.getElementById('signupError');
+                if (errorEl) errorEl.classList.add('hidden');
+            }
         }
-    });
 
-    // =============================================
-    // FONCTIONS DE SYNCHRONISATION (corrigées avec async/await)
-    // =============================================
-    async function syncLocalToCloud() {
-        if (!currentUser) return;
+        async function loginWithModal() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorContainer = document.getElementById('loginError');
 
-        const userId = currentUser.uid;
-        const batch = db.batch();
-        console.log("🔄 Synchronisation locale → cloud...");
-
-        try {
-            // 1. Synchronise qcm_attempts_log
-            const localAttempts = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
-            if (localAttempts.length > 0) {
-                const cloudAttemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
-                const cloudAttempts = cloudAttemptsSnapshot.docs.map(doc => doc.data());
-
-                const newAttempts = localAttempts.filter(local => {
-                    return !cloudAttempts.some(cloud =>
-                        cloud.qcmId === local.qcmId && cloud.date === local.date && cloud.timestamp === local.timestamp
-                    );
-                });
-
-                console.log(`📤 ${newAttempts.length} nouveaux attempts à synchroniser.`);
-                newAttempts.forEach(attempt => {
-                    const docRef = db.collection(`users/${userId}/qcmAttempts`).doc();
-                    batch.set(docRef, {
-                        ...attempt,
-                        userId: userId,
-                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                });
+            if (!email || !password) {
+                errorContainer.textContent = "Veuillez remplir tous les champs.";
+                errorContainer.classList.remove('hidden');
+                return;
             }
 
-            // 2. Synchronise digital_error_log
-            const localErrorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
-            if (Object.keys(localErrorLog).length > 0) {
-                const cloudErrorLogSnapshot = await db.collection(`users/${userId}/errorLog`).get();
-                const cloudErrorLog = {};
-                cloudErrorLogSnapshot.forEach(doc => {
-                    cloudErrorLog[doc.data().key] = doc.data();
-                });
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                document.getElementById('loginForm').reset();
+            } catch (error) {
+                console.error("Erreur de connexion :", error);
+                errorContainer.textContent = getFirebaseAuthErrorMessage(error.code);
+                errorContainer.classList.remove('hidden');
+            }
+        }
 
-                Object.entries(localErrorLog).forEach(([key, value]) => {
-                    if (!cloudErrorLog[key] || JSON.stringify(cloudErrorLog[key]) !== JSON.stringify(value)) {
-                        const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
+        async function signupWithModal() {
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errorContainer = document.getElementById('signupError');
+
+            if (!email || !password) {
+                errorContainer.textContent = "Veuillez remplir tous les champs.";
+                errorContainer.classList.remove('hidden');
+                return;
+            }
+
+            if (password.length < 6) {
+                errorContainer.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+                errorContainer.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                await auth.createUserWithEmailAndPassword(email, password);
+                bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
+                document.getElementById('signupForm').reset();
+                alert("Compte créé avec succès ! Bienvenue sur QCM Médecine.");
+            } catch (error) {
+                console.error("Erreur d'inscription :", error);
+                errorContainer.textContent = getFirebaseAuthErrorMessage(error.code);
+                errorContainer.classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            if (confirm("Voulez-vous vous déconnecter ? Vos données locales seront conservées.")) {
+                auth.signOut().catch(error => {
+                    console.error("Erreur de déconnexion :", error);
+                });
+            }
+        }
+
+        function getFirebaseAuthErrorMessage(errorCode) {
+            const messages = {
+                'auth/user-not-found': 'Aucun compte trouvé avec cet email.',
+                'auth/wrong-password': 'Mot de passe incorrect.',
+                'auth/email-already-in-use': 'Un compte existe déjà avec cet email.',
+                'auth/invalid-email': 'Email invalide.',
+                'auth/weak-password': 'Le mot de passe doit contenir au moins 6 caractères.',
+                'auth/network-request-failed': 'Erreur de connexion. Vérifiez votre connexion internet.',
+                'auth/internal-error': 'Erreur interne. Veuillez réessayer.'
+            };
+            return messages[errorCode] || "Une erreur est survenue. Veuillez réessayer.";
+        }
+
+        function updateAuthUI() {
+            const loggedOutButtons = document.getElementById('loggedOutButtons');
+            const loggedInButtons = document.getElementById('loggedInButtons');
+            const userEmailElement = document.getElementById('userEmail');
+            const migrationButton = document.getElementById('migrationButtonContainer');
+
+            if (currentUser) {
+                loggedOutButtons.classList.add('hidden');
+                loggedInButtons.classList.remove('hidden');
+                userEmailElement.textContent = currentUser.email;
+                migrationButton.style.display = (localStorage.getItem('qcm_attempts_log') || localStorage.getItem('digital_error_log')) ? 'block' : 'none';
+            } else {
+                loggedOutButtons.classList.remove('hidden');
+                loggedInButtons.classList.add('hidden');
+                userEmailElement.textContent = '';
+                migrationButton.style.display = 'none';
+            }
+        }
+
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+            updateAuthUI();
+            if (user) {
+                console.log("✅ Utilisateur connecté :", user.uid, user.email);
+                syncLocalToCloud();
+                loadCloudData();
+            } else {
+                console.log("❌ Aucun utilisateur connecté");
+            }
+        });
+
+        // =============================================
+        // SYNCHRONISATION
+        // =============================================
+        async function syncLocalToCloud() {
+            if (!currentUser) return;
+
+            const userId = currentUser.uid;
+            const batch = db.batch();
+
+            try {
+                const localAttempts = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
+                if (localAttempts.length > 0) {
+                    const cloudAttemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
+                    const cloudAttempts = cloudAttemptsSnapshot.docs.map(doc => doc.data());
+
+                    const newAttempts = localAttempts.filter(local => {
+                        return !cloudAttempts.some(cloud =>
+                            cloud.qcmId === local.qcmId && cloud.date === local.date && cloud.timestamp === local.timestamp
+                        );
+                    });
+
+                    newAttempts.forEach(attempt => {
+                        const docRef = db.collection(`users/${userId}/qcmAttempts`).doc();
                         batch.set(docRef, {
-                            ...value,
-                            key: key,
+                            ...attempt,
                             userId: userId,
                             syncedAt: firebase.firestore.FieldValue.serverTimestamp()
                         });
-                    }
-                });
-                console.log(`📤 ${Object.keys(localErrorLog).length} entrées d'erreurs synchronisées.`);
-            }
-
-            // 3. Synchronise canceled_qcms et canceled_items
-            const localCanceledQcms = JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
-            const localCanceledItems = JSON.parse(localStorage.getItem('canceled_items') || '[]');
-
-            if (localCanceledQcms.length > 0 || localCanceledItems.length > 0) {
-                const metadataRef = db.collection(`users/${userId}/metadata`).doc('canceled');
-                batch.set(metadataRef, {
-                    canceledQcms: localCanceledQcms,
-                    canceledItems: localCanceledItems,
-                    userId: userId,
-                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-                }, { merge: true });
-                console.log(`📤 QCM/Items annulés synchronisés.`);
-            }
-
-            // 4. Synchronise les préférences utilisateur
-            const preferences = {
-                examTimerCollapsed: localStorage.getItem('examTimerCollapsed') || '0',
-                theme: localStorage.getItem('theme') || 'light'
-            };
-            const preferencesRef = db.collection(`users/${userId}/metadata`).doc('preferences');
-            batch.set(preferencesRef, {
-                ...preferences,
-                userId: userId,
-                syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
-
-            await batch.commit();
-            console.log("✅ Synchronisation locale → cloud terminée.");
-            localStorage.setItem('lastSync', new Date().toISOString());
-        } catch (error) {
-            console.error("❌ Erreur de synchronisation :", error);
-        }
-    }
-
-    async function loadCloudData() {
-        if (!currentUser) return;
-
-        const userId = currentUser.uid;
-        console.log("🔄 Chargement des données cloud → local...");
-
-        try {
-            // 1. Charge qcm_attempts_log
-            const attemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
-            const cloudAttempts = attemptsSnapshot.docs.map(doc => doc.data());
-            if (cloudAttempts.length > 0) {
-                const localAttempts = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
-                const mergedAttempts = mergeAttempts(localAttempts, cloudAttempts);
-                localStorage.setItem('qcm_attempts_log', JSON.stringify(mergedAttempts));
-                console.log(`📥 ${mergedAttempts.length} attempts fusionnés.`);
-            }
-
-            // 2. Charge digital_error_log
-            const errorLogSnapshot = await db.collection(`users/${userId}/errorLog`).get();
-            const cloudErrorLog = {};
-            errorLogSnapshot.forEach(doc => {
-                cloudErrorLog[doc.data().key] = doc.data();
-            });
-            const localErrorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
-            const mergedErrorLog = { ...localErrorLog, ...cloudErrorLog };
-            localStorage.setItem('digital_error_log', JSON.stringify(mergedErrorLog));
-            console.log(`📥 ${Object.keys(mergedErrorLog).length} entrées d'erreurs fusionnées.`);
-
-            // 3. Charge canceled_qcms et canceled_items
-            const metadataSnapshot = await db.collection(`users/${userId}/metadata`).doc('canceled').get();
-            if (metadataSnapshot.exists) {
-                const data = metadataSnapshot.data();
-                localStorage.setItem('canceled_qcms', JSON.stringify(data.canceledQcms || []));
-                localStorage.setItem('canceled_items', JSON.stringify(data.canceledItems || []));
-                console.log(`📥 QCM/Items annulés chargés.`);
-            }
-
-            // 4. Charge les préférences
-            const preferencesSnapshot = await db.collection(`users/${userId}/metadata`).doc('preferences').get();
-            if (preferencesSnapshot.exists) {
-                const data = preferencesSnapshot.data();
-                localStorage.setItem('examTimerCollapsed', data.examTimerCollapsed || '0');
-                localStorage.setItem('theme', data.theme || 'light');
-                console.log(`📥 Préférences chargées.`);
-            }
-
-            // 5. Recharge l'interface
-            if (typeof displaySubjects === 'function') displaySubjects();
-            if (typeof renderHomeStats === 'function') renderHomeStats();
-
-            console.log("✅ Chargement des données cloud terminé.");
-        } catch (error) {
-            console.error("❌ Erreur de chargement des données cloud :", error);
-        }
-    }
-
-    // Fusionne les attempts locaux et cloud en résolvant les conflits
-    function mergeAttempts(localAttempts, cloudAttempts) {
-        const merged = [...localAttempts];
-        const mergedIds = new Set(localAttempts.map(a => `${a.qcmId}-${a.timestamp || a.date}`));
-
-        cloudAttempts.forEach(cloud => {
-            const id = `${cloud.qcmId}-${cloud.timestamp || cloud.date}`;
-            if (!mergedIds.has(id)) {
-                merged.push(cloud);
-                mergedIds.add(id);
-            }
-        });
-
-        // Trie par date (plus récent en premier)
-        merged.sort((a, b) => {
-            const aTime = new Date(a.timestamp || a.date).getTime();
-            const bTime = new Date(b.timestamp || b.date).getTime();
-            return bTime - aTime;
-        });
-
-        // Limite à MAX_ATTEMPTS_LOG
-        const MAX_ATTEMPTS_LOG = 5000;
-        if (merged.length > MAX_ATTEMPTS_LOG) {
-            merged.splice(MAX_ATTEMPTS_LOG);
-        }
-
-        return merged;
-    }
-
-    // Synchronise toutes les données (dans les 2 sens)
-    async function syncAllData() {
-        if (!currentUser) return;
-        await syncLocalToCloud();
-        await loadCloudData();
-    }
-
-    // Synchronise automatiquement toutes les 5 minutes
-    setInterval(syncAllData, 5 * 60 * 1000);
-
-    // Synchronise après chaque action utilisateur
-    function afterUserAction() {
-        setTimeout(syncAllData, 1000);
-    }
-
-    // Migration initiale des données locales vers Firebase
-    async function migrateLocalToCloud() {
-        if (!currentUser) {
-            alert("Connectez-vous d'abord !");
-            return;
-        }
-
-        if (!confirm("Voulez-vous migrer vos données locales vers le cloud ?\nCette action ne supprimera pas vos données locales et permettra de les retrouver sur tous vos appareils.")) {
-            return;
-        }
-
-        const userId = currentUser.uid;
-        const batch = db.batch();
-        let count = 0;
-
-        try {
-            // 1. Migration de qcm_attempts_log
-            const attemptsLog = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
-            attemptsLog.forEach(attempt => {
-                if (!attempt.timestamp) {
-                    attempt.timestamp = Date.now();
-                }
-                const docRef = db.collection(`users/${userId}/qcmAttempts`).doc();
-                batch.set(docRef, {
-                    ...attempt,
-                    userId: userId,
-                    migratedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                count++;
-            });
-
-            // 2. Migration de digital_error_log
-            const errorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
-            Object.entries(errorLog).forEach(([key, value]) => {
-                const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
-                batch.set(docRef, {
-                    ...value,
-                    key: key,
-                    userId: userId,
-                    migratedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                count++;
-            });
-
-            // 3. Migration des QCM annulés
-            const canceledQcms = JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
-            const canceledItems = JSON.parse(localStorage.getItem('canceled_items') || '[]');
-            if (canceledQcms.length > 0 || canceledItems.length > 0) {
-                const metadataRef = db.collection(`users/${userId}/metadata`).doc('canceled');
-                batch.set(metadataRef, {
-                    canceledQcms: canceledQcms,
-                    canceledItems: canceledItems,
-                    userId: userId,
-                    migratedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                count++;
-            }
-
-            await batch.commit();
-            alert(`✅ Migration terminée ! ${count} données migrées vers le cloud.\n\nTu peux maintenant te connecter sur n'importe quel appareil pour retrouver tes données.`);
-            document.getElementById('migrationButtonContainer').style.display = 'none';
-        } catch (error) {
-            console.error("❌ Erreur lors de la migration :", error);
-            alert("❌ Erreur lors de la migration. Vérifiez la console du navigateur (F12) pour plus de détails.");
-        }
-    }
-
-    // =============================================
-    // TON CODE EXISTANT (avec corrections async/await)
-    // =============================================
-    function escapeHTML(str) {
-        if (!str) return '';
-        return String(str)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
-    function shuffle(array) {
-        const arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-    }
-
-    function generateCleanId(str) {
-        return str.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').slice(0, 100);
-    }
-
-    function getCanceledQCMs() {
-        return JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
-    }
-
-    function getCanceledItems() {
-        return JSON.parse(localStorage.getItem('canceled_items') || '[]');
-    }
-
-    function getErrorLog() {
-        return JSON.parse(localStorage.getItem('digital_error_log') || '{}');
-    }
-
-    const MAX_ATTEMPTS_LOG = 5000;
-
-    function getAttemptsLog() {
-        return JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
-    }
-
-    // Sauvegarde un attempt (modifié pour Firebase)
-    async function saveAttempt(record) {
-        if (!record.timestamp) {
-            record.timestamp = Date.now();
-        }
-
-        const log = getAttemptsLog();
-        const exists = log.some(a => a.qcmId === record.qcmId && a.timestamp === record.timestamp);
-        if (!exists) {
-            log.push(record);
-            if (log.length > MAX_ATTEMPTS_LOG) log.splice(0, log.length - MAX_ATTEMPTS_LOG);
-            localStorage.setItem('qcm_attempts_log', JSON.stringify(log));
-        }
-
-        if (currentUser) {
-            try {
-                const snapshot = await db.collection(`users/${currentUser.uid}/qcmAttempts`)
-                    .where('qcmId', '==', record.qcmId)
-                    .where('timestamp', '==', record.timestamp)
-                    .get();
-
-                if (snapshot.empty) {
-                    await db.collection(`users/${currentUser.uid}/qcmAttempts`).add({
-                        ...record,
-                        userId: currentUser.uid,
-                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
                 }
-            } catch (error) {
-                console.error("❌ Erreur de sauvegarde dans Firestore :", error);
-            }
-        }
 
-        afterUserAction();
-    }
-
-    function getQcmStats(qcmId) {
-        const attempts = getAttemptsLog().filter(a => a.qcmId === qcmId);
-        if (attempts.length === 0) return { label: 'Jamais vu', cls: 'secondary' };
-
-        const lastTwo = attempts.slice(-2);
-        const masteredRecently = lastTwo.length >= 2 && lastTwo.every(a => a.correct);
-        const errorCount = attempts.filter(a => !a.correct).length;
-
-        if (masteredRecently) return { label: 'Maîtrisé', cls: 'success' };
-        if (errorCount >= 2) return { label: 'Erreur récurrente', cls: 'danger' };
-        return { label: `Vu ${attempts.length}×`, cls: 'info' };
-    }
-
-    function computeGlobalStats() {
-        const log = getAttemptsLog();
-        const total = log.length;
-        if (total === 0) return null;
-
-        const successCount = log.filter(a => a.correct).length;
-        const successRate = (successCount / total * 100).toFixed(1);
-
-        const byConf = { sure: [], hesitant: [], guess: [] };
-        log.forEach(a => {
-            if (a.confidence && byConf[a.confidence]) byConf[a.confidence].push(a.correct);
-        });
-        const rateOf = key => {
-            const arr = byConf[key];
-            if (arr.length === 0) return null;
-            return (arr.filter(Boolean).length / arr.length * 100).toFixed(0);
-        };
-
-        return {
-            total,
-            successRate,
-            sureRate: rateOf('sure'),
-            hesitantRate: rateOf('hesitant'),
-            guessRate: rateOf('guess'),
-            falseCertaintyCount: byConf.sure.filter(c => !c).length
-        };
-    }
-
-    // Logge le résultat d'un item (modifié pour Firebase)
-    async function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId, isExam) {
-        const log = getErrorLog();
-        const key = `${subjectPath} > ${qcmQuestion} > ${itemText}`;
-
-        if (!log[key]) {
-            log[key] = {
-                p: subjectPath,
-                q: qcmQuestion,
-                i: itemText,
-                qcmId: qcmId,
-                fp: 0,
-                fn: 0,
-                examErrorCount: 0,
-                confidence: sessionConfidence[qcmId] || 'non spécifié'
-            };
-        }
-
-        if (status === 'false_positive') {
-            log[key].fp += 1;
-            if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
-        } else if (status === 'false_negative') {
-            log[key].fn += 1;
-            if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
-        }
-
-        if (sessionConfidence[qcmId]) {
-            log[key].confidence = sessionConfidence[qcmId];
-        }
-
-        localStorage.setItem('digital_error_log', JSON.stringify(log));
-
-        if (currentUser) {
-            try {
-                await db.collection(`users/${currentUser.uid}/errorLog`).doc(key).set({
-                    ...log[key],
-                    key: key,
-                    userId: currentUser.uid,
-                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-            } catch (error) {
-                console.error("❌ Erreur de sauvegarde dans Firestore :", error);
-            }
-        }
-
-        afterUserAction();
-    }
-
-    function setConfidence(qcmId, level) {
-        sessionConfidence[qcmId] = level;
-
-        const log = getErrorLog();
-        let updated = false;
-
-        Object.keys(log).forEach(key => {
-            if (log[key].qcmId === qcmId) {
-                log[key].confidence = level;
-                updated = true;
-            }
-        });
-
-        const targetQcm = currentSession.find(q => q.id === qcmId);
-        if (targetQcm && (level === 'guess' || level === 'hesitant')) {
-            targetQcm.options.forEach(opt => {
-                const key = `${targetQcm.subjectPath} > ${targetQcm.question} > ${opt.text}`;
-                if (!log[key]) {
-                    log[key] = {
-                        p: targetQcm.subjectPath,
-                        q: targetQcm.question,
-                        i: opt.text,
-                        qcmId: qcmId,
-                        fp: 0,
-                        fn: 0,
-                        examErrorCount: 0,
-                        confidence: level
-                    };
-                    updated = true;
-                }
-            });
-        }
-
-        if (updated) {
-            localStorage.setItem('digital_error_log', JSON.stringify(log));
-            afterUserAction();
-        }
-    }
-
-    function cancelQCM(qcmId) {
-        if (confirm("Voulez-vous annuler ce QCM ? Il ne sera plus proposé.")) {
-            const canceled = getCanceledQCMs();
-            if (!canceled.includes(qcmId)) {
-                canceled.push(qcmId);
-                localStorage.setItem('canceled_qcms', JSON.stringify(canceled));
-            }
-            const el = document.getElementById(`qcm-corr-block-${qcmId}`);
-            if (el) el.remove();
-
-            if (currentUser) {
-                db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').set({
-                    canceledQcms: canceled,
-                    canceledItems: getCanceledItems(),
-                    userId: currentUser.uid,
-                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-                }, { merge: true }).catch(console.error);
-            }
-
-            afterUserAction();
-        }
-    }
-
-    function cancelItem(itemId) {
-        if (confirm("Annuler cet ITEM ? Il sera neutralisé lors des prochaines sessions.")) {
-            const canceled = getCanceledItems();
-            if (!canceled.includes(itemId)) {
-                canceled.push(itemId);
-                localStorage.setItem('canceled_items', JSON.stringify(canceled));
-            }
-            alert("Item neutralisé pour les futures sessions.");
-
-            if (currentUser) {
-                db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').set({
-                    canceledQcms: getCanceledQCMs(),
-                    canceledItems: canceled,
-                    userId: currentUser.uid,
-                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-                }, { merge: true }).catch(console.error);
-            }
-
-            afterUserAction();
-        }
-    }
-
-    function resetErratums() {
-        if (confirm("Réinitialiser tous les erratums enregistrés ?")) {
-            localStorage.removeItem('canceled_qcms');
-            localStorage.removeItem('canceled_items');
-            alert("Erratums réinitialisés.");
-
-            if (currentUser) {
-                db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').delete().catch(console.error);
-            }
-
-            afterUserAction();
-            location.reload();
-        }
-    }
-
-    function resetErrorLog() {
-        if (confirm("Voulez-vous vraiment vider tout votre carnet d'erreurs ?")) {
-            localStorage.removeItem('digital_error_log');
-            alert("Carnet d'erreurs réinitialisé !");
-
-            if (currentUser) {
-                db.collection(`users/${currentUser.uid}/errorLog`).get().then(snapshot => {
-                    const batch = db.batch();
-                    snapshot.forEach(doc => {
-                        batch.delete(doc.ref);
+                const localErrorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+                if (Object.keys(localErrorLog).length > 0) {
+                    const cloudErrorLogSnapshot = await db.collection(`users/${userId}/errorLog`).get();
+                    const cloudErrorLog = {};
+                    cloudErrorLogSnapshot.forEach(doc => {
+                        cloudErrorLog[doc.data().key] = doc.data();
                     });
-                    batch.commit().catch(console.error);
-                });
-            }
 
-            afterUserAction();
-        }
-    }
-
-    async function resetStats() {
-        if (!confirm("Réinitialiser toutes les statistiques (historique des QCM répondus, scores, temps) ? Cette action est irréversible.")) return;
-        if (!confirm("Confirmer une dernière fois : toutes vos statistiques seront définitivement effacées.")) return;
-        localStorage.removeItem('qcm_attempts_log');
-        alert("Statistiques réinitialisées.");
-
-        if (currentUser) {
-            const snapshot = await db.collection(`users/${currentUser.uid}/qcmAttempts`).get();
-            const batch = db.batch();
-            snapshot.forEach(doc => {
-                batch.delete(doc.ref);
-            });
-            await batch.commit();
-        }
-
-        afterUserAction();
-        renderStatsScreen();
-        renderHomeStats();
-    }
-
-    function exportErrorLog() {
-        const log = getErrorLog();
-        const allEntries = Object.values(log);
-
-        const errorItems = allEntries.filter(item => item.fp > 0 || item.fn > 0);
-        const luckyGuesses = allEntries.filter(item => (item.fp === 0 && item.fn === 0) && (item.confidence === 'guess' || item.confidence === 'hesitant'));
-
-        if (errorItems.length === 0 && luckyGuesses.length === 0) {
-            alert("Aucune donnée enregistrée dans le carnet pour le moment.");
-            return;
-        }
-
-        errorItems.sort((a, b) => (b.examErrorCount || 0) - (a.examErrorCount || 0));
-
-        let outputText = "PROMPT REVISION IA - CARNET D'ERREURS ET LACUNES ENRICHI\n";
-        outputText += "CONSIGNE POUR L'IA :\n";
-        outputText += "1. Analyse mes erreurs récurrentes et mes bonnes réponses 'Au hasard' ci-dessous.\n";
-        outputText += "2. Priorise les erreurs marquées 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
-        outputText += "3. Priorise en priorité absolue les erreurs marquées 'REALISE EN MODE EXAMEN', elles pèsent le plus lourd car commises en conditions réelles.\n";
-        outputText += "4. Pour chaque notion, explique le piège physiologique/clinique et donne une règle de décision rapide.\n\n";
-        outputText += "Légende : FP = Faux Positif, FN = Faux Négatif.\n\n";
-
-        if (errorItems.length > 0) {
-            outputText += "--- HISTORIQUE DES ERREURS ---\n\n";
-            errorItems.forEach(item => {
-                let errDetails = [];
-                if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
-                if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
-                const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
-                const examFlag = item.examErrorCount > 0 ? ` | ⚠️ REALISE EN MODE EXAMEN x${item.examErrorCount} (PRIORITAIRE)` : '';
-                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}${examFlag}\n\n`;
-            });
-        }
-
-        if (luckyGuesses.length > 0) {
-            outputText += "--- ⚠️ BONNES RÉPONSES AU HASARD / HÉSITATIONS (À REVOIR) ---\n\n";
-            luckyGuesses.forEach(item => {
-                outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" | Ressenti: [${item.confidence.toUpperCase()}]\n\n`;
-            });
-        }
-
-        const blob = new Blob([outputText], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `carnet_erreurs_enrichi_${new Date().toISOString().slice(0,10)}.txt`;
-        a.click();
-        URL.revokeObjectURL(url);
-    }
-
-    // =============================================
-    // CHARGEMENT ET PARSING SÉCURISÉ
-    // =============================================
-    async function loadNode(node, pathParts) {
-        if (Array.isArray(node)) {
-            const chapters = {};
-            for (const file of node) {
-                try {
-                    const res = await fetch(`QCM/${pathParts.join('/')}/${file}`);
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    const text = await res.text();
-                    const parsed = parseQCMFile(text, pathParts.join(' > '), file);
-                    if (parsed.length > 0) {
-                        chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
-                    }
-                } catch (e) {
-                    console.error(`Erreur de chargement du fichier: QCM/${pathParts.join('/')}/${file}`, e);
-                }
-            }
-            return chapters;
-        } else {
-            const sousDossiers = {};
-            for (const key in node) {
-                sousDossiers[key] = await loadNode(node[key], [...pathParts, key]);
-            }
-            return sousDossiers;
-        }
-    }
-
-    async function loadAllQCM() {
-        const loadingEl = document.getElementById('loadingScreen');
-        try {
-            const configResponse = await fetch('QCM/config.json');
-            if (!configResponse.ok) throw new Error("Impossible de trouver config.json");
-
-            const subjects = await configResponse.json();
-            for (const subject in subjects) {
-                data[subject] = await loadNode(subjects[subject], [subject]);
-            }
-            buildFlatIndex(data);
-            loadingEl.classList.add('hidden');
-
-            if (!restoreSessionState()) {
-                displaySubjects();
-                renderHomeStats();
-            }
-        } catch (e) {
-            console.error("Erreur critique d'initialisation :", e);
-            if (loadingEl) {
-                loadingEl.innerHTML = `
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading"><i class="fa-solid fa-triangle-exclamation"></i> Erreur de chargement</h4>
-                        <p>Impossible de charger la base de QCM. Vérifiez que votre serveur local fonctionne et que <code>QCM/config.json</code> est présent.</p>
-                        <hr>
-                        <p class="mb-0 text-muted" style="font-size: 0.85rem;">Détail : ${escapeHTML(e.message)}</p>
-                    </div>`;
-            }
-        }
-    }
-
-    function getNode(path) {
-        let node = data;
-        for (const key of path) node = node[key];
-        return node;
-    }
-
-    function isLeaf(node) {
-        return Array.isArray(node);
-    }
-
-    function buildFlatIndex(node) {
-        if (Array.isArray(node)) {
-            node.forEach(q => { allQcmsIndex[q.id] = q; });
-        } else {
-            Object.values(node).forEach(child => buildFlatIndex(child));
-        }
-    }
-
-    function parseQCMFile(content, currentSubjectPath, filename) {
-        const qcms = [];
-        const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
-
-        blocks.forEach((block, index) => {
-            const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
-            if (lines.length < 6) return;
-
-            let question = lines[0];
-            if (question.includes('{') || question.includes(';') || question.includes('<')) return;
-
-            let imagePath = null;
-            let optionStartIndex = 1;
-
-            if (lines[1] && lines[1].toUpperCase().startsWith('IMG:')) {
-                imagePath = lines[1].substring(4).trim();
-                optionStartIndex = 2;
-            }
-
-            const options = [];
-            const optionRegex = /^(\$?)([A-Ea-e])[\.\)]\s+(.+)$/;
-
-            for (let i = optionStartIndex; i < lines.length; i++) {
-                const match = lines[i].match(optionRegex);
-                if (match) {
-                    const text = match[3];
-                    const itemId = generateCleanId(`${currentSubjectPath}_${question}_${text}`);
-                    options.push({ id: itemId, text: text, isCorrect: match[1] === '$' });
-                }
-            }
-
-            if (options.length === 5) {
-                const qcmId = generateCleanId(`${currentSubjectPath}_${question}`);
-                qcms.push({ id: qcmId, subjectPath: currentSubjectPath, question, image: imagePath, options });
-            } else {
-                console.warn(`[QCM Ignoré] Fichier: ${filename} | Bloc #${index + 1} | Raison: ${options.length}/5 options détectées.`);
-            }
-        });
-        return qcms;
-    }
-
-    // =============================================
-    // SESSIONS ET RENDER (avec tracking du temps)
-    // =============================================
-    function startQuestionTimer(qIdx) {
-        currentQuestionIndex = qIdx;
-        questionStartTimes[qIdx] = Date.now();
-    }
-
-    function stopQuestionTimer(qIdx) {
-        if (questionStartTimes[qIdx]) {
-            const endTime = Date.now();
-            const duration = (endTime - questionStartTimes[qIdx]) / 1000;
-
-            if (!sessionConfidence[currentSession[qIdx].id]) {
-                sessionConfidence[currentSession[qIdx].id] = {};
-            }
-            sessionConfidence[currentSession[qIdx].id].duration = duration;
-
-            const attempts = getAttemptsLog();
-            const lastAttempt = attempts.filter(a => a.qcmId === currentSession[qIdx].id).pop();
-            if (lastAttempt) {
-                lastAttempt.durationSeconds = duration;
-                localStorage.setItem('qcm_attempts_log', JSON.stringify(attempts));
-            }
-
-            if (currentUser) {
-                db.collection(`users/${currentUser.uid}/qcmAttempts`)
-                    .where('qcmId', '==', currentSession[qIdx].id)
-                    .orderBy('date', 'desc')
-                    .limit(1)
-                    .get()
-                    .then(snapshot => {
-                        if (!snapshot.empty) {
-                            snapshot.docs[0].ref.update({
-                                durationSeconds: duration,
+                    Object.entries(localErrorLog).forEach(([key, value]) => {
+                        if (!cloudErrorLog[key] || JSON.stringify(cloudErrorLog[key]) !== JSON.stringify(value)) {
+                            const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
+                            batch.set(docRef, {
+                                ...value,
+                                key: key,
+                                userId: userId,
                                 syncedAt: firebase.firestore.FieldValue.serverTimestamp()
                             });
                         }
                     });
+                }
+
+                const localCanceledQcms = JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
+                const localCanceledItems = JSON.parse(localStorage.getItem('canceled_items') || '[]');
+
+                if (localCanceledQcms.length > 0 || localCanceledItems.length > 0) {
+                    const metadataRef = db.collection(`users/${userId}/metadata`).doc('canceled');
+                    batch.set(metadataRef, {
+                        canceledQcms: localCanceledQcms,
+                        canceledItems: localCanceledItems,
+                        userId: userId,
+                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true });
+                }
+
+                const preferences = {
+                    examTimerCollapsed: localStorage.getItem('examTimerCollapsed') || '0',
+                    theme: localStorage.getItem('theme') || 'light'
+                };
+                const preferencesRef = db.collection(`users/${userId}/metadata`).doc('preferences');
+                batch.set(preferencesRef, {
+                    ...preferences,
+                    userId: userId,
+                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+
+                await batch.commit();
+                localStorage.setItem('lastSync', new Date().toISOString());
+            } catch (error) {
+                console.error("❌ Erreur de synchronisation :", error);
             }
-
-            delete questionStartTimes[qIdx];
-        }
-    }
-
-    function clearExamTimer() {
-        if (examTimerInterval) clearInterval(examTimerInterval);
-        examTimerInterval = null;
-        examEndTime = null;
-        hideExamTimerWidget();
-    }
-
-    function hideExamTimerWidget() {
-        const widget = document.getElementById('examTimerWidget');
-        if (widget) widget.classList.add('hidden');
-    }
-
-    function toggleExamTimerCollapse() {
-        const widget = document.getElementById('examTimerWidget');
-        const collapsed = widget.classList.toggle('collapsed');
-        localStorage.setItem('examTimerCollapsed', collapsed ? '1' : '0');
-    }
-
-    function startExamTimer(endTime) {
-        if (!examMode) { hideExamTimerWidget(); return; }
-
-        examEndTime = endTime;
-        const widget = document.getElementById('examTimerWidget');
-        widget.classList.remove('hidden');
-        if (localStorage.getItem('examTimerCollapsed') === '1') widget.classList.add('collapsed');
-        updateExamTimerDisplay();
-        if (examTimerInterval) clearInterval(examTimerInterval);
-        examTimerInterval = setInterval(() => {
-            const remaining = examEndTime - Date.now();
-            if (remaining <= 0) {
-                clearInterval(examTimerInterval);
-                examTimerInterval = null;
-                document.getElementById('examTimerDisplay').textContent = "00:00";
-                alert("Temps écoulé, le test va être validé automatiquement.");
-                validateFullSession();
-                return;
-            }
-            updateExamTimerDisplay();
-        }, 1000);
-    }
-
-    function updateExamTimerDisplay() {
-        const remaining = Math.max(0, examEndTime - Date.now());
-        const m = Math.floor(remaining / 60000);
-        const s = Math.floor((remaining % 60000) / 1000);
-        const el = document.getElementById('examTimerDisplay');
-        if (el) {
-            el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-            el.classList.toggle('low-time', remaining > 0 && remaining < 60000);
-        }
-    }
-
-    function collectCurrentAnswers() {
-        const answers = {};
-        currentSession.forEach((q, qIdx) => {
-            answers[qIdx] = [];
-            q.options.forEach((_, oIdx) => {
-                const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
-                if (cb && cb.checked) answers[qIdx].push(oIdx);
-            });
-        });
-        return answers;
-    }
-
-    function validateQuestionDP(qIdx) {
-        const q = currentSession[qIdx];
-        const hasAnswer = q.options.some((_, oIdx) => {
-            const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
-            return cb && cb.checked;
-        });
-        if (!hasAnswer) {
-            alert("Vous devez cocher au moins une réponse avant de valider cette question.");
-            return;
-        }
-        if (!confirm("Valider cette question ? Vous ne pourrez plus modifier votre réponse ensuite.")) return;
-
-        stopQuestionTimer(qIdx);
-        const snapshot = collectCurrentAnswers();
-        dpValidated[qIdx] = true;
-        renderSessionScreen(snapshot);
-        saveSessionState();
-        afterUserAction();
-    }
-
-    function renderSessionScreen(restoreAnswers) {
-        const canceledItems = getCanceledItems();
-        const container = document.getElementById('questionsContainer');
-
-        if (currentQuestionIndex !== null && questionStartTimes[currentQuestionIndex]) {
-            stopQuestionTimer(currentQuestionIndex);
         }
 
-        container.innerHTML = currentSession.map((q, qIdx) => {
-            const isDpLocked = dpMode && qIdx > 0 && !dpValidated[qIdx - 1];
-            const isDpValidatedThis = dpMode && dpValidated[qIdx];
+        async function loadCloudData() {
+            if (!currentUser) return;
 
-            if (isDpLocked) {
-                return `
-                <div class="que sngmultichoice notyetanswered" id="question-${qIdx}">
-                    <div class="info">
-                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
-                        <div class="state">Verrouillée</div>
-                    </div>
-                    <div class="content">
-                        <div class="alert alert-secondary mb-0">
-                            <i class="fa-solid fa-lock"></i> Cette question ne peut pas être tentée avant que la question précédente ait reçu une réponse.
-                        </div>
-                    </div>
-                </div>`;
-            }
+            const userId = currentUser.uid;
 
-            const stats = getQcmStats(q.id);
+            try {
+                const attemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
+                const cloudAttempts = attemptsSnapshot.docs.map(doc => doc.data());
+                if (cloudAttempts.length > 0) {
+                    const localAttempts = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
+                    const mergedAttempts = mergeAttempts(localAttempts, cloudAttempts);
+                    localStorage.setItem('qcm_attempts_log', JSON.stringify(mergedAttempts));
+                }
 
-            return `
-            <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}" onclick="focusQuestion(${qIdx})">
-                <div class="info">
-                    <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
-                    <div class="state">${isDpValidatedThis ? 'Validée' : 'Pas encore répondu'}</div>
-                    <div class="grade">Noté sur 1,00</div>
-                    ${!examMode ? `<div><span class="badge bg-${stats.cls}">${stats.label}</span></div>` : ''}
-                </div>
-                <div class="content">
-                    <div class="formulation clearfix">
-                        <h4 class="accesshide">Texte de la question</h4>
-                        <div class="qtext">
-                            <p>${escapeHTML(q.question)}</p>
-                            ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
-                        </div>
-                        <fieldset class="ablock">
-                            <legend class="prompt">Réponse</legend>
-                            <div class="answer">
-                                ${q.options.map((opt, oIdx) => {
-                                    const isCanceled = canceledItems.includes(opt.id);
-                                    const isDisabled = isCanceled || isDpValidatedThis;
-                                    return `
-                                    <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
-                                        <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isDisabled ? 'disabled' : ''} onchange="saveSessionState(); stopQuestionTimer(${qIdx})">
-                                        <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
-                                            <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
-                                            <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
-                                        </label>
-                                    </div>`;
-                                }).join('')}
-                            </div>
-                        </fieldset>
-                    </div>
-                    ${!examMode ? `
-                    <div class="confidence-selector mt-3 pt-2 border-top">
-                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                            <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Mon ressenti avant validation :</small>
-                            <div class="btn-group btn-group-sm" role="group">
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'sure')">
-                                <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
-
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'hesitant')">
-                                <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
-
-                                <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'guess')">
-                                <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
-                            </div>
-                        </div>
-                    </div>` : ''}
-                    ${dpMode && !isDpValidatedThis ? `
-                    <div class="mt-3 pt-2 border-top text-end">
-                        <button class="btn btn-uness btn-sm" onclick="validateQuestionDP(${qIdx})">Valider cette question</button>
-                    </div>` : ''}
-                    ${dpMode && isDpValidatedThis ? `
-                    <div class="mt-3 pt-2 border-top">
-                        <span class="badge bg-success"><i class="fa-solid fa-check"></i> Question validée, réponse verrouillée</span>
-                    </div>` : ''}
-                </div>
-            </div>`;
-        }).join('');
-
-        const firstQuestion = document.querySelector('.que:not(.hidden)');
-        if (firstQuestion) {
-            const qIdx = parseInt(firstQuestion.id.replace('question-', ''));
-            startQuestionTimer(qIdx);
-        }
-
-        if (restoreAnswers) {
-            currentSession.forEach((q, qIdx) => {
-                (restoreAnswers[qIdx] || []).forEach(oIdx => {
-                    const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
-                    if (cb) cb.checked = true;
+                const errorLogSnapshot = await db.collection(`users/${userId}/errorLog`).get();
+                const cloudErrorLog = {};
+                errorLogSnapshot.forEach(doc => {
+                    cloudErrorLog[doc.data().key] = doc.data();
                 });
-                if (sessionConfidence[q.id]) {
-                    const confLevel = sessionConfidence[q.id];
-                    const radioId = `conf_${confLevel}_${qIdx}`;
-                    const radio = document.getElementById(radioId);
-                    if (radio) radio.checked = true;
+                const localErrorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+                const mergedErrorLog = { ...localErrorLog, ...cloudErrorLog };
+                localStorage.setItem('digital_error_log', JSON.stringify(mergedErrorLog));
+
+                const metadataSnapshot = await db.collection(`users/${userId}/metadata`).doc('canceled').get();
+                if (metadataSnapshot.exists) {
+                    const data = metadataSnapshot.data();
+                    localStorage.setItem('canceled_qcms', JSON.stringify(data.canceledQcms || []));
+                    localStorage.setItem('canceled_items', JSON.stringify(data.canceledItems || []));
+                }
+
+                const preferencesSnapshot = await db.collection(`users/${userId}/metadata`).doc('preferences').get();
+                if (preferencesSnapshot.exists) {
+                    const data = preferencesSnapshot.data();
+                    localStorage.setItem('examTimerCollapsed', data.examTimerCollapsed || '0');
+                    localStorage.setItem('theme', data.theme || 'light');
+                }
+
+                if (typeof displaySubjects === 'function') displaySubjects();
+                if (typeof renderHomeStats === 'function') renderHomeStats();
+            } catch (error) {
+                console.error("❌ Erreur de chargement des données cloud :", error);
+            }
+        }
+
+        function mergeAttempts(localAttempts, cloudAttempts) {
+            const merged = [...localAttempts];
+            const mergedIds = new Set(localAttempts.map(a => `${a.qcmId}-${a.timestamp || a.date}`));
+
+            cloudAttempts.forEach(cloud => {
+                const id = `${cloud.qcmId}-${cloud.timestamp || cloud.date}`;
+                if (!mergedIds.has(id)) {
+                    merged.push(cloud);
+                    mergedIds.add(id);
                 }
             });
+
+            merged.sort((a, b) => {
+                const aTime = new Date(a.timestamp || a.date).getTime();
+                const bTime = new Date(b.timestamp || b.date).getTime();
+                return bTime - aTime;
+            });
+
+            const MAX_ATTEMPTS_LOG = 5000;
+            if (merged.length > MAX_ATTEMPTS_LOG) {
+                merged.splice(MAX_ATTEMPTS_LOG);
+            }
+
+            return merged;
         }
-    }
 
-    function focusQuestion(qIdx) {
-        if (currentQuestionIndex !== null && questionStartTimes[currentQuestionIndex]) {
-            stopQuestionTimer(currentQuestionIndex);
+        async function syncAllData() {
+            if (!currentUser) return;
+            await syncLocalToCloud();
+            await loadCloudData();
         }
-        startQuestionTimer(qIdx);
-        currentQuestionIndex = qIdx;
-    }
 
-    function saveSessionState() {
-        if (currentSession.length === 0) return;
+        setInterval(syncAllData, 5 * 60 * 1000);
 
-        const state = {
-            session: currentSession.map(q => ({
-                id: q.id,
-                answered: collectCurrentAnswers()[currentSession.indexOf(q)].length > 0
-            })),
-            dpValidated: [...dpValidated],
-            confidence: {...sessionConfidence},
-            startTime: sessionStartTime,
-            questionStartTimes: {...questionStartTimes}
-        };
-        localStorage.setItem('currentSessionState', JSON.stringify(state));
-
-        if (currentUser) {
-            db.collection(`users/${currentUser.uid}/metadata`).doc('currentSession').set({
-                ...state,
-                userId: currentUser.uid,
-                syncedAt: firebase.firestore.FieldValue.serverTimestamp()
-            }).catch(console.error);
+        function afterUserAction() {
+            setTimeout(syncAllData, 1000);
         }
-    }
 
-    function restoreSessionState() {
-        const savedState = localStorage.getItem('currentSessionState');
-        if (!savedState) return false;
+        async function migrateLocalToCloud() {
+            if (!currentUser) {
+                alert("Connectez-vous d'abord !");
+                return;
+            }
 
-        try {
-            const state = JSON.parse(savedState);
-            const validSession = state.session.filter(q => allQcmsIndex[q.id]);
-            if (validSession.length === 0) return false;
+            if (!confirm("Voulez-vous migrer vos données locales vers le cloud ?")) return;
 
-            currentSession = validSession.map(q => ({
-                ...allQcmsIndex[q.id],
-                options: shuffle(allQcmsIndex[q.id].options)
-            }));
-            dpValidated = state.dpValidated || new Array(currentSession.length).fill(false);
-            sessionConfidence = state.confidence || {};
-            sessionStartTime = state.startTime || Date.now();
-            questionStartTimes = state.questionStartTimes || {};
-            currentQuestionIndex = Object.keys(questionStartTimes).length > 0 ?
-                parseInt(Object.keys(questionStartTimes)[0]) : 0;
+            const userId = currentUser.uid;
+            const batch = db.batch();
+            let count = 0;
+
+            try {
+                const attemptsLog = JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]');
+                attemptsLog.forEach(attempt => {
+                    if (!attempt.timestamp) attempt.timestamp = Date.now();
+                    const docRef = db.collection(`users/${userId}/qcmAttempts`).doc();
+                    batch.set(docRef, { ...attempt, userId: userId, migratedAt: firebase.firestore.FieldValue.serverTimestamp() });
+                    count++;
+                });
+
+                const errorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
+                Object.entries(errorLog).forEach(([key, value]) => {
+                    const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
+                    batch.set(docRef, { ...value, key: key, userId: userId, migratedAt: firebase.firestore.FieldValue.serverTimestamp() });
+                    count++;
+                });
+
+                const canceledQcms = JSON.parse(localStorage.getItem('canceled_qcms') || '[]');
+                const canceledItems = JSON.parse(localStorage.getItem('canceled_items') || '[]');
+                if (canceledQcms.length > 0 || canceledItems.length > 0) {
+                    const metadataRef = db.collection(`users/${userId}/metadata`).doc('canceled');
+                    batch.set(metadataRef, { canceledQcms, canceledItems, userId, migratedAt: firebase.firestore.FieldValue.serverTimestamp() });
+                    count++;
+                }
+
+                await batch.commit();
+                alert(`✅ Migration terminée ! ${count} éléments synchronisés.`);
+                document.getElementById('migrationButtonContainer').style.display = 'none';
+            } catch (error) {
+                console.error("❌ Erreur migration :", error);
+            }
+        }
+
+        // =============================================
+        // UTILITAIRES ET LOGIQUE LOCALESTORAGE
+        // =============================================
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function generateCleanId(str) {
+            return str.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').slice(0, 100);
+        }
+
+        function getCanceledQCMs() { return JSON.parse(localStorage.getItem('canceled_qcms') || '[]'); }
+        function getCanceledItems() { return JSON.parse(localStorage.getItem('canceled_items') || '[]'); }
+        function getErrorLog() { return JSON.parse(localStorage.getItem('digital_error_log') || '{}'); }
+        function getAttemptsLog() { return JSON.parse(localStorage.getItem('qcm_attempts_log') || '[]'); }
+
+        async function saveAttempt(record) {
+            if (!record.timestamp) record.timestamp = Date.now();
+
+            const log = getAttemptsLog();
+            const exists = log.some(a => a.qcmId === record.qcmId && a.timestamp === record.timestamp);
+            if (!exists) {
+                log.push(record);
+                if (log.length > 5000) log.splice(0, log.length - 5000);
+                localStorage.setItem('qcm_attempts_log', JSON.stringify(log));
+            }
+
+            if (currentUser) {
+                try {
+                    const snapshot = await db.collection(`users/${currentUser.uid}/qcmAttempts`)
+                        .where('qcmId', '==', record.qcmId)
+                        .where('timestamp', '==', record.timestamp)
+                        .get();
+
+                    if (snapshot.empty) {
+                        await db.collection(`users/${currentUser.uid}/qcmAttempts`).add({
+                            ...record,
+                            userId: currentUser.uid,
+                            syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    }
+                } catch (error) {
+                    console.error("❌ Erreur Firestore :", error);
+                }
+            }
+            afterUserAction();
+        }
+
+        function getQcmStats(qcmId) {
+            const attempts = getAttemptsLog().filter(a => a.qcmId === qcmId);
+            if (attempts.length === 0) return { label: 'Jamais vu', cls: 'secondary' };
+
+            const lastTwo = attempts.slice(-2);
+            const masteredRecently = lastTwo.length >= 2 && lastTwo.every(a => a.correct);
+            const errorCount = attempts.filter(a => !a.correct).length;
+
+            if (masteredRecently) return { label: 'Maîtrisé', cls: 'success' };
+            if (errorCount >= 2) return { label: 'Erreur récurrente', cls: 'danger' };
+            return { label: `Vu ${attempts.length}×`, cls: 'info' };
+        }
+
+        function computeGlobalStats() {
+            const log = getAttemptsLog();
+            const total = log.length;
+            if (total === 0) return null;
+
+            const successCount = log.filter(a => a.correct).length;
+            const successRate = (successCount / total * 100).toFixed(1);
+
+            const byConf = { sure: [], hesitant: [], guess: [] };
+            log.forEach(a => {
+                if (a.confidence && byConf[a.confidence]) byConf[a.confidence].push(a.correct);
+            });
+            const rateOf = key => {
+                const arr = byConf[key];
+                if (arr.length === 0) return null;
+                return (arr.filter(Boolean).length / arr.length * 100).toFixed(0);
+            };
+
+            return {
+                total,
+                successRate,
+                sureRate: rateOf('sure'),
+                hesitantRate: rateOf('hesitant'),
+                guessRate: rateOf('guess'),
+                falseCertaintyCount: byConf.sure.filter(c => !c).length
+            };
+        }
+
+        async function logItemResult(subjectPath, qcmQuestion, itemText, status, qcmId, isExam) {
+            const log = getErrorLog();
+            const key = `${subjectPath} > ${qcmQuestion} > ${itemText}`;
+
+            if (!log[key]) {
+                log[key] = {
+                    p: subjectPath,
+                    q: qcmQuestion,
+                    i: itemText,
+                    qcmId: qcmId,
+                    fp: 0,
+                    fn: 0,
+                    examErrorCount: 0,
+                    confidence: sessionConfidence[qcmId] || 'non spécifié'
+                };
+            }
+
+            if (status === 'false_positive') {
+                log[key].fp += 1;
+                if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
+            } else if (status === 'false_negative') {
+                log[key].fn += 1;
+                if (isExam) log[key].examErrorCount = (log[key].examErrorCount || 0) + 1;
+            }
+
+            if (sessionConfidence[qcmId]) log[key].confidence = sessionConfidence[qcmId];
+
+            localStorage.setItem('digital_error_log', JSON.stringify(log));
+
+            if (currentUser) {
+                try {
+                    await db.collection(`users/${currentUser.uid}/errorLog`).doc(key).set({
+                        ...log[key],
+                        key: key,
+                        userId: currentUser.uid,
+                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch (error) {
+                    console.error("❌ Erreur Firestore :", error);
+                }
+            }
+            afterUserAction();
+        }
+
+        function setConfidence(qcmId, level) {
+            sessionConfidence[qcmId] = level;
+            const log = getErrorLog();
+            let updated = false;
+
+            Object.keys(log).forEach(key => {
+                if (log[key].qcmId === qcmId) {
+                    log[key].confidence = level;
+                    updated = true;
+                }
+            });
+
+            if (updated) {
+                localStorage.setItem('digital_error_log', JSON.stringify(log));
+                afterUserAction();
+            }
+        }
+
+        function cancelQCM(qcmId) {
+            if (confirm("Voulez-vous annuler ce QCM ? Il ne sera plus proposé.")) {
+                const canceled = getCanceledQCMs();
+                if (!canceled.includes(qcmId)) {
+                    canceled.push(qcmId);
+                    localStorage.setItem('canceled_qcms', JSON.stringify(canceled));
+                }
+                const el = document.getElementById(`qcm-corr-block-${qcmId}`);
+                if (el) el.remove();
+
+                if (currentUser) {
+                    db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').set({
+                        canceledQcms: canceled,
+                        canceledItems: getCanceledItems(),
+                        userId: currentUser.uid,
+                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true }).catch(console.error);
+                }
+                afterUserAction();
+            }
+        }
+
+        function cancelItem(itemId) {
+            if (confirm("Annuler cet ITEM ? Il sera neutralisé lors des prochaines sessions.")) {
+                const canceled = getCanceledItems();
+                if (!canceled.includes(itemId)) {
+                    canceled.push(itemId);
+                    localStorage.setItem('canceled_items', JSON.stringify(canceled));
+                }
+                alert("Item neutralisé pour les futures sessions.");
+
+                if (currentUser) {
+                    db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').set({
+                        canceledQcms: getCanceledQCMs(),
+                        canceledItems: canceled,
+                        userId: currentUser.uid,
+                        syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true }).catch(console.error);
+                }
+                afterUserAction();
+            }
+        }
+
+        function resetErratums() {
+            if (confirm("Réinitialiser tous les erratums enregistrés ?")) {
+                localStorage.removeItem('canceled_qcms');
+                localStorage.removeItem('canceled_items');
+                if (currentUser) db.collection(`users/${currentUser.uid}/metadata`).doc('canceled').delete().catch(console.error);
+                afterUserAction();
+                location.reload();
+            }
+        }
+
+        function resetErrorLog() {
+            if (confirm("Voulez-vous vraiment vider tout votre carnet d'erreurs ?")) {
+                localStorage.removeItem('digital_error_log');
+                if (currentUser) {
+                    db.collection(`users/${currentUser.uid}/errorLog`).get().then(snapshot => {
+                        const batch = db.batch();
+                        snapshot.forEach(doc => batch.delete(doc.ref));
+                        batch.commit().catch(console.error);
+                    });
+                }
+                afterUserAction();
+                alert("Carnet d'erreurs réinitialisé !");
+            }
+        }
+
+        async function resetStats() {
+            if (!confirm("Réinitialiser toutes les statistiques ?")) return;
+            localStorage.removeItem('qcm_attempts_log');
+
+            if (currentUser) {
+                const snapshot = await db.collection(`users/${currentUser.uid}/qcmAttempts`).get();
+                const batch = db.batch();
+                snapshot.forEach(doc => batch.delete(doc.ref));
+                await batch.commit();
+            }
+
+            afterUserAction();
+            renderStatsScreen();
+            renderHomeStats();
+        }
+
+        // =============================================
+        // FIX EXPORT DU CARNET (.TXT)
+        // =============================================
+        function exportErrorLog() {
+            const log = getErrorLog();
+            const allEntries = Object.values(log);
+
+            const errorItems = allEntries.filter(item => item.fp > 0 || item.fn > 0);
+            const luckyGuesses = allEntries.filter(item => (item.fp === 0 && item.fn === 0) && (item.confidence === 'guess' || item.confidence === 'hesitant'));
+
+            if (errorItems.length === 0 && luckyGuesses.length === 0) {
+                alert("Aucune donnée enregistrée dans le carnet pour le moment.");
+                return;
+            }
+
+            errorItems.sort((a, b) => (b.examErrorCount || 0) - (a.examErrorCount || 0));
+
+            let outputText = "PROMPT REVISION IA - CARNET D'ERREURS ET LACUNES ENRICHI\n";
+            outputText += "CONSIGNE POUR L'IA :\n";
+            outputText += "1. Analyse mes erreurs récurrentes et mes bonnes réponses 'Au hasard' ci-dessous.\n";
+            outputText += "2. Priorise les erreurs marquées 'SÛR' (Fausse croyance / Piège critique) et 'AU HASARD' (Lacune totale de cours).\n";
+            outputText += "3. Priorise en priorité absolue les erreurs marquées 'REALISE EN MODE EXAMEN', elles pèsent le plus lourd car commises en conditions réelles.\n";
+            outputText += "4. Pour chaque notion, explique le piège physiologique/clinique et donne une règle de décision rapide.\n\n";
+            outputText += "Légende : FP = Faux Positif, FN = Faux Négatif.\n\n";
+
+            if (errorItems.length > 0) {
+                outputText += "--- HISTORIQUE DES ERREURS ---\n\n";
+                errorItems.forEach(item => {
+                    let errDetails = [];
+                    if (item.fp > 0) errDetails.push(`FP:x${item.fp}`);
+                    if (item.fn > 0) errDetails.push(`FN:x${item.fn}`);
+                    const confLabel = item.confidence ? ` | Ressenti: [${item.confidence.toUpperCase()}]` : '';
+                    const examFlag = item.examErrorCount > 0 ? ` | ⚠️ REALISE EN MODE EXAMEN x${item.examErrorCount} (PRIORITAIRE)` : '';
+                    outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" -> (${errDetails.join(', ')})${confLabel}${examFlag}\n\n`;
+                });
+            }
+
+            if (luckyGuesses.length > 0) {
+                outputText += "--- ⚠️ BONNES RÉPONSES AU HASARD / HÉSITATIONS (À REVOIR) ---\n\n";
+                luckyGuesses.forEach(item => {
+                    outputText += `• [${item.p}] ${item.q}\n  └─ Item: "${item.i}" | Ressenti: [${item.confidence.toUpperCase()}]\n\n`;
+                });
+            }
+
+            const blob = new Blob([outputText], { type: 'text/plain;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `carnet_erreurs_enrichi_${new Date().toISOString().slice(0,10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        // =============================================
+        // PARSING & CHARGEMENT
+        // =============================================
+        async function loadNode(node, pathParts) {
+            if (Array.isArray(node)) {
+                const chapters = {};
+                for (const file of node) {
+                    try {
+                        const res = await fetch(`QCM/${pathParts.join('/')}/${file}`);
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        const text = await res.text();
+                        const parsed = parseQCMFile(text, pathParts.join(' > '), file);
+                        if (parsed.length > 0) {
+                            chapters[file.replace('.txt', '').replace(/_/g, ' ')] = parsed;
+                        }
+                    } catch (e) {
+                        console.error(`Erreur chargement fichier: QCM/${pathParts.join('/')}/${file}`, e);
+                    }
+                }
+                return chapters;
+            } else {
+                const sousDossiers = {};
+                for (const key in node) {
+                    sousDossiers[key] = await loadNode(node[key], [...pathParts, key]);
+                }
+                return sousDossiers;
+            }
+        }
+
+        async function loadAllQCM() {
+            const loadingEl = document.getElementById('loadingScreen');
+            try {
+                const configResponse = await fetch('QCM/config.json');
+                if (!configResponse.ok) throw new Error("Impossible de trouver config.json");
+
+                const subjects = await configResponse.json();
+                for (const subject in subjects) {
+                    data[subject] = await loadNode(subjects[subject], [subject]);
+                }
+                buildFlatIndex(data);
+                loadingEl.classList.add('hidden');
+
+                if (!restoreSessionState()) {
+                    displaySubjects();
+                    renderHomeStats();
+                }
+            } catch (e) {
+                console.error("Erreur critique :", e);
+                if (loadingEl) {
+                    loadingEl.innerHTML = `<div class="alert alert-danger">Impossible de charger la base de QCM (config.json manquant ou mal formé).</div>`;
+                }
+            }
+        }
+
+        function getNode(path) {
+            let node = data;
+            for (const key of path) node = node[key];
+            return node;
+        }
+
+        function isLeaf(node) { return Array.isArray(node); }
+
+        function buildFlatIndex(node) {
+            if (Array.isArray(node)) {
+                node.forEach(q => { allQcmsIndex[q.id] = q; });
+            } else {
+                Object.values(node).forEach(child => buildFlatIndex(child));
+            }
+        }
+
+        function parseQCMFile(content, currentSubjectPath, filename) {
+            const qcms = [];
+            const blocks = content.replace(/\r/g, '').split(/\n\s*\n+/).filter(b => b.trim());
+
+            blocks.forEach((block, index) => {
+                const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                if (lines.length < 6) return;
+
+                let question = lines[0];
+                if (question.includes('{') || question.includes(';') || question.includes('<')) return;
+
+                let imagePath = null;
+                let optionStartIndex = 1;
+
+                if (lines[1] && lines[1].toUpperCase().startsWith('IMG:')) {
+                    imagePath = lines[1].substring(4).trim();
+                    optionStartIndex = 2;
+                }
+
+                const options = [];
+                const optionRegex = /^(\$?)([A-Ea-e])[\.\)]\s+(.+)$/;
+
+                for (let i = optionStartIndex; i < lines.length; i++) {
+                    const match = lines[i].match(optionRegex);
+                    if (match) {
+                        const text = match[3];
+                        const itemId = generateCleanId(`${currentSubjectPath}_${question}_${text}`);
+                        options.push({ id: itemId, text: text, isCorrect: match[1] === '$' });
+                    }
+                }
+
+                if (options.length === 5) {
+                    const qcmId = generateCleanId(`${currentSubjectPath}_${question}`);
+                    qcms.push({ id: qcmId, subjectPath: currentSubjectPath, question, image: imagePath, options });
+                }
+            });
+            return qcms;
+        }
+
+        // =============================================
+        // CHRONO & SESSIONS
+        // =============================================
+        function startQuestionTimer(qIdx) {
+            currentQuestionIndex = qIdx;
+            questionStartTimes[qIdx] = Date.now();
+        }
+
+        function stopQuestionTimer(qIdx) {
+            if (questionStartTimes[qIdx]) {
+                const endTime = Date.now();
+                const duration = (endTime - questionStartTimes[qIdx]) / 1000;
+
+                if (!sessionConfidence[currentSession[qIdx].id]) {
+                    sessionConfidence[currentSession[qIdx].id] = {};
+                }
+                sessionConfidence[currentSession[qIdx].id].duration = duration;
+                delete questionStartTimes[qIdx];
+            }
+        }
+
+        function clearExamTimer() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            examTimerInterval = null;
+            examEndTime = null;
+            hideExamTimerWidget();
+        }
+
+        function hideExamTimerWidget() {
+            const widget = document.getElementById('examTimerWidget');
+            if (widget) widget.classList.add('hidden');
+        }
+
+        function toggleExamTimerCollapse() {
+            const widget = document.getElementById('examTimerWidget');
+            const collapsed = widget.classList.toggle('collapsed');
+            localStorage.setItem('examTimerCollapsed', collapsed ? '1' : '0');
+        }
+
+        function startExamTimer(endTime) {
+            if (!examMode) { hideExamTimerWidget(); return; }
+
+            examEndTime = endTime;
+            const widget = document.getElementById('examTimerWidget');
+            widget.classList.remove('hidden');
+            if (localStorage.getItem('examTimerCollapsed') === '1') widget.classList.add('collapsed');
+            updateExamTimerDisplay();
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            examTimerInterval = setInterval(() => {
+                const remaining = examEndTime - Date.now();
+                if (remaining <= 0) {
+                    clearInterval(examTimerInterval);
+                    examTimerInterval = null;
+                    document.getElementById('examTimerDisplay').textContent = "00:00";
+                    alert("Temps écoulé, validation du test...");
+                    validateFullSession();
+                    return;
+                }
+                updateExamTimerDisplay();
+            }, 1000);
+        }
+
+        function updateExamTimerDisplay() {
+            const remaining = Math.max(0, examEndTime - Date.now());
+            const m = Math.floor(remaining / 60000);
+            const s = Math.floor((remaining % 60000) / 1000);
+            const el = document.getElementById('examTimerDisplay');
+            if (el) {
+                el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                el.classList.toggle('low-time', remaining > 0 && remaining < 60000);
+            }
+        }
+
+        function collectCurrentAnswers() {
+            const answers = {};
+            currentSession.forEach((q, qIdx) => {
+                answers[qIdx] = [];
+                q.options.forEach((_, oIdx) => {
+                    const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                    if (cb && cb.checked) answers[qIdx].push(oIdx);
+                });
+            });
+            return answers;
+        }
+
+        function validateQuestionDP(qIdx) {
+            const q = currentSession[qIdx];
+            const hasAnswer = q.options.some((_, oIdx) => {
+                const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                return cb && cb.checked;
+            });
+            if (!hasAnswer) {
+                alert("Vous devez cocher au moins une réponse avant de valider.");
+                return;
+            }
+            if (!confirm("Valider cette question définitivement ?")) return;
+
+            stopQuestionTimer(qIdx);
+            const snapshot = collectCurrentAnswers();
+            dpValidated[qIdx] = true;
+            renderSessionScreen(snapshot);
+            saveSessionState();
+            afterUserAction();
+        }
+
+        function renderSessionScreen(restoreAnswers) {
+            const canceledItems = getCanceledItems();
+            const container = document.getElementById('questionsContainer');
+
+            if (currentQuestionIndex !== null && questionStartTimes[currentQuestionIndex]) {
+                stopQuestionTimer(currentQuestionIndex);
+            }
+
+            container.innerHTML = currentSession.map((q, qIdx) => {
+                const isDpLocked = dpMode && qIdx > 0 && !dpValidated[qIdx - 1];
+                const isDpValidatedThis = dpMode && dpValidated[qIdx];
+
+                if (isDpLocked) {
+                    return `
+                    <div class="que sngmultichoice notyetanswered" id="question-${qIdx}">
+                        <div class="info">
+                            <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                            <div class="state">Verrouillée</div>
+                        </div>
+                        <div class="content">
+                            <div class="alert alert-secondary mb-0">
+                                <i class="fa-solid fa-lock"></i> Répondez à la question précédente pour déverrouiller.
+                            </div>
+                        </div>
+                    </div>`;
+                }
+
+                const stats = getQcmStats(q.id);
+
+                return `
+                <div class="que sngmultichoice deferredfeedback notyetanswered" id="question-${qIdx}" onclick="focusQuestion(${qIdx})">
+                    <div class="info">
+                        <h3 class="no">Question <span class="qno">${qIdx + 1}</span></h3>
+                        <div class="state">${isDpValidatedThis ? 'Validée' : 'En cours'}</div>
+                        <div class="grade">Barème EDN</div>
+                        ${!examMode ? `<div><span class="badge bg-${stats.cls}">${stats.label}</span></div>` : ''}
+                    </div>
+                    <div class="content">
+                        <div class="formulation clearfix">
+                            <div class="qtext">
+                                <p>${escapeHTML(q.question)}</p>
+                                ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
+                            </div>
+                            <fieldset class="ablock">
+                                <legend class="prompt">Réponse</legend>
+                                <div class="answer">
+                                    ${q.options.map((opt, oIdx) => {
+                                        const isCanceled = canceledItems.includes(opt.id);
+                                        const isDisabled = isCanceled || isDpValidatedThis;
+                                        return `
+                                        <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} align-items-center">
+                                            <input type="checkbox" id="q${qIdx}_o${oIdx}" ${isDisabled ? 'disabled' : ''} onchange="saveSessionState(); stopQuestionTimer(${qIdx})">
+                                            <label for="q${qIdx}_o${oIdx}" data-region="answer-label" class="${isCanceled ? 'item-canceled' : ''}">
+                                                <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                                                <div class="flex-fill ml-1"><p>${escapeHTML(opt.text)} ${isCanceled ? '<strong class="text-danger">(ANNULÉ)</strong>' : ''}</p></div>
+                                            </label>
+                                        </div>`;
+                                    }).join('')}
+                                </div>
+                            </fieldset>
+                        </div>
+                        ${!examMode ? `
+                        <div class="confidence-selector mt-3 pt-2 border-top">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                <small class="fw-bold text-secondary"><i class="fa-solid fa-brain"></i> Ressenti :</small>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_high_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'sure')">
+                                    <label class="btn btn-outline-success" for="conf_high_${qIdx}">🎯 Sûr</label>
+
+                                    <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_mid_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'hesitant')">
+                                    <label class="btn btn-outline-warning" for="conf_mid_${qIdx}">🤔 Hésitant</label>
+
+                                    <input type="radio" class="btn-check" name="conf_${qIdx}" id="conf_low_${qIdx}" autocomplete="off" ${isDpValidatedThis ? 'disabled' : ''} onchange="setConfidence('${q.id}', 'guess')">
+                                    <label class="btn btn-outline-danger" for="conf_low_${qIdx}">🎲 Au hasard</label>
+                                </div>
+                            </div>
+                        </div>` : ''}
+                        ${dpMode && !isDpValidatedThis ? `
+                        <div class="mt-3 pt-2 border-top text-end">
+                            <button class="btn btn-uness btn-sm" onclick="validateQuestionDP(${qIdx})">Valider cette question</button>
+                        </div>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+
+            const firstQuestion = document.querySelector('.que:not(.hidden)');
+            if (firstQuestion) {
+                const qIdx = parseInt(firstQuestion.id.replace('question-', ''));
+                startQuestionTimer(qIdx);
+            }
+
+            if (restoreAnswers) {
+                currentSession.forEach((q, qIdx) => {
+                    (restoreAnswers[qIdx] || []).forEach(oIdx => {
+                        const cb = document.getElementById(`q${qIdx}_o${oIdx}`);
+                        if (cb) cb.checked = true;
+                    });
+                    if (sessionConfidence[q.id]) {
+                        const confLevel = sessionConfidence[q.id];
+                        const radio = document.getElementById(`conf_${confLevel}_${qIdx}`);
+                        if (radio) radio.checked = true;
+                    }
+                });
+            }
+        }
+
+        function focusQuestion(qIdx) {
+            if (currentQuestionIndex !== null && questionStartTimes[currentQuestionIndex]) {
+                stopQuestionTimer(currentQuestionIndex);
+            }
+            startQuestionTimer(qIdx);
+            currentQuestionIndex = qIdx;
+        }
+
+        function saveSessionState() {
+            if (currentSession.length === 0) return;
+
+            const state = {
+                session: currentSession.map(q => ({
+                    id: q.id,
+                    answered: collectCurrentAnswers()[currentSession.indexOf(q)].length > 0
+                })),
+                dpValidated: [...dpValidated],
+                confidence: {...sessionConfidence},
+                startTime: sessionStartTime,
+                questionStartTimes: {...questionStartTimes}
+            };
+            localStorage.setItem('currentSessionState', JSON.stringify(state));
+
+            if (currentUser) {
+                db.collection(`users/${currentUser.uid}/metadata`).doc('currentSession').set({
+                    ...state,
+                    userId: currentUser.uid,
+                    syncedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }).catch(console.error);
+            }
+        }
+
+        function restoreSessionState() {
+            const savedState = localStorage.getItem('currentSessionState');
+            if (!savedState) return false;
+
+            try {
+                const state = JSON.parse(savedState);
+                const validSession = state.session.filter(q => allQcmsIndex[q.id]);
+                if (validSession.length === 0) return false;
+
+                currentSession = validSession.map(q => ({
+                    ...allQcmsIndex[q.id],
+                    options: shuffle(allQcmsIndex[q.id].options)
+                }));
+                dpValidated = state.dpValidated || new Array(currentSession.length).fill(false);
+                sessionConfidence = state.confidence || {};
+                sessionStartTime = state.startTime || Date.now();
+                questionStartTimes = state.questionStartTimes || {};
+                currentQuestionIndex = 0;
+
+                document.getElementById('sessionScreen').classList.remove('hidden');
+                renderSessionScreen();
+
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function startSession() {
+            const node = getNode(currentPath);
+            const canceledQCMs = getCanceledQCMs();
+            const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
+
+            if (availableQcms.length === 0) {
+                alert("Aucune question disponible dans ce chapitre.");
+                return;
+            }
+
+            const sizeInput = parseInt(document.getElementById('sessionSize').value, 10);
+            let requestedSize = isNaN(sizeInput) || sizeInput < 1 ? 10 : sizeInput;
+            const size = Math.min(requestedSize, availableQcms.length);
+
+            const examModeChecked = document.getElementById('examModeToggle').checked;
+            const dpModeChecked = document.getElementById('dpModeToggle').checked;
+            let examDuration = null;
+            if (examModeChecked) {
+                const durInput = parseInt(document.getElementById('examDurationInput').value, 10);
+                examDuration = isNaN(durInput) || durInput < 1 ? 30 : durInput;
+            }
+
+            launchSession(shuffle(availableQcms).slice(0, size), {
+                examMode: examModeChecked,
+                dpMode: dpModeChecked,
+                examDuration
+            });
+        }
+
+        function toggleExamDurationInput() {
+            const checked = document.getElementById('examModeToggle').checked;
+            document.getElementById('examDurationWrapper').classList.toggle('hidden', !checked);
+        }
+
+        function launchSession(qcms, opts = {}) {
+            clearExamTimer();
+            ['homeScreen', 'chapterScreen', 'qcmScreen', 'statsScreen', 'correctionScreen'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            examMode = !!opts.examMode;
+            dpMode = !!opts.dpMode;
+
+            sessionValidated = false;
+            currentSession = qcms.map(q => ({ ...q, options: shuffle(q.options) }));
+            dpValidated = new Array(currentSession.length).fill(false);
+            sessionStartTime = Date.now();
+            questionStartTimes = {};
+            currentQuestionIndex = 0;
+
+            for (let key in sessionConfidence) delete sessionConfidence[key];
 
             document.getElementById('sessionScreen').classList.remove('hidden');
             renderSessionScreen();
 
-            if (examMode && state.startTime) {
-                const elapsed = Date.now() - state.startTime;
-                startExamTimer(Date.now() + (examEndTime - state.startTime - elapsed));
+            if (examMode && opts.examDuration) {
+                startExamTimer(Date.now() + opts.examDuration * 60000);
+            } else {
+                hideExamTimerWidget();
             }
 
-            return true;
-        } catch (e) {
-            console.error("Erreur de restauration de la session :", e);
-            return false;
-        }
-    }
-
-    function startSession() {
-        const node = getNode(currentPath);
-        const canceledQCMs = getCanceledQCMs();
-        const availableQcms = node.filter(q => !canceledQCMs.includes(q.id));
-
-        if (availableQcms.length === 0) {
-            alert("Aucune question disponible dans ce chapitre (toutes les questions sont annulées ou le chapitre est vide).");
-            return;
+            saveSessionState();
+            window.scrollTo(0, 0);
         }
 
-        const sizeInput = parseInt(document.getElementById('sessionSize').value, 10);
-        let requestedSize = isNaN(sizeInput) || sizeInput < 1 ? 10 : sizeInput;
-        const size = Math.min(requestedSize, availableQcms.length);
-
-        const examModeChecked = document.getElementById('examModeToggle').checked;
-        const dpModeChecked = document.getElementById('dpModeToggle').checked;
-        let examDuration = null;
-        if (examModeChecked) {
-            const durInput = parseInt(document.getElementById('examDurationInput').value, 10);
-            examDuration = isNaN(durInput) || durInput < 1 ? 30 : durInput;
-        }
-
-        document.getElementById('qcmScreen').classList.add('hidden');
-        document.getElementById('chapterScreen').classList.add('hidden');
-        document.getElementById('homeScreen').classList.add('hidden');
-        launchSession(shuffle(availableQcms).slice(0, size), {
-            examMode: examModeChecked,
-            dpMode: dpModeChecked,
-            examDuration
-        });
-    }
-
-    function toggleExamDurationInput() {
-        const checked = document.getElementById('examModeToggle').checked;
-        document.getElementById('examDurationWrapper').classList.toggle('hidden', !checked);
-    }
-
-    function launchSession(qcms, opts = {}) {
-        clearExamTimer();
-        // On repart d'un écran propre : rien d'autre ne doit rester visible pendant la série,
-        // en particulier pas l'accueil avec la liste des matières.
-        ['homeScreen', 'chapterScreen', 'qcmScreen', 'statsScreen', 'correctionScreen'].forEach(id => {
-            document.getElementById(id).classList.add('hidden');
-        });
-        examMode = !!opts.examMode;
-        dpMode = !!opts.dpMode;
-
-        sessionValidated = false;
-        currentSession = qcms.map(q => ({ ...q, options: shuffle(q.options) }));
-        dpValidated = new Array(currentSession.length).fill(false);
-        sessionStartTime = Date.now();
-        questionStartTimes = {};
-        currentQuestionIndex = 0;
-
-        for (let key in sessionConfidence) delete sessionConfidence[key];
-
-        document.getElementById('sessionScreen').classList.remove('hidden');
-        renderSessionScreen();
-
-        if (examMode && opts.examDuration) {
-            startExamTimer(Date.now() + opts.examDuration * 60000);
-        } else {
-            hideExamTimerWidget();
-        }
-
-        saveSessionState();
-        window.scrollTo(0, 0);
-    }
-
-    function startErrorReviewSession() {
-        if (!currentUser) {
-            alert("Connectez-vous pour utiliser cette fonctionnalité.");
-            return;
-        }
-
-        const errorLog = getErrorLog();
-        const errorIds = [...new Set(Object.values(errorLog).filter(e => e.fp > 0 || e.fn > 0).map(e => e.qcmId))];
-        const canceledQCMs = getCanceledQCMs();
-
-        const qcms = errorIds
-            .map(id => allQcmsIndex[id])
-            .filter(q => q && !canceledQCMs.includes(q.id));
-
-        if (qcms.length === 0) {
-            alert("Aucune erreur enregistrée pour le moment, rien à réviser !");
-            return;
-        }
-
-        document.getElementById('homeScreen').classList.add('hidden');
-        launchSession(shuffle(qcms));
-    }
-
-    function validateFullSession() {
-        Object.keys(questionStartTimes).forEach(qIdx => {
-            stopQuestionTimer(parseInt(qIdx));
-        });
-
-        if (sessionValidated) return;
-        sessionValidated = true;
-
-        const answers = collectCurrentAnswers();
-        let score = 0;
-        const missed = [];
-
-        currentSession.forEach((q, qIdx) => {
-            const userAnswers = answers[qIdx] || [];
-            const correctOptions = q.options.map((opt, i) => opt.isCorrect ? i : -1).filter(i => i !== -1);
-
-            const isCorrect = userAnswers.length === correctOptions.length &&
-                             userAnswers.every(a => correctOptions.includes(a)) &&
-                             correctOptions.every(c => userAnswers.includes(c));
-
-            if (isCorrect) score++;
-
-            q.options.forEach((opt, oIdx) => {
-                const isUserAnswer = userAnswers.includes(oIdx);
-                const isCorrectOption = opt.isCorrect;
-
-                if (isUserAnswer && !isCorrectOption) {
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_positive', q.id, examMode);
-                } else if (!isUserAnswer && isCorrectOption) {
-                    logItemResult(q.subjectPath, q.question, opt.text, 'false_negative', q.id, examMode);
-                }
-            });
-
-            if (!isCorrect) {
-                missed.push({
-                    q: q,
-                    userAnswers: userAnswers.map(i => q.options[i].text)
-                });
+        function startErrorReviewSession() {
+            if (!currentUser) {
+                alert("Connectez-vous pour utiliser cette fonctionnalité.");
+                return;
             }
 
-            saveAttempt({
-                qcmId: q.id,
-                correct: isCorrect,
-                confidence: sessionConfidence[q.id] || null,
-                durationSeconds: sessionConfidence[q.id]?.duration || null,
-                examMode: examMode,
-                dpMode: dpMode,
-                date: new Date().toISOString(),
-                subjectPath: q.subjectPath
-            });
-        });
+            const errorLog = getErrorLog();
+            const errorIds = [...new Set(Object.values(errorLog).filter(e => e.fp > 0 || e.fn > 0).map(e => e.qcmId))];
+            const canceledQCMs = getCanceledQCMs();
 
-        const scorePercent = (score / currentSession.length * 100).toFixed(1);
-        document.getElementById('sessionScreen').classList.add('hidden');
-        document.getElementById('correctionScreen').classList.remove('hidden');
-        document.getElementById('score').innerHTML = `
-            <span class="text-${scorePercent >= 80 ? 'success' : scorePercent >= 50 ? 'warning' : 'danger'}">
-                ${score} / ${currentSession.length} (${scorePercent}%)
-            </span>
-        `;
+            const qcms = errorIds.map(id => allQcmsIndex[id]).filter(q => q && !canceledQCMs.includes(q.id));
 
-        const correctionDetails = document.getElementById('correctionDetails');
-        correctionDetails.innerHTML = missed.map((miss, idx) => {
-            const q = miss.q;
-            return `
-            <div class="que sngmultichoice" id="qcm-corr-block-${q.id}">
-                <div class="info">
-                    <h3 class="no">Question <span class="qno">${idx + 1}</span></h3>
-                    <div class="grade">Noté sur 1,00</div>
-                    <div class="correctness incorrect">Incorrect</div>
-                </div>
-                <div class="content">
-                    <div class="formulation clearfix">
-                        <div class="qtext">
-                            <p>${escapeHTML(q.question)}</p>
-                            ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
-                        </div>
-                        <fieldset class="ablock">
-                            <legend class="prompt">Réponse</legend>
-                            <div class="answer">
-                                ${q.options.map((opt, oIdx) => {
-                                    const isUserAnswer = miss.userAnswers.includes(opt.text);
-                                    const isCorrect = opt.isCorrect;
-                                    let cls = '';
-                                    if (isUserAnswer && isCorrect) cls = 'correct';
-                                    else if (isUserAnswer && !isCorrect) cls = 'incorrect';
-                                    else if (!isUserAnswer && isCorrect) cls = 'correctnotchecked';
+            if (qcms.length === 0) {
+                alert("Aucune erreur à réviser !");
+                return;
+            }
 
-                                    return `
-                                    <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} ${cls}">
-                                        <input type="checkbox" ${isUserAnswer ? 'checked' : ''} disabled>
-                                        <label for="q${idx}_o${oIdx}" data-region="answer-label">
-                                            <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
-                                            <div class="flex-fill ml-1">
-                                                <p>${escapeHTML(opt.text)} ${isCorrect ? '<i class="icon fa-solid fa-check"></i>' : ''}</p>
-                                            </div>
-                                        </label>
-                                    </div>`;
-                                }).join('')}
-                            </div>
-                        </fieldset>
-                        <div class="outcome">
-                            <i class="fa-solid fa-lightbulb"></i> La bonne réponse était :
-                            ${q.options.filter(opt => opt.isCorrect).map((opt, i) => String.fromCharCode(97 + q.options.indexOf(opt))).join(', ')}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-        }).join('');
-
-        currentSession = [];
-        dpValidated = [];
-        sessionConfidence = {};
-        clearExamTimer();
-        localStorage.removeItem('currentSessionState');
-
-        if (currentUser) {
-            db.collection(`users/${currentUser.uid}/metadata`).doc('currentSession').delete().catch(console.error);
-        }
-
-        afterUserAction();
-    }
-
-    function backToQCMScreen() {
-        document.getElementById('correctionScreen').classList.add('hidden');
-        document.getElementById('qcmScreen').classList.remove('hidden');
-    }
-
-    function backToChapters() {
-        if (currentPath.length <= 1) {
-            showHomeScreen();
-            return;
-        }
-        openNode(currentPath.slice(0, -1));
-    }
-
-    function backOneLevel() {
-        if (currentPath.length <= 1) {
-            showHomeScreen();
-            return;
-        }
-        openNode(currentPath.slice(0, -1));
-    }
-
-    // Retour direct à l'accueil : remet currentPath à zéro et cache tous les autres écrans,
-    // pour ne jamais laisser un écran fantôme affiché derrière (c'était la cause du "retour
-    // vers le vide" et de la liste de matières qui restait visible pendant la série de QCM).
-    function showHomeScreen() {
-        currentPath = [];
-        ['sessionScreen', 'correctionScreen', 'chapterScreen', 'qcmScreen', 'statsScreen'].forEach(id => {
-            document.getElementById(id).classList.add('hidden');
-        });
-        document.getElementById('homeScreen').classList.remove('hidden');
-        displaySubjects();
-        renderHomeStats();
-    }
-
-    // Compte le nombre total de fichiers QCM dans un noeud, quel que soit le niveau de profondeur
-    function countLeafFiles(node) {
-        if (isLeaf(node)) return node.length;
-        return Object.values(node).reduce((acc, child) => acc + countLeafFiles(child), 0);
-    }
-
-    // Affiche la liste des matières de premier niveau, sur l'écran d'accueil uniquement
-    function displaySubjects() {
-        currentPath = [];
-        const container = document.getElementById('subjectsList');
-        container.innerHTML = '';
-
-        Object.entries(data).forEach(([key, node]) => {
-            const item = document.createElement('button');
-            item.type = 'button';
-            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-            item.innerHTML = `
-                <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
-                <span class="badge bg-primary rounded-pill">${countLeafFiles(node)}</span>
-            `;
-            item.onclick = () => openNode([key]);
-            container.appendChild(item);
-        });
-    }
-
-    // Ouvre un noeud de l'arborescence : un sous-dossier (chapterScreen) ou un fichier QCM (qcmScreen).
-    // À chaque appel on cache explicitement TOUS les autres écrans : c'est ce qui manquait avant,
-    // et qui laissait la liste des matières affichée en permanence (y compris pendant l'examen).
-    function openNode(path) {
-        currentPath = path;
-        const node = getNode(path);
-
-        if (isLeaf(node)) {
             document.getElementById('homeScreen').classList.add('hidden');
-            document.getElementById('chapterScreen').classList.add('hidden');
-            document.getElementById('qcmScreen').classList.remove('hidden');
-            document.getElementById('sessionChapterTitle').textContent = path.join(' > ');
-            return;
+            launchSession(shuffle(qcms));
         }
 
-        document.getElementById('homeScreen').classList.add('hidden');
-        document.getElementById('qcmScreen').classList.add('hidden');
-        document.getElementById('chapterScreen').classList.remove('hidden');
-        document.getElementById('currentSubjectTitle').textContent = path[path.length - 1];
+        // =============================================
+        // VALIDATION COMPLETE DE LA SESSION & CORRECTION
+        // =============================================
+        function validateFullSession() {
+            Object.keys(questionStartTimes).forEach(qIdx => {
+                stopQuestionTimer(parseInt(qIdx));
+            });
 
-        renderBreadcrumb(path);
+            if (sessionValidated) return;
+            sessionValidated = true;
 
-        const list = document.getElementById('chaptersList');
-        list.innerHTML = '';
-        Object.entries(node).forEach(([key, child]) => {
-            const item = document.createElement('button');
-            item.type = 'button';
-            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-            const badge = isLeaf(child) ? child.length : countLeafFiles(child);
-            item.innerHTML = `
-                <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
-                <span class="badge bg-secondary rounded-pill">${badge}</span>
+            const answers = collectCurrentAnswers();
+            let totalEdnPoints = 0;
+            const correctionDetailsList = [];
+
+            currentSession.forEach((q, qIdx) => {
+                const userAnswers = answers[qIdx] || [];
+                
+                // Calcul des points EDN (1.0, 0.5, 0.2 ou 0.0)
+                const points = calculateEDNPoints(userAnswers, q.options);
+                totalEdnPoints += points;
+
+                const isPerfect = (points === 1.0);
+
+                // Analyse des réponses fausses / manquantes pour le carnet d'erreurs
+                q.options.forEach((opt, oIdx) => {
+                    const isUserAnswer = userAnswers.includes(oIdx);
+                    const isCorrectOption = opt.isCorrect;
+
+                    if (isUserAnswer && !isCorrectOption) {
+                        logItemResult(q.subjectPath, q.question, opt.text, 'false_positive', q.id, examMode);
+                    } else if (!isUserAnswer && isCorrectOption) {
+                        logItemResult(q.subjectPath, q.question, opt.text, 'false_negative', q.id, examMode);
+                    }
+                });
+
+                // On conserve les détails pour TOUTES les questions en mode Examen
+                correctionDetailsList.push({
+                    q: q,
+                    userAnswers: userAnswers.map(i => q.options[i].text),
+                    points: points,
+                    isPerfect: isPerfect
+                });
+
+                saveAttempt({
+                    qcmId: q.id,
+                    correct: isPerfect,
+                    ednPoints: points,
+                    confidence: sessionConfidence[q.id] || null,
+                    durationSeconds: sessionConfidence[q.id]?.duration || null,
+                    examMode: examMode,
+                    dpMode: dpMode,
+                    date: new Date().toISOString(),
+                    subjectPath: q.subjectPath
+                });
+            });
+
+            // Note calculée sur 20 selon le barème EDN
+            const noteSur20 = ((totalEdnPoints / currentSession.length) * 20).toFixed(2);
+
+            document.getElementById('sessionScreen').classList.add('hidden');
+            document.getElementById('correctionScreen').classList.remove('hidden');
+            
+            document.getElementById('score').innerHTML = `
+                <div class="mb-1">Note EDN : <span class="text-${noteSur20 >= 14 ? 'success' : noteSur20 >= 10 ? 'warning' : 'danger'}">${noteSur20} / 20</span></div>
+                <div style="font-size: 0.9rem; font-weight: normal;" class="text-muted">Total EDN : ${totalEdnPoints.toFixed(1)} / ${currentSession.length} pt(s)</div>
             `;
-            item.onclick = () => openNode([...path, key]);
-            list.appendChild(item);
-        });
-    }
 
-    function renderBreadcrumb(path) {
-        const breadcrumb = document.getElementById('breadcrumb');
-        breadcrumb.innerHTML = `<span onclick="showHomeScreen()">Accueil</span>` + path.map((part, idx) => {
-            const isLast = idx === path.length - 1;
-            const subPath = path.slice(0, idx + 1);
-            return isLast
-                ? ` / ${escapeHTML(part)}`
-                : ` / <span onclick='openNode(${JSON.stringify(subPath)})'>${escapeHTML(part)}</span>`;
-        }).join('');
-    }
+            const correctionDetails = document.getElementById('correctionDetails');
+            
+            // On affiche TOUS les QCMs dans la correction
+            correctionDetails.innerHTML = correctionDetailsList.map((item, idx) => {
+                const q = item.q;
+                const points = item.points;
 
-    // Sur l'accueil on ne montre plus qu'un badge discret sur le bouton "Statistiques" ;
-    // le détail passe par openStatsScreen(), qui va droit au but sans encombrer la liste des matières.
-    function renderHomeStats() {
-        const stats = computeGlobalStats();
-        const badge = document.getElementById('homeStatsBadge');
-        if (!stats) {
-            badge.classList.add('hidden');
-            badge.textContent = '';
-            return;
-        }
-        badge.textContent = stats.successRate + '%';
-        badge.classList.remove('hidden');
-    }
+                let stateClass = "incorrect";
+                let stateLabel = "0 point";
+                if (points === 1.0) { stateClass = "correct"; stateLabel = "1 pt (5/5)"; }
+                else if (points === 0.5) { stateClass = "partiallycorrect"; stateLabel = "0.5 pt (4/5)"; }
+                else if (points === 0.2) { stateClass = "partiallycorrect"; stateLabel = "0.2 pt (3/5)"; }
 
-    function openStatsScreen() {
-        document.getElementById('homeScreen').classList.add('hidden');
-        document.getElementById('statsScreen').classList.remove('hidden');
-        renderStatsScreen();
-    }
+                return `
+                <div class="que sngmultichoice" id="qcm-corr-block-${q.id}">
+                    <div class="info">
+                        <h3 class="no">Question <span class="qno">${idx + 1}</span></h3>
+                        <div class="grade">Barème EDN</div>
+                        <div class="correctness ${stateClass}">${stateLabel}</div>
+                    </div>
+                    <div class="content">
+                        <div class="formulation clearfix">
+                            <div class="qtext">
+                                <p>${escapeHTML(q.question)}</p>
+                                ${q.image ? `<img src="${escapeHTML(q.image)}">` : ''}
+                            </div>
+                            <fieldset class="ablock">
+                                <legend class="prompt">Réponse</legend>
+                                <div class="answer">
+                                    ${q.options.map((opt, oIdx) => {
+                                        const isUserAnswer = item.userAnswers.includes(opt.text);
+                                        const isCorrect = opt.isCorrect;
+                                        let cls = '';
+                                        if (isUserAnswer && isCorrect) cls = 'correct';
+                                        else if (isUserAnswer && !isCorrect) cls = 'incorrect';
+                                        else if (!isUserAnswer && isCorrect) cls = 'correctnotchecked';
 
-    function closeStatsScreen() {
-        showHomeScreen();
-    }
-
-    // NOTE : ceci n'est qu'un résumé basé sur computeGlobalStats() (le seul calcul de stats
-    // présent dans ce fichier). Le vrai écran détaillé (heatmap, table de métacognition,
-    // temps de réponse) mentionné ailleurs n'existe pas dans ce fichier : à réintégrer
-    // depuis la version où il a été développé si tu veux le retrouver ici.
-    function renderStatsScreen() {
-        const stats = computeGlobalStats();
-        const content = document.getElementById('statsContent');
-        if (!stats) {
-            content.innerHTML = `
-                <div class="alert alert-info">
-                    <i class="fa-solid fa-info-circle"></i> Aucune statistique disponible. Commence une session pour en générer !
-                </div>
-            `;
-            return;
-        }
-
-        content.innerHTML = `
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fa-solid fa-percentage"></i> Taux de réussite global</h5>
-                            <h2 class="text-primary">${stats.successRate}%</h2>
-                            <p class="card-text">
-                                <small>
-                                    ${stats.total} QCM répondus • ${stats.falseCertaintyCount} erreurs avec confiance "sûr"
-                                </small>
-                            </p>
+                                        return `
+                                        <div class="${oIdx % 2 === 0 ? 'r0' : 'r1'} ${cls}">
+                                            <input type="checkbox" ${isUserAnswer ? 'checked' : ''} disabled>
+                                            <label for="q${idx}_o${oIdx}" data-region="answer-label">
+                                                <span class="answernumber">${String.fromCharCode(97 + oIdx)}. </span>
+                                                <div class="flex-fill ml-1">
+                                                    <p>${escapeHTML(opt.text)} ${isCorrect ? '<i class="icon fa-solid fa-check"></i>' : ''}</p>
+                                                </div>
+                                            </label>
+                                        </div>`;
+                                    }).join('')}
+                                </div>
+                            </fieldset>
+                            <div class="outcome">
+                                <i class="fa-solid fa-lightbulb"></i> Réponses correctes :
+                                ${q.options.filter(opt => opt.isCorrect).map((opt) => String.fromCharCode(97 + q.options.indexOf(opt))).join(', ')}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fa-solid fa-chart-bar"></i> Statistiques par confiance</h5>
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <h6>Sûr</h6>
-                                    <h4 class="text-success">${stats.sureRate || 'N/A'}%</h4>
-                                    <small>${stats.sureRate ? 'Taux de réussite' : ''}</small>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <h6>Hésitant</h6>
-                                    <h4 class="text-warning">${stats.hesitantRate || 'N/A'}%</h4>
-                                    <small>${stats.hesitantRate ? 'Taux de réussite' : ''}</small>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <h6>Au hasard</h6>
-                                    <h4 class="text-danger">${stats.guessRate || 'N/A'}%</h4>
-                                    <small>${stats.guessRate ? 'Taux de réussite' : ''}</small>
+                `;
+            }).join('');
+
+            currentSession = [];
+            dpValidated = [];
+            sessionConfidence = {};
+            clearExamTimer();
+            localStorage.removeItem('currentSessionState');
+
+            if (currentUser) {
+                db.collection(`users/${currentUser.uid}/metadata`).doc('currentSession').delete().catch(console.error);
+            }
+
+            afterUserAction();
+        }
+
+        function backToQCMScreen() {
+            document.getElementById('correctionScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.remove('hidden');
+        }
+
+        function backToChapters() {
+            if (currentPath.length <= 1) {
+                showHomeScreen();
+                return;
+            }
+            openNode(currentPath.slice(0, -1));
+        }
+
+        function backOneLevel() {
+            if (currentPath.length <= 1) {
+                showHomeScreen();
+                return;
+            }
+            openNode(currentPath.slice(0, -1));
+        }
+
+        function showHomeScreen() {
+            currentPath = [];
+            ['sessionScreen', 'correctionScreen', 'chapterScreen', 'qcmScreen', 'statsScreen'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById('homeScreen').classList.remove('hidden');
+            displaySubjects();
+            renderHomeStats();
+        }
+
+        function countLeafFiles(node) {
+            if (isLeaf(node)) return node.length;
+            return Object.values(node).reduce((acc, child) => acc + countLeafFiles(child), 0);
+        }
+
+        function displaySubjects() {
+            currentPath = [];
+            const container = document.getElementById('subjectsList');
+            container.innerHTML = '';
+
+            Object.entries(data).forEach(([key, node]) => {
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+                item.innerHTML = `
+                    <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
+                    <span class="badge bg-primary rounded-pill">${countLeafFiles(node)}</span>
+                `;
+                item.onclick = () => openNode([key]);
+                container.appendChild(item);
+            });
+        }
+
+        function openNode(path) {
+            currentPath = path;
+            const node = getNode(path);
+
+            if (isLeaf(node)) {
+                document.getElementById('homeScreen').classList.add('hidden');
+                document.getElementById('chapterScreen').classList.add('hidden');
+                document.getElementById('qcmScreen').classList.remove('hidden');
+                document.getElementById('sessionChapterTitle').textContent = path.join(' > ');
+                return;
+            }
+
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.add('hidden');
+            document.getElementById('chapterScreen').classList.remove('hidden');
+            document.getElementById('currentSubjectTitle').textContent = path[path.length - 1];
+
+            renderBreadcrumb(path);
+
+            const list = document.getElementById('chaptersList');
+            list.innerHTML = '';
+            Object.entries(node).forEach(([key, child]) => {
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+                const badge = isLeaf(child) ? child.length : countLeafFiles(child);
+                item.innerHTML = `
+                    <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
+                    <span class="badge bg-secondary rounded-pill">${badge}</span>
+                `;
+                item.onclick = () => openNode([...path, key]);
+                list.appendChild(item);
+            });
+        }
+
+        function renderBreadcrumb(path) {
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.innerHTML = `<span onclick="showHomeScreen()">Accueil</span>` + path.map((part, idx) => {
+                const isLast = idx === path.length - 1;
+                const subPath = path.slice(0, idx + 1);
+                return isLast
+                    ? ` / ${escapeHTML(part)}`
+                    : ` / <span onclick='openNode(${JSON.stringify(subPath)})'>${escapeHTML(part)}</span>`;
+            }).join('');
+        }
+
+        function renderHomeStats() {
+            const stats = computeGlobalStats();
+            const badge = document.getElementById('homeStatsBadge');
+            if (!stats) {
+                badge.classList.add('hidden');
+                badge.textContent = '';
+                return;
+            }
+            badge.textContent = stats.successRate + '%';
+            badge.classList.remove('hidden');
+        }
+
+        function openStatsScreen() {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('statsScreen').classList.remove('hidden');
+            renderStatsScreen();
+        }
+
+        function closeStatsScreen() {
+            showHomeScreen();
+        }
+
+        function renderStatsScreen() {
+            const stats = computeGlobalStats();
+            const content = document.getElementById('statsContent');
+            if (!stats) {
+                content.innerHTML = `<div class="alert alert-info">Aucune statistique enregistrée.</div>`;
+                return;
+            }
+
+            content.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa-solid fa-percentage"></i> Taux de réussite global</h5>
+                                <h2 class="text-primary">${stats.successRate}%</h2>
+                                <p class="card-text">
+                                    <small>${stats.total} QCMs terminés • ${stats.falseCertaintyCount} erreurs avec certitude ("sûr")</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa-solid fa-chart-bar"></i> Par certitude</h5>
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <h6>Sûr</h6>
+                                        <h4 class="text-success">${stats.sureRate || 'N/A'}%</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <h6>Hésitant</h6>
+                                        <h4 class="text-warning">${stats.hesitantRate || 'N/A'}%</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <h6>Au hasard</h6>
+                                        <h4 class="text-danger">${stats.guessRate || 'N/A'}%</h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
-    }
+            `;
+        }
 
-    // =============================================
-    // DÉMARRAGE DE L'APPLICATION
-    // =============================================
-    loadAllQCM();
-</script>
+        // =============================================
+        // LANCEMENT
+        // =============================================
+        loadAllQCM();
+    </script>
 </body>
 </html>
