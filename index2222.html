@@ -135,12 +135,15 @@
         .heatmap-legend { display: flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 0.75rem; color: #6c757d; }
         .heatmap-legend .heatmap-cell { width: 12px; height: 12px; }
 
-        .account-bar { text-align: right; font-size: 0.8rem; color: #6c757d; margin-bottom: 1rem; }
-        .account-bar a { color: #6c757d; text-decoration: none; }
-        .account-bar a:hover { color: #1177d1; text-decoration: underline; }
-        .account-bar-sep { margin: 0 .4em; }
-
-        .home-toolbar .btn { font-size: 0.8rem; }
+        #homeScreen { position: relative; }
+        .corner-menu-btn {
+            position: absolute; top: 14px; right: 14px; z-index: 5;
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 1px solid #dee2e6; background: #fff; color: #6c757d;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; cursor: pointer;
+        }
+        .corner-menu-btn:hover { color: #1177d1; border-color: #1177d1; }
 
         details.session-options { border: 1px solid #dee2e6; border-radius: 4px; padding: .6rem .9rem; }
         details.session-options summary { cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #495057; list-style: none; }
@@ -152,21 +155,12 @@
 
 <body>
     <div class="container">
-        <!-- ===== ÉCRAN D'ACCUEIL (avec boutons de connexion) ===== -->
+        <!-- ===== ÉCRAN D'ACCUEIL ===== -->
         <div id="homeScreen" class="setup-card shadow-sm">
-            <!-- Barre de compte discrète, en haut à droite -->
-            <div class="account-bar" id="authContainer">
-                <span id="loggedOutButtons">
-                    <a href="#" onclick="showLoginModal();return false;">Se connecter</a>
-                    <span class="account-bar-sep">·</span>
-                    <a href="#" onclick="showSignupModal();return false;">S'inscrire</a>
-                </span>
-                <span id="loggedInButtons" class="hidden">
-                    <i class="fa-solid fa-user-check"></i> <span id="userEmail"></span>
-                    <span class="account-bar-sep">·</span>
-                    <a href="#" onclick="logout();return false;">Déconnexion</a>
-                </span>
-            </div>
+            <!-- Seule chose visible en plus des matières : une icône discrète vers le compte/les outils -->
+            <button type="button" class="corner-menu-btn" data-bs-toggle="modal" data-bs-target="#toolsModal" title="Compte et outils">
+                <i class="fa-solid fa-gear"></i>
+            </button>
 
             <h2 class="mb-4 text-center">🏥 QCM Médecine</h2>
             <div id="loadingScreen" class="text-center p-4">
@@ -174,31 +168,63 @@
                 <p class="mt-2">Chargement...</p>
             </div>
 
-            <!-- ===== Écran d'accueil : on va droit au but, la liste des matières d'abord ===== -->
-            <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
+            <!-- ===== Écran d'accueil : on va droit au but, uniquement la liste des matières ===== -->
+            <div id="subjectsList" class="list-group list-group-flush"></div>
+        </div>
 
-            <!-- Actions secondaires, regroupées et discrètes -->
-            <div class="home-toolbar d-flex justify-content-between align-items-center flex-wrap gap-2 border-top pt-3">
-                <button class="btn btn-sm btn-outline-primary" onclick="startErrorReviewSession()">
-                    <i class="fa-solid fa-arrow-rotate-left"></i> Réviser mes erreurs
-                </button>
-                <div class="d-flex align-items-center gap-2">
-                    <button class="btn btn-sm btn-outline-info" id="migrationButtonContainer" style="display: none;" onclick="migrateLocalToCloud()">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> Sauvegarder dans le cloud
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary" onclick="openStatsScreen()">
-                        <i class="fa-solid fa-chart-simple"></i> Statistiques
-                        <span class="badge bg-primary ms-1 hidden" id="homeStatsBadge"></span>
-                    </button>
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-gear"></i> Outils
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#" onclick="exportErrorLog();return false;"><i class="fa-solid fa-download me-2"></i>Exporter le carnet d'erreurs (.txt)</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="resetErrorLog();return false;"><i class="fa-solid fa-eraser me-2"></i>Vider le carnet d'erreurs</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="resetErratums();return false;"><i class="fa-solid fa-trash-can me-2"></i>Réinitialiser les erratums</a></li>
-                        </ul>
+        <!-- Modal Compte & outils : tout ce qui n'est pas "choisir une matière" vit ici -->
+        <div class="modal fade" id="toolsModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fa-solid fa-gear"></i> Compte & outils</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 pb-3 border-bottom" id="authContainer">
+                            <div id="loggedOutButtons">
+                                <button class="btn btn-outline-primary btn-sm me-2" data-bs-dismiss="modal" onclick="showLoginModal()">
+                                    <i class="fa-solid fa-right-to-bracket"></i> Se connecter
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal" onclick="showSignupModal()">
+                                    <i class="fa-solid fa-user-plus"></i> S'inscrire
+                                </button>
+                            </div>
+                            <div id="loggedInButtons" class="hidden d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-user-check me-2"></i>Connecté : <strong id="userEmail"></strong></span>
+                                <button class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal" onclick="logout()">
+                                    <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-dismiss="modal" onclick="startErrorReviewSession()">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Réviser mes erreurs
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal" onclick="openStatsScreen()">
+                                <i class="fa-solid fa-chart-simple"></i> Statistiques
+                                <span class="badge bg-primary ms-1 hidden" id="homeStatsBadge"></span>
+                            </button>
+                            <button class="btn btn-outline-info btn-sm" id="migrationButtonContainer" style="display: none;" data-bs-dismiss="modal" onclick="migrateLocalToCloud()">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Sauvegarder dans le cloud
+                            </button>
+                        </div>
+
+                        <div class="border-top pt-3">
+                            <p class="text-muted small mb-2">Carnet d'erreurs</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-outline-success" onclick="exportErrorLog()">
+                                    <i class="fa-solid fa-download"></i> Exporter (.txt)
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning" onclick="resetErrorLog()">
+                                    <i class="fa-solid fa-eraser"></i> Vider
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="resetErratums()">
+                                    <i class="fa-solid fa-trash-can"></i> Réinitialiser les erratums
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1585,6 +1611,8 @@ let currentQuestionIndex = null;  // Index de la question actuelle
         }
 
         document.getElementById('qcmScreen').classList.add('hidden');
+        document.getElementById('chapterScreen').classList.add('hidden');
+        document.getElementById('homeScreen').classList.add('hidden');
         launchSession(shuffle(availableQcms).slice(0, size), {
             examMode: examModeChecked,
             dpMode: dpModeChecked,
@@ -1592,8 +1620,18 @@ let currentQuestionIndex = null;  // Index de la question actuelle
         });
     }
 
+    function toggleExamDurationInput() {
+        const checked = document.getElementById('examModeToggle').checked;
+        document.getElementById('examDurationWrapper').classList.toggle('hidden', !checked);
+    }
+
     function launchSession(qcms, opts = {}) {
         clearExamTimer();
+        // On repart d'un écran propre : rien d'autre ne doit rester visible pendant la série,
+        // en particulier pas l'accueil avec la liste des matières.
+        ['homeScreen', 'chapterScreen', 'qcmScreen', 'statsScreen', 'correctionScreen'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
         examMode = !!opts.examMode;
         dpMode = !!opts.dpMode;
 
@@ -1768,71 +1806,110 @@ let currentQuestionIndex = null;  // Index de la question actuelle
 
     function backToQCMScreen() {
         document.getElementById('correctionScreen').classList.add('hidden');
-        document.getElementById('chapterScreen').classList.remove('hidden');
-        currentPath = [];
+        document.getElementById('qcmScreen').classList.remove('hidden');
     }
 
     function backToChapters() {
-        document.getElementById('qcmScreen').classList.add('hidden');
-        document.getElementById('chapterScreen').classList.remove('hidden');
+        if (currentPath.length <= 1) {
+            showHomeScreen();
+            return;
+        }
+        openNode(currentPath.slice(0, -1));
     }
 
     function backOneLevel() {
-        if (currentPath.length === 0) {
-            document.getElementById('chapterScreen').classList.add('hidden');
-            document.getElementById('homeScreen').classList.remove('hidden');
-        } else {
-            currentPath.pop();
-            const parentNode = getNode(currentPath);
-            if (isLeaf(parentNode)) {
-                currentPath.pop();
-            }
-            displaySubjects();
+        if (currentPath.length <= 1) {
+            showHomeScreen();
+            return;
         }
+        openNode(currentPath.slice(0, -1));
     }
 
+    // Retour direct à l'accueil : remet currentPath à zéro et cache tous les autres écrans,
+    // pour ne jamais laisser un écran fantôme affiché derrière (c'était la cause du "retour
+    // vers le vide" et de la liste de matières qui restait visible pendant la série de QCM).
+    function showHomeScreen() {
+        currentPath = [];
+        ['sessionScreen', 'correctionScreen', 'chapterScreen', 'qcmScreen', 'statsScreen'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+        document.getElementById('homeScreen').classList.remove('hidden');
+        displaySubjects();
+        renderHomeStats();
+    }
+
+    // Compte le nombre total de fichiers QCM dans un noeud, quel que soit le niveau de profondeur
+    function countLeafFiles(node) {
+        if (isLeaf(node)) return node.length;
+        return Object.values(node).reduce((acc, child) => acc + countLeafFiles(child), 0);
+    }
+
+    // Affiche la liste des matières de premier niveau, sur l'écran d'accueil uniquement
     function displaySubjects() {
+        currentPath = [];
         const container = document.getElementById('subjectsList');
         container.innerHTML = '';
 
-        const rootNode = currentPath.length === 0 ? data : getNode(currentPath);
+        Object.entries(data).forEach(([key, node]) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            item.innerHTML = `
+                <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
+                <span class="badge bg-primary rounded-pill">${countLeafFiles(node)}</span>
+            `;
+            item.onclick = () => openNode([key]);
+            container.appendChild(item);
+        });
+    }
 
-        if (isLeaf(rootNode)) {
-            currentPath.pop();
-            displaySubjects();
+    // Ouvre un noeud de l'arborescence : un sous-dossier (chapterScreen) ou un fichier QCM (qcmScreen).
+    // À chaque appel on cache explicitement TOUS les autres écrans : c'est ce qui manquait avant,
+    // et qui laissait la liste des matières affichée en permanence (y compris pendant l'examen).
+    function openNode(path) {
+        currentPath = path;
+        const node = getNode(path);
+
+        if (isLeaf(node)) {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('chapterScreen').classList.add('hidden');
+            document.getElementById('qcmScreen').classList.remove('hidden');
+            document.getElementById('sessionChapterTitle').textContent = path.join(' > ');
             return;
         }
 
-        const breadcrumb = currentPath.join(' > ');
-        document.getElementById('breadcrumb').innerHTML = breadcrumb ? `
-            <span onclick="backOneLevel()">Retour</span> > ${breadcrumb.split(' > ').map((p, i) =>
-                `<span onclick="currentPath = currentPath.slice(0, ${i+1}); displaySubjects();">${escapeHTML(p)}</span>${i < breadcrumb.split(' > ').length - 1 ? ' > ' : ''}`
-            ).join('')}
-        ` : '';
+        document.getElementById('homeScreen').classList.add('hidden');
+        document.getElementById('qcmScreen').classList.add('hidden');
+        document.getElementById('chapterScreen').classList.remove('hidden');
+        document.getElementById('currentSubjectTitle').textContent = path[path.length - 1];
 
-        Object.entries(rootNode).forEach(([key, node]) => {
-            const item = document.createElement('div');
-            item.className = 'list-group-item d-flex justify-content-between align-items-center';
+        renderBreadcrumb(path);
+
+        const list = document.getElementById('chaptersList');
+        list.innerHTML = '';
+        Object.entries(node).forEach(([key, child]) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+            const badge = isLeaf(child) ? child.length : countLeafFiles(child);
             item.innerHTML = `
-                <div>
-                    <i class="fa-solid fa-book me-2"></i>
-                    <strong>${escapeHTML(key)}</strong>
-                    ${isLeaf(node) ? `<span class="badge bg-info ms-2">${node.length} QCM</span>` : ''}
-                </div>
-                <i class="fa-solid fa-chevron-right"></i>
+                <div><i class="fa-solid fa-book me-2"></i><strong>${escapeHTML(key)}</strong></div>
+                <span class="badge bg-secondary rounded-pill">${badge}</span>
             `;
-            item.onclick = () => {
-                currentPath.push(key);
-                if (isLeaf(node)) {
-                    document.getElementById('chapterScreen').classList.add('hidden');
-                    document.getElementById('qcmScreen').classList.remove('hidden');
-                    document.getElementById('sessionChapterTitle').textContent = `Session pour : ${currentPath.join(' > ')}`;
-                } else {
-                    displaySubjects();
-                }
-            };
-            container.appendChild(item);
+            item.onclick = () => openNode([...path, key]);
+            list.appendChild(item);
         });
+    }
+
+    function renderBreadcrumb(path) {
+        const breadcrumb = document.getElementById('breadcrumb');
+        breadcrumb.innerHTML = `<span onclick="showHomeScreen()">Accueil</span>` + path.map((part, idx) => {
+            const isLast = idx === path.length - 1;
+            const subPath = path.slice(0, idx + 1);
+            return isLast
+                ? ` / ${escapeHTML(part)}`
+                : ` / <span onclick='openNode(${JSON.stringify(subPath)})'>${escapeHTML(part)}</span>`;
+        }).join('');
     }
 
     // Sur l'accueil on ne montre plus qu'un badge discret sur le bouton "Statistiques" ;
@@ -1856,9 +1933,7 @@ let currentQuestionIndex = null;  // Index de la question actuelle
     }
 
     function closeStatsScreen() {
-        document.getElementById('statsScreen').classList.add('hidden');
-        document.getElementById('homeScreen').classList.remove('hidden');
-        renderHomeStats();
+        showHomeScreen();
     }
 
     // NOTE : ceci n'est qu'un résumé basé sur computeGlobalStats() (le seul calcul de stats
