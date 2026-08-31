@@ -134,6 +134,19 @@
         .heatmap-cell { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
         .heatmap-legend { display: flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 0.75rem; color: #6c757d; }
         .heatmap-legend .heatmap-cell { width: 12px; height: 12px; }
+
+        .account-bar { text-align: right; font-size: 0.8rem; color: #6c757d; margin-bottom: 1rem; }
+        .account-bar a { color: #6c757d; text-decoration: none; }
+        .account-bar a:hover { color: #1177d1; text-decoration: underline; }
+        .account-bar-sep { margin: 0 .4em; }
+
+        .home-toolbar .btn { font-size: 0.8rem; }
+
+        details.session-options { border: 1px solid #dee2e6; border-radius: 4px; padding: .6rem .9rem; }
+        details.session-options summary { cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #495057; list-style: none; }
+        details.session-options summary::-webkit-details-marker { display: none; }
+        details.session-options summary::before { content: "▸ "; }
+        details.session-options[open] summary::before { content: "▾ "; }
     </style>
 </head>
 
@@ -141,58 +154,53 @@
     <div class="container">
         <!-- ===== ÉCRAN D'ACCUEIL (avec boutons de connexion) ===== -->
         <div id="homeScreen" class="setup-card shadow-sm">
-            <!-- Boutons de connexion/déconnexion (NOUVEAU) -->
-            <div class="mb-3 text-center" id="authContainer">
-                <div id="loggedOutButtons">
-                    <button class="btn btn-outline-primary me-2" onclick="showLoginModal()">
-                        <i class="fa-solid fa-right-to-bracket"></i> Se connecter
-                    </button>
-                    <button class="btn btn-outline-secondary" onclick="showSignupModal()">
-                        <i class="fa-solid fa-user-plus"></i> S'inscrire
-                    </button>
-                </div>
-                <div id="loggedInButtons" class="hidden">
-                    <div class="alert alert-success mb-0 py-2 d-flex justify-content-between align-items-center">
-                        <span>
-                            <i class="fa-solid fa-user-check me-2"></i>
-                            Connecté en tant que <strong id="userEmail"></strong>
-                        </span>
-                        <button class="btn btn-sm btn-outline-danger" onclick="logout()">
-                            <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
-                        </button>
-                    </div>
-                </div>
+            <!-- Barre de compte discrète, en haut à droite -->
+            <div class="account-bar" id="authContainer">
+                <span id="loggedOutButtons">
+                    <a href="#" onclick="showLoginModal();return false;">Se connecter</a>
+                    <span class="account-bar-sep">·</span>
+                    <a href="#" onclick="showSignupModal();return false;">S'inscrire</a>
+                </span>
+                <span id="loggedInButtons" class="hidden">
+                    <i class="fa-solid fa-user-check"></i> <span id="userEmail"></span>
+                    <span class="account-bar-sep">·</span>
+                    <a href="#" onclick="logout();return false;">Déconnexion</a>
+                </span>
+            </div>
 
             <h2 class="mb-4 text-center">🏥 QCM Médecine</h2>
             <div id="loadingScreen" class="text-center p-4">
                 <div class="spinner-border text-primary"></div>
                 <p class="mt-2">Chargement...</p>
             </div>
-            <div id="homeStats" class="mb-4"></div>
-            <div class="mb-3">
-                <button class="btn btn-outline-primary w-100" onclick="startErrorReviewSession()">
+
+            <!-- ===== Écran d'accueil : on va droit au but, la liste des matières d'abord ===== -->
+            <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
+
+            <!-- Actions secondaires, regroupées et discrètes -->
+            <div class="home-toolbar d-flex justify-content-between align-items-center flex-wrap gap-2 border-top pt-3">
+                <button class="btn btn-sm btn-outline-primary" onclick="startErrorReviewSession()">
                     <i class="fa-solid fa-arrow-rotate-left"></i> Réviser mes erreurs
                 </button>
-            </div>
-            <div id="subjectsList" class="list-group list-group-flush mb-4"></div>
-            <div class="d-flex justify-content-between border-top pt-3 flex-wrap gap-2">
-                <button class="btn btn-outline-success btn-sm" onclick="exportErrorLog()">
-                    <i class="fa-solid fa-download"></i> Exporter le Carnet d'Erreurs (.txt compact)
-                </button>
-                <div>
-                    <button class="btn btn-outline-warning btn-sm me-1" onclick="resetErrorLog()">
-                        <i class="fa-solid fa-eraser"></i> Vider carnet d'erreurs
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm btn-outline-info" id="migrationButtonContainer" style="display: none;" onclick="migrateLocalToCloud()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Sauvegarder dans le cloud
                     </button>
-                    <button class="btn btn-outline-danger btn-sm" onclick="resetErratums()">
-                        <i class="fa-solid fa-trash-can"></i> Réinitialiser erratums
+                    <button class="btn btn-sm btn-outline-secondary" onclick="openStatsScreen()">
+                        <i class="fa-solid fa-chart-simple"></i> Statistiques
+                        <span class="badge bg-primary ms-1 hidden" id="homeStatsBadge"></span>
                     </button>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-gear"></i> Outils
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="exportErrorLog();return false;"><i class="fa-solid fa-download me-2"></i>Exporter le carnet d'erreurs (.txt)</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="resetErrorLog();return false;"><i class="fa-solid fa-eraser me-2"></i>Vider le carnet d'erreurs</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="resetErratums();return false;"><i class="fa-solid fa-trash-can me-2"></i>Réinitialiser les erratums</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- Bouton pour migrer les données locales vers Firebase (NOUVEAU) -->
-            <div class="mt-3 text-center" id="migrationButtonContainer" style="display: none;">
-                <button class="btn btn-outline-info" onclick="migrateLocalToCloud()">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Sauvegarder mes données locales dans le cloud
-                </button>
             </div>
         </div>
 
@@ -218,23 +226,28 @@
         <div id="qcmScreen" class="hidden setup-card shadow-sm">
             <button class="btn btn-sm btn-outline-secondary mb-3" onclick="backToChapters()">← Retour</button>
             <h4 id="sessionChapterTitle" class="text-primary mb-4"></h4>
-            <div class="mb-4" style="max-width: 300px;">
+            <div class="mb-3" style="max-width: 300px;">
                 <label class="form-label fw-bold">Nombre de questions :</label>
                 <input type="number" id="sessionSize" class="form-control" value="10">
             </div>
 
-            <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" id="examModeToggle" onchange="toggleExamDurationInput()">
-                <label class="form-check-label" for="examModeToggle">Mode examen (chrono, aucun indice, correction uniquement à la fin)</label>
-            </div>
-            <div class="mb-3 hidden" id="examDurationWrapper" style="max-width: 300px;">
-                <label class="form-label fw-bold">Durée du chrono (minutes) :</label>
-                <input type="number" id="examDurationInput" class="form-control" value="30">
-            </div>
-            <div class="form-check form-switch mb-4">
-                <input class="form-check-input" type="checkbox" id="dpModeToggle">
-                <label class="form-check-label" for="dpModeToggle">Mode DP, Dossier Progressif (validation séquentielle et définitive de chaque question)</label>
-            </div>
+            <details class="session-options mb-4">
+                <summary>Options avancées (mode examen, mode DP)</summary>
+                <div class="pt-3">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="examModeToggle" onchange="toggleExamDurationInput()">
+                        <label class="form-check-label" for="examModeToggle">Mode examen (chrono, aucun indice, correction uniquement à la fin)</label>
+                    </div>
+                    <div class="mb-3 hidden" id="examDurationWrapper" style="max-width: 300px;">
+                        <label class="form-label fw-bold">Durée du chrono (minutes) :</label>
+                        <input type="number" id="examDurationInput" class="form-control" value="30">
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="dpModeToggle">
+                        <label class="form-check-label" for="dpModeToggle">Mode DP, Dossier Progressif (validation séquentielle et définitive de chaque question)</label>
+                    </div>
+                </div>
+            </details>
 
             <button class="btn btn-uness w-100" onclick="startSession()">Démarrer la série</button>
         </div>
@@ -1822,10 +1835,41 @@ let currentQuestionIndex = null;  // Index de la question actuelle
         });
     }
 
+    // Sur l'accueil on ne montre plus qu'un badge discret sur le bouton "Statistiques" ;
+    // le détail passe par openStatsScreen(), qui va droit au but sans encombrer la liste des matières.
     function renderHomeStats() {
         const stats = computeGlobalStats();
+        const badge = document.getElementById('homeStatsBadge');
         if (!stats) {
-            document.getElementById('homeStats').innerHTML = `
+            badge.classList.add('hidden');
+            badge.textContent = '';
+            return;
+        }
+        badge.textContent = stats.successRate + '%';
+        badge.classList.remove('hidden');
+    }
+
+    function openStatsScreen() {
+        document.getElementById('homeScreen').classList.add('hidden');
+        document.getElementById('statsScreen').classList.remove('hidden');
+        renderStatsScreen();
+    }
+
+    function closeStatsScreen() {
+        document.getElementById('statsScreen').classList.add('hidden');
+        document.getElementById('homeScreen').classList.remove('hidden');
+        renderHomeStats();
+    }
+
+    // NOTE : ceci n'est qu'un résumé basé sur computeGlobalStats() (le seul calcul de stats
+    // présent dans ce fichier). Le vrai écran détaillé (heatmap, table de métacognition,
+    // temps de réponse) mentionné ailleurs n'existe pas dans ce fichier : à réintégrer
+    // depuis la version où il a été développé si tu veux le retrouver ici.
+    function renderStatsScreen() {
+        const stats = computeGlobalStats();
+        const content = document.getElementById('statsContent');
+        if (!stats) {
+            content.innerHTML = `
                 <div class="alert alert-info">
                     <i class="fa-solid fa-info-circle"></i> Aucune statistique disponible. Commence une session pour en générer !
                 </div>
@@ -1833,7 +1877,7 @@ let currentQuestionIndex = null;  // Index de la question actuelle
             return;
         }
 
-        document.getElementById('homeStats').innerHTML = `
+        content.innerHTML = `
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mb-3">
