@@ -804,7 +804,7 @@
 
                     Object.entries(localErrorLog).forEach(([key, value]) => {
                         if (!cloudErrorLog[key] || JSON.stringify(cloudErrorLog[key]) !== JSON.stringify(value)) {
-                            const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
+                            const docRef = db.collection(`users/${userId}/errorLog`).doc(safeErrorDocId(key));
                             batch.set(docRef, {
                                 ...value,
                                 key: key,
@@ -951,7 +951,7 @@
 
                 const errorLog = JSON.parse(localStorage.getItem('digital_error_log') || '{}');
                 Object.entries(errorLog).forEach(([key, value]) => {
-                    const docRef = db.collection(`users/${userId}/errorLog`).doc(key);
+                    const docRef = db.collection(`users/${userId}/errorLog`).doc(safeErrorDocId(key));
                     batch.set(docRef, { ...value, key: key, userId: userId, migratedAt: firebase.firestore.FieldValue.serverTimestamp() });
                     count++;
                 });
@@ -991,6 +991,21 @@
 
         function generateCleanId(str) {
             return str.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').slice(0, 100);
+        }
+
+        // Un ID de document Firestore ne peut pas contenir de "/" (interprété comme un
+        // séparateur de segments), ce que la clé lisible du carnet d'erreurs peut très bien
+        // contenir (ex: "et/ou"). On calcule donc un ID sûr : préfixe lisible tronqué + hash
+        // court pour éviter les collisions entre deux clés proches. Le texte original reste
+        // intact dans le champ "key" du document, donc rien ne change côté lecture.
+        function safeErrorDocId(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (hash * 31 + str.charCodeAt(i)) | 0;
+            }
+            const hashPart = Math.abs(hash).toString(36);
+            const readablePart = generateCleanId(str).slice(0, 80);
+            return `${readablePart}_${hashPart}`;
         }
 
         function getCanceledQCMs() { return JSON.parse(localStorage.getItem('canceled_qcms') || '[]'); }
@@ -1102,7 +1117,7 @@
 
             if (currentUser) {
                 try {
-                    await db.collection(`users/${currentUser.uid}/errorLog`).doc(key).set({
+                    await db.collection(`users/${currentUser.uid}/errorLog`).doc(safeErrorDocId(key)).set({
                         ...log[key],
                         key: key,
                         userId: currentUser.uid,
