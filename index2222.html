@@ -2078,93 +2078,100 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== CHARGEMENT DES DONNÉES =====
+// Parcourt récursivement l'arbre du config.json (qui peut être un tableau de
+// fichiers, ex "Pharmacologie": ["Annales","IA"], ou une catégorie contenant
+// plusieurs matières, ex "Hormono-Reprod": { "REPRODUCTION": [...], ... }).
+// La "matière" au sens de l'app = le dernier niveau avant le tableau de fichiers.
+// La "catégorie" = le niveau racine, uniquement quand il y a imbrication.
+async function loadQCMNode(node, pathParts, rootCategory, results) {
+    if (Array.isArray(node)) {
+        const matiere = pathParts[pathParts.length - 1];
+        const categorie = pathParts.length > 1 ? rootCategory : null;
+        const subjectPathStr = pathParts.join(' > ');
+
+        for (const fileName of node) {
+            try {
+                const res = await fetch(`QCM/${pathParts.join('/')}/${fileName}`);
+                if (!res.ok) continue;
+                const text = await res.text();
+                const parsed = parseQCMFile(text, subjectPathStr, fileName);
+                parsed.forEach(qcm => {
+                    results.push({
+                        ...qcm,
+                        subject: matiere,
+                        category: categorie,
+                        chapter: fileName
+                    });
+                });
+            } catch (e) {
+                console.error(`Erreur lors du chargement de QCM/${pathParts.join('/')}/${fileName} :`, e);
+            }
+        }
+    } else {
+        for (const key in node) {
+            await loadQCMNode(node[key], [...pathParts, key], rootCategory, results);
+        }
+    }
+}
+
 async function loadAllQCMData() {
     try {
-        // 1. Charger la structure des QCM depuis config.json
+        // 1. Charger la structure des QCM depuis config.json (gère les catégories imbriquées)
         const configResponse = await fetch('QCM/config.json');
         if (!configResponse.ok) throw new Error("Impossible de charger config.json");
 
         const subjects = await configResponse.json();
-        const qcmStructure = {};
+        const rawQcms = [];
+        for (const rootKey in subjects) {
+            await loadQCMNode(subjects[rootKey], [rootKey], rootKey, rawQcms);
+        }
 
-        // Charger chaque matière et chapitre
-        for (const subject in subjects) {
-            qcmStructure[subject] = {};
-            for (const chapterFile of subjects[subject]) {
-                try {
-                    const res = await fetch(`QCM/${subject}/${chapterFile}`);
-                    if (!res.ok) continue;
-                    const text = await res.text();
-                    const parsed = parseQCMFile(text, subject, chapterFile);
-                    if (parsed.length > 0) {
-                        const chapterName = chapterFile.replace('.txt', '').replace(/_/g, ' ');
-                        qcmStructure[subject][chapterName] = parsed;
+        // 2. Charger les tentatives : la source de vérité est le localStorage
+        // (qcm_attempts_log, alimenté par saveAttempt à chaque réponse), et on
+        // complète avec le cloud Firestore si l'utilisateur est connecté.
+        const attempts = getAttemptsLog();
+        if (currentUser) {
+            try {
+                const attemptsSnapshot = await db.collection(`users/${currentUser.uid}/qcmAttempts`).get();
+                const cloudAttempts = attemptsSnapshot.docs.map(doc => doc.data());
+                const seen = new Set(attempts.map(a => `${a.qcmId}_${a.date}`));
+                cloudAttempts.forEach(a => {
+                    const key = `${a.qcmId}_${a.date}`;
+                    if (!seen.has(key)) {
+                        attempts.push(a);
+                        seen.add(key);
                     }
-                } catch (e) {
-                    console.error(`Erreur lors du chargement de ${chapterFile}:`, e);
-                }
+                });
+            } catch (e) {
+                console.error("Erreur lors de la récupération des tentatives Firestore :", e);
             }
         }
 
-        // 2. Charger les tentatives depuis Firebase
-        if (!currentUser) {
-            console.warn("Aucun utilisateur connecté, impossible de charger les tentatives Firebase.");
-            // Retourner uniquement la structure des QCM (sans stats utilisateur)
-            return Object.entries(qcmStructure).flatMap(([subject, chapters]) =>
-                Object.entries(chapters).flatMap(([chapter, qcms]) =>
-                    qcms.map(qcm => ({
-                        id: qcm.id || `${subject}-${chapter}-${qcms.indexOf(qcm)}`,
-                        subject,
-                        chapter,
-                        ...qcm,
-                        timesSeen: 0,
-                        successRate: 0,
-                        averageTime: 0,
-                        lastSeen: null,
-                        firstSeen: null
-                    }))
-                )
-            );
-        }
+        // 3. Fusionner les QCM avec les tentatives (champs réels : correct, durationSeconds, date)
+        const allQCM = rawQcms.map(qcm => {
+            const qcmAttempts = attempts.filter(a => a.qcmId === qcm.id);
 
-        const userId = currentUser.uid;
-        const attemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
-        const attempts = attemptsSnapshot.docs.map(doc => doc.data());
+            const timesSeen = qcmAttempts.length;
+            const successCount = qcmAttempts.filter(a => a.correct).length;
+            const successRate = timesSeen > 0 ? (successCount / timesSeen) : 0;
+            const totalTime = qcmAttempts.reduce((sum, a) => sum + (a.durationSeconds || 0), 0);
+            const averageTime = timesSeen > 0 ? (totalTime / timesSeen) : 0;
 
-        // 3. Fusionner les QCM avec les tentatives
-        const allQCM = Object.entries(qcmStructure).flatMap(([subject, chapters]) =>
-            Object.entries(chapters).flatMap(([chapter, qcms]) =>
-                qcms.map(qcm => {
-                    const qcmId = qcm.id || `${subject}-${chapter}-${qcms.indexOf(qcm)}`;
-                    const qcmAttempts = attempts.filter(a => a.qcmId === qcmId);
+            const validDates = qcmAttempts
+                .map(a => new Date(a.date))
+                .filter(d => !isNaN(d.getTime()));
+            const lastSeen = validDates.length > 0 ? new Date(Math.max(...validDates.map(d => d.getTime()))) : null;
+            const firstSeen = validDates.length > 0 ? new Date(Math.min(...validDates.map(d => d.getTime()))) : null;
 
-                    // Calculer les statistiques pour ce QCM
-                    const timesSeen = qcmAttempts.length;
-                    const successCount = qcmAttempts.filter(a => a.success).length;
-                    const successRate = timesSeen > 0 ? (successCount / timesSeen) : 0;
-                    const totalTime = qcmAttempts.reduce((sum, a) => sum + (a.time || 0), 0);
-                    const averageTime = timesSeen > 0 ? (totalTime / timesSeen) : 0;
-                    const lastSeen = timesSeen > 0 ?
-                        new Date(Math.max(...qcmAttempts.map(a => a.date?.toDate ? a.date.toDate() : new Date(a.date)).getTime())) :
-                        null;
-                    const firstSeen = timesSeen > 0 ?
-                        new Date(Math.min(...qcmAttempts.map(a => a.date?.toDate ? a.date.toDate() : new Date(a.date)).getTime())) :
-                        null;
-
-                    return {
-                        id: qcmId,
-                        subject,
-                        chapter,
-                        ...qcm,
-                        timesSeen,
-                        successRate,
-                        averageTime,
-                        lastSeen,
-                        firstSeen
-                    };
-                })
-            )
-        );
+            return {
+                ...qcm,
+                timesSeen,
+                successRate,
+                averageTime,
+                lastSeen,
+                firstSeen
+            };
+        });
 
         return allQCM;
     } catch (error) {
@@ -2362,14 +2369,38 @@ function populateSubjectFilter() {
     const subjectFilter = document.getElementById('statsSubjectFilter');
     if (!subjectFilter) return;
 
-    const subjects = [...new Set(allQCMData.map(qcm => qcm.subject))];
+    // Regrouper les matières par catégorie (quand il y en a une), pour garder
+    // la hiérarchie du config.json visible dans le sélecteur.
+    const byCategory = new Map(); // categorie|null -> Set(matieres)
+    allQCMData.forEach(qcm => {
+        const cat = qcm.category || null;
+        if (!byCategory.has(cat)) byCategory.set(cat, new Set());
+        byCategory.get(cat).add(qcm.subject);
+    });
 
     subjectFilter.innerHTML = '<option value="all">Toutes les matières</option>';
-    subjects.forEach(subject => {
-        const option = document.createElement('option');
-        option.value = subject;
-        option.textContent = subject;
-        subjectFilter.appendChild(option);
+
+    // Matières sans catégorie (ex: Pharmacologie) directement à la racine
+    if (byCategory.has(null)) {
+        [...byCategory.get(null)].sort().forEach(subject => {
+            const option = document.createElement('option');
+            option.value = subject;
+            option.textContent = subject;
+            subjectFilter.appendChild(option);
+        });
+    }
+
+    // Matières regroupées sous leur catégorie
+    [...byCategory.keys()].filter(cat => cat !== null).sort().forEach(cat => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = cat;
+        [...byCategory.get(cat)].sort().forEach(subject => {
+            const option = document.createElement('option');
+            option.value = subject;
+            option.textContent = subject;
+            optgroup.appendChild(option);
+        });
+        subjectFilter.appendChild(optgroup);
     });
 }
 
@@ -2489,7 +2520,6 @@ function updateCharts(subjectStats, filteredData) {
             }
         }
     });
-}
 }
 }
 </script>
