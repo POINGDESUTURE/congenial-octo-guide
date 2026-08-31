@@ -146,8 +146,30 @@
         details.session-options summary::-webkit-details-marker { display: none; }
         details.session-options summary::before { content: "▸ "; }
         details.session-options[open] summary::before { content: "▾ "; }
-    </style>
-</head>
+    
+/* Stats Cards */
+.stat-card {
+    border-left: 4px solid #1177d1;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Chart Container */
+.card-body {
+    position: relative;
+    height: 100%;
+}
+
+/* Progress Bar Custom */
+.progress-bar {
+    transition: width 0.6s ease;
+}
+</style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script></head>
 
 <body>
     <div class="container">
@@ -232,7 +254,195 @@
                 </button>
             </div>
             <h3 class="mb-4">📊 Statistiques détaillées</h3>
-            <div id="statsContent"></div>
+            
+<!-- ===== EN-TÊTE =====
+-->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="mb-0">📊 <strong>Statistiques détaillées</strong></h4>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="autoRefreshStats" checked>
+        <label class="form-check-label" for="autoRefreshStats">Rafraîchir automatiquement</label>
+    </div>
+</div>
+
+<!-- ===== FILTRES =====
+-->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Matière</label>
+                <select id="statsSubjectFilter" class="form-select">
+                    <option value="all">Toutes les matières</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Période</label>
+                <select id="statsPeriodFilter" class="form-select">
+                    <option value="all">Toute la période</option>
+                    <option value="7">7 derniers jours</option>
+                    <option value="30">30 derniers jours</option>
+                    <option value="90">90 derniers jours</option>
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button class="btn btn-uness w-100" onclick="loadStatistics()">➡️ Charger les stats</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CARTES RÉSUMÉ =====
+-->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <i class="fas fa-book-medical fa-2x text-primary mb-2"></i>
+                <h5 class="card-title">QCM Totaux</h5>
+                <p class="card-text fs-3 fw-bold" id="totalQCM">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                <h5 class="card-title">QCM Réussis</h5>
+                <p class="card-text fs-3 fw-bold" id="successQCM">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <i class="fas fa-redo fa-2x text-warning mb-2"></i>
+                <h5 class="card-title">Tours Moyens</h5>
+                <p class="card-text fs-3 fw-bold" id="avgTours">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <i class="fas fa-clock fa-2x text-danger mb-2"></i>
+                <h5 class="card-title">Temps Moyen</h5>
+                <p class="card-text fs-3 fw-bold" id="avgTime">0s</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== STATISTIQUES PAR MATIÈRE =====
+-->
+<div class="card mb-4">
+    <div class="card-header bg-white">
+        <h5 class="mb-0">📚 <strong>Statistiques par matière</strong></h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Matière</th>
+                        <th>Total QCM</th>
+                        <th>Vus</th>
+                        <th>Réussis</th>
+                        <th>Tours</th>
+                        <th>Temps Moyen</th>
+                        <th>Progression</th>
+                        <th>Estimation Fin</th>
+                    </tr>
+                </thead>
+                <tbody id="subjectStatsTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ===== VISUALISATIONS =====
+-->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">📈 <strong>Progression par matière</strong></h5>
+            </div>
+            <div class="card-body">
+                <canvas id="progressChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">🔥 <strong>Heatmap des QCM</strong></h5>
+            </div>
+            <div class="card-body">
+                <canvas id="heatmapChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">⏱️ <strong>Temps de réponse moyen</strong></h5>
+            </div>
+            <div class="card-body">
+                <canvas id="timeChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">🔄 <strong>Nombre de tours par matière</strong></h5>
+            </div>
+            <div class="card-body">
+                <canvas id="toursChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ESTIMATION DE FIN =====
+-->
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="mb-0">🎯 <strong>Estimation de fin de révision</strong></h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Rythme actuel :</label>
+                    <p id="currentPace" class="fs-5">0 QCM/jour</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">QCM restants :</label>
+                    <p id="remainingQCM" class="fs-5">0</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Date estimée de fin :</label>
+                    <p id="estimatedEndDate" class="fs-5">--/--/----</p>
+                </div>
+                <div class="mb-3">
+                    <div class="progress" style="height: 25px;">
+                        <div id="globalProgressBar" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+                    </div>
+                    <p class="mt-2 text-center fw-bold">Progression globale</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
         </div>
 
         <div id="chapterScreen" class="hidden setup-card shadow-sm">
@@ -1843,5 +2053,439 @@
         // =============================================
         loadAllQCM();
     </script>
+
+// ===== VARIABLES GLOBALES =====
+let allQCMData = [];
+let charts = {};
+
+// ===== INITIALISATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Charger les données au démarrage
+    loadAllQCMData().then(() => {
+        populateSubjectFilter();
+        loadStatistics();
+    });
+
+    // Rafraîchir automatiquement si l'option est activée
+    setInterval(() => {
+        if (document.getElementById('autoRefreshStats') && document.getElementById('autoRefreshStats').checked) {
+            loadStatistics();
+        }
+    }, 30000); // Toutes les 30 secondes
+});
+
+// ===== CHARGEMENT DES DONNÉES =====
+async function loadAllQCMData() {
+    try {
+        // 1. Charger la structure des QCM depuis config.json
+        const configResponse = await fetch('QCM/config.json');
+        if (!configResponse.ok) throw new Error("Impossible de charger config.json");
+
+        const subjects = await configResponse.json();
+        const qcmStructure = {};
+
+        // Charger chaque matière et chapitre
+        for (const subject in subjects) {
+            qcmStructure[subject] = {};
+            for (const chapterFile of subjects[subject]) {
+                try {
+                    const res = await fetch(`QCM/${subject}/${chapterFile}`);
+                    if (!res.ok) continue;
+                    const text = await res.text();
+                    const parsed = parseQCMFile(text, subject, chapterFile);
+                    if (parsed.length > 0) {
+                        const chapterName = chapterFile.replace('.txt', '').replace(/_/g, ' ');
+                        qcmStructure[subject][chapterName] = parsed;
+                    }
+                } catch (e) {
+                    console.error(`Erreur lors du chargement de ${chapterFile}:`, e);
+                }
+            }
+        }
+
+        // 2. Charger les tentatives depuis Firebase
+        if (!currentUser) {
+            console.warn("Aucun utilisateur connecté, impossible de charger les tentatives Firebase.");
+            // Retourner uniquement la structure des QCM (sans stats utilisateur)
+            return Object.entries(qcmStructure).flatMap(([subject, chapters]) =>
+                Object.entries(chapters).flatMap(([chapter, qcms]) =>
+                    qcms.map(qcm => ({
+                        id: qcm.id || `${subject}-${chapter}-${qcms.indexOf(qcm)}`,
+                        subject,
+                        chapter,
+                        ...qcm,
+                        timesSeen: 0,
+                        successRate: 0,
+                        averageTime: 0,
+                        lastSeen: null,
+                        firstSeen: null
+                    }))
+                )
+            );
+        }
+
+        const userId = currentUser.uid;
+        const attemptsSnapshot = await db.collection(`users/${userId}/qcmAttempts`).get();
+        const attempts = attemptsSnapshot.docs.map(doc => doc.data());
+
+        // 3. Fusionner les QCM avec les tentatives
+        const allQCM = Object.entries(qcmStructure).flatMap(([subject, chapters]) =>
+            Object.entries(chapters).flatMap(([chapter, qcms]) =>
+                qcms.map(qcm => {
+                    const qcmId = qcm.id || `${subject}-${chapter}-${qcms.indexOf(qcm)}`;
+                    const qcmAttempts = attempts.filter(a => a.qcmId === qcmId);
+
+                    // Calculer les statistiques pour ce QCM
+                    const timesSeen = qcmAttempts.length;
+                    const successCount = qcmAttempts.filter(a => a.success).length;
+                    const successRate = timesSeen > 0 ? (successCount / timesSeen) : 0;
+                    const totalTime = qcmAttempts.reduce((sum, a) => sum + (a.time || 0), 0);
+                    const averageTime = timesSeen > 0 ? (totalTime / timesSeen) : 0;
+                    const lastSeen = timesSeen > 0 ?
+                        new Date(Math.max(...qcmAttempts.map(a => a.date?.toDate ? a.date.toDate() : new Date(a.date)).getTime())) :
+                        null;
+                    const firstSeen = timesSeen > 0 ?
+                        new Date(Math.min(...qcmAttempts.map(a => a.date?.toDate ? a.date.toDate() : new Date(a.date)).getTime())) :
+                        null;
+
+                    return {
+                        id: qcmId,
+                        subject,
+                        chapter,
+                        ...qcm,
+                        timesSeen,
+                        successRate,
+                        averageTime,
+                        lastSeen,
+                        firstSeen
+                    };
+                })
+            )
+        );
+
+        return allQCM;
+    } catch (error) {
+        console.error("Erreur lors du chargement des données QCM :", error);
+        return [];
+    }
+}
+
+// ===== CHARGEMENT DES STATISTIQUES =====
+async function loadStatistics() {
+    const subjectFilter = document.getElementById('statsSubjectFilter') ? document.getElementById('statsSubjectFilter').value : 'all';
+    const periodFilter = document.getElementById('statsPeriodFilter') ? document.getElementById('statsPeriodFilter').value : 'all';
+
+    // Filtrer les données
+    let filteredData = [...allQCMData];
+
+    if (subjectFilter !== 'all') {
+        filteredData = filteredData.filter(qcm => qcm.subject === subjectFilter);
+    }
+
+    if (periodFilter !== 'all') {
+        const days = parseInt(periodFilter);
+        const cutoffDate = new Date();
+        cutoffDate.setDate(cutoffDate.getDate() - days);
+
+        filteredData = filteredData.filter(qcm => {
+            if (!qcm.lastSeen) return false;
+            const lastSeenDate = qcm.lastSeen.toDate ? qcm.lastSeen.toDate() : new Date(qcm.lastSeen);
+            return lastSeenDate >= cutoffDate;
+        });
+    }
+
+    // Calculer les statistiques globales
+    const globalStats = calculateGlobalStats(filteredData);
+    updateGlobalStatsUI(globalStats);
+
+    // Calculer les statistiques par matière
+    const subjectStats = calculateSubjectStats(filteredData);
+    updateSubjectStatsUI(subjectStats);
+
+    // Mettre à jour les graphiques
+    updateCharts(subjectStats, filteredData);
+}
+
+// ===== CALCUL DES STATISTIQUES GLOBALES =====
+function calculateGlobalStats(data) {
+    const totalQCM = data.length;
+    const seenQCM = data.filter(qcm => qcm.timesSeen > 0).length;
+    const successQCM = data.filter(qcm => (qcm.successRate || 0) >= 0.7).length; // 70% de réussite
+    const totalTours = data.reduce((sum, qcm) => sum + (qcm.timesSeen || 0), 0);
+    const avgTours = totalQCM > 0 ? (totalTours / totalQCM).toFixed(1) : 0;
+    const totalTime = data.reduce((sum, qcm) => sum + (qcm.averageTime || 0), 0);
+    const avgTime = totalQCM > 0 ? Math.round(totalTime / totalQCM) : 0;
+
+    // Estimation de fin
+    const unseenQCM = data.filter(qcm => qcm.timesSeen === 0).length;
+    const dailyRate = calculateDailyRate(data);
+    const estimatedEndDate = dailyRate > 0 ? calculateEstimatedEndDate(unseenQCM, dailyRate) : null;
+
+    return {
+        totalQCM,
+        seenQCM,
+        successQCM,
+        avgTours,
+        avgTime,
+        unseenQCM,
+        dailyRate,
+        estimatedEndDate,
+        globalProgress: totalQCM > 0 ? (seenQCM / totalQCM * 100) : 0
+    };
+}
+
+// ===== CALCUL DES STATISTIQUES PAR MATIÈRE =====
+function calculateSubjectStats(data) {
+    const subjects = [...new Set(data.map(qcm => qcm.subject))];
+    return subjects.map(subject => {
+        const subjectData = data.filter(qcm => qcm.subject === subject);
+        const totalQCM = subjectData.length;
+        const seenQCM = subjectData.filter(qcm => qcm.timesSeen > 0).length;
+        const successQCM = subjectData.filter(qcm => (qcm.successRate || 0) >= 0.7).length;
+        const totalTours = subjectData.reduce((sum, qcm) => sum + (qcm.timesSeen || 0), 0);
+        const avgTours = totalQCM > 0 ? (totalTours / totalQCM).toFixed(1) : 0;
+        const totalTime = subjectData.reduce((sum, qcm) => sum + (qcm.averageTime || 0), 0);
+        const avgTime = totalQCM > 0 ? Math.round(totalTime / totalQCM) : 0;
+        const progress = totalQCM > 0 ? (seenQCM / totalQCM * 100).toFixed(1) : 0;
+
+        // Estimation de fin pour cette matière
+        const unseenQCM = subjectData.filter(qcm => qcm.timesSeen === 0).length;
+        const dailyRate = calculateDailyRate(subjectData);
+        const estimatedEndDate = dailyRate > 0 ? calculateEstimatedEndDate(unseenQCM, dailyRate) : null;
+
+        return {
+            subject,
+            totalQCM,
+            seenQCM,
+            successQCM,
+            avgTours,
+            avgTime,
+            progress,
+            estimatedEndDate
+        };
+    });
+}
+
+// ===== CALCUL DU RYTHME QUOTIDIEN =====
+function calculateDailyRate(data) {
+    if (data.length === 0) return 0;
+
+    const now = new Date();
+    const firstSeenDates = data
+        .filter(qcm => qcm.firstSeen)
+        .map(qcm => {
+            const date = qcm.firstSeen.toDate ? qcm.firstSeen.toDate() : new Date(qcm.firstSeen);
+            return date;
+        })
+        .filter(date => !isNaN(date.getTime()));
+
+    if (firstSeenDates.length === 0) return 0;
+
+    const oldestDate = new Date(Math.min.apply(null, firstSeenDates));
+    const daysActive = (now - oldestDate) / (1000 * 60 * 60 * 24);
+
+    const totalSeen = data.filter(qcm => qcm.timesSeen > 0).length;
+    return daysActive > 0 ? totalSeen / daysActive : 0;
+}
+
+// ===== CALCUL DE LA DATE ESTIMÉE DE FIN =====
+function calculateEstimatedEndDate(remainingQCM, dailyRate) {
+    if (dailyRate === 0) return null;
+
+    const daysNeeded = remainingQCM / dailyRate;
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + Math.ceil(daysNeeded));
+
+    return endDate.toLocaleDateString('fr-FR');
+}
+
+// ===== MISE À JOUR DE L'UI =====
+function updateGlobalStatsUI(stats) {
+    const totalQCMEl = document.getElementById('totalQCM');
+    const successQCMEl = document.getElementById('successQCM');
+    const avgToursEl = document.getElementById('avgTours');
+    const avgTimeEl = document.getElementById('avgTime');
+    const currentPaceEl = document.getElementById('currentPace');
+    const remainingQCMEl = document.getElementById('remainingQCM');
+    const estimatedEndDateEl = document.getElementById('estimatedEndDate');
+    const globalProgressBarEl = document.getElementById('globalProgressBar');
+
+    if (totalQCMEl) totalQCMEl.textContent = stats.totalQCM;
+    if (successQCMEl) successQCMEl.textContent = stats.successQCM;
+    if (avgToursEl) avgToursEl.textContent = stats.avgTours;
+    if (avgTimeEl) avgTimeEl.textContent = `${stats.avgTime}s`;
+    if (currentPaceEl) currentPaceEl.textContent = `${stats.dailyRate.toFixed(1)} QCM/jour`;
+    if (remainingQCMEl) remainingQCMEl.textContent = stats.unseenQCM;
+    if (estimatedEndDateEl) estimatedEndDateEl.textContent = stats.estimatedEndDate || "N/A";
+    if (globalProgressBarEl) {
+        globalProgressBarEl.style.width = `${stats.globalProgress}%`;
+        globalProgressBarEl.textContent = `${stats.globalProgress.toFixed(1)}%`;
+    }
+}
+
+// ===== MISE À JOUR DU TABLEAU PAR MATIÈRE =====
+function updateSubjectStatsUI(subjectStats) {
+    const tableBody = document.getElementById('subjectStatsTable');
+    if (!tableBody) return;
+
+    tableBody.innerHTML = '';
+
+    subjectStats.forEach(stat => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${stat.subject || 'N/A'}</td>
+            <td>${stat.totalQCM || 0}</td>
+            <td>${stat.seenQCM || 0}</td>
+            <td>${stat.successQCM || 0}</td>
+            <td>${stat.avgTours || 0}</td>
+            <td>${stat.avgTime || 0}s</td>
+            <td>
+                <div class="progress" style="height: 20px; width: 100px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: ${stat.progress || 0}%">
+                        ${stat.progress || 0}%
+                    </div>
+                </div>
+            </td>
+            <td>${stat.estimatedEndDate || 'N/A'}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+// ===== REMPLISSAGE DU FILTRE MATIÈRE =====
+function populateSubjectFilter() {
+    const subjectFilter = document.getElementById('statsSubjectFilter');
+    if (!subjectFilter) return;
+
+    const subjects = [...new Set(allQCMData.map(qcm => qcm.subject))];
+
+    subjectFilter.innerHTML = '<option value="all">Toutes les matières</option>';
+    subjects.forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject;
+        option.textContent = subject;
+        subjectFilter.appendChild(option);
+    });
+}
+
+// ===== MISE À JOUR DES GRAPHIQUES =====
+function updateCharts(subjectStats, filteredData) {
+    // Détruire les anciens graphiques
+    Object.values(charts).forEach(chart => {
+        if (chart) chart.destroy();
+    });
+
+    const progressCtx = document.getElementById('progressChart');
+    const heatmapCtx = document.getElementById('heatmapChart');
+    const timeCtx = document.getElementById('timeChart');
+    const toursCtx = document.getElementById('toursChart');
+
+    if (!progressCtx || !heatmapCtx || !timeCtx || !toursCtx) return;
+
+    // 1. Graphique de progression par matière
+    charts.progress = new Chart(progressCtx, {
+        type: 'bar',
+        data: {
+            labels: subjectStats.map(s => s.subject || 'N/A'),
+            datasets: [{
+                label: 'Progression (%)',
+                data: subjectStats.map(s => s.progress || 0),
+                backgroundColor: 'rgba(17, 119, 209, 0.7)',
+                borderColor: 'rgba(17, 119, 209, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    // 2. Heatmap des QCM (exemple simplifié : QCM vus vs non vus)
+    const seenCount = filteredData.filter(q => (q.timesSeen || 0) > 0).length;
+    const notSeenCount = filteredData.length - seenCount;
+
+    charts.heatmap = new Chart(heatmapCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['QCM Vus', 'QCM Non Vus'],
+            datasets: [{
+                data: [seenCount, notSeenCount],
+                backgroundColor: [
+                    'rgba(40, 167, 69, 0.7)',
+                    'rgba(220, 53, 69, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(40, 167, 69, 1)',
+                    'rgba(220, 53, 69, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+
+    // 3. Graphique du temps moyen par matière
+    charts.time = new Chart(timeCtx, {
+        type: 'bar',
+        data: {
+            labels: subjectStats.map(s => s.subject || 'N/A'),
+            datasets: [{
+                label: 'Temps moyen (s)',
+                data: subjectStats.map(s => s.avgTime || 0),
+                backgroundColor: 'rgba(255, 193, 7, 0.7)',
+                borderColor: 'rgba(255, 193, 7, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 4. Graphique des tours par matière
+    charts.tours = new Chart(toursCtx, {
+        type: 'line',
+        data: {
+            labels: subjectStats.map(s => s.subject || 'N/A'),
+            datasets: [{
+                label: 'Tours moyens',
+                data: subjectStats.map(s => s.avgTours || 0),
+                backgroundColor: 'rgba(17, 119, 209, 0.2)',
+                borderColor: 'rgba(17, 119, 209, 1)',
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 </body>
 </html>
