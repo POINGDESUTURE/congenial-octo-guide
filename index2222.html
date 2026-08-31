@@ -2054,6 +2054,9 @@
         loadAllQCM();
     </script>
 
+<script>
+// ===== CODE POUR LA PAGE STATISTIQUES UNIQUEMENT =====
+if (document.getElementById('statsContent')) {
 // ===== VARIABLES GLOBALES =====
 let allQCMData = [];
 let charts = {};
@@ -2487,5 +2490,8 @@ function updateCharts(subjectStats, filteredData) {
         }
     });
 }
+}
+}
+</script>
 </body>
 </html>
